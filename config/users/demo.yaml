@@ -1,0 +1,14 @@
+username: demo
+display_name: Demo User
+is_admin: false
+password_hash: pbkdf2_sha256$120000$demo-salt$BabF6FmsQlojD8H0THZfV90W/yL41LtCRq59pXHE/qY=
+current_workspace_id: ws_demo
+settings:
+  ui:
+    theme: light
+  llm:
+    default_model: configured-outside-code
+workspaces:
+  owned:
+  - ws_demo
+  shared: []

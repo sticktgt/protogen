@@ -1,0 +1,12 @@
+modules:
+  - id: "demo_hello"
+    enabled: true
+    manifest: "modules/demo_hello/module.yaml"
+
+  - id: "demo_links"
+    enabled: true
+    manifest: "modules/demo_links/module.yaml"
+
+  - id: "demo_hidden"
+    enabled: true
+    manifest: "modules/demo_hidden/module.yaml"

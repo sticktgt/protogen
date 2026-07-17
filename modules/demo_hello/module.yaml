@@ -1,0 +1,30 @@
+id: "demo_hello"
+name: "Demo Hello"
+version: "0.1.0"
+
+frontend:
+  base_path: "modules/demo_hello"
+  pages:
+    - id: "main"
+      title: "Demo Hello"
+      path: "index.html"
+      menu:
+        show: true
+        title: "Demo Hello"
+        icon: "✉"
+        order: 10
+      params:
+        - "workspace_id"
+
+backend:
+  router: "backend.modules.demo_hello.api:router"
+  api_prefix: "/api/hello"
+
+workspace:
+  folder: "demo_hello"
+  init:
+    files: "modules/demo_hello/init"
+
+docs:
+  api: "modules/demo_hello/api.openapi.yaml"
+  interop: "modules/demo_hello/interop.yaml"

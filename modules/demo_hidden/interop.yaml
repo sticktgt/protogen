@@ -1,0 +1,19 @@
+module: demo_hidden
+provides:
+  pages:
+    - id: demo_hidden.main
+      path: modules/demo_hidden/index.html
+      menu: false
+      params:
+        - workspace_id
+        - source
+  api:
+    - method: GET
+      path: api/hidden/status
+    - method: PUT
+      path: api/hidden/note
+  workspace_files:
+    - path: demo_hidden/notes.json
+consumes:
+  pages:
+    - demo_links.main

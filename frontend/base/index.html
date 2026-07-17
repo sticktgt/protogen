@@ -1,0 +1,38 @@
+    <!doctype html>
+    <html lang="ru">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Главная</title>
+
+<link rel="stylesheet" href="/base/css/tokens.css">
+<link rel="stylesheet" href="/base/css/layout.css">
+<link rel="stylesheet" href="/base/css/components.css">
+
+    </head>
+    <body>
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar-title">Модули</div>
+          <nav class="sidebar-nav" data-sidebar></nav>
+        </aside>
+        <main class="main-panel">
+          <header class="topbar" data-topbar></header>
+          <section class="content">
+
+<div class="page-header">
+  <h1 class="page-title">ProtoArchitect</h1>
+  <p class="page-subtitle">Меню ниже построено из manifest-файлов подключенных модулей.</p>
+</div>
+<div class="grid grid-2" data-module-list></div>
+<div class="card" style="margin-top: 24px;">
+  <div class="card-title">Текущий контекст</div>
+  <pre data-context-json></pre>
+</div>
+
+          </section>
+        </main>
+      </div>
+      <script type="module" src="/base/js/home-page.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime logs and local env
+*.log
+.env
+.env.*
+
+# User-created workspaces are runtime data. Keep demo workspace in git.
+data/workspaces/*
+!data/workspaces/ws_demo/
+!data/workspaces/ws_demo/**

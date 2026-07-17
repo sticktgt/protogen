@@ -1,0 +1,4 @@
+workspace_folder: "demo_links"
+reads_external_demo_file: "demo_hello/message.json"
+ui:
+  title: "Demo Links"

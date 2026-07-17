@@ -1,0 +1,4 @@
+.summary-line {
+  border-left: 4px solid var(--color-primary);
+  padding-left: var(--space-3);
+}

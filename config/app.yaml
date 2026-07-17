@@ -1,0 +1,31 @@
+app:
+  name: "ProtoArchitect"
+  config_version: 1
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+
+paths:
+  frontend_dir: "frontend"
+  modules_dir: "modules"
+  config_dir: "config"
+  users_dir: "config/users"
+  module_list: "config/modules.yaml"
+  data_dir: "data"
+  workspace_root: "data/workspaces"
+
+ui:
+  default_page: "base/index.html"
+  login_page: "base/login.html"
+  root_css: "base/css/tokens.css"
+
+auth:
+  session_cookie_name: "protoarchitect_session"
+  session_ttl_minutes: 1440
+  secret_key: "change-this-secret-in-real-installation"
+
+history:
+  enabled: true
+  provider: "git"
+  auto_commit: false

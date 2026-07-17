@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  title: Demo Hidden API
+  version: 0.1.0
+paths:
+  /api/hidden/status:
+    get:
+      summary: Read hidden module status
+      parameters:
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Hidden module status
+  /api/hidden/note:
+    put:
+      summary: Save hidden module note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [workspace_id, note]
+              properties:
+                workspace_id:
+                  type: string
+                note:
+                  type: string
+      responses:
+        "200":
+          description: Saved note

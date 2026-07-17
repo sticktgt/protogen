@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hidden Demo Page</title>
+
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+  <link rel="stylesheet" href="/modules/demo_hidden/css/module.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content">
+        <div class="page-header">
+          <h1 class="page-title">Hidden Demo Page</h1>
+          <p class="page-subtitle">Страница зарегистрирована в manifest, но не выводится в левом меню.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-title">Данные страницы</div>
+            <pre data-status></pre>
+          </div>
+          <div class="card">
+            <div class="card-title">Заметка в workspace</div>
+            <form data-note-form>
+              <div class="form-row">
+                <label>note</label>
+                <textarea data-note></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Сохранить</button>
+              <button class="btn" type="button" data-open-links>Вернуться в Demo Links</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/modules/demo_hidden/js/main.js"></script>
+</body>
+</html>

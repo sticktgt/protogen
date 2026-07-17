@@ -1,0 +1,15 @@
+module: "demo_links"
+provides:
+  pages:
+    - id: "demo_links.main"
+      path: "modules/demo_links/index.html"
+      params: ["workspace_id"]
+  api:
+    - method: "GET"
+      path: "api/links/info"
+consumes:
+  pages:
+    - "demo_hello.main"
+  workspace_files:
+    - path: "demo_hello/message.json"
+      format: "json"

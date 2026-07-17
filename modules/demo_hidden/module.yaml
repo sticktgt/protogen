@@ -1,0 +1,28 @@
+id: "demo_hidden"
+name: "Demo Hidden Page"
+version: "0.1.0"
+
+frontend:
+  base_path: "modules/demo_hidden"
+  pages:
+    - id: "main"
+      title: "Hidden Demo Page"
+      path: "index.html"
+      menu:
+        show: false
+      params:
+        - "workspace_id"
+        - "source"
+
+backend:
+  router: "backend.modules.demo_hidden.api:router"
+  api_prefix: "/api/hidden"
+
+workspace:
+  folder: "demo_hidden"
+  init:
+    files: "modules/demo_hidden/init"
+
+docs:
+  api: "modules/demo_hidden/api.openapi.yaml"
+  interop: "modules/demo_hidden/interop.yaml"

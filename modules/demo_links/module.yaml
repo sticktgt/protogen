@@ -1,0 +1,31 @@
+id: "demo_links"
+name: "Demo Links"
+version: "0.1.0"
+
+frontend:
+  base_path: "modules/demo_links"
+  pages:
+    - id: "main"
+      title: "Demo Links"
+      path: "index.html"
+      menu:
+        show: true
+        title: "Demo Links"
+        icon: "↔"
+        order: 20
+      params:
+        - "workspace_id"
+
+backend:
+  router: "backend.modules.demo_links.api:router"
+  api_prefix: "/api/links"
+
+workspace:
+  folder: "demo_links"
+  init:
+    files: "modules/demo_links/init"
+    python_hook: "backend.modules.demo_links.init_workspace:init_workspace"
+
+docs:
+  api: "modules/demo_links/api.openapi.yaml"
+  interop: "modules/demo_links/interop.yaml"

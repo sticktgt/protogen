@@ -1,0 +1,14 @@
+[project]
+name = "protoarchitect"
+version = "0.1.0"
+description = "Thin-core modular workspace application skeleton"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic",
+  "PyYAML"
+]
+
+[tool.ruff]
+line-length = 100

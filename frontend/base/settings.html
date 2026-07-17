@@ -1,0 +1,42 @@
+    <!doctype html>
+    <html lang="ru">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Настройки</title>
+
+<link rel="stylesheet" href="/base/css/tokens.css">
+<link rel="stylesheet" href="/base/css/layout.css">
+<link rel="stylesheet" href="/base/css/components.css">
+
+    </head>
+    <body>
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar-title">Модули</div>
+          <nav class="sidebar-nav" data-sidebar></nav>
+        </aside>
+        <main class="main-panel">
+          <header class="topbar" data-topbar></header>
+          <section class="content">
+
+<div class="page-header">
+  <h1 class="page-title">Настройки пользователя</h1>
+  <p class="page-subtitle">Редактируются как JSON и сохраняются в config/users.</p>
+</div>
+<div class="card">
+  <form data-settings-form>
+    <div class="form-row">
+      <label>settings</label>
+      <textarea data-settings></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Сохранить</button>
+  </form>
+</div>
+
+          </section>
+        </main>
+      </div>
+      <script type="module" src="/base/js/settings-page.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,15 @@
+module: "demo_hello"
+provides:
+  pages:
+    - id: "demo_hello.main"
+      path: "modules/demo_hello/index.html"
+      params: ["workspace_id"]
+  api:
+    - method: "GET"
+      path: "api/hello/message"
+    - method: "PUT"
+      path: "api/hello/message"
+  workspace_files:
+    - path: "demo_hello/message.json"
+      format: "json"
+consumes: {}

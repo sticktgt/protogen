@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Создать workspace</title>
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content">
+        <div class="page-header">
+          <h1 class="page-title">Создать workspace</h1>
+          <p class="page-subtitle">ID workspace создается автоматически. После создания приложение переключится на новый workspace.</p>
+        </div>
+        <form class="card horizontal-form" data-create-workspace>
+          <div class="form-row form-row-grow">
+            <label>Название</label>
+            <input name="name" placeholder="Например: Проект клиента" required>
+          </div>
+          <div class="form-row form-row-grow-2">
+            <label>Описание</label>
+            <input name="description" placeholder="Краткий комментарий о назначении workspace">
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Создать</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/base/js/workspace-create-page.js"></script>
+</body>
+</html>

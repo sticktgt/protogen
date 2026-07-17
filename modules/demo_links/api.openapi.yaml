@@ -1,0 +1,17 @@
+openapi: "3.1.0"
+info:
+  title: "Demo Links API"
+  version: "0.1.0"
+paths:
+  /api/links/info:
+    get:
+      summary: "Read module info and shared workspace data"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "Module info"

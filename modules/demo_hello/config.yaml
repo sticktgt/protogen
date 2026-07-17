@@ -1,0 +1,5 @@
+workspace_folder: "demo_hello"
+files:
+  message: "message.json"
+ui:
+  title: "Demo Hello"

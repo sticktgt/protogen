@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+
+<link rel="stylesheet" href="/base/css/tokens.css">
+<link rel="stylesheet" href="/base/css/layout.css">
+<link rel="stylesheet" href="/base/css/components.css">
+
+</head>
+<body>
+  <main class="content" style="max-width: 520px; margin: 64px auto;">
+    <div class="card">
+      <h1 class="page-title">Вход</h1>
+      <p class="page-subtitle">Локальная авторизация через пользователей из config/users.</p>
+      <form data-login-form style="margin-top: 24px;">
+        <div class="form-row">
+          <label>Логин</label>
+          <input name="username" value="demo" autocomplete="username">
+        </div>
+        <div class="form-row">
+          <label>Пароль</label>
+          <input name="password" type="password" value="demo" autocomplete="current-password">
+        </div>
+        <button class="btn btn-primary" type="submit">Войти</button>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="/base/js/auth-page.js"></script>
+</body>
+</html>

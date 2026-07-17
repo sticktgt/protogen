@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Hello</title>
+
+<link rel="stylesheet" href="/base/css/tokens.css">
+<link rel="stylesheet" href="/base/css/layout.css">
+<link rel="stylesheet" href="/base/css/components.css">
+
+  <link rel="stylesheet" href="/modules/demo_hello/css/module.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content">
+        <div class="page-header">
+          <h1 class="page-title">Demo Hello</h1>
+          <p class="page-subtitle">Минимальный модуль: читает и пишет JSON в текущем workspace.</p>
+        </div>
+        <div class="card">
+          <form data-message-form>
+            <div class="form-row">
+              <label>workspace message</label>
+              <textarea class="message-box" data-message></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Сохранить</button>
+            <button class="btn" type="button" data-open-links>Открыть Demo Links</button>
+          </form>
+          <p class="muted" data-meta></p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/modules/demo_hello/js/main.js"></script>
+</body>
+</html>
