@@ -2,7 +2,7 @@ import { getContext, currentWorkspaceId } from '/base/js/context.js';
 import { initLayout } from '/base/js/layout.js';
 import { navigateToPage } from '/base/js/navigation.js';
 import { showToast } from '/base/js/ui.js';
-import { getStatus, saveNote } from './api.js';
+import { getStatus, getUserSettings, saveNote } from './api.js';
 
 await initLayout('demo_hidden.main');
 const context = await getContext();
@@ -14,7 +14,15 @@ async function loadStatus() {
   document.querySelector('[data-note]').value = status.note || '';
 }
 
+async function loadUserLlmSettings() {
+  const data = await getUserSettings();
+  const llm = data.settings?.llm || {};
+  document.querySelector('[data-llm-provider-view]').textContent = llm.provider || '—';
+  document.querySelector('[data-llm-model-view]').textContent = llm.model || llm.default_model || '—';
+}
+
 await loadStatus();
+await loadUserLlmSettings();
 
 document.querySelector('[data-note-form]')?.addEventListener('submit', async event => {
   event.preventDefault();

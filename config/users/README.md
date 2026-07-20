@@ -15,6 +15,10 @@ config/users/<username>.yaml
 - `password_hash` — хеш пароля;
 - `current_workspace_id` — активный workspace;
 - `settings` — персональные настройки пользователя;
+  - `settings.llm.provider` — провайдер LLM-соединения;
+  - `settings.llm.model` — имя модели LLM;
+  - `settings.llm.base_url` — опциональный URL совместимого сервиса;
+  - `settings.llm.api_key` — опциональный ключ API;
 - `workspaces.owned` — собственные workspace;
 - `workspaces.shared` — доступные shared workspace.
 

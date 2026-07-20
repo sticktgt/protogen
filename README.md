@@ -162,6 +162,10 @@ modules:
 - `password_hash` — хеш пароля.
 - `current_workspace_id` — активный workspace.
 - `settings` — пользовательские настройки.
+  - `settings.llm.provider` — провайдер LLM-соединения: `ollama-cloud`, `ollama`, `lmstudio`, `openai`, `anthropic`, `gemini`, `openrouter`, `opencode`, `openai-compatible`.
+  - `settings.llm.model` — имя модели LLM.
+  - `settings.llm.base_url` — опциональный URL совместимого сервиса.
+  - `settings.llm.api_key` — опциональный ключ API.
 - `workspaces.owned` — workspace пользователя.
 - `workspaces.shared` — workspace, доступные пользователю.
 

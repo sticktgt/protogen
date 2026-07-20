@@ -1,12 +1,15 @@
-username: "admin"
-display_name: "System Admin"
+username: admin
+display_name: System Admin
 is_admin: true
-password_hash: "pbkdf2_sha256$120000$admin-salt$nFyw3RTbkEfjSxbc2unpTn8F2PiGIvMuI1FvR3AAsp0="
-current_workspace_id: "ws_demo"
+password_hash: pbkdf2_sha256$120000$admin-salt$nFyw3RTbkEfjSxbc2unpTn8F2PiGIvMuI1FvR3AAsp0=
+current_workspace_id: ws_demo
 settings:
   ui:
-    theme: "light"
+    theme: light
+  llm:
+    provider: ollama-cloud
+    model: configured-outside-code
 workspaces:
   owned:
-    - "ws_demo"
+  - ws_demo
   shared: []

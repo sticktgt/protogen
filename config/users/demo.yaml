@@ -7,7 +7,10 @@ settings:
   ui:
     theme: light
   llm:
-    default_model: configured-outside-code
+    provider: ollama-cloud
+    model: qwen3.5:397b
+    base_url: https://ollama.com
+    api_key: 690c1905bf5142119e9eac6f0a6ee992.31gfL8NrBTR2PCsnuR90va_M
 workspaces:
   owned:
   - ws_demo

@@ -1,42 +1,70 @@
-    <!doctype html>
-    <html lang="ru">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Настройки</title>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Настройки</title>
 
-<link rel="stylesheet" href="/base/css/tokens.css">
-<link rel="stylesheet" href="/base/css/layout.css">
-<link rel="stylesheet" href="/base/css/components.css">
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content">
+        <div class="page-header">
+          <h1 class="page-title">Настройки пользователя</h1>
+          <p class="page-subtitle">Настройки сохраняются в JSON/YAML-файле пользователя.</p>
+        </div>
 
-    </head>
-    <body>
-      <div class="app-shell">
-        <aside class="sidebar">
-          <div class="sidebar-title">Модули</div>
-          <nav class="sidebar-nav" data-sidebar></nav>
-        </aside>
-        <main class="main-panel">
-          <header class="topbar" data-topbar></header>
-          <section class="content">
+        <div class="card">
+          <form data-settings-form>
+            <section class="settings-section" aria-labelledby="llm-settings-title">
+              <div class="settings-section-header">
+                <div>
+                  <h2 id="llm-settings-title" class="settings-section-title">Параметры соединения с LLM</h2>
+                  <p class="card-subtitle">Эти значения используются модулями, которым нужны LLM-сервисы.</p>
+                </div>
+              </div>
 
-<div class="page-header">
-  <h1 class="page-title">Настройки пользователя</h1>
-  <p class="page-subtitle">Редактируются как JSON и сохраняются в config/users.</p>
-</div>
-<div class="card">
-  <form data-settings-form>
-    <div class="form-row">
-      <label>settings</label>
-      <textarea data-settings></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit">Сохранить</button>
-  </form>
-</div>
+              <div class="settings-grid">
+                <div class="form-row">
+                  <label for="llm-provider">Provider <span class="required-mark">*</span></label>
+                  <select id="llm-provider" name="provider" data-llm-provider required></select>
+                </div>
 
-          </section>
-        </main>
-      </div>
-      <script type="module" src="/base/js/settings-page.js"></script>
-    </body>
-    </html>
+                <div class="form-row">
+                  <label for="llm-model">Model <span class="required-mark">*</span></label>
+                  <input id="llm-model" name="model" type="text" data-llm-model required autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                  <label for="llm-base-url">Base URL</label>
+                  <input id="llm-base-url" name="base_url" type="text" data-llm-base-url autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                  <label for="llm-api-key">API key</label>
+                  <input id="llm-api-key" name="api_key" type="password" data-llm-api-key autocomplete="new-password">
+                  <p class="field-hint">Оставьте без изменений, чтобы сохранить прежний ключ; очистите поле, чтобы удалить ключ.</p>
+                </div>
+              </div>
+            </section>
+
+            <div class="form-actions settings-actions">
+              <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/base/js/settings-page.js"></script>
+</body>
+</html>

@@ -1,3 +1,17 @@
 pre {
   white-space: pre-wrap;
 }
+
+.llm-settings-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.llm-settings-preview div {
+  display: grid;
+  gap: 4px;
+}
+
+.llm-settings-preview strong {
+  font-size: 16px;
+}

@@ -10,3 +10,7 @@ export function saveNote(workspaceId, note) {
     body: JSON.stringify({ workspace_id: workspaceId, note }),
   });
 }
+
+export function getUserSettings() {
+  return apiFetch('/api/users/me/settings');
+}

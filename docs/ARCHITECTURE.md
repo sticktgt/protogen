@@ -152,7 +152,7 @@ backend/modules/<module_id>/
 - `workspace-open.html` — открытие доступного workspace;
 - `workspace-create.html` — создание нового workspace;
 - `workspaces.html` — совместимая страница-ссылка на открытие/создание;
-- `settings.html` — пользовательские настройки;
+- `settings.html` — пользовательские настройки; форма редактирует фиксированные разделы настроек, в текущей версии это параметры LLM-соединения: `provider`, `model`, `base_url`, `api_key`;
 - `admin.html` — системное администрирование.
 
 Ключевые JS-файлы:

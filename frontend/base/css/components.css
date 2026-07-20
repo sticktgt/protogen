@@ -69,6 +69,7 @@
 .btn:disabled { cursor: not-allowed; opacity: 0.5; }
 
 .form-row {
+  align-content: start;
   display: grid;
   gap: 6px;
   margin-bottom: 16px;
@@ -215,4 +216,44 @@ textarea {
 .stat-value {
   font-size: 24px;
   font-weight: 700;
+}
+
+.settings-section {
+  display: grid;
+  gap: 16px;
+}
+
+.settings-section-header {
+  align-items: start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.settings-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.settings-grid {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.settings-actions {
+  margin-top: 20px;
+}
+
+.required-mark {
+  color: var(--danger);
+}
+
+.field-hint {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 4px 0 0;
 }
