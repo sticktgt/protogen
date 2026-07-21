@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: UI Schema API
+  version: 0.1.0
+paths:
+  /api/ui-schema:
+    get:
+      summary: Get UI schema summary
+      parameters:
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: UI schema summary
+  /api/ui-schema/pages:
+    get:
+      summary: List pages
+    post:
+      summary: Create page
+  /api/ui-schema/pages/{page_id}:
+    get:
+      summary: Get page
+    put:
+      summary: Update page
+    delete:
+      summary: Delete page
+  /api/ui-schema/pages/{page_id}/elements:
+    post:
+      summary: Add UI element
+  /api/ui-schema/pages/{page_id}/elements/{element_id}:
+    put:
+      summary: Update UI element
+    delete:
+      summary: Delete UI element
+  /api/ui-schema/requirement-links:
+    get:
+      summary: List requirement links
+    post:
+      summary: Add requirement link
+  /api/ui-schema/requirement-links/{link_id}:
+    delete:
+      summary: Delete requirement link
+  /api/ui-schema/requirements:
+    get:
+      summary: List demo requirements
+
+  /api/ui-schema/app:
+    get:
+      summary: Get application root UI elements
+  /api/ui-schema/app/elements:
+    post:
+      summary: Add application root/menu element
+  /api/ui-schema/app/elements/{element_id}:
+    put:
+      summary: Update application root/menu element
+    delete:
+      summary: Delete application root/menu element
+  /api/ui-schema/ui-links:
+    get:
+      summary: List UI object links
+    post:
+      summary: Add UI object link
+  /api/ui-schema/ui-links/{link_id}:
+    delete:
+      summary: Delete UI object link

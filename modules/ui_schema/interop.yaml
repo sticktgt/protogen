@@ -1,0 +1,25 @@
+module: ui_schema
+provides:
+  pages:
+    - id: ui_schema.main
+      title: UI Schema
+      path: modules/ui_schema/index.html
+      params:
+        - workspace_id
+  api:
+    - method: GET
+      path: /api/ui-schema
+      description: Read UI schema summary for current workspace
+  workspace_files:
+    - path: ui_schema/schema.json
+      description: UI schema registry
+    - path: ui_schema/pages/*.json
+      description: Page definitions
+    - path: ui_schema/mappings/requirement_ui_links.json
+      description: Links between requirements and UI objects
+    - path: ui_schema/code_links.json
+      description: Optional links between UI objects and prototype source files
+consumes:
+  workspace_files:
+    - path: ui_schema/requirements.json
+      description: Demo requirement list used for tracing

@@ -10,3 +10,7 @@ modules:
   - id: "demo_hidden"
     enabled: true
     manifest: "modules/demo_hidden/module.yaml"
+
+  - id: "ui_schema"
+    enabled: true
+    manifest: "modules/ui_schema/module.yaml"

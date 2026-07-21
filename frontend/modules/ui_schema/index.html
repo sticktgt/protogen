@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI Schema</title>
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+  <link rel="stylesheet" href="/modules/ui_schema/css/module.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content ui-schema-content">
+        <div class="page-header compact-header">
+          <div>
+            <h1 class="page-title">🗺️ UI-схема прототипа</h1>
+            <p class="page-subtitle">Экраны, элементы интерфейса и связи с требованиями.</p>
+          </div>
+        </div>
+
+        <div class="schema-tabs" role="tablist">
+          <button class="btn btn-primary" type="button" data-tab="map">🎨 Карта UI</button>
+          <button class="btn" type="button" data-tab="structure">🧩 Структура страницы</button>
+        </div>
+
+        <section data-view="map" class="schema-view">
+          <div class="schemas-layout">
+            <aside class="schema-nav-panel">
+              <div class="schema-nav-title">UI / Интерфейсы</div>
+              <div class="schema-nav-item active">
+                <div class="schema-nav-icon">🎨</div>
+                <div>
+                  <div class="schema-nav-label">Экраны и элементы</div>
+                  <div class="schema-nav-desc">Логическая схема web UI</div>
+                </div>
+              </div>
+
+              <div class="schema-nav-stats" data-schema-stats></div>
+
+              <div class="mini-create-card">
+                <button class="btn btn-primary btn-sm full-width" type="button" data-start-page-create>Добавить страницу</button>
+              </div>
+            </aside>
+
+            <div class="schema-view-panel">
+              <div class="schema-view-header">
+                <div>
+                  <div class="schema-view-title">🎨 UI / Интерфейсы</div>
+                  <div class="schema-view-subtitle">Нажмите на экран или элемент, чтобы открыть его на вкладке структуры.</div>
+                </div>
+              </div>
+              <div data-app-root-preview class="app-root-preview"></div>
+              <div data-page-grid class="ui-screens-grid"></div>
+            </div>
+          </div>
+        </section>
+
+        <section data-view="structure" class="schema-view hidden">
+          <div class="schema-layout structure-layout">
+            <div class="card structure-left-card">
+              <div class="card-title">Структура страницы</div>
+              <div class="form-row">
+                <label>Страница</label>
+                <select data-structure-page-select></select>
+              </div>
+              <div data-element-tree class="element-tree"></div>
+            </div>
+
+            <div class="card element-editor-card">
+              <div class="card-title">Редактирование</div>
+              <div data-element-editor class="empty-state">Выберите страницу или элемент.</div>
+              <div data-element-add-panel></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/modules/ui_schema/js/main.js"></script>
+</body>
+</html>
