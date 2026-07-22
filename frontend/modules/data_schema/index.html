@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Schema</title>
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+  <link rel="stylesheet" href="/modules/data_schema/css/module.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+      <section class="content data-schema-content">
+        <div class="page-header compact-header">
+          <div>
+            <h1 class="page-title">🗄️ Схема данных прототипа</h1>
+            <p class="page-subtitle">Логические сущности, поля, связи и трассировка к требованиям, UI, API и коду.</p>
+          </div>
+        </div>
+
+        <div class="schema-tabs" role="tablist">
+          <button class="btn btn-primary" type="button" data-tab="graph">🕸️ Граф</button>
+          <button class="btn" type="button" data-tab="map">🗺️ Карта данных</button>
+          <button class="btn" type="button" data-tab="structure">🧱 Структура сущностей</button>
+        </div>
+
+        <section data-view="map" class="schema-view">
+          <div class="data-layout">
+            <aside class="data-nav-panel">
+              <div class="data-nav-title">Статистика</div>
+              <div class="data-nav-stats" data-schema-stats></div>
+              <div class="form-row compact-filter-row">
+                <label>Фильтр сущностей</label>
+                <input data-map-entity-filter placeholder="Название или ID">
+              </div>
+              <button class="btn btn-primary btn-sm full-width" type="button" data-start-entity-create>Добавить сущность</button>
+            </aside>
+            <div class="data-view-panel">
+              <div class="schema-view-header">
+                <div>
+                  <div class="schema-view-title">🗺️ Карта данных</div>
+                  <div class="schema-view-subtitle">Нажмите на сущность или поле, чтобы открыть редактор структуры.</div>
+                </div>
+              </div>
+              <div data-data-map></div>
+            </div>
+          </div>
+        </section>
+
+
+        <section data-view="graph" class="schema-view hidden">
+          <div class="data-view-panel graph-view-panel">
+            <div class="schema-view-header">
+              <div>
+                <div class="schema-view-title">🕸️ Граф</div>
+              </div>
+            </div>
+            <div data-joint-graph></div>
+          </div>
+        </section>
+
+        <section data-view="structure" class="schema-view hidden">
+          <div class="structure-layout">
+            <div class="card structure-left-card">
+              <div class="card-title">Структура данных</div>
+              <div class="form-row">
+                <label>Сущность</label>
+                <select data-entity-select></select>
+              </div>
+              <div class="form-row compact-filter-row">
+                <label>Фильтр сущностей</label>
+                <input data-entity-filter placeholder="Название или ID">
+              </div>
+              <div class="left-actions">
+                <button class="btn btn-primary btn-sm" type="button" data-start-entity-create>Добавить сущность</button>
+              </div>
+              <div data-entity-tree class="entity-tree"></div>
+            </div>
+
+            <div class="card editor-card">
+              <div class="card-title">Редактирование</div>
+              <div data-editor class="empty-state">Выберите сущность или поле.</div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/modules/data_schema/js/main.js"></script>
+</body>
+</html>

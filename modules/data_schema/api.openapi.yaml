@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Data Schema Module API
+  version: 0.1.0
+paths:
+  /api/data-schema:
+    get:
+      summary: Read aggregated data schema summary
+      parameters:
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Data schema summary
+  /api/data-schema/schema:
+    get:
+      summary: Read data schema registry
+      parameters:
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Schema registry
+    put:
+      summary: Update schema title and description
+      responses:
+        "200":
+          description: Updated schema
+  /api/data-schema/entities:
+    get:
+      summary: List entities
+      parameters:
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Entity list
+    post:
+      summary: Create entity with generated identifier
+      responses:
+        "200":
+          description: Created entity
+  /api/data-schema/entities/{entity_id}:
+    get:
+      summary: Read entity
+      parameters:
+        - name: entity_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Entity
+    put:
+      summary: Update entity
+      parameters:
+        - name: entity_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Updated entity
+    delete:
+      summary: Delete entity
+      parameters:
+        - name: entity_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workspace_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deletion result
+  /api/data-schema/relations:
+    get:
+      summary: Read logical entity relations
+      responses:
+        "200":
+          description: Relations
+    post:
+      summary: Create logical entity relation with generated identifier
+      responses:
+        "200":
+          description: Created relation
+  /api/data-schema/requirement-links:
+    post:
+      summary: Create requirement to data schema link
+      responses:
+        "200":
+          description: Created link
+  /api/data-schema/ui-links:
+    post:
+      summary: Create UI schema to data schema link
+      responses:
+        "200":
+          description: Created link
+  /api/data-schema/api-links:
+    post:
+      summary: Create API schema to data schema link
+      responses:
+        "200":
+          description: Created link
+  /api/data-schema/code-links:
+    post:
+      summary: Create code link
+      responses:
+        "200":
+          description: Created link

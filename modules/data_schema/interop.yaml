@@ -1,0 +1,33 @@
+module: data_schema
+version: 0.1.0
+
+provides:
+  data_schema_summary:
+    api: GET /api/data-schema
+    description: Aggregated logical data schema for a workspace.
+  data_entities:
+    api: GET /api/data-schema/entities
+    description: Logical entities and their fields.
+  data_relations:
+    api: GET /api/data-schema/relations
+    description: Logical relations between entities.
+
+consumes:
+  requirements:
+    current_source: data_schema/requirements.json
+    planned_source: requirements module
+    link_field: requirements[].id
+  ui_schema:
+    link_file: mappings/ui_data_links.json
+    target_examples:
+      - ui_element
+      - page
+  api_schema:
+    link_file: mappings/api_data_links.json
+    target_examples:
+      - resource
+      - operation
+      - schema_field
+  code:
+    link_file: code_links.json
+    status: planned

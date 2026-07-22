@@ -1,0 +1,140 @@
+{
+  "dictionaries": [
+    {
+      "id": "currency",
+      "title": "Валюта",
+      "values": [
+        {
+          "id": "RUB",
+          "title": "Российский рубль"
+        },
+        {
+          "id": "USD",
+          "title": "Доллар США"
+        },
+        {
+          "id": "EUR",
+          "title": "Евро"
+        }
+      ]
+    },
+    {
+      "id": "customer_status",
+      "title": "Статус клиента",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирован"
+        }
+      ]
+    },
+    {
+      "id": "account_status",
+      "title": "Статус счета",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "closed",
+          "title": "Закрыт"
+        }
+      ]
+    },
+    {
+      "id": "card_status",
+      "title": "Статус карты",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активна"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирована"
+        }
+      ]
+    },
+    {
+      "id": "card_block_reason",
+      "title": "Причина блокировки карты",
+      "values": [
+        {
+          "id": "lost",
+          "title": "Утеря"
+        },
+        {
+          "id": "stolen",
+          "title": "Кража"
+        },
+        {
+          "id": "other",
+          "title": "Другое"
+        }
+      ]
+    },
+    {
+      "id": "operation_status",
+      "title": "Статус операции",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "completed",
+          "title": "Исполнена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        }
+      ]
+    },
+    {
+      "id": "application_status",
+      "title": "Статус заявки",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "submitted",
+          "title": "Отправлена"
+        },
+        {
+          "id": "approved",
+          "title": "Одобрена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        }
+      ]
+    },
+    {
+      "id": "credit_product_type",
+      "title": "Тип кредита",
+      "values": [
+        {
+          "id": "consumer",
+          "title": "Потребительский"
+        },
+        {
+          "id": "mortgage",
+          "title": "Ипотека"
+        },
+        {
+          "id": "car",
+          "title": "Автокредит"
+        }
+      ]
+    }
+  ]
+}

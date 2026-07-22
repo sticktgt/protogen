@@ -1,0 +1,17 @@
+logical_types:
+  - string
+  - text
+  - integer
+  - decimal
+  - boolean
+  - date
+  - datetime
+  - uuid
+  - dictionary
+  - json
+
+cardinalities:
+  - one_to_one
+  - one_to_many
+  - many_to_one
+  - many_to_many

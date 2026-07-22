@@ -1,0 +1,11 @@
+{
+  "schema": {
+    "schema_version": "0.1",
+    "title": "Логическая схема данных прототипа",
+    "description": "",
+    "entities": []
+  },
+  "entities": [],
+  "relations": [],
+  "dictionaries": []
+}

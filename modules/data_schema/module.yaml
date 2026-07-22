@@ -1,0 +1,30 @@
+id: "data_schema"
+name: "Data Schema"
+version: "0.1.0"
+
+frontend:
+  base_path: "modules/data_schema"
+  pages:
+    - id: "main"
+      title: "Data Schema"
+      path: "index.html"
+      menu:
+        show: true
+        title: "Data Schema"
+        icon: "🗄️"
+        order: 40
+      params:
+        - "workspace_id"
+
+backend:
+  router: "backend.modules.data_schema.api:router"
+  api_prefix: "/api/data-schema"
+
+workspace:
+  folder: "data_schema"
+  init:
+    files: "modules/data_schema/init"
+
+docs:
+  api: "modules/data_schema/api.openapi.yaml"
+  interop: "modules/data_schema/interop.yaml"

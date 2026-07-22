@@ -14,3 +14,7 @@ modules:
   - id: "ui_schema"
     enabled: true
     manifest: "modules/ui_schema/module.yaml"
+
+  - id: "data_schema"
+    enabled: true
+    manifest: "modules/data_schema/module.yaml"
