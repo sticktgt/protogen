@@ -1,5 +1,9 @@
 import { apiFetch } from '/base/js/api.js';
 
+export function loadModuleConfig() {
+  return apiFetch('/api/config/modules/ui_schema');
+}
+
 export function loadSummary(workspaceId) {
   return apiFetch(`/api/ui-schema?workspace_id=${encodeURIComponent(workspaceId)}`);
 }

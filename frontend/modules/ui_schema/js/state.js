@@ -1,51 +1,45 @@
 export const APP_SCOPE = '__app__';
 
-export const groupElementTypes = [
-  'section', 'form', 'filter_panel', 'toolbar', 'details_panel', 'tabs', 'modal',
-  'wizard', 'grid', 'table_with_actions', 'card', 'list', 'main_menu', 'menu_group'
-];
+export const groupElementTypes = [];
+export const atomicElementTypes = [];
+export const pageElementTypes = [];
+export const appElementTypes = [];
+export const elementTypes = [];
 
-export const atomicElementTypes = [
-  'text', 'image', 'input', 'textarea', 'select', 'checkbox', 'radio', 'button', 'link',
-  'table', 'badge', 'date_picker', 'file_upload', 'menu_item'
-];
+const typeMeta = {};
+const typeDefinitions = new Map();
 
-export const pageElementTypes = groupElementTypes.concat(atomicElementTypes)
-  .filter(type => !['main_menu', 'menu_group', 'menu_item'].includes(type));
+function replaceArray(target, values) {
+  target.splice(0, target.length, ...values);
+}
 
-export const appElementTypes = ['main_menu', 'menu_group', 'menu_item'];
-export const elementTypes = groupElementTypes.concat(atomicElementTypes);
+export function configureElementTypes(moduleConfig) {
+  const config = moduleConfig?.config || moduleConfig?.module_config || moduleConfig;
+  const definitions = config?.ui?.element_types;
+  if (!Array.isArray(definitions) || definitions.length === 0) {
+    throw new Error('В config.yaml не задан ui.element_types');
+  }
 
-const typeMeta = {
-  section: ['▦', 'section'],
-  form: ['📝', 'form'],
-  filter_panel: ['🔎', 'filter_panel'],
-  toolbar: ['🧰', 'toolbar'],
-  details_panel: ['📋', 'details_panel'],
-  tabs: ['🗂️', 'tabs'],
-  modal: ['◫', 'modal'],
-  wizard: ['🪄', 'wizard'],
-  grid: ['▦', 'grid'],
-  table_with_actions: ['📊', 'table_with_actions'],
-  main_menu: ['🧭', 'main_menu'],
-  menu_group: ['📁', 'menu_group'],
-  menu_item: ['➡️', 'menu_item'],
-  text: ['T', 'text'],
-  image: ['🖼️', 'image'],
-  input: ['⌨️', 'input'],
-  textarea: ['¶', 'textarea'],
-  select: ['▾', 'select'],
-  checkbox: ['☑', 'checkbox'],
-  radio: ['◉', 'radio'],
-  button: ['🔘', 'button'],
-  link: ['🔗', 'link'],
-  table: ['▤', 'table'],
-  list: ['☰', 'list'],
-  card: ['▣', 'card'],
-  badge: ['🏷️', 'badge'],
-  date_picker: ['📅', 'date_picker'],
-  file_upload: ['📎', 'file_upload']
-};
+  typeDefinitions.clear();
+  for (const key of Object.keys(typeMeta)) delete typeMeta[key];
+
+  const seen = new Set();
+  for (const definition of definitions) {
+    const type = definition?.id;
+    if (!type || seen.has(type)) throw new Error(`Некорректный тип UI-элемента: ${type || '<empty>'}`);
+    if (!['page', 'app'].includes(definition.scope)) throw new Error(`Некорректная область типа ${type}`);
+    if (!['group', 'atomic'].includes(definition.kind)) throw new Error(`Некорректный вид типа ${type}`);
+    seen.add(type);
+    typeDefinitions.set(type, definition);
+    typeMeta[type] = [definition.icon || '□', definition.label || type];
+  }
+
+  replaceArray(groupElementTypes, definitions.filter(item => item.kind === 'group').map(item => item.id));
+  replaceArray(atomicElementTypes, definitions.filter(item => item.kind === 'atomic').map(item => item.id));
+  replaceArray(pageElementTypes, definitions.filter(item => item.scope === 'page').map(item => item.id));
+  replaceArray(appElementTypes, definitions.filter(item => item.scope === 'app').map(item => item.id));
+  replaceArray(elementTypes, definitions.map(item => item.id));
+}
 
 export const state = {
   workspaceId: null,
@@ -176,19 +170,24 @@ export function isAppScope() {
 }
 
 export function allowedChildTypes(parent) {
-  if (!isAppScope()) return pageElementTypes;
-  if (!parent) {
-    const hasMainMenu = (appSchema().root_elements || []).some(element => element.type === 'main_menu');
-    return hasMainMenu ? [] : ['main_menu'];
+  if (!isAppScope()) {
+    return parent && !isGroupElement(parent) ? [] : pageElementTypes;
   }
-  if (parent.type === 'main_menu') return ['menu_group', 'menu_item'];
-  if (parent.type === 'menu_group') return ['menu_item'];
-  return [];
+  if (!parent) {
+    return appElementTypes.filter(type => {
+      const definition = typeDefinitions.get(type);
+      if (!definition?.root_allowed) return false;
+      if (!definition.unique_root) return true;
+      return !(appSchema().root_elements || []).some(element => element.type === type);
+    });
+  }
+  const definition = typeDefinitions.get(parent.type);
+  return Array.isArray(definition?.allowed_children) ? definition.allowed_children : [];
 }
 
 
 export function isLinkSourceElement(element) {
-  return !!element && ['menu_item', 'button', 'link', 'card'].includes(element.type);
+  return !!element && typeDefinitions.get(element.type)?.link_source === true;
 }
 
 export function allModalElements() {

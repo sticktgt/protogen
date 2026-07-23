@@ -1,7 +1,7 @@
 import { getContext, currentWorkspaceId } from '/base/js/context.js';
 import { initLayout } from '/base/js/layout.js';
-import { loadSummary } from './api.js';
-import { state, pages, requirements } from './state.js';
+import { loadModuleConfig, loadSummary } from './api.js';
+import { configureElementTypes, state, pages, requirements } from './state.js';
 import { renderMapView } from './render-map.js';
 import { renderStructureView } from './render-structure.js';
 
@@ -9,11 +9,19 @@ await initLayout('ui_schema.main');
 const context = await getContext();
 state.workspaceId = currentWorkspaceId(context);
 
-if (!state.workspaceId) {
-  document.querySelector('.content').innerHTML = '<div class="card">Выберите или создайте workspace.</div>';
-} else {
-  await renderAll({ reload: true });
-  bindEvents();
+try {
+  const moduleConfig = await loadModuleConfig();
+  configureElementTypes(moduleConfig);
+
+  if (!state.workspaceId) {
+    document.querySelector('.content').innerHTML = '<div class="card">Выберите или создайте workspace.</div>';
+  } else {
+    await renderAll({ reload: true });
+    bindEvents();
+  }
+} catch (error) {
+  console.error(error);
+  document.querySelector('.content').innerHTML = '<div class="card">Не удалось загрузить конфигурацию модуля UI Schema.</div>';
 }
 
 export async function renderAll({ reload = false } = {}) {

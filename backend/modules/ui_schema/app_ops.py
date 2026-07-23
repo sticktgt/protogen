@@ -4,13 +4,23 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
+from backend.modules.ui_schema.element_types import (
+    allowed_child_types,
+    ensure_type_allowed,
+    is_group_type,
+    root_type_ids,
+    type_definition,
+)
 from backend.modules.ui_schema.index_builder import rebuild_index
-from backend.modules.ui_schema.storage import read_app, read_requirement_links, read_ui_links, write_app, write_requirement_links, write_ui_links
+from backend.modules.ui_schema.storage import (
+    read_app,
+    read_requirement_links,
+    read_ui_links,
+    write_app,
+    write_requirement_links,
+    write_ui_links,
+)
 from backend.modules.ui_schema.tree import collect_element_ids, element_exists, find_element, remove_element
-
-APP_GROUP_TYPES = {"main_menu", "menu_group"}
-APP_ALLOWED_TYPES = {"main_menu", "menu_group", "menu_item"}
-
 
 
 def update_app(root: Path, payload: dict[str, Any]) -> dict[str, Any]:
@@ -37,8 +47,14 @@ def add_app_element(root: Path, payload: dict[str, Any]) -> dict[str, Any]:
     if parent_id:
         append_to_app_parent(app, parent_id, element)
     else:
-        if element["type"] != "main_menu":
-            raise ValueError("Only main_menu can be added as root application element")
+        element_type = element["type"]
+        if element_type not in root_type_ids(scope="app"):
+            raise ValueError(f"Element type {element_type} cannot be added as an application root")
+        definition = type_definition(element_type) or {}
+        if definition.get("unique_root") and any(
+            current.get("type") == element_type for current in app.get("root_elements", [])
+        ):
+            raise ValueError(f"Only one root element of type {element_type} is allowed")
         app.setdefault("root_elements", []).append(element)
     write_app(root, app)
     rebuild_index(root)
@@ -47,8 +63,7 @@ def add_app_element(root: Path, payload: dict[str, Any]) -> dict[str, Any]:
 
 def build_app_element(element_id: str, payload: dict[str, Any]) -> dict[str, Any]:
     element_type = payload.get("type", "menu_item")
-    if element_type not in APP_ALLOWED_TYPES:
-        raise ValueError("Unsupported app element type")
+    ensure_type_allowed(element_type, scope="app")
     element = {
         "id": element_id,
         "type": element_type,
@@ -58,8 +73,8 @@ def build_app_element(element_id: str, payload: dict[str, Any]) -> dict[str, Any
         element["description"] = payload["description"]
     if payload.get("purpose"):
         element["purpose"] = payload["purpose"]
-    if element_type in APP_GROUP_TYPES:
-        element.setdefault("children", [])
+    if is_group_type(element_type, scope="app"):
+        element["children"] = []
     return element
 
 
@@ -67,14 +82,10 @@ def append_to_app_parent(app: dict[str, Any], parent_id: str, element: dict[str,
     parent = find_element(app.get("root_elements", []), parent_id)
     if not parent:
         raise ValueError("Parent element not found")
-    parent_type = parent.get("type")
-    child_type = element.get("type")
-    if parent_type == "main_menu" and child_type not in {"menu_group", "menu_item"}:
-        raise ValueError("main_menu can contain only menu_group or menu_item")
-    if parent_type == "menu_group" and child_type != "menu_item":
-        raise ValueError("menu_group can contain only menu_item")
-    if parent_type == "menu_item":
-        raise ValueError("menu_item cannot contain nested elements")
+    parent_type = parent.get("type", "")
+    child_type = element.get("type", "")
+    if child_type not in allowed_child_types(parent_type, scope="app"):
+        raise ValueError(f"Element type {parent_type} cannot contain {child_type}")
     parent.setdefault("children", []).append(element)
 
 
@@ -91,6 +102,7 @@ def update_app_element(root: Path, element_id: str, payload: dict[str, Any]) -> 
             else:
                 element[field] = value
     if "type" in payload and payload["type"] != element.get("type"):
+        ensure_type_allowed(payload["type"], scope="app")
         raise ValueError("Changing app element type is not supported")
     write_app(root, app)
     rebuild_index(root)
@@ -114,14 +126,16 @@ def delete_app_element(root: Path, element_id: str) -> None:
 def remove_app_element_links(root: Path, removed_ids: set[str]) -> None:
     requirement_links = read_requirement_links(root)
     requirement_links["links"] = [
-        link for link in requirement_links.get("links", [])
+        link
+        for link in requirement_links.get("links", [])
         if not (link.get("target_type") == "ui_element" and link.get("target_id") in removed_ids)
     ]
     write_requirement_links(root, requirement_links)
 
     ui_links = read_ui_links(root)
     ui_links["links"] = [
-        link for link in ui_links.get("links", [])
+        link
+        for link in ui_links.get("links", [])
         if link.get("source_id") not in removed_ids and link.get("target_id") not in removed_ids
     ]
     write_ui_links(root, ui_links)

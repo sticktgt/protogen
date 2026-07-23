@@ -8,6 +8,7 @@ API модуля работает с UI-схемой текущего workspace.
 - `GET /api/ui-schema?workspace_id=...` — получить сводку схемы, страниц, требований и связей.
 
 - `GET /api/ui-schema/app?workspace_id=...` — получить корневые элементы приложения, включая главное меню.
+- `PUT /api/ui-schema/app` — изменить название и описание приложения.
 - `POST /api/ui-schema/app/elements` — добавить корневой элемент приложения или элемент меню.
 - `PUT /api/ui-schema/app/elements/{element_id}` — изменить элемент приложения или меню.
 - `DELETE /api/ui-schema/app/elements/{element_id}?workspace_id=...` — удалить элемент приложения или меню.
@@ -23,6 +24,9 @@ API модуля работает с UI-схемой текущего workspace.
 - `POST /api/ui-schema/requirement-links` — создать связь требования с UI.
 - `DELETE /api/ui-schema/requirement-links/{link_id}?workspace_id=...` — удалить связь.
 - `GET /api/ui-schema/requirements?workspace_id=...` — получить демонстрационный набор требований.
+
+- `POST /api/ui-schema/code-links` — создать связь страницы или UI-элемента с файлом кода.
+- `DELETE /api/ui-schema/code-links/{link_id}?workspace_id=...` — удалить связь с файлом кода.
 
 - `GET /api/ui-schema/ui-links?workspace_id=...` — получить связи между UI-объектами.
 - `POST /api/ui-schema/ui-links` — добавить связь между UI-объектами, например пункт меню → страница.

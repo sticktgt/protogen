@@ -20,6 +20,10 @@ provides:
     - path: ui_schema/code_links.json
       description: Optional links between UI objects and prototype source files
 consumes:
+  api:
+    - method: GET
+      path: /api/config/modules/ui_schema
+      description: Read the shared runtime catalog of UI element types
   workspace_files:
     - path: ui_schema/requirements.json
       description: Demo requirement list used for tracing

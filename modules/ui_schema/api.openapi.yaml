@@ -50,6 +50,8 @@ paths:
   /api/ui-schema/app:
     get:
       summary: Get application root UI elements
+    put:
+      summary: Update application title and description
   /api/ui-schema/app/elements:
     post:
       summary: Add application root/menu element
@@ -58,6 +60,12 @@ paths:
       summary: Update application root/menu element
     delete:
       summary: Delete application root/menu element
+  /api/ui-schema/code-links:
+    post:
+      summary: Add code link for a page or UI element
+  /api/ui-schema/code-links/{link_id}:
+    delete:
+      summary: Delete code link
   /api/ui-schema/ui-links:
     get:
       summary: List UI object links
