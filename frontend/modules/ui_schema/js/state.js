@@ -43,17 +43,42 @@ export function configureElementTypes(moduleConfig) {
 
 export const state = {
   workspaceId: null,
+  previewRunId: null,
+  previewActive: false,
+  readOnly: false,
+  writeLocked: false,
+  agentRun: null,
+  agentChanges: null,
+  agentEvents: [],
+  agentMetrics: null,
+  agentEventCursor: 0,
+  agentHistory: null,
+  agentInitialAvailable: false,
+  agentLoaded: false,
+  agentLlmTest: null,
+  agentRequirementsPath: "",
+  agentUserRequest: "",
+  agentBaseMode: "current",
   summary: null,
   activeTab: 'map',
   selectedPageId: null,
   selectedElementId: null,
   selectedRequirementId: null,
+  selectedDeletedChange: null,
   elementEditorTab: 'info',
   createPageMode: false,
   showRequirementLinkForm: false,
   showElementCreateForm: false,
   showUiLinkForm: false
 };
+
+export function configureAgentDefaults(moduleConfig) {
+  const config = moduleConfig?.config || moduleConfig?.module_config || moduleConfig;
+  const defaultPath = config?.agent?.requirements?.default_workspace_path;
+  if (!state.agentRequirementsPath && typeof defaultPath === 'string') {
+    state.agentRequirementsPath = defaultPath;
+  }
+}
 
 export function pages() {
   return state.summary?.pages || [];
@@ -65,6 +90,10 @@ export function appSchema() {
 
 export function requirements() {
   return state.summary?.requirements?.requirements || [];
+}
+
+export function requirementsSource() {
+  return state.summary?.requirements_source || { status: 'not_configured' };
 }
 
 export function links() {

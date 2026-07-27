@@ -1,0 +1,105 @@
+{
+  "id": "reports.statement",
+  "title": "Выписка по счету",
+  "description": "Страница формирования и просмотра выписки по счету за период",
+  "elements": [
+    {
+      "id": "reports.statement.form",
+      "type": "form",
+      "label": "Параметры выписки",
+      "purpose": "Выбор счета и периода для формирования выписки",
+      "children": [
+        {
+          "id": "reports.statement.account_select",
+          "type": "select",
+          "label": "Счет"
+        },
+        {
+          "id": "reports.statement.date_from",
+          "type": "date_picker",
+          "label": "Дата начала"
+        },
+        {
+          "id": "reports.statement.date_to",
+          "type": "date_picker",
+          "label": "Дата окончания"
+        },
+        {
+          "id": "reports.statement.generate",
+          "type": "button",
+          "label": "Сформировать выписку"
+        }
+      ]
+    },
+    {
+      "id": "reports.statement.summary",
+      "type": "section",
+      "label": "Итоги выписки",
+      "children": [
+        {
+          "id": "reports.statement.summary.opening_balance",
+          "type": "text",
+          "label": "Начальный остаток"
+        },
+        {
+          "id": "reports.statement.summary.closing_balance",
+          "type": "text",
+          "label": "Конечный остаток"
+        },
+        {
+          "id": "reports.statement.summary.credits",
+          "type": "text",
+          "label": "Сумма поступлений"
+        },
+        {
+          "id": "reports.statement.summary.debits",
+          "type": "text",
+          "label": "Сумма списаний"
+        }
+      ]
+    },
+    {
+      "id": "reports.statement.table",
+      "type": "table_with_actions",
+      "label": "Операции по счету",
+      "description": "Таблица операций за выбранный период",
+      "children": [
+        {
+          "id": "reports.statement.table.column.date",
+          "type": "text",
+          "label": "Дата"
+        },
+        {
+          "id": "reports.statement.table.column.description",
+          "type": "text",
+          "label": "Описание"
+        },
+        {
+          "id": "reports.statement.table.column.category",
+          "type": "text",
+          "label": "Категория"
+        },
+        {
+          "id": "reports.statement.table.column.direction",
+          "type": "text",
+          "label": "Направление"
+        },
+        {
+          "id": "reports.statement.table.column.amount",
+          "type": "text",
+          "label": "Сумма"
+        },
+        {
+          "id": "reports.statement.table.column.currency",
+          "type": "text",
+          "label": "Валюта"
+        },
+        {
+          "id": "reports.statement.table.column.status",
+          "type": "text",
+          "label": "Статус"
+        }
+      ]
+    }
+  ]
+}

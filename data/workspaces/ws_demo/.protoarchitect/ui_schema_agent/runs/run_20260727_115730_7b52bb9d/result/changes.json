@@ -1,0 +1,4618 @@
+{
+  "statistics": {
+    "pages": {
+      "added": 2,
+      "modified": 1,
+      "deleted": 0
+    },
+    "elements": {
+      "added": 49,
+      "modified": 6,
+      "deleted": 0
+    },
+    "ui_links": {
+      "added": 5,
+      "modified": 0,
+      "deleted": 0
+    },
+    "requirement_links": {
+      "added": 97,
+      "modified": 0,
+      "deleted": 37
+    },
+    "application": {
+      "added": 0,
+      "modified": 1,
+      "deleted": 0
+    },
+    "files": {
+      "added": 3,
+      "modified": 5,
+      "deleted": 0
+    },
+    "assessments": {
+      "linked": 71,
+      "cross_cutting_ui": 3,
+      "no_ui": 34,
+      "unclear": 0,
+      "unclassified": 0
+    },
+    "traceability": {
+      "requirements_total": 108,
+      "requirements_linked": 71,
+      "requirements_cross_cutting_ui": 3,
+      "cross_cutting_with_targets": 0,
+      "requirements_with_targets": 71,
+      "links_total": 97,
+      "requirements_page_only": 9,
+      "requirements_with_elements": 62,
+      "requirements_multi_target": 7,
+      "average_targets_per_traced_requirement": 1.37,
+      "average_targets_per_linked_requirement": 1.37
+    }
+  },
+  "changes": [
+    {
+      "action": "added",
+      "object_type": "page",
+      "object_id": "cards.list",
+      "title": "Список карт",
+      "page_id": "cards.list",
+      "before": null,
+      "after": {
+        "description": "Экран просмотра банковских карт клиента",
+        "id": "cards.list",
+        "title": "Список карт",
+        "schema_file": "pages/cards.list.json",
+        "schema_order": 7
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "page",
+      "object_id": "reports.statement",
+      "title": "Выписка по счету",
+      "page_id": "reports.statement",
+      "before": null,
+      "after": {
+        "description": "Формирование выписки по выбранному счету за период",
+        "id": "reports.statement",
+        "title": "Выписка по счету",
+        "schema_file": "pages/reports.statement.json",
+        "schema_order": 10
+      },
+      "field_changes": []
+    },
+    {
+      "action": "modified",
+      "object_type": "page",
+      "object_id": "analytics.spending",
+      "title": "Аналитика трат",
+      "page_id": "analytics.spending",
+      "before": {
+        "id": "analytics.spending",
+        "title": "Аналитика трат",
+        "description": "Дашборд трат клиента за выбранный период",
+        "schema_file": "pages/analytics.spending.json",
+        "schema_order": 7
+      },
+      "after": {
+        "id": "analytics.spending",
+        "title": "Аналитика трат",
+        "description": "Дашборд трат клиента за выбранный период",
+        "schema_file": "pages/analytics.spending.json",
+        "schema_order": 9
+      },
+      "field_changes": [
+        {
+          "field": "schema_order",
+          "before": 7,
+          "after": 9
+        }
+      ]
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.cards.list",
+      "title": "Карты",
+      "page_id": null,
+      "parent_id": "app.main_menu.cards",
+      "position": 0,
+      "label": "Карты",
+      "element_type": "menu_item",
+      "before": null,
+      "after": {
+        "id": "app.main_menu.cards.list",
+        "type": "menu_item",
+        "label": "Карты",
+        "parent_id": "app.main_menu.cards",
+        "page_id": null,
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.home",
+      "title": "Главная",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 0,
+      "label": "Главная",
+      "element_type": "menu_item",
+      "before": null,
+      "after": {
+        "id": "app.main_menu.home",
+        "type": "menu_item",
+        "label": "Главная",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.reports",
+      "title": "Отчеты",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 5,
+      "label": "Отчеты",
+      "element_type": "menu_group",
+      "before": null,
+      "after": {
+        "id": "app.main_menu.reports",
+        "type": "menu_group",
+        "label": "Отчеты",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 5
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.reports.statement",
+      "title": "Выписка по счету",
+      "page_id": null,
+      "parent_id": "app.main_menu.reports",
+      "position": 0,
+      "label": "Выписка по счету",
+      "element_type": "menu_item",
+      "before": null,
+      "after": {
+        "id": "app.main_menu.reports.statement",
+        "type": "menu_item",
+        "label": "Выписка по счету",
+        "parent_id": "app.main_menu.reports",
+        "page_id": null,
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.block_action",
+      "title": "Заблокировать карту",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 6,
+      "label": "Заблокировать карту",
+      "element_type": "button",
+      "before": null,
+      "after": {
+        "actions": [
+          {
+            "target_page": "cards.block",
+            "type": "navigate"
+          }
+        ],
+        "id": "cards.list.block_action",
+        "label": "Заблокировать карту",
+        "type": "button",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 6
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.content",
+      "title": "Область карт",
+      "page_id": "cards.list",
+      "parent_id": null,
+      "position": 1,
+      "label": "Область карт",
+      "element_type": "grid",
+      "before": null,
+      "after": {
+        "id": "cards.list.content",
+        "label": "Область карт",
+        "type": "grid",
+        "parent_id": null,
+        "page_id": "cards.list",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.account",
+      "title": "Счет",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 4,
+      "label": "Счет",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.account",
+        "label": "Счет",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 4
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.expiry",
+      "title": "Срок действия",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 5,
+      "label": "Срок действия",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.expiry",
+        "label": "Срок действия",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 5
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.masked_number",
+      "title": "Номер карты",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 0,
+      "label": "Номер карты",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.masked_number",
+        "label": "Номер карты",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.payment_system",
+      "title": "Платежная система",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 1,
+      "label": "Платежная система",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.payment_system",
+        "label": "Платежная система",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.status",
+      "title": "Статус",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 3,
+      "label": "Статус",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.status",
+        "label": "Статус",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details.type",
+      "title": "Тип",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.details_panel",
+      "position": 2,
+      "label": "Тип",
+      "element_type": "text",
+      "before": null,
+      "after": {
+        "id": "cards.list.details.type",
+        "label": "Тип",
+        "type": "text",
+        "parent_id": "cards.list.details_panel",
+        "page_id": "cards.list",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.details_panel",
+      "title": "Детали карты",
+      "page_id": "cards.list",
+      "parent_id": null,
+      "position": 2,
+      "label": "Детали карты",
+      "element_type": "details_panel",
+      "before": null,
+      "after": {
+        "id": "cards.list.details_panel",
+        "label": "Детали карты",
+        "type": "details_panel",
+        "parent_id": null,
+        "page_id": "cards.list",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.refresh",
+      "title": "Обновить",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.toolbar",
+      "position": 0,
+      "label": "Обновить",
+      "element_type": "button",
+      "before": null,
+      "after": {
+        "id": "cards.list.refresh",
+        "label": "Обновить",
+        "type": "button",
+        "parent_id": "cards.list.toolbar",
+        "page_id": "cards.list",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table",
+      "title": "Таблица карт",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.content",
+      "position": 0,
+      "label": "Таблица карт",
+      "element_type": "table_with_actions",
+      "before": null,
+      "after": {
+        "description": "Отображает карты клиента с основными атрибутами",
+        "id": "cards.list.table",
+        "label": "Таблица карт",
+        "type": "table_with_actions",
+        "parent_id": "cards.list.content",
+        "page_id": "cards.list",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.action.block",
+      "title": "Заблокировать",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 5,
+      "label": "Заблокировать",
+      "element_type": "button",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.action.block",
+        "label": "Заблокировать",
+        "type": "button",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 5
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.column.account",
+      "title": "Счет",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 4,
+      "label": "Счет",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.column.account",
+        "label": "Счет",
+        "type": "table_column",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 4
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.column.masked_number",
+      "title": "Номер карты",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 0,
+      "label": "Номер карты",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.column.masked_number",
+        "label": "Номер карты",
+        "type": "table_column",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.column.payment_system",
+      "title": "Платежная система",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 1,
+      "label": "Платежная система",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.column.payment_system",
+        "label": "Платежная система",
+        "type": "table_column",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.column.status",
+      "title": "Статус",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 3,
+      "label": "Статус",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.column.status",
+        "label": "Статус",
+        "type": "table_column",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.table.column.type",
+      "title": "Тип",
+      "page_id": "cards.list",
+      "parent_id": "cards.list.table",
+      "position": 2,
+      "label": "Тип",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "cards.list.table.column.type",
+        "label": "Тип",
+        "type": "table_column",
+        "parent_id": "cards.list.table",
+        "page_id": "cards.list",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "cards.list.toolbar",
+      "title": "Панель действий",
+      "page_id": "cards.list",
+      "parent_id": null,
+      "position": 0,
+      "label": "Панель действий",
+      "element_type": "toolbar",
+      "before": null,
+      "after": {
+        "id": "cards.list.toolbar",
+        "label": "Панель действий",
+        "type": "toolbar",
+        "parent_id": null,
+        "page_id": "cards.list",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.quick.block_card",
+      "title": "Заблокировать карту",
+      "page_id": "home",
+      "parent_id": "home.quick_actions",
+      "position": 3,
+      "label": "Заблокировать карту",
+      "element_type": "button",
+      "before": null,
+      "after": {
+        "actions": [
+          {
+            "target_page": "cards.block",
+            "type": "navigate"
+          }
+        ],
+        "id": "home.quick.block_card",
+        "label": "Заблокировать карту",
+        "type": "button",
+        "parent_id": "home.quick_actions",
+        "page_id": "home",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions",
+      "title": "Последние операции",
+      "page_id": "home",
+      "parent_id": null,
+      "position": 3,
+      "label": "Последние операции",
+      "element_type": "section",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions",
+        "label": "Последние операции",
+        "type": "section",
+        "parent_id": null,
+        "page_id": "home",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table",
+      "title": "Список операций",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions",
+      "position": 0,
+      "label": "Список операций",
+      "element_type": "table_with_actions",
+      "before": null,
+      "after": {
+        "description": "Последние операции клиента",
+        "id": "home.recent_transactions.table",
+        "label": "Список операций",
+        "type": "table_with_actions",
+        "parent_id": "home.recent_transactions",
+        "page_id": "home",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table.column.amount",
+      "title": "Сумма",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions.table",
+      "position": 2,
+      "label": "Сумма",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions.table.column.amount",
+        "label": "Сумма",
+        "type": "table_column",
+        "parent_id": "home.recent_transactions.table",
+        "page_id": "home",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table.column.currency",
+      "title": "Валюта",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions.table",
+      "position": 3,
+      "label": "Валюта",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions.table.column.currency",
+        "label": "Валюта",
+        "type": "table_column",
+        "parent_id": "home.recent_transactions.table",
+        "page_id": "home",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table.column.date",
+      "title": "Дата",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions.table",
+      "position": 0,
+      "label": "Дата",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions.table.column.date",
+        "label": "Дата",
+        "type": "table_column",
+        "parent_id": "home.recent_transactions.table",
+        "page_id": "home",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table.column.description",
+      "title": "Описание",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions.table",
+      "position": 1,
+      "label": "Описание",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions.table.column.description",
+        "label": "Описание",
+        "type": "table_column",
+        "parent_id": "home.recent_transactions.table",
+        "page_id": "home",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "home.recent_transactions.table.column.direction",
+      "title": "Направление",
+      "page_id": "home",
+      "parent_id": "home.recent_transactions.table",
+      "position": 4,
+      "label": "Направление",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "home.recent_transactions.table.column.direction",
+        "label": "Направление",
+        "type": "table_column",
+        "parent_id": "home.recent_transactions.table",
+        "page_id": "home",
+        "position": 4
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.account_select",
+      "title": "Счет",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.form",
+      "position": 0,
+      "label": "Счет",
+      "element_type": "select",
+      "before": null,
+      "after": {
+        "id": "reports.statement.account_select",
+        "label": "Счет",
+        "type": "select",
+        "parent_id": "reports.statement.form",
+        "page_id": "reports.statement",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.closing_balance",
+      "title": "Конечный остаток",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.summary",
+      "position": 1,
+      "label": "Конечный остаток",
+      "element_type": "card",
+      "before": null,
+      "after": {
+        "id": "reports.statement.closing_balance",
+        "label": "Конечный остаток",
+        "type": "card",
+        "parent_id": "reports.statement.summary",
+        "page_id": "reports.statement",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.date_from",
+      "title": "Дата начала",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.form",
+      "position": 1,
+      "label": "Дата начала",
+      "element_type": "date_picker",
+      "before": null,
+      "after": {
+        "id": "reports.statement.date_from",
+        "label": "Дата начала",
+        "type": "date_picker",
+        "parent_id": "reports.statement.form",
+        "page_id": "reports.statement",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.date_to",
+      "title": "Дата окончания",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.form",
+      "position": 2,
+      "label": "Дата окончания",
+      "element_type": "date_picker",
+      "before": null,
+      "after": {
+        "id": "reports.statement.date_to",
+        "label": "Дата окончания",
+        "type": "date_picker",
+        "parent_id": "reports.statement.form",
+        "page_id": "reports.statement",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.form",
+      "title": "Фильтры выписки",
+      "page_id": "reports.statement",
+      "parent_id": null,
+      "position": 0,
+      "label": "Фильтры выписки",
+      "element_type": "form",
+      "before": null,
+      "after": {
+        "id": "reports.statement.form",
+        "label": "Фильтры выписки",
+        "type": "form",
+        "parent_id": null,
+        "page_id": "reports.statement",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.generate",
+      "title": "Сформировать выписку",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.form",
+      "position": 3,
+      "label": "Сформировать выписку",
+      "element_type": "button",
+      "before": null,
+      "after": {
+        "id": "reports.statement.generate",
+        "label": "Сформировать выписку",
+        "type": "button",
+        "parent_id": "reports.statement.form",
+        "page_id": "reports.statement",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.opening_balance",
+      "title": "Начальный остаток",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.summary",
+      "position": 0,
+      "label": "Начальный остаток",
+      "element_type": "card",
+      "before": null,
+      "after": {
+        "id": "reports.statement.opening_balance",
+        "label": "Начальный остаток",
+        "type": "card",
+        "parent_id": "reports.statement.summary",
+        "page_id": "reports.statement",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.results",
+      "title": "Результаты выписки",
+      "page_id": "reports.statement",
+      "parent_id": null,
+      "position": 1,
+      "label": "Результаты выписки",
+      "element_type": "section",
+      "before": null,
+      "after": {
+        "id": "reports.statement.results",
+        "label": "Результаты выписки",
+        "type": "section",
+        "parent_id": null,
+        "page_id": "reports.statement",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.summary",
+      "title": "Итоги выписки",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.results",
+      "position": 0,
+      "label": "Итоги выписки",
+      "element_type": "grid",
+      "before": null,
+      "after": {
+        "id": "reports.statement.summary",
+        "label": "Итоги выписки",
+        "type": "grid",
+        "parent_id": "reports.statement.results",
+        "page_id": "reports.statement",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.total_credits",
+      "title": "Сумма поступлений",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.summary",
+      "position": 2,
+      "label": "Сумма поступлений",
+      "element_type": "card",
+      "before": null,
+      "after": {
+        "id": "reports.statement.total_credits",
+        "label": "Сумма поступлений",
+        "type": "card",
+        "parent_id": "reports.statement.summary",
+        "page_id": "reports.statement",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.total_debits",
+      "title": "Сумма списаний",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.summary",
+      "position": 3,
+      "label": "Сумма списаний",
+      "element_type": "card",
+      "before": null,
+      "after": {
+        "id": "reports.statement.total_debits",
+        "label": "Сумма списаний",
+        "type": "card",
+        "parent_id": "reports.statement.summary",
+        "page_id": "reports.statement",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table",
+      "title": "Операции",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.results",
+      "position": 1,
+      "label": "Операции",
+      "element_type": "table_with_actions",
+      "before": null,
+      "after": {
+        "description": "Таблица операций за выбранный период",
+        "id": "reports.statement.transactions_table",
+        "label": "Операции",
+        "type": "table_with_actions",
+        "parent_id": "reports.statement.results",
+        "page_id": "reports.statement",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.amount",
+      "title": "Сумма",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 4,
+      "label": "Сумма",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.amount",
+        "label": "Сумма",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 4
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.category",
+      "title": "Категория",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 2,
+      "label": "Категория",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.category",
+        "label": "Категория",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 2
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.currency",
+      "title": "Валюта",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 5,
+      "label": "Валюта",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.currency",
+        "label": "Валюта",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 5
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.date",
+      "title": "Дата",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 0,
+      "label": "Дата",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.date",
+        "label": "Дата",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 0
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.description",
+      "title": "Описание",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 1,
+      "label": "Описание",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.description",
+        "label": "Описание",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 1
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.direction",
+      "title": "Направление",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 3,
+      "label": "Направление",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.direction",
+        "label": "Направление",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 3
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_element",
+      "object_id": "reports.statement.transactions_table.column.status",
+      "title": "Статус",
+      "page_id": "reports.statement",
+      "parent_id": "reports.statement.transactions_table",
+      "position": 6,
+      "label": "Статус",
+      "element_type": "table_column",
+      "before": null,
+      "after": {
+        "id": "reports.statement.transactions_table.column.status",
+        "label": "Статус",
+        "type": "table_column",
+        "parent_id": "reports.statement.transactions_table",
+        "page_id": "reports.statement",
+        "position": 6
+      },
+      "field_changes": []
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.analytics",
+      "title": "Аналитика",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 4,
+      "label": "Аналитика",
+      "element_type": "menu_group",
+      "before": {
+        "id": "app.main_menu.analytics",
+        "type": "menu_group",
+        "label": "Аналитика",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 3
+      },
+      "after": {
+        "id": "app.main_menu.analytics",
+        "type": "menu_group",
+        "label": "Аналитика",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 4
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 3,
+          "after": 4
+        }
+      ]
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.cards",
+      "title": "Карты",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 3,
+      "label": "Карты",
+      "element_type": "menu_group",
+      "before": {
+        "id": "app.main_menu.cards",
+        "type": "menu_group",
+        "label": "Карты",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 2
+      },
+      "after": {
+        "id": "app.main_menu.cards",
+        "type": "menu_group",
+        "label": "Карты",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 3
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 2,
+          "after": 3
+        }
+      ]
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.cards.block",
+      "title": "Блокировка карты",
+      "page_id": null,
+      "parent_id": "app.main_menu.cards",
+      "position": 1,
+      "label": "Блокировка карты",
+      "element_type": "menu_item",
+      "before": {
+        "id": "app.main_menu.cards.block",
+        "type": "menu_item",
+        "label": "Блокировка карты",
+        "parent_id": "app.main_menu.cards",
+        "page_id": null,
+        "position": 0
+      },
+      "after": {
+        "id": "app.main_menu.cards.block",
+        "type": "menu_item",
+        "label": "Блокировка карты",
+        "parent_id": "app.main_menu.cards",
+        "page_id": null,
+        "position": 1
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 0,
+          "after": 1
+        }
+      ]
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.payments",
+      "title": "Платежи",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 2,
+      "label": "Платежи",
+      "element_type": "menu_group",
+      "before": {
+        "id": "app.main_menu.payments",
+        "type": "menu_group",
+        "label": "Платежи",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 1
+      },
+      "after": {
+        "id": "app.main_menu.payments",
+        "type": "menu_group",
+        "label": "Платежи",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 2
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 1,
+          "after": 2
+        }
+      ]
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "app.main_menu.products",
+      "title": "Продукты",
+      "page_id": null,
+      "parent_id": "app.main_menu",
+      "position": 1,
+      "label": "Продукты",
+      "element_type": "menu_group",
+      "before": {
+        "id": "app.main_menu.products",
+        "type": "menu_group",
+        "label": "Продукты",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 0
+      },
+      "after": {
+        "id": "app.main_menu.products",
+        "type": "menu_group",
+        "label": "Продукты",
+        "parent_id": "app.main_menu",
+        "page_id": null,
+        "position": 1
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 0,
+          "after": 1
+        }
+      ]
+    },
+    {
+      "action": "modified",
+      "object_type": "ui_element",
+      "object_id": "home.alerts",
+      "title": "Важные уведомления",
+      "page_id": "home",
+      "parent_id": null,
+      "position": 4,
+      "label": "Важные уведомления",
+      "element_type": "list",
+      "before": {
+        "id": "home.alerts",
+        "type": "list",
+        "label": "Важные уведомления",
+        "parent_id": null,
+        "page_id": "home",
+        "position": 3
+      },
+      "after": {
+        "id": "home.alerts",
+        "type": "list",
+        "label": "Важные уведомления",
+        "parent_id": null,
+        "page_id": "home",
+        "position": 4
+      },
+      "field_changes": [
+        {
+          "field": "position",
+          "before": 3,
+          "after": 4
+        }
+      ]
+    },
+    {
+      "action": "added",
+      "object_type": "ui_link",
+      "object_id": "link.accounts.new_transfer",
+      "title": "accounts.list.new_transfer navigates_to payments.transfer",
+      "semantic_key": "ui_element|accounts.list.new_transfer|page|payments.transfer|navigates_to",
+      "source_id": "accounts.list.new_transfer",
+      "target_id": "payments.transfer",
+      "source_type": "ui_element",
+      "target_type": "page",
+      "source_page_id": "accounts.list",
+      "target_page_id": "payments.transfer",
+      "page_id": "payments.transfer",
+      "relation": "navigates_to",
+      "before": null,
+      "after": {
+        "source_type": "ui_element",
+        "source_id": "accounts.list.new_transfer",
+        "target_type": "page",
+        "target_id": "payments.transfer",
+        "relation": "navigates_to"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_link",
+      "object_id": "link.menu.cards.list",
+      "title": "app.main_menu.cards.list navigates_to cards.list",
+      "semantic_key": "ui_element|app.main_menu.cards.list|page|cards.list|navigates_to",
+      "source_id": "app.main_menu.cards.list",
+      "target_id": "cards.list",
+      "source_type": "ui_element",
+      "target_type": "page",
+      "source_page_id": null,
+      "target_page_id": "cards.list",
+      "page_id": "cards.list",
+      "relation": "navigates_to",
+      "before": null,
+      "after": {
+        "source_type": "ui_element",
+        "source_id": "app.main_menu.cards.list",
+        "target_type": "page",
+        "target_id": "cards.list",
+        "relation": "navigates_to"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_link",
+      "object_id": "link.menu.home",
+      "title": "app.main_menu.home navigates_to home",
+      "semantic_key": "ui_element|app.main_menu.home|page|home|navigates_to",
+      "source_id": "app.main_menu.home",
+      "target_id": "home",
+      "source_type": "ui_element",
+      "target_type": "page",
+      "source_page_id": null,
+      "target_page_id": "home",
+      "page_id": "home",
+      "relation": "navigates_to",
+      "before": null,
+      "after": {
+        "source_type": "ui_element",
+        "source_id": "app.main_menu.home",
+        "target_type": "page",
+        "target_id": "home",
+        "relation": "navigates_to"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_link",
+      "object_id": "link.menu.reports.statement",
+      "title": "app.main_menu.reports.statement navigates_to reports.statement",
+      "semantic_key": "ui_element|app.main_menu.reports.statement|page|reports.statement|navigates_to",
+      "source_id": "app.main_menu.reports.statement",
+      "target_id": "reports.statement",
+      "source_type": "ui_element",
+      "target_type": "page",
+      "source_page_id": null,
+      "target_page_id": "reports.statement",
+      "page_id": "reports.statement",
+      "relation": "navigates_to",
+      "before": null,
+      "after": {
+        "source_type": "ui_element",
+        "source_id": "app.main_menu.reports.statement",
+        "target_type": "page",
+        "target_id": "reports.statement",
+        "relation": "navigates_to"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "ui_link",
+      "object_id": "link.cards.block_from_list",
+      "title": "cards.list.block_action navigates_to cards.block",
+      "semantic_key": "ui_element|cards.list.block_action|page|cards.block|navigates_to",
+      "source_id": "cards.list.block_action",
+      "target_id": "cards.block",
+      "source_type": "ui_element",
+      "target_type": "page",
+      "source_page_id": "cards.list",
+      "target_page_id": "cards.block",
+      "page_id": "cards.block",
+      "relation": "navigates_to",
+      "before": null,
+      "after": {
+        "source_type": "ui_element",
+        "source_id": "cards.list.block_action",
+        "target_type": "page",
+        "target_id": "cards.block",
+        "relation": "navigates_to"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0001_auth",
+      "title": "REQ-0001 → auth.login",
+      "semantic_key": "REQ-0001|page|auth.login|implemented_by",
+      "requirement_id": "REQ-0001",
+      "target_id": "auth.login",
+      "target_type": "page",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0001",
+        "target_id": "auth.login",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0001_form",
+      "title": "REQ-0001 → auth.login.form",
+      "semantic_key": "REQ-0001|ui_element|auth.login.form|implemented_by",
+      "requirement_id": "REQ-0001",
+      "target_id": "auth.login.form",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0001",
+        "target_id": "auth.login.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0001_submit",
+      "title": "REQ-0001 → auth.login.submit",
+      "semantic_key": "REQ-0001|ui_element|auth.login.submit|triggers",
+      "requirement_id": "REQ-0001",
+      "target_id": "auth.login.submit",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "triggers",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "triggers",
+        "requirement_id": "REQ-0001",
+        "target_id": "auth.login.submit",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0002_page",
+      "title": "REQ-0002 → auth.login",
+      "semantic_key": "REQ-0002|page|auth.login|implemented_by",
+      "requirement_id": "REQ-0002",
+      "target_id": "auth.login",
+      "target_type": "page",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0002",
+        "target_id": "auth.login",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0002_logo",
+      "title": "REQ-0002 → auth.login.logo",
+      "semantic_key": "REQ-0002|ui_element|auth.login.logo|implemented_by",
+      "requirement_id": "REQ-0002",
+      "target_id": "auth.login.logo",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0002",
+        "target_id": "auth.login.logo",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0002_password",
+      "title": "REQ-0002 → auth.login.password",
+      "semantic_key": "REQ-0002|ui_element|auth.login.password|implemented_by",
+      "requirement_id": "REQ-0002",
+      "target_id": "auth.login.password",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0002",
+        "target_id": "auth.login.password",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0002_submit",
+      "title": "REQ-0002 → auth.login.submit",
+      "semantic_key": "REQ-0002|ui_element|auth.login.submit|implemented_by",
+      "requirement_id": "REQ-0002",
+      "target_id": "auth.login.submit",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0002",
+        "target_id": "auth.login.submit",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0002_username",
+      "title": "REQ-0002 → auth.login.username",
+      "semantic_key": "REQ-0002|ui_element|auth.login.username|implemented_by",
+      "requirement_id": "REQ-0002",
+      "target_id": "auth.login.username",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0002",
+        "target_id": "auth.login.username",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0003_validation",
+      "title": "REQ-0003 → auth.login.form",
+      "semantic_key": "REQ-0003|ui_element|auth.login.form|implemented_by",
+      "requirement_id": "REQ-0003",
+      "target_id": "auth.login.form",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0003",
+        "target_id": "auth.login.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0004_error",
+      "title": "REQ-0004 → auth.login.form",
+      "semantic_key": "REQ-0004|ui_element|auth.login.form|implemented_by",
+      "requirement_id": "REQ-0004",
+      "target_id": "auth.login.form",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0004",
+        "target_id": "auth.login.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0005_logout",
+      "title": "REQ-0005 → home.header.profile",
+      "semantic_key": "REQ-0005|ui_element|home.header.profile|implemented_by",
+      "requirement_id": "REQ-0005",
+      "target_id": "home.header.profile",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0005",
+        "target_id": "home.header.profile",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0006_profile",
+      "title": "REQ-0006 → home.header.greeting",
+      "semantic_key": "REQ-0006|ui_element|home.header.greeting|implemented_by",
+      "requirement_id": "REQ-0006",
+      "target_id": "home.header.greeting",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0006",
+        "target_id": "home.header.greeting",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0007_topbar",
+      "title": "REQ-0007 → home.header",
+      "semantic_key": "REQ-0007|ui_element|home.header|implemented_by",
+      "requirement_id": "REQ-0007",
+      "target_id": "home.header",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0007",
+        "target_id": "home.header",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0008_home",
+      "title": "REQ-0008 → home",
+      "semantic_key": "REQ-0008|page|home|implemented_by",
+      "requirement_id": "REQ-0008",
+      "target_id": "home",
+      "target_type": "page",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0008",
+        "target_id": "home",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0009_menu",
+      "title": "REQ-0009 → app.main_menu",
+      "semantic_key": "REQ-0009|ui_element|app.main_menu|implemented_by",
+      "requirement_id": "REQ-0009",
+      "target_id": "app.main_menu",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0009",
+        "target_id": "app.main_menu",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0010_layout",
+      "title": "REQ-0010 → app.main_menu",
+      "semantic_key": "REQ-0010|ui_element|app.main_menu|implemented_by",
+      "requirement_id": "REQ-0010",
+      "target_id": "app.main_menu",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0010",
+        "target_id": "app.main_menu",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0011_greeting",
+      "title": "REQ-0011 → home.header.greeting",
+      "semantic_key": "REQ-0011|ui_element|home.header.greeting|implemented_by",
+      "requirement_id": "REQ-0011",
+      "target_id": "home.header.greeting",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0011",
+        "target_id": "home.header.greeting",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0012_summary",
+      "title": "REQ-0012 → home.summary_grid",
+      "semantic_key": "REQ-0012|ui_element|home.summary_grid|implemented_by",
+      "requirement_id": "REQ-0012",
+      "target_id": "home.summary_grid",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0012",
+        "target_id": "home.summary_grid",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0013_quick",
+      "title": "REQ-0013 → home.quick_actions",
+      "semantic_key": "REQ-0013|ui_element|home.quick_actions|implemented_by",
+      "requirement_id": "REQ-0013",
+      "target_id": "home.quick_actions",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0013",
+        "target_id": "home.quick_actions",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_amount",
+      "title": "REQ-0014 → home.recent_transactions.table.column.amount",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table.column.amount|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table.column.amount",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table.column.amount",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_currency",
+      "title": "REQ-0014 → home.recent_transactions.table.column.currency",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table.column.currency|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table.column.currency",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table.column.currency",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_date",
+      "title": "REQ-0014 → home.recent_transactions.table.column.date",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table.column.date|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table.column.date",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table.column.date",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_desc",
+      "title": "REQ-0014 → home.recent_transactions.table.column.description",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table.column.description|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table.column.description",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table.column.description",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_direction",
+      "title": "REQ-0014 → home.recent_transactions.table.column.direction",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table.column.direction|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table.column.direction",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table.column.direction",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0014_transactions",
+      "title": "REQ-0014 → home.recent_transactions.table",
+      "semantic_key": "REQ-0014|ui_element|home.recent_transactions.table|implemented_by",
+      "requirement_id": "REQ-0014",
+      "target_id": "home.recent_transactions.table",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0014",
+        "target_id": "home.recent_transactions.table",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0015_error",
+      "title": "REQ-0015 → accounts.list.refresh",
+      "semantic_key": "REQ-0015|ui_element|accounts.list.refresh|implemented_by",
+      "requirement_id": "REQ-0015",
+      "target_id": "accounts.list.refresh",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0015",
+        "target_id": "accounts.list.refresh",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0019_products",
+      "title": "REQ-0019 → products.overview",
+      "semantic_key": "REQ-0019|page|products.overview|implemented_by",
+      "requirement_id": "REQ-0019",
+      "target_id": "products.overview",
+      "target_type": "page",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0019",
+        "target_id": "products.overview",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0019_cards",
+      "title": "REQ-0019 → products.overview.product_cards",
+      "semantic_key": "REQ-0019|ui_element|products.overview.product_cards|implemented_by",
+      "requirement_id": "REQ-0019",
+      "target_id": "products.overview.product_cards",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0019",
+        "target_id": "products.overview.product_cards",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0020_accounts_card",
+      "title": "REQ-0020 → products.overview.accounts_card",
+      "semantic_key": "REQ-0020|ui_element|products.overview.accounts_card|implemented_by",
+      "requirement_id": "REQ-0020",
+      "target_id": "products.overview.accounts_card",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0020",
+        "target_id": "products.overview.accounts_card",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0021_deposits_card",
+      "title": "REQ-0021 → products.overview.deposits_card",
+      "semantic_key": "REQ-0021|ui_element|products.overview.deposits_card|implemented_by",
+      "requirement_id": "REQ-0021",
+      "target_id": "products.overview.deposits_card",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0021",
+        "target_id": "products.overview.deposits_card",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0022_credits_card",
+      "title": "REQ-0022 → products.overview.credits_card",
+      "semantic_key": "REQ-0022|ui_element|products.overview.credits_card|implemented_by",
+      "requirement_id": "REQ-0022",
+      "target_id": "products.overview.credits_card",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0022",
+        "target_id": "products.overview.credits_card",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0023_cards_card",
+      "title": "REQ-0023 → products.overview.cards_card",
+      "semantic_key": "REQ-0023|ui_element|products.overview.cards_card|implemented_by",
+      "requirement_id": "REQ-0023",
+      "target_id": "products.overview.cards_card",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0023",
+        "target_id": "products.overview.cards_card",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0025_accounts",
+      "title": "REQ-0025 → accounts.list",
+      "semantic_key": "REQ-0025|page|accounts.list|implemented_by",
+      "requirement_id": "REQ-0025",
+      "target_id": "accounts.list",
+      "target_type": "page",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0025",
+        "target_id": "accounts.list",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0026_table",
+      "title": "REQ-0026 → accounts.list.table",
+      "semantic_key": "REQ-0026|ui_element|accounts.list.table|implemented_by",
+      "requirement_id": "REQ-0026",
+      "target_id": "accounts.list.table",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0026",
+        "target_id": "accounts.list.table",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0027_filters",
+      "title": "REQ-0027 → accounts.list.filters",
+      "semantic_key": "REQ-0027|ui_element|accounts.list.filters|implemented_by",
+      "requirement_id": "REQ-0027",
+      "target_id": "accounts.list.filters",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0027",
+        "target_id": "accounts.list.filters",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0030_number",
+      "title": "REQ-0030 → accounts.list.table.column.number",
+      "semantic_key": "REQ-0030|ui_element|accounts.list.table.column.number|implemented_by",
+      "requirement_id": "REQ-0030",
+      "target_id": "accounts.list.table.column.number",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0030",
+        "target_id": "accounts.list.table.column.number",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0031_balance",
+      "title": "REQ-0031 → accounts.list.table.column.balance",
+      "semantic_key": "REQ-0031|ui_element|accounts.list.table.column.balance|implemented_by",
+      "requirement_id": "REQ-0031",
+      "target_id": "accounts.list.table.column.balance",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0031",
+        "target_id": "accounts.list.table.column.balance",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0032_status",
+      "title": "REQ-0032 → accounts.list.filter.status",
+      "semantic_key": "REQ-0032|ui_element|accounts.list.filter.status|implemented_by",
+      "requirement_id": "REQ-0032",
+      "target_id": "accounts.list.filter.status",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0032",
+        "target_id": "accounts.list.filter.status",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0034_operations",
+      "title": "REQ-0034 → home.recent_transactions.table",
+      "semantic_key": "REQ-0034|ui_element|home.recent_transactions.table|implemented_by",
+      "requirement_id": "REQ-0034",
+      "target_id": "home.recent_transactions.table",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0034",
+        "target_id": "home.recent_transactions.table",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0037_transfer",
+      "title": "REQ-0037 → payments.transfer",
+      "semantic_key": "REQ-0037|page|payments.transfer|implemented_by",
+      "requirement_id": "REQ-0037",
+      "target_id": "payments.transfer",
+      "target_type": "page",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0037",
+        "target_id": "payments.transfer",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0038_form",
+      "title": "REQ-0038 → payments.transfer.form",
+      "semantic_key": "REQ-0038|ui_element|payments.transfer.form|implemented_by",
+      "requirement_id": "REQ-0038",
+      "target_id": "payments.transfer.form",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0038",
+        "target_id": "payments.transfer.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0039_from_account",
+      "title": "REQ-0039 → payments.transfer.from_account",
+      "semantic_key": "REQ-0039|ui_element|payments.transfer.from_account|implemented_by",
+      "requirement_id": "REQ-0039",
+      "target_id": "payments.transfer.from_account",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0039",
+        "target_id": "payments.transfer.from_account",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0040_to_account",
+      "title": "REQ-0040 → payments.transfer.to_account",
+      "semantic_key": "REQ-0040|ui_element|payments.transfer.to_account|implemented_by",
+      "requirement_id": "REQ-0040",
+      "target_id": "payments.transfer.to_account",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0040",
+        "target_id": "payments.transfer.to_account",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0041_amount",
+      "title": "REQ-0041 → payments.transfer.amount",
+      "semantic_key": "REQ-0041|ui_element|payments.transfer.amount|implemented_by",
+      "requirement_id": "REQ-0041",
+      "target_id": "payments.transfer.amount",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0041",
+        "target_id": "payments.transfer.amount",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0042_currency",
+      "title": "REQ-0042 → payments.transfer.form",
+      "semantic_key": "REQ-0042|ui_element|payments.transfer.form|implemented_by",
+      "requirement_id": "REQ-0042",
+      "target_id": "payments.transfer.form",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0042",
+        "target_id": "payments.transfer.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0043_comment",
+      "title": "REQ-0043 → payments.transfer.comment",
+      "semantic_key": "REQ-0043|ui_element|payments.transfer.comment|implemented_by",
+      "requirement_id": "REQ-0043",
+      "target_id": "payments.transfer.comment",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0043",
+        "target_id": "payments.transfer.comment",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0044_modal",
+      "title": "REQ-0044 → payments.transfer.step.confirm",
+      "semantic_key": "REQ-0044|ui_element|payments.transfer.step.confirm|implemented_by",
+      "requirement_id": "REQ-0044",
+      "target_id": "payments.transfer.step.confirm",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0044",
+        "target_id": "payments.transfer.step.confirm",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0048_deposit",
+      "title": "REQ-0048 → deposits.open",
+      "semantic_key": "REQ-0048|page|deposits.open|implemented_by",
+      "requirement_id": "REQ-0048",
+      "target_id": "deposits.open",
+      "target_type": "page",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0048",
+        "target_id": "deposits.open",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0049_wizard",
+      "title": "REQ-0049 → deposits.open.application",
+      "semantic_key": "REQ-0049|ui_element|deposits.open.application|implemented_by",
+      "requirement_id": "REQ-0049",
+      "target_id": "deposits.open.application",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0049",
+        "target_id": "deposits.open.application",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0050_source",
+      "title": "REQ-0050 → deposits.open.source_account",
+      "semantic_key": "REQ-0050|ui_element|deposits.open.source_account|implemented_by",
+      "requirement_id": "REQ-0050",
+      "target_id": "deposits.open.source_account",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0050",
+        "target_id": "deposits.open.source_account",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0051_amount",
+      "title": "REQ-0051 → deposits.open.amount",
+      "semantic_key": "REQ-0051|ui_element|deposits.open.amount|implemented_by",
+      "requirement_id": "REQ-0051",
+      "target_id": "deposits.open.amount",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0051",
+        "target_id": "deposits.open.amount",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0052_currency",
+      "title": "REQ-0052 → deposits.open.currency",
+      "semantic_key": "REQ-0052|ui_element|deposits.open.currency|implemented_by",
+      "requirement_id": "REQ-0052",
+      "target_id": "deposits.open.currency",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0052",
+        "target_id": "deposits.open.currency",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0053_term",
+      "title": "REQ-0053 → deposits.open.term",
+      "semantic_key": "REQ-0053|ui_element|deposits.open.term|implemented_by",
+      "requirement_id": "REQ-0053",
+      "target_id": "deposits.open.term",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0053",
+        "target_id": "deposits.open.term",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0054_capitalization",
+      "title": "REQ-0054 → deposits.open.capitalization",
+      "semantic_key": "REQ-0054|ui_element|deposits.open.capitalization|implemented_by",
+      "requirement_id": "REQ-0054",
+      "target_id": "deposits.open.capitalization",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0054",
+        "target_id": "deposits.open.capitalization",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0055_rate",
+      "title": "REQ-0055 → deposits.open.calculator.rate",
+      "semantic_key": "REQ-0055|ui_element|deposits.open.calculator.rate|implemented_by",
+      "requirement_id": "REQ-0055",
+      "target_id": "deposits.open.calculator.rate",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0055",
+        "target_id": "deposits.open.calculator.rate",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0059_credit",
+      "title": "REQ-0059 → credits.apply",
+      "semantic_key": "REQ-0059|page|credits.apply|implemented_by",
+      "requirement_id": "REQ-0059",
+      "target_id": "credits.apply",
+      "target_type": "page",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0059",
+        "target_id": "credits.apply",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0060_form",
+      "title": "REQ-0060 → credits.apply.wizard",
+      "semantic_key": "REQ-0060|ui_element|credits.apply.wizard|implemented_by",
+      "requirement_id": "REQ-0060",
+      "target_id": "credits.apply.wizard",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0060",
+        "target_id": "credits.apply.wizard",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0061_amount",
+      "title": "REQ-0061 → credits.apply.requested_amount",
+      "semantic_key": "REQ-0061|ui_element|credits.apply.requested_amount|implemented_by",
+      "requirement_id": "REQ-0061",
+      "target_id": "credits.apply.requested_amount",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0061",
+        "target_id": "credits.apply.requested_amount",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0062_term",
+      "title": "REQ-0062 → credits.apply.term",
+      "semantic_key": "REQ-0062|ui_element|credits.apply.term|implemented_by",
+      "requirement_id": "REQ-0062",
+      "target_id": "credits.apply.term",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0062",
+        "target_id": "credits.apply.term",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0063_income",
+      "title": "REQ-0063 → credits.apply.income",
+      "semantic_key": "REQ-0063|ui_element|credits.apply.income|implemented_by",
+      "requirement_id": "REQ-0063",
+      "target_id": "credits.apply.income",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0063",
+        "target_id": "credits.apply.income",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0064_insurance",
+      "title": "REQ-0064 → credits.apply.consent",
+      "semantic_key": "REQ-0064|ui_element|credits.apply.consent|implemented_by",
+      "requirement_id": "REQ-0064",
+      "target_id": "credits.apply.consent",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0064",
+        "target_id": "credits.apply.consent",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_cards",
+      "title": "REQ-0068 → cards.list",
+      "semantic_key": "REQ-0068|page|cards.list|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list",
+      "target_type": "page",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_account_col",
+      "title": "REQ-0068 → cards.list.table.column.account",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table.column.account|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table.column.account",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table.column.account",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_masked",
+      "title": "REQ-0068 → cards.list.table.column.masked_number",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table.column.masked_number|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table.column.masked_number",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table.column.masked_number",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_payment",
+      "title": "REQ-0068 → cards.list.table.column.payment_system",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table.column.payment_system|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table.column.payment_system",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table.column.payment_system",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_status_col",
+      "title": "REQ-0068 → cards.list.table.column.status",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table.column.status|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table.column.status",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table.column.status",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_type",
+      "title": "REQ-0068 → cards.list.table.column.type",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table.column.type|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table.column.type",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table.column.type",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0068_table",
+      "title": "REQ-0068 → cards.list.table",
+      "semantic_key": "REQ-0068|ui_element|cards.list.table|implemented_by",
+      "requirement_id": "REQ-0068",
+      "target_id": "cards.list.table",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0068",
+        "target_id": "cards.list.table",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0071_block",
+      "title": "REQ-0071 → cards.block",
+      "semantic_key": "REQ-0071|page|cards.block|implemented_by",
+      "requirement_id": "REQ-0071",
+      "target_id": "cards.block",
+      "target_type": "page",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0071",
+        "target_id": "cards.block",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0072_card_select",
+      "title": "REQ-0072 → cards.block.card_select",
+      "semantic_key": "REQ-0072|ui_element|cards.block.card_select|implemented_by",
+      "requirement_id": "REQ-0072",
+      "target_id": "cards.block.card_select",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0072",
+        "target_id": "cards.block.card_select",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0072_block_form",
+      "title": "REQ-0072 → cards.block.form",
+      "semantic_key": "REQ-0072|ui_element|cards.block.form|implemented_by",
+      "requirement_id": "REQ-0072",
+      "target_id": "cards.block.form",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0072",
+        "target_id": "cards.block.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0073_reason",
+      "title": "REQ-0073 → cards.block.reason",
+      "semantic_key": "REQ-0073|ui_element|cards.block.reason|implemented_by",
+      "requirement_id": "REQ-0073",
+      "target_id": "cards.block.reason",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0073",
+        "target_id": "cards.block.reason",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0074_block_comment",
+      "title": "REQ-0074 → cards.block.comment",
+      "semantic_key": "REQ-0074|ui_element|cards.block.comment|implemented_by",
+      "requirement_id": "REQ-0074",
+      "target_id": "cards.block.comment",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0074",
+        "target_id": "cards.block.comment",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0075_confirm_modal",
+      "title": "REQ-0075 → cards.block.confirm_modal",
+      "semantic_key": "REQ-0075|ui_element|cards.block.confirm_modal|implemented_by",
+      "requirement_id": "REQ-0075",
+      "target_id": "cards.block.confirm_modal",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0075",
+        "target_id": "cards.block.confirm_modal",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0076_success",
+      "title": "REQ-0076 → cards.block.submit",
+      "semantic_key": "REQ-0076|ui_element|cards.block.submit|implemented_by",
+      "requirement_id": "REQ-0076",
+      "target_id": "cards.block.submit",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0076",
+        "target_id": "cards.block.submit",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0077_analytics",
+      "title": "REQ-0077 → analytics.spending",
+      "semantic_key": "REQ-0077|page|analytics.spending|implemented_by",
+      "requirement_id": "REQ-0077",
+      "target_id": "analytics.spending",
+      "target_type": "page",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0077",
+        "target_id": "analytics.spending",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0078_analytics_page",
+      "title": "REQ-0078 → analytics.spending",
+      "semantic_key": "REQ-0078|page|analytics.spending|implemented_by",
+      "requirement_id": "REQ-0078",
+      "target_id": "analytics.spending",
+      "target_type": "page",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0078",
+        "target_id": "analytics.spending",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0079_period",
+      "title": "REQ-0079 → analytics.spending.period_from",
+      "semantic_key": "REQ-0079|ui_element|analytics.spending.period_from|implemented_by",
+      "requirement_id": "REQ-0079",
+      "target_id": "analytics.spending.period_from",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0079",
+        "target_id": "analytics.spending.period_from",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0080_account_filter",
+      "title": "REQ-0080 → analytics.spending.account",
+      "semantic_key": "REQ-0080|ui_element|analytics.spending.account|implemented_by",
+      "requirement_id": "REQ-0080",
+      "target_id": "analytics.spending.account",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0080",
+        "target_id": "analytics.spending.account",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0081_category",
+      "title": "REQ-0081 → analytics.spending.category_cards",
+      "semantic_key": "REQ-0081|ui_element|analytics.spending.category_cards|implemented_by",
+      "requirement_id": "REQ-0081",
+      "target_id": "analytics.spending.category_cards",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0081",
+        "target_id": "analytics.spending.category_cards",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0082_categories",
+      "title": "REQ-0082 → analytics.spending.by_category",
+      "semantic_key": "REQ-0082|ui_element|analytics.spending.by_category|implemented_by",
+      "requirement_id": "REQ-0082",
+      "target_id": "analytics.spending.by_category",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0082",
+        "target_id": "analytics.spending.by_category",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0084_statement",
+      "title": "REQ-0084 → reports.statement",
+      "semantic_key": "REQ-0084|page|reports.statement|implemented_by",
+      "requirement_id": "REQ-0084",
+      "target_id": "reports.statement",
+      "target_type": "page",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0084",
+        "target_id": "reports.statement",
+        "target_type": "page"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0085_statement_form",
+      "title": "REQ-0085 → reports.statement.form",
+      "semantic_key": "REQ-0085|ui_element|reports.statement.form|implemented_by",
+      "requirement_id": "REQ-0085",
+      "target_id": "reports.statement.form",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0085",
+        "target_id": "reports.statement.form",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_amt_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.amount",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.amount|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.amount",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.amount",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_cat_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.category",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.category|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.category",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.category",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_curr_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.currency",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.currency|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.currency",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.currency",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_date_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.date",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.date|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.date",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.date",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_desc_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.description",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.description|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.description",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.description",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_dir_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.direction",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.direction|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.direction",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.direction",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_stat_col",
+      "title": "REQ-0086 → reports.statement.transactions_table.column.status",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table.column.status|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table.column.status",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table.column.status",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0086_statement_table",
+      "title": "REQ-0086 → reports.statement.transactions_table",
+      "semantic_key": "REQ-0086|ui_element|reports.statement.transactions_table|implemented_by",
+      "requirement_id": "REQ-0086",
+      "target_id": "reports.statement.transactions_table",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0086",
+        "target_id": "reports.statement.transactions_table",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0087_summary",
+      "title": "REQ-0087 → reports.statement.summary",
+      "semantic_key": "REQ-0087|ui_element|reports.statement.summary|implemented_by",
+      "requirement_id": "REQ-0087",
+      "target_id": "reports.statement.summary",
+      "target_type": "ui_element",
+      "page_id": "reports.statement",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0087",
+        "target_id": "reports.statement.summary",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0104_transfer_action",
+      "title": "REQ-0104 → accounts.list.new_transfer",
+      "semantic_key": "REQ-0104|ui_element|accounts.list.new_transfer|implemented_by",
+      "requirement_id": "REQ-0104",
+      "target_id": "accounts.list.new_transfer",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0104",
+        "target_id": "accounts.list.new_transfer",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0105_block_action",
+      "title": "REQ-0105 → cards.list.block_action",
+      "semantic_key": "REQ-0105|ui_element|cards.list.block_action|implemented_by",
+      "requirement_id": "REQ-0105",
+      "target_id": "cards.list.block_action",
+      "target_type": "ui_element",
+      "page_id": "cards.list",
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0105",
+        "target_id": "cards.list.block_action",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0106_block_menu",
+      "title": "REQ-0106 → app.main_menu.cards.block",
+      "semantic_key": "REQ-0106|ui_element|app.main_menu.cards.block|implemented_by",
+      "requirement_id": "REQ-0106",
+      "target_id": "app.main_menu.cards.block",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0106",
+        "target_id": "app.main_menu.cards.block",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0107_deposit_menu",
+      "title": "REQ-0107 → app.main_menu.products.deposits",
+      "semantic_key": "REQ-0107|ui_element|app.main_menu.products.deposits|implemented_by",
+      "requirement_id": "REQ-0107",
+      "target_id": "app.main_menu.products.deposits",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0107",
+        "target_id": "app.main_menu.products.deposits",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "added",
+      "object_type": "requirement_link",
+      "object_id": "link_req0108_credit_menu",
+      "title": "REQ-0108 → app.main_menu.products.credits",
+      "semantic_key": "REQ-0108|ui_element|app.main_menu.products.credits|implemented_by",
+      "requirement_id": "REQ-0108",
+      "target_id": "app.main_menu.products.credits",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "implemented_by",
+      "before": null,
+      "after": {
+        "implementation_status": "implemented",
+        "relation": "implemented_by",
+        "requirement_id": "REQ-0108",
+        "target_id": "app.main_menu.products.credits",
+        "target_type": "ui_element"
+      },
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_001",
+      "title": "REQ-0059 → auth.login",
+      "semantic_key": "REQ-0059|page|auth.login|implemented_by",
+      "requirement_id": "REQ-0059",
+      "target_id": "auth.login",
+      "target_type": "page",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0059",
+        "target_type": "page",
+        "target_id": "auth.login",
+        "relation": "implemented_by",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_002",
+      "title": "REQ-0059 → auth.login.form",
+      "semantic_key": "REQ-0059|ui_element|auth.login.form|implemented_by",
+      "requirement_id": "REQ-0059",
+      "target_id": "auth.login.form",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0059",
+        "target_type": "ui_element",
+        "target_id": "auth.login.form",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_003",
+      "title": "REQ-0059 → auth.login.submit",
+      "semantic_key": "REQ-0059|ui_element|auth.login.submit|triggers",
+      "requirement_id": "REQ-0059",
+      "target_id": "auth.login.submit",
+      "target_type": "ui_element",
+      "page_id": "auth.login",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0059",
+        "target_type": "ui_element",
+        "target_id": "auth.login.submit",
+        "relation": "triggers",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_011",
+      "title": "REQ-0196 → deposits.open",
+      "semantic_key": "REQ-0196|page|deposits.open|implemented_by",
+      "requirement_id": "REQ-0196",
+      "target_id": "deposits.open",
+      "target_type": "page",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0196",
+        "target_type": "page",
+        "target_id": "deposits.open",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "rql-menu-deposit",
+      "title": "REQ-0196 → app.main_menu.products.deposits",
+      "semantic_key": "REQ-0196|ui_element|app.main_menu.products.deposits|provides_access",
+      "requirement_id": "REQ-0196",
+      "target_id": "app.main_menu.products.deposits",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "provides_access",
+      "before": {
+        "requirement_id": "REQ-0196",
+        "target_type": "ui_element",
+        "target_id": "app.main_menu.products.deposits",
+        "relation": "provides_access",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_012",
+      "title": "REQ-0196 → deposits.open.application",
+      "semantic_key": "REQ-0196|ui_element|deposits.open.application|implemented_by",
+      "requirement_id": "REQ-0196",
+      "target_id": "deposits.open.application",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0196",
+        "target_type": "ui_element",
+        "target_id": "deposits.open.application",
+        "relation": "implemented_by",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_013",
+      "title": "REQ-0196 → deposits.open.submit",
+      "semantic_key": "REQ-0196|ui_element|deposits.open.submit|triggers",
+      "requirement_id": "REQ-0196",
+      "target_id": "deposits.open.submit",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0196",
+        "target_type": "ui_element",
+        "target_id": "deposits.open.submit",
+        "relation": "triggers",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_016",
+      "title": "REQ-0311 → credits.apply",
+      "semantic_key": "REQ-0311|page|credits.apply|supports",
+      "requirement_id": "REQ-0311",
+      "target_id": "credits.apply",
+      "target_type": "page",
+      "page_id": "credits.apply",
+      "relation": "supports",
+      "before": {
+        "requirement_id": "REQ-0311",
+        "target_type": "page",
+        "target_id": "credits.apply",
+        "relation": "supports",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "rql-menu-credit",
+      "title": "REQ-0311 → app.main_menu.products.credits",
+      "semantic_key": "REQ-0311|ui_element|app.main_menu.products.credits|provides_access",
+      "requirement_id": "REQ-0311",
+      "target_id": "app.main_menu.products.credits",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "provides_access",
+      "before": {
+        "requirement_id": "REQ-0311",
+        "target_type": "ui_element",
+        "target_id": "app.main_menu.products.credits",
+        "relation": "provides_access",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_017",
+      "title": "REQ-0311 → credits.apply.step.borrower",
+      "semantic_key": "REQ-0311|ui_element|credits.apply.step.borrower|implemented_by",
+      "requirement_id": "REQ-0311",
+      "target_id": "credits.apply.step.borrower",
+      "target_type": "ui_element",
+      "page_id": "credits.apply",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0311",
+        "target_type": "ui_element",
+        "target_id": "credits.apply.step.borrower",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_007",
+      "title": "REQ-0326 → payments.transfer",
+      "semantic_key": "REQ-0326|page|payments.transfer|implemented_by",
+      "requirement_id": "REQ-0326",
+      "target_id": "payments.transfer",
+      "target_type": "page",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0326",
+        "target_type": "page",
+        "target_id": "payments.transfer",
+        "relation": "implemented_by",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_010",
+      "title": "REQ-0326 → accounts.list.new_transfer",
+      "semantic_key": "REQ-0326|ui_element|accounts.list.new_transfer|starts_flow",
+      "requirement_id": "REQ-0326",
+      "target_id": "accounts.list.new_transfer",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "starts_flow",
+      "before": {
+        "requirement_id": "REQ-0326",
+        "target_type": "ui_element",
+        "target_id": "accounts.list.new_transfer",
+        "relation": "starts_flow",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "rql-menu-transfer",
+      "title": "REQ-0326 → app.main_menu.payments.transfer",
+      "semantic_key": "REQ-0326|ui_element|app.main_menu.payments.transfer|provides_access",
+      "requirement_id": "REQ-0326",
+      "target_id": "app.main_menu.payments.transfer",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "provides_access",
+      "before": {
+        "requirement_id": "REQ-0326",
+        "target_type": "ui_element",
+        "target_id": "app.main_menu.payments.transfer",
+        "relation": "provides_access",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_008",
+      "title": "REQ-0326 → payments.transfer.form",
+      "semantic_key": "REQ-0326|ui_element|payments.transfer.form|implemented_by",
+      "requirement_id": "REQ-0326",
+      "target_id": "payments.transfer.form",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0326",
+        "target_type": "ui_element",
+        "target_id": "payments.transfer.form",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_009",
+      "title": "REQ-0326 → payments.transfer.submit",
+      "semantic_key": "REQ-0326|ui_element|payments.transfer.submit|triggers",
+      "requirement_id": "REQ-0326",
+      "target_id": "payments.transfer.submit",
+      "target_type": "ui_element",
+      "page_id": "payments.transfer",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0326",
+        "target_type": "ui_element",
+        "target_id": "payments.transfer.submit",
+        "relation": "triggers",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_021",
+      "title": "REQ-0422 → cards.block",
+      "semantic_key": "REQ-0422|page|cards.block|implemented_by",
+      "requirement_id": "REQ-0422",
+      "target_id": "cards.block",
+      "target_type": "page",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0422",
+        "target_type": "page",
+        "target_id": "cards.block",
+        "relation": "implemented_by",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_022",
+      "title": "REQ-0422 → cards.block.form",
+      "semantic_key": "REQ-0422|ui_element|cards.block.form|implemented_by",
+      "requirement_id": "REQ-0422",
+      "target_id": "cards.block.form",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0422",
+        "target_type": "ui_element",
+        "target_id": "cards.block.form",
+        "relation": "implemented_by",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_023",
+      "title": "REQ-0422 → cards.block.submit",
+      "semantic_key": "REQ-0422|ui_element|cards.block.submit|triggers",
+      "requirement_id": "REQ-0422",
+      "target_id": "cards.block.submit",
+      "target_type": "ui_element",
+      "page_id": "cards.block",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0422",
+        "target_type": "ui_element",
+        "target_id": "cards.block.submit",
+        "relation": "triggers",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_026",
+      "title": "REQ-0576 → accounts.list",
+      "semantic_key": "REQ-0576|page|accounts.list|supports",
+      "requirement_id": "REQ-0576",
+      "target_id": "accounts.list",
+      "target_type": "page",
+      "page_id": "accounts.list",
+      "relation": "supports",
+      "before": {
+        "requirement_id": "REQ-0576",
+        "target_type": "page",
+        "target_id": "accounts.list",
+        "relation": "supports",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_027",
+      "title": "REQ-0576 → accounts.list.open_statement",
+      "semantic_key": "REQ-0576|ui_element|accounts.list.open_statement|triggers",
+      "requirement_id": "REQ-0576",
+      "target_id": "accounts.list.open_statement",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0576",
+        "target_type": "ui_element",
+        "target_id": "accounts.list.open_statement",
+        "relation": "triggers",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_028",
+      "title": "REQ-0576 → analytics.spending.statement",
+      "semantic_key": "REQ-0576|ui_element|analytics.spending.statement|triggers",
+      "requirement_id": "REQ-0576",
+      "target_id": "analytics.spending.statement",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "triggers",
+      "before": {
+        "requirement_id": "REQ-0576",
+        "target_type": "ui_element",
+        "target_id": "analytics.spending.statement",
+        "relation": "triggers",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_020",
+      "title": "REQ-0777 → credits.apply",
+      "semantic_key": "REQ-0777|page|credits.apply|starts_flow",
+      "requirement_id": "REQ-0777",
+      "target_id": "credits.apply",
+      "target_type": "page",
+      "page_id": "credits.apply",
+      "relation": "starts_flow",
+      "before": {
+        "requirement_id": "REQ-0777",
+        "target_type": "page",
+        "target_id": "credits.apply",
+        "relation": "starts_flow",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_018",
+      "title": "REQ-0777 → products.overview",
+      "semantic_key": "REQ-0777|page|products.overview|supports",
+      "requirement_id": "REQ-0777",
+      "target_id": "products.overview",
+      "target_type": "page",
+      "page_id": "products.overview",
+      "relation": "supports",
+      "before": {
+        "requirement_id": "REQ-0777",
+        "target_type": "page",
+        "target_id": "products.overview",
+        "relation": "supports",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_019",
+      "title": "REQ-0777 → products.overview.credits_card",
+      "semantic_key": "REQ-0777|ui_element|products.overview.credits_card|implemented_by",
+      "requirement_id": "REQ-0777",
+      "target_id": "products.overview.credits_card",
+      "target_type": "ui_element",
+      "page_id": "products.overview",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0777",
+        "target_type": "ui_element",
+        "target_id": "products.overview.credits_card",
+        "relation": "implemented_by",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_024",
+      "title": "REQ-0831 → home",
+      "semantic_key": "REQ-0831|page|home|supports",
+      "requirement_id": "REQ-0831",
+      "target_id": "home",
+      "target_type": "page",
+      "page_id": "home",
+      "relation": "supports",
+      "before": {
+        "requirement_id": "REQ-0831",
+        "target_type": "page",
+        "target_id": "home",
+        "relation": "supports",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_025",
+      "title": "REQ-0831 → home.summary_grid",
+      "semantic_key": "REQ-0831|ui_element|home.summary_grid|displays_summary",
+      "requirement_id": "REQ-0831",
+      "target_id": "home.summary_grid",
+      "target_type": "ui_element",
+      "page_id": "home",
+      "relation": "displays_summary",
+      "before": {
+        "requirement_id": "REQ-0831",
+        "target_type": "ui_element",
+        "target_id": "home.summary_grid",
+        "relation": "displays_summary",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "rql-menu-analytics",
+      "title": "REQ-0849 → app.main_menu.analytics.spending",
+      "semantic_key": "REQ-0849|ui_element|app.main_menu.analytics.spending|provides_access",
+      "requirement_id": "REQ-0849",
+      "target_id": "app.main_menu.analytics.spending",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "provides_access",
+      "before": {
+        "requirement_id": "REQ-0849",
+        "target_type": "ui_element",
+        "target_id": "app.main_menu.analytics.spending",
+        "relation": "provides_access",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_015",
+      "title": "REQ-0878 → deposits.open.calculator.schedule",
+      "semantic_key": "REQ-0878|ui_element|deposits.open.calculator.schedule|displays_result",
+      "requirement_id": "REQ-0878",
+      "target_id": "deposits.open.calculator.schedule",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "displays_result",
+      "before": {
+        "requirement_id": "REQ-0878",
+        "target_type": "ui_element",
+        "target_id": "deposits.open.calculator.schedule",
+        "relation": "displays_result",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_014",
+      "title": "REQ-0878 → deposits.open.calculator",
+      "semantic_key": "REQ-0878|ui_element|deposits.open.calculator|implemented_by",
+      "requirement_id": "REQ-0878",
+      "target_id": "deposits.open.calculator",
+      "target_type": "ui_element",
+      "page_id": "deposits.open",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0878",
+        "target_type": "ui_element",
+        "target_id": "deposits.open.calculator",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_004",
+      "title": "REQ-0898 → accounts.list",
+      "semantic_key": "REQ-0898|page|accounts.list|implemented_by",
+      "requirement_id": "REQ-0898",
+      "target_id": "accounts.list",
+      "target_type": "page",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0898",
+        "target_type": "page",
+        "target_id": "accounts.list",
+        "relation": "implemented_by",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_006",
+      "title": "REQ-0898 → products.overview",
+      "semantic_key": "REQ-0898|page|products.overview|supports",
+      "requirement_id": "REQ-0898",
+      "target_id": "products.overview",
+      "target_type": "page",
+      "page_id": "products.overview",
+      "relation": "supports",
+      "before": {
+        "requirement_id": "REQ-0898",
+        "target_type": "page",
+        "target_id": "products.overview",
+        "relation": "supports",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_005",
+      "title": "REQ-0898 → accounts.list.table",
+      "semantic_key": "REQ-0898|ui_element|accounts.list.table|implemented_by",
+      "requirement_id": "REQ-0898",
+      "target_id": "accounts.list.table",
+      "target_type": "ui_element",
+      "page_id": "accounts.list",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-0898",
+        "target_type": "ui_element",
+        "target_id": "accounts.list.table",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "rql-menu-products",
+      "title": "REQ-0898 → app.main_menu.products.accounts",
+      "semantic_key": "REQ-0898|ui_element|app.main_menu.products.accounts|provides_access",
+      "requirement_id": "REQ-0898",
+      "target_id": "app.main_menu.products.accounts",
+      "target_type": "ui_element",
+      "page_id": null,
+      "relation": "provides_access",
+      "before": {
+        "requirement_id": "REQ-0898",
+        "target_type": "ui_element",
+        "target_id": "app.main_menu.products.accounts",
+        "relation": "provides_access",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_029",
+      "title": "REQ-AN-001 → analytics.spending",
+      "semantic_key": "REQ-AN-001|page|analytics.spending|implemented_by",
+      "requirement_id": "REQ-AN-001",
+      "target_id": "analytics.spending",
+      "target_type": "page",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-AN-001",
+        "target_type": "page",
+        "target_id": "analytics.spending",
+        "relation": "implemented_by",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_032",
+      "title": "REQ-AN-001 → analytics.spending.charts",
+      "semantic_key": "REQ-AN-001|ui_element|analytics.spending.charts|displays_result",
+      "requirement_id": "REQ-AN-001",
+      "target_id": "analytics.spending.charts",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "displays_result",
+      "before": {
+        "requirement_id": "REQ-AN-001",
+        "target_type": "ui_element",
+        "target_id": "analytics.spending.charts",
+        "relation": "displays_result",
+        "implementation_status": "in_progress"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_030",
+      "title": "REQ-AN-001 → analytics.spending.filters",
+      "semantic_key": "REQ-AN-001|ui_element|analytics.spending.filters|implemented_by",
+      "requirement_id": "REQ-AN-001",
+      "target_id": "analytics.spending.filters",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "implemented_by",
+      "before": {
+        "requirement_id": "REQ-AN-001",
+        "target_type": "ui_element",
+        "target_id": "analytics.spending.filters",
+        "relation": "implemented_by",
+        "implementation_status": "implemented"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "deleted",
+      "object_type": "requirement_link",
+      "object_id": "link_031",
+      "title": "REQ-AN-001 → analytics.spending.summary",
+      "semantic_key": "REQ-AN-001|ui_element|analytics.spending.summary|displays_result",
+      "requirement_id": "REQ-AN-001",
+      "target_id": "analytics.spending.summary",
+      "target_type": "ui_element",
+      "page_id": "analytics.spending",
+      "relation": "displays_result",
+      "before": {
+        "requirement_id": "REQ-AN-001",
+        "target_type": "ui_element",
+        "target_id": "analytics.spending.summary",
+        "relation": "displays_result",
+        "implementation_status": "planned"
+      },
+      "after": null,
+      "field_changes": []
+    },
+    {
+      "action": "modified",
+      "object_type": "application",
+      "object_id": "app",
+      "title": "Банковский фронт-офис ФЛ",
+      "before": {
+        "id": "app",
+        "title": "Банковский фронт-офис ФЛ",
+        "description": "Корневые элементы прототипа: меню и общие области интерфейса.",
+        "schema_application": {
+          "name": "Generated Prototype",
+          "description": "Демонстрационная UI-схема банковского web-прототипа"
+        }
+      },
+      "after": {
+        "id": "app",
+        "title": "Банковский фронт-офис ФЛ",
+        "description": "Корневые элементы прототипа: меню и общие области интерфейса.",
+        "schema_application": {
+          "name": "Банковский фронт-офис ФЛ",
+          "description": "Демонстрационная UI-схема банковского web-прототипа"
+        }
+      },
+      "field_changes": [
+        {
+          "field": "schema_application",
+          "before": {
+            "name": "Generated Prototype",
+            "description": "Демонстрационная UI-схема банковского web-прототипа"
+          },
+          "after": {
+            "name": "Банковский фронт-офис ФЛ",
+            "description": "Демонстрационная UI-схема банковского web-прототипа"
+          }
+        }
+      ]
+    }
+  ],
+  "changed_files": {
+    "added": [
+      "pages/cards.list.json",
+      "pages/reports.statement.json",
+      "requirements_source.json"
+    ],
+    "modified": [
+      "app.json",
+      "links.json",
+      "mappings/requirement_ui_links.json",
+      "pages/home.json",
+      "schema.json"
+    ],
+    "deleted": []
+  },
+  "traceability_warnings": [],
+  "requirement_assessments": {
+    "cross_cutting_ui": [
+      {
+        "requirement_id": "REQ-0016",
+        "name": "Пустые состояния списков",
+        "reason": "Сквозное правило интерфейса для всех пустых списков",
+        "scope": "global",
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0017",
+        "name": "Единый формат денежных сумм",
+        "reason": "Единый формат отображения денежных сумм во всем интерфейсе",
+        "scope": "global",
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0018",
+        "name": "Единый формат дат и времени",
+        "reason": "Единый формат дат и времени во всем интерфейсе",
+        "scope": "global",
+        "targets_count": 0
+      }
+    ],
+    "no_ui": [
+      {
+        "requirement_id": "REQ-0024",
+        "name": "Данные продукта для карточки",
+        "reason": "Требование о данных продукта без специфических UI-элементов",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0028",
+        "name": "Панель деталей счета",
+        "reason": "Требование о данных счета без специфических UI-элементов",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0029",
+        "name": "Данные счета",
+        "reason": "Требование о данных счета без специфических UI-элементов",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0033",
+        "name": "Связь клиента и счетов",
+        "reason": "Требование о связи клиента и счетов - бизнес-правило",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0035",
+        "name": "Направление операции",
+        "reason": "Требование о направлении операции - бизнес-атрибут",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0036",
+        "name": "Категория операции",
+        "reason": "Требование о категории операции - бизнес-атрибут",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0045",
+        "name": "Данные перевода между счетами",
+        "reason": "Требование о данных перевода - бизнес-сущность",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0046",
+        "name": "Статус перевода",
+        "reason": "Требование о статусе перевода - бизнес-атрибут",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0047",
+        "name": "Операции по счетам после перевода",
+        "reason": "Требование об операциях после перевода - бизнес-логика",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0056",
+        "name": "Данные заявки на вклад",
+        "reason": "Требование о данных заявки на вклад - бизнес-сущность",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0057",
+        "name": "Статус заявки на вклад",
+        "reason": "Требование о статусе заявки на вклад - бизнес-атрибут",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0058",
+        "name": "Связь клиента и заявок на вклад",
+        "reason": "Требование о связи клиента и заявок на вклад - бизнес-правило",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0065",
+        "name": "Данные кредитной заявки",
+        "reason": "Требование о данных кредитной заявки - бизнес-сущность",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0066",
+        "name": "Статус кредитной заявки",
+        "reason": "Требование о статусе кредитной заявки - бизнес-атрибут",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0067",
+        "name": "Связь клиента и кредитных заявок",
+        "reason": "Требование о связи клиента и кредитных заявок - бизнес-правило",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0069",
+        "name": "Данные карты",
+        "reason": "Требование о данных карты - бизнес-сущность",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0070",
+        "name": "Связь счета и карт",
+        "reason": "Требование о связи счета и карт - бизнес-правило",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0083",
+        "name": "Операции для аналитики трат",
+        "reason": "Требование о данных операций для аналитики - бизнес-правило",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0088",
+        "name": "Справочник валют",
+        "reason": "Требование о справочнике валют - API/данные",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0089",
+        "name": "Справочник статусов счетов",
+        "reason": "Требование о справочнике статусов счетов - API/данные",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0090",
+        "name": "Справочник статусов карт",
+        "reason": "Требование о справочнике статусов карт - API/данные",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0091",
+        "name": "Справочник причин блокировки карты",
+        "reason": "Требование о справочнике причин блокировки - API/данные",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0092",
+        "name": "Справочник статусов заявок",
+        "reason": "Требование о справочнике статусов заявок - API/данные",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0093",
+        "name": "API входа пользователя",
+        "reason": "API входа пользователя - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0094",
+        "name": "API профиля текущего клиента",
+        "reason": "API профиля клиента - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0095",
+        "name": "API получения списка счетов",
+        "reason": "API получения списка счетов - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0096",
+        "name": "API получения операций счета",
+        "reason": "API получения операций счета - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0097",
+        "name": "API создания перевода между счетами",
+        "reason": "API создания перевода - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0098",
+        "name": "API отправки заявки на вклад",
+        "reason": "API отправки заявки на вклад - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0099",
+        "name": "API отправки кредитной заявки",
+        "reason": "API отправки кредитной заявки - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0100",
+        "name": "API получения списка карт",
+        "reason": "API получения списка карт - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0101",
+        "name": "API блокировки карты",
+        "reason": "API блокировки карты - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0102",
+        "name": "API аналитики трат",
+        "reason": "API аналитики трат - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      },
+      {
+        "requirement_id": "REQ-0103",
+        "name": "API выписки по счету",
+        "reason": "API выписки по счету - бэкенд интеграция",
+        "scope": null,
+        "targets_count": 0
+      }
+    ],
+    "unclear": [],
+    "unclassified": []
+  }
+}

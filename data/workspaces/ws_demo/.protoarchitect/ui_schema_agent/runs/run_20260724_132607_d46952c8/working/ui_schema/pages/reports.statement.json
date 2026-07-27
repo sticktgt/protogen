@@ -1,0 +1,146 @@
+{
+  "description": "Страница формирования и просмотра выписки по выбранному счету за период",
+  "elements": [
+    {
+      "children": [
+        {
+          "id": "reports.statement.title",
+          "label": "Выписка по счету",
+          "type": "text"
+        },
+        {
+          "actions": [
+            {
+              "target_page": "accounts.list",
+              "type": "navigate"
+            }
+          ],
+          "id": "reports.statement.back",
+          "label": "Назад к счетам",
+          "type": "button"
+        }
+      ],
+      "id": "reports.statement.header",
+      "label": "Заголовок страницы",
+      "type": "section"
+    },
+    {
+      "children": [
+        {
+          "description": "Выбор счета для выписки",
+          "id": "reports.statement.account_select",
+          "label": "Счет",
+          "type": "select"
+        },
+        {
+          "id": "reports.statement.date_from",
+          "label": "Дата начала",
+          "type": "date_picker"
+        },
+        {
+          "id": "reports.statement.date_to",
+          "label": "Дата окончания",
+          "type": "date_picker"
+        },
+        {
+          "id": "reports.statement.generate",
+          "label": "Сформировать выписку",
+          "type": "button"
+        },
+        {
+          "id": "reports.statement.export",
+          "label": "Экспорт",
+          "type": "button"
+        }
+      ],
+      "id": "reports.statement.filters",
+      "label": "Фильтры выписки",
+      "type": "filter_panel"
+    },
+    {
+      "children": [
+        {
+          "id": "reports.statement.opening_balance",
+          "label": "Начальный остаток",
+          "type": "card"
+        },
+        {
+          "id": "reports.statement.closing_balance",
+          "label": "Конечный остаток",
+          "type": "card"
+        },
+        {
+          "id": "reports.statement.total_credits",
+          "label": "Сумма поступлений",
+          "type": "card"
+        },
+        {
+          "id": "reports.statement.total_debits",
+          "label": "Сумма списаний",
+          "type": "card"
+        }
+      ],
+      "id": "reports.statement.summary",
+      "label": "Итоги выписки",
+      "type": "grid"
+    },
+    {
+      "children": [
+        {
+          "id": "reports.statement.transactions.column.date",
+          "label": "Дата",
+          "type": "text"
+        },
+        {
+          "id": "reports.statement.transactions.column.description",
+          "label": "Описание",
+          "type": "text"
+        },
+        {
+          "id": "reports.statement.transactions.column.category",
+          "label": "Категория",
+          "type": "text"
+        },
+        {
+          "id": "reports.statement.transactions.column.direction",
+          "label": "Направление",
+          "type": "badge"
+        },
+        {
+          "id": "reports.statement.transactions.column.amount",
+          "label": "Сумма",
+          "type": "text"
+        },
+        {
+          "id": "reports.statement.transactions.column.currency",
+          "label": "Валюта",
+          "type": "text"
+        },
+        {
+          "id": "reports.statement.transactions.column.status",
+          "label": "Статус",
+          "type": "badge"
+        }
+      ],
+      "description": "Таблица операций за выбранный период",
+      "id": "reports.statement.transactions",
+      "label": "Операции по счету",
+      "type": "table"
+    },
+    {
+      "children": [
+        {
+          "id": "reports.statement.empty_state.text",
+          "label": "Операций за выбранный период нет",
+          "type": "text"
+        }
+      ],
+      "description": "Отображается если операций за период нет",
+      "id": "reports.statement.empty_state",
+      "label": "Пустое состояние",
+      "type": "empty_state"
+    }
+  ],
+  "id": "reports.statement",
+  "title": "Выписка по счету"
+}

@@ -1,20 +1,38 @@
 openapi: 3.1.0
 info:
   title: UI Schema API
-  version: 0.1.0
+  version: 0.3.0
 paths:
   /api/ui-schema:
     get:
-      summary: Get UI schema summary
+      summary: Get UI schema summary or agent preview
       parameters:
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+      - name: workspace_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: preview_run_id
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           description: UI schema summary
+  /api/ui-schema/app:
+    get:
+      summary: Get application root UI elements
+    put:
+      summary: Update application title and description
+  /api/ui-schema/app/elements:
+    post:
+      summary: Add application root or menu element
+  /api/ui-schema/app/elements/{element_id}:
+    put:
+      summary: Update application root or menu element
+    delete:
+      summary: Delete application root or menu element
   /api/ui-schema/pages:
     get:
       summary: List pages
@@ -45,21 +63,7 @@ paths:
       summary: Delete requirement link
   /api/ui-schema/requirements:
     get:
-      summary: List demo requirements
-
-  /api/ui-schema/app:
-    get:
-      summary: Get application root UI elements
-    put:
-      summary: Update application title and description
-  /api/ui-schema/app/elements:
-    post:
-      summary: Add application root/menu element
-  /api/ui-schema/app/elements/{element_id}:
-    put:
-      summary: Update application root/menu element
-    delete:
-      summary: Delete application root/menu element
+      summary: Resolve requirements from the configured external workspace source
   /api/ui-schema/code-links:
     post:
       summary: Add code link for a page or UI element
@@ -74,3 +78,162 @@ paths:
   /api/ui-schema/ui-links/{link_id}:
     delete:
       summary: Delete UI object link
+  /api/ui-schema/agent/llm/test:
+    post:
+      summary: Test the current user LLM settings and required tool calling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - workspace_id
+              properties:
+                workspace_id:
+                  type: string
+      responses:
+        '200':
+          description: LLM connection and tool call succeeded
+        '503':
+          description: User LLM settings are incomplete or connection failed
+  /api/ui-schema/agent-runs:
+    post:
+      summary: Start UI schema synchronization with a workspace requirements JSON
+        file
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - workspace_id
+              - requirements_path
+              properties:
+                workspace_id:
+                  type: string
+                requirements_path:
+                  type: string
+                  description: Relative path from the workspace root to a JSON object
+                    containing requirements[]
+                  example: requirements/requirements.json
+                user_request:
+                  type: string
+                base_mode:
+                  type: string
+                  enum:
+                  - current
+                  - initial
+                  default: current
+      responses:
+        '200':
+          description: Agent run created
+        '409':
+          description: Another run is active in the workspace
+  /api/ui-schema/agent-runs/active:
+    get:
+      summary: Get the active UI schema agent run
+      parameters:
+      - name: workspace_id
+        in: query
+        required: true
+        schema:
+          type: string
+  /api/ui-schema/agent-runs/{run_id}:
+    get:
+      summary: Get agent run status
+      phase: null
+      statistics and report: null
+  /api/ui-schema/agent-runs/{run_id}/events:
+    get:
+      summary: Get incremental execution events, LLM/tool counters and token usage
+      parameters:
+      - name: workspace_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 500
+          default: 200
+      responses:
+        '200':
+          description: Incremental events and aggregate metrics
+  /api/ui-schema/agent-runs/{run_id}/diagnostics:
+    get:
+      summary: Download diagnostic ZIP for a stopped or preview-ready run
+      parameters:
+      - name: workspace_id
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Diagnostic ZIP with run inputs, schemas, metrics, events and error details
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '409':
+          description: Run is still active
+  /api/ui-schema/agent-runs/{run_id}/changes:
+    get:
+      summary: Get deterministic statistics and change list
+  /api/ui-schema/agent-runs/{run_id}/requirements-ui-result:
+    get:
+      summary: Get all input requirements with their generated UI targets or assessment
+  /api/ui-schema/agent-runs/{run_id}/regenerate:
+    post:
+      summary: Regenerate from the same base schema with an analyst comment
+  /api/ui-schema/agent-runs/{run_id}/apply:
+    post:
+      summary: Apply the complete temporary UI schema and create a ZIP snapshot
+  /api/ui-schema/agent-runs/{run_id}/reject:
+    post:
+      summary: Reject the complete temporary result
+  /api/ui-schema/agent-runs/{run_id}/cancel:
+    post:
+      summary: Cancel a running task
+  /api/ui-schema/history/latest:
+    get:
+      summary: Get latest snapshot metadata and initial agent base availability
+      parameters:
+      - name: workspace_id
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Snapshot state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  snapshot:
+                    nullable: true
+                    type: object
+                  initial_snapshot_available:
+                    type: boolean
+  /api/ui-schema/history/restore-latest:
+    post:
+      summary: Restore the latest UI schema snapshot
+  /api/ui-schema/exports/requirements-ui/{run_id}:
+    get:
+      summary: Get an accepted requirements-to-UI export

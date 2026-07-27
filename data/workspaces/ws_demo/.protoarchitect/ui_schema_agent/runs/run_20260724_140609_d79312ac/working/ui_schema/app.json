@@ -1,0 +1,104 @@
+{
+  "description": "Корневые элементы прототипа: меню и общие области интерфейса",
+  "id": "app",
+  "root_elements": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "id": "app.main_menu.products.overview",
+              "label": "Банковские продукты",
+              "type": "menu_item"
+            },
+            {
+              "children": [],
+              "id": "app.main_menu.products.accounts",
+              "label": "Счета",
+              "type": "menu_item"
+            },
+            {
+              "children": [],
+              "id": "app.main_menu.products.deposits",
+              "label": "Открыть депозит",
+              "type": "menu_item"
+            },
+            {
+              "children": [],
+              "id": "app.main_menu.products.credits",
+              "label": "Заявка на кредит",
+              "type": "menu_item"
+            }
+          ],
+          "id": "app.main_menu.products",
+          "label": "Продукты",
+          "type": "menu_group"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "id": "app.main_menu.payments.transfer",
+              "label": "Перевод между счетами",
+              "type": "menu_item"
+            }
+          ],
+          "id": "app.main_menu.payments",
+          "label": "Платежи",
+          "type": "menu_group"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "id": "app.main_menu.cards.list",
+              "label": "Карты",
+              "type": "menu_item"
+            },
+            {
+              "children": [],
+              "id": "app.main_menu.cards.block",
+              "label": "Блокировка карты",
+              "type": "menu_item"
+            }
+          ],
+          "id": "app.main_menu.cards",
+          "label": "Карты",
+          "type": "menu_group"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "id": "app.main_menu.analytics.spending",
+              "label": "Траты за период",
+              "type": "menu_item"
+            }
+          ],
+          "id": "app.main_menu.analytics",
+          "label": "Аналитика",
+          "type": "menu_group"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "id": "app.main_menu.reports.statement",
+              "label": "Выписка по счету",
+              "type": "menu_item"
+            }
+          ],
+          "id": "app.main_menu.reports",
+          "label": "Отчеты",
+          "type": "menu_group"
+        }
+      ],
+      "description": "Основная навигация прототипа",
+      "id": "app.main_menu",
+      "label": "Главное меню",
+      "type": "main_menu"
+    }
+  ],
+  "title": "Банковский фронт-офис ФЛ"
+}

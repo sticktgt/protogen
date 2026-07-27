@@ -1,0 +1,70 @@
+{
+  "description": "Страница просмотра банковских карт клиента с основными атрибутами и действиями",
+  "elements": [
+    {
+      "children": [
+        {
+          "id": "cards.list.title",
+          "label": "Мои карты",
+          "type": "text"
+        }
+      ],
+      "id": "cards.list.header",
+      "label": "Заголовок страницы",
+      "type": "section"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "id": "cards.list.table.column.number",
+              "label": "Номер карты",
+              "type": "text"
+            },
+            {
+              "id": "cards.list.table.column.payment_system",
+              "label": "Платежная система",
+              "type": "text"
+            },
+            {
+              "id": "cards.list.table.column.type",
+              "label": "Тип карты",
+              "type": "text"
+            },
+            {
+              "id": "cards.list.table.column.status",
+              "label": "Статус",
+              "type": "text"
+            },
+            {
+              "id": "cards.list.table.column.account",
+              "label": "Счет",
+              "type": "text"
+            },
+            {
+              "actions": [
+                {
+                  "target_page": "cards.block",
+                  "type": "navigate"
+                }
+              ],
+              "id": "cards.list.table.action.block",
+              "label": "Заблокировать",
+              "type": "button"
+            }
+          ],
+          "description": "Отображает маскированный номер, платежную систему, тип, статус, срок действия и связанный счет",
+          "id": "cards.list.table",
+          "label": "Таблица карт",
+          "type": "table_with_actions"
+        }
+      ],
+      "id": "cards.list.content",
+      "label": "Основная область",
+      "type": "grid"
+    }
+  ],
+  "id": "cards.list",
+  "title": "Список карт"
+}

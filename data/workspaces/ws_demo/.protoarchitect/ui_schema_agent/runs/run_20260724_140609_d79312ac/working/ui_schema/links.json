@@ -1,0 +1,148 @@
+{
+  "links": [
+    {
+      "id": "link.menu.products.overview",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.products.overview",
+      "source_type": "ui_element",
+      "target_id": "products.overview",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.products.accounts",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.products.accounts",
+      "source_type": "ui_element",
+      "target_id": "accounts.list",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.products.deposits",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.products.deposits",
+      "source_type": "ui_element",
+      "target_id": "deposits.open",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.products.credits",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.products.credits",
+      "source_type": "ui_element",
+      "target_id": "credits.apply",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.payments.transfer",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.payments.transfer",
+      "source_type": "ui_element",
+      "target_id": "payments.transfer",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.cards.list",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.cards.list",
+      "source_type": "ui_element",
+      "target_id": "cards.list",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.cards.block",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.cards.block",
+      "source_type": "ui_element",
+      "target_id": "cards.block",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.analytics.spending",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.analytics.spending",
+      "source_type": "ui_element",
+      "target_id": "analytics.spending",
+      "target_type": "page"
+    },
+    {
+      "id": "link.menu.reports.statement",
+      "relation": "navigates_to",
+      "source_id": "app.main_menu.reports.statement",
+      "source_type": "ui_element",
+      "target_id": "reports.statement",
+      "target_type": "page"
+    },
+    {
+      "id": "link.home.quick.transfer",
+      "relation": "navigates_to",
+      "source_id": "home.quick.transfer",
+      "source_type": "ui_element",
+      "target_id": "payments.transfer",
+      "target_type": "page"
+    },
+    {
+      "id": "link.home.quick.deposit",
+      "relation": "navigates_to",
+      "source_id": "home.quick.deposit",
+      "source_type": "ui_element",
+      "target_id": "deposits.open",
+      "target_type": "page"
+    },
+    {
+      "id": "link.home.quick.credit",
+      "relation": "navigates_to",
+      "source_id": "home.quick.credit",
+      "source_type": "ui_element",
+      "target_id": "credits.apply",
+      "target_type": "page"
+    },
+    {
+      "id": "link.products.open_deposit",
+      "relation": "navigates_to",
+      "source_id": "products.overview.open_deposit",
+      "source_type": "ui_element",
+      "target_id": "deposits.open",
+      "target_type": "page"
+    },
+    {
+      "id": "link.products.apply_credit",
+      "relation": "navigates_to",
+      "source_id": "products.overview.apply_credit",
+      "source_type": "ui_element",
+      "target_id": "credits.apply",
+      "target_type": "page"
+    },
+    {
+      "id": "link.cards.block.confirm_modal",
+      "relation": "opens_modal",
+      "source_id": "cards.block.submit",
+      "source_type": "ui_element",
+      "target_id": "cards.block.confirm_modal",
+      "target_type": "ui_element"
+    },
+    {
+      "id": "link.accounts.to_transfer",
+      "relation": "navigates_to",
+      "source_id": "accounts.list.table.action.transfer",
+      "source_type": "ui_element",
+      "target_id": "payments.transfer",
+      "target_type": "page"
+    },
+    {
+      "id": "link.cards.to_block",
+      "relation": "navigates_to",
+      "source_id": "cards.list.table.action.block",
+      "source_type": "ui_element",
+      "target_id": "cards.block",
+      "target_type": "page"
+    },
+    {
+      "id": "link.accounts.to_statement",
+      "relation": "navigates_to",
+      "source_id": "accounts.list.open_statement",
+      "source_type": "ui_element",
+      "target_id": "reports.statement",
+      "target_type": "page"
+    }
+  ]
+}

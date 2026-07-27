@@ -1,0 +1,119 @@
+{
+  "id": "credits.apply",
+  "title": "Заявка на кредит",
+  "description": "Форма подачи заявки на потребительский кредит",
+  "elements": [
+    {
+      "id": "credits.apply.wizard",
+      "type": "wizard",
+      "label": "Шаги кредитной заявки",
+      "children": [
+        {
+          "id": "credits.apply.step.product",
+          "type": "section",
+          "label": "Выбор продукта",
+          "children": [
+            {
+              "id": "credits.apply.product_type",
+              "type": "select",
+              "label": "Тип кредита"
+            },
+            {
+              "id": "credits.apply.requested_amount",
+              "type": "input",
+              "label": "Запрошенная сумма"
+            },
+            {
+              "id": "credits.apply.term",
+              "type": "select",
+              "label": "Срок кредита"
+            }
+          ]
+        },
+        {
+          "id": "credits.apply.step.borrower",
+          "type": "form",
+          "label": "Данные заемщика",
+          "children": [
+            {
+              "id": "credits.apply.full_name",
+              "type": "input",
+              "label": "ФИО"
+            },
+            {
+              "id": "credits.apply.phone",
+              "type": "input",
+              "label": "Телефон"
+            },
+            {
+              "id": "credits.apply.email",
+              "type": "input",
+              "label": "Email"
+            },
+            {
+              "id": "credits.apply.income",
+              "type": "input",
+              "label": "Ежемесячный доход"
+            }
+          ]
+        },
+        {
+          "id": "credits.apply.step.documents",
+          "type": "section",
+          "label": "Документы",
+          "children": [
+            {
+              "id": "credits.apply.passport_upload",
+              "type": "file_upload",
+              "label": "Паспорт"
+            },
+            {
+              "id": "credits.apply.income_upload",
+              "type": "file_upload",
+              "label": "Подтверждение дохода"
+            }
+          ]
+        },
+        {
+          "id": "credits.apply.step.submit",
+          "type": "section",
+          "label": "Отправка заявки",
+          "children": [
+            {
+              "id": "credits.apply.consent",
+              "type": "checkbox",
+              "label": "Согласие на обработку данных"
+            },
+            {
+              "id": "credits.apply.submit",
+              "type": "button",
+              "label": "Отправить заявку"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "credits.apply.side_info",
+      "type": "details_panel",
+      "label": "Информация по кредиту",
+      "children": [
+        {
+          "id": "credits.apply.rate",
+          "type": "text",
+          "label": "Ориентировочная ставка"
+        },
+        {
+          "id": "credits.apply.payment",
+          "type": "text",
+          "label": "Ежемесячный платеж"
+        },
+        {
+          "id": "credits.apply.schedule_link",
+          "type": "link",
+          "label": "Посмотреть график платежей"
+        }
+      ]
+    }
+  ]
+}

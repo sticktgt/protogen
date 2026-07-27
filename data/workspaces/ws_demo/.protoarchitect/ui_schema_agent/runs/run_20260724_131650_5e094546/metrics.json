@@ -1,0 +1,25 @@
+{
+  "llm_calls": 1,
+  "tool_calls": 2,
+  "last_tool": "read_file",
+  "repeat_streak": 1,
+  "max_repeat_streak": 1,
+  "input_tokens": 7033,
+  "output_tokens": 124,
+  "total_tokens": 7157,
+  "token_usage_available": true,
+  "last_seq": 10,
+  "last_event_at": "2026-07-24T11:16:57.936891+00:00",
+  "last_llm_started_at": "2026-07-24T11:16:53.645037+00:00",
+  "last_llm_completed_at": "2026-07-24T11:16:57.916293+00:00",
+  "limits": {
+    "max_llm_calls": 20,
+    "max_tool_calls": 120,
+    "max_total_tokens": 500000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 160,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "started_at": "2026-07-24T11:16:50.712086+00:00"
+}

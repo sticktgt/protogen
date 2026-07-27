@@ -17,10 +17,9 @@ from backend.modules.ui_schema.storage import (
     read_page,
     read_requirement_links,
     read_app,
-    read_requirements,
     read_ui_links,
 )
-from backend.modules.ui_schema.summary import read_summary
+from backend.modules.ui_schema.summary import read_summary, read_summary_from_root
 
 __all__ = [
     "read_ui_links",
@@ -43,8 +42,8 @@ __all__ = [
     "module_root",
     "read_page",
     "read_requirement_links",
-    "read_requirements",
     "read_summary",
+    "read_summary_from_root",
     "rebuild_index",
     "update_element",
     "update_page",

@@ -4,8 +4,9 @@ export function loadModuleConfig() {
   return apiFetch('/api/config/modules/ui_schema');
 }
 
-export function loadSummary(workspaceId) {
-  return apiFetch(`/api/ui-schema?workspace_id=${encodeURIComponent(workspaceId)}`);
+export function loadSummary(workspaceId, previewRunId = null) {
+  const preview = previewRunId ? `&preview_run_id=${encodeURIComponent(previewRunId)}` : '';
+  return apiFetch(`/api/ui-schema?workspace_id=${encodeURIComponent(workspaceId)}${preview}`);
 }
 
 export function createPage(workspaceId, payload) {
@@ -113,5 +114,84 @@ export function addUiLink(workspaceId, payload) {
 export function deleteUiLink(workspaceId, linkId) {
   return apiFetch(`/api/ui-schema/ui-links/${encodeURIComponent(linkId)}?workspace_id=${encodeURIComponent(workspaceId)}`, {
     method: 'DELETE'
+  });
+}
+
+export function testAgentLlm(workspaceId) {
+  return apiFetch('/api/ui-schema/agent/llm/test', {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId })
+  });
+}
+
+export function loadActiveAgentRun(workspaceId) {
+  return apiFetch(`/api/ui-schema/agent-runs/active?workspace_id=${encodeURIComponent(workspaceId)}`);
+}
+
+export function loadAgentRun(workspaceId, runId) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}?workspace_id=${encodeURIComponent(workspaceId)}`);
+}
+
+export function loadAgentChanges(workspaceId, runId) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/changes?workspace_id=${encodeURIComponent(workspaceId)}`);
+}
+
+export function loadAgentEvents(workspaceId, runId, after = 0) {
+  const query = new URLSearchParams({
+    workspace_id: workspaceId,
+    after: String(after || 0),
+    limit: '200'
+  });
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/events?${query.toString()}`);
+}
+
+export function startAgentRun(workspaceId, requirementsPath, userRequest, baseMode) {
+  return apiFetch('/api/ui-schema/agent-runs', {
+    method: 'POST',
+    body: JSON.stringify({
+      workspace_id: workspaceId,
+      requirements_path: requirementsPath,
+      user_request: userRequest || '',
+      base_mode: baseMode || 'current'
+    })
+  });
+}
+
+export function regenerateAgentRun(workspaceId, runId, comment) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/regenerate`, {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId, comment: comment || '' })
+  });
+}
+
+export function applyAgentRun(workspaceId, runId) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/apply`, {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId })
+  });
+}
+
+export function rejectAgentRun(workspaceId, runId) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/reject`, {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId })
+  });
+}
+
+export function cancelAgentRun(workspaceId, runId) {
+  return apiFetch(`/api/ui-schema/agent-runs/${encodeURIComponent(runId)}/cancel`, {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId })
+  });
+}
+
+export function loadLatestAgentSnapshot(workspaceId) {
+  return apiFetch(`/api/ui-schema/history/latest?workspace_id=${encodeURIComponent(workspaceId)}`);
+}
+
+export function restoreLatestAgentSnapshot(workspaceId) {
+  return apiFetch('/api/ui-schema/history/restore-latest', {
+    method: 'POST',
+    body: JSON.stringify({ workspace_id: workspaceId })
   });
 }

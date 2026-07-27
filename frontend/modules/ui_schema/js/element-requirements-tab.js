@@ -1,6 +1,6 @@
 import { addRequirementLink, deleteRequirementLink } from './api.js';
 import { renderAll } from './main.js';
-import { links, requirementById, requirementTitle, requirements, state } from './state.js';
+import { links, requirementById, requirementTitle, requirements, requirementsSource, state } from './state.js';
 import { escapeAttr, escapeHtml, statusLabel } from './html-utils.js';
 import { showToast } from '/base/js/ui.js';
 
@@ -15,7 +15,10 @@ export function renderRequirementsTab(container, target, targetType = 'ui_elemen
   const targetLinks = links().filter(link => link.target_type === targetType && link.target_id === target.id);
   container.innerHTML = `
     <div class="detail-section-row">
-      <div class="detail-section-title">Связанные требования</div>
+      <div>
+        <div class="detail-section-title">Связанные требования</div>
+        ${renderRequirementsSource()}
+      </div>
       <button class="btn btn-primary btn-sm" type="button" data-show-requirement-form>Связать с требованием</button>
     </div>
     <div class="linked-list">
@@ -24,6 +27,18 @@ export function renderRequirementsTab(container, target, targetType = 'ui_elemen
     <div data-requirement-form-container>${state.showRequirementLinkForm ? renderRequirementForm() : ''}</div>
   `;
   bindRequirementsTab(container, target, targetType);
+}
+
+function renderRequirementsSource() {
+  const source = requirementsSource();
+  const path = source.path || '';
+  if (source.status === 'available' || source.status === 'snapshot') {
+    return `<div class="item-meta">Источник: <code>${escapeHtml(path || 'снимок запуска')}</code>${source.preview_snapshot ? ' · снимок preview' : ''}</div>`;
+  }
+  if (source.status === 'legacy') {
+    return '<div class="item-meta warning-text">Используется устаревший локальный requirements.json.</div>';
+  }
+  return `<div class="item-meta warning-text">Источник требований недоступен${source.error ? `: ${escapeHtml(source.error)}` : ''}</div>`;
 }
 
 function bindRequirementsTab(container, target, targetType) {
@@ -40,9 +55,6 @@ function bindRequirementsTab(container, target, targetType) {
     });
   });
 
-  container.querySelectorAll('[data-open-requirement]').forEach(button => {
-    button.addEventListener('click', () => showToast('Переход к требованию будет доступен после подключения модуля требований.'));
-  });
 
   container.querySelector('[data-element-requirement-form]')?.addEventListener('submit', async event => {
     event.preventDefault();
@@ -99,7 +111,6 @@ function renderRequirementLinkRow(link) {
         <div class="item-meta">${escapeHtml(types || 'тип не указан')} · ${escapeHtml(req?.status || '-')} · ${escapeHtml(statusLabel(link.implementation_status))}</div>
       </div>
       <div class="linked-row-actions">
-        <button class="btn btn-sm" type="button" data-open-requirement="${escapeAttr(link.requirement_id)}">Перейти</button>
         <button class="btn btn-danger btn-sm" type="button" data-unlink-requirement="${escapeAttr(link.id)}">Отвязать</button>
       </div>
     </div>

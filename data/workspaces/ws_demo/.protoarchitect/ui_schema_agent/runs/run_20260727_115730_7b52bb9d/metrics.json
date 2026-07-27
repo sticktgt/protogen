@@ -1,0 +1,25 @@
+{
+  "llm_calls": 10,
+  "tool_calls": 10,
+  "last_tool": "validate_ui_schema_state",
+  "repeat_streak": 1,
+  "max_repeat_streak": 1,
+  "input_tokens": 375011,
+  "output_tokens": 25461,
+  "total_tokens": 400472,
+  "token_usage_available": true,
+  "last_seq": 49,
+  "last_event_at": "2026-07-27T10:04:00.475334+00:00",
+  "last_llm_started_at": "2026-07-27T10:02:59.176569+00:00",
+  "last_llm_completed_at": "2026-07-27T10:04:00.321414+00:00",
+  "limits": {
+    "max_llm_calls": 16,
+    "max_tool_calls": 32,
+    "max_total_tokens": 2000000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 160,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "started_at": "2026-07-27T09:57:30.831548+00:00"
+}

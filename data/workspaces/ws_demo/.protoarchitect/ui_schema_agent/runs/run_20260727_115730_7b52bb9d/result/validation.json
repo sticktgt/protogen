@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "pages": 11,
+    "elements": 216,
+    "ui_links": 18,
+    "requirement_links": 97
+  },
+  "assessment_counts": {
+    "linked": 71,
+    "cross_cutting_ui": 3,
+    "no_ui": 34,
+    "unclear": 0,
+    "unclassified": 0
+  }
+}

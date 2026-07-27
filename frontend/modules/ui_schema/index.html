@@ -25,9 +25,25 @@
           </div>
         </div>
 
+        <div class="preview-banner hidden" data-preview-banner>
+          <button class="btn btn-sm" type="button" data-close-preview>Выйти из просмотра</button>
+          <div>
+            <strong>Предварительный просмотр</strong>
+            <span>Вы просматриваете временную версию UI-схемы. Изменения ещё не применены.</span>
+          </div>
+        </div>
+
+        <div class="preview-banner lock-banner hidden" data-lock-banner>
+          <div>
+            <strong>UI-схема временно доступна только для чтения</strong>
+            <span>В workspace выполняется или ожидает подтверждения задача AI-синхронизации.</span>
+          </div>
+        </div>
+
         <div class="schema-tabs" role="tablist">
           <button class="btn btn-primary" type="button" data-tab="map">🎨 Карта UI</button>
           <button class="btn" type="button" data-tab="structure">🧩 Структура страницы</button>
+          <button class="btn" type="button" data-tab="agent">✨ AI-синхронизация</button>
         </div>
 
         <section data-view="map" class="schema-view">
@@ -79,6 +95,10 @@
               <div data-element-add-panel></div>
             </div>
           </div>
+        </section>
+
+        <section data-view="agent" class="schema-view hidden">
+          <div data-agent-view></div>
         </section>
       </section>
     </main>

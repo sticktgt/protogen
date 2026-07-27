@@ -1,0 +1,10 @@
+{
+  "operation": "synchronize",
+  "base_mode": "current",
+  "user_request": "",
+  "regeneration_comments": [],
+  "requirements_file": "/input/requirements.json",
+  "ui_schema_path": "/working/ui_schema",
+  "result_path": "/result",
+  "attempt": 1
+}

@@ -1,0 +1,5 @@
+{
+  "error_type": "ValueError",
+  "message": "Writing this path is not allowed: /working/ui_schema/index.json",
+  "phase": "completed"
+}

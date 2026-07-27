@@ -1,0 +1,116 @@
+{
+  "links": [
+    {
+      "id": "page:auth.login:0",
+      "target_type": "page",
+      "target_id": "auth.login",
+      "kind": "frontend_page",
+      "path": "src/pages/LoginPage.jsx"
+    },
+    {
+      "id": "page:home:0",
+      "target_type": "page",
+      "target_id": "home",
+      "kind": "frontend_page",
+      "path": "src/pages/HomePage.jsx"
+    },
+    {
+      "id": "page:accounts.list:0",
+      "target_type": "page",
+      "target_id": "accounts.list",
+      "kind": "frontend_page",
+      "path": "src/pages/AccountsPage.jsx"
+    },
+    {
+      "id": "page:payments.transfer:0",
+      "target_type": "page",
+      "target_id": "payments.transfer",
+      "kind": "frontend_page",
+      "path": "src/pages/TransferPage.jsx"
+    },
+    {
+      "id": "page:deposits.open:0",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "kind": "frontend_page",
+      "path": "src/pages/OpenDepositPage.jsx"
+    },
+    {
+      "id": "page:credits.apply:0",
+      "target_type": "page",
+      "target_id": "credits.apply",
+      "kind": "frontend_page",
+      "path": "src/pages/CreditApplicationPage.jsx"
+    },
+    {
+      "id": "page:analytics.spending:0",
+      "target_type": "page",
+      "target_id": "analytics.spending",
+      "kind": "frontend_page",
+      "path": "src/pages/SpendingAnalyticsPage.jsx"
+    },
+    {
+      "id": "code_el_auth_login_form",
+      "target_type": "ui_element",
+      "target_id": "auth.login.card",
+      "kind": "frontend_component",
+      "path": "src/pages/LoginPage.jsx"
+    },
+    {
+      "id": "code_el_accounts_table",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table",
+      "kind": "frontend_component",
+      "path": "src/components/accounts/AccountsTable.jsx"
+    },
+    {
+      "id": "code_el_transfer_steps",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.steps",
+      "kind": "frontend_component",
+      "path": "src/components/payments/TransferWizard.jsx"
+    },
+    {
+      "id": "code_el_deposit_form",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.application",
+      "kind": "frontend_component",
+      "path": "src/components/deposits/OpenDepositForm.jsx"
+    },
+    {
+      "id": "code_el_credit_form",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.wizard",
+      "kind": "frontend_component",
+      "path": "src/components/credits/CreditApplicationForm.jsx"
+    },
+    {
+      "id": "code_el_analytics_chart",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.charts",
+      "kind": "frontend_component",
+      "path": "src/components/analytics/SpendingChart.jsx"
+    },
+    {
+      "id": "6fe8df8648684180bb4314f46fa0a7d5",
+      "target_type": "ui_element",
+      "target_id": "auth.login.remember",
+      "kind": "frontend_file",
+      "path": ""
+    },
+    {
+      "id": "848c312d0f3c4d22843d3b31cd32aa0b",
+      "target_type": "ui_element",
+      "target_id": "auth.login.remember",
+      "kind": "frontend_file",
+      "path": ""
+    },
+    {
+      "id": "850ee8974f0342faaf472a53ad65405c",
+      "target_type": "ui_element",
+      "target_id": "auth.login.remember",
+      "kind": "frontend_file",
+      "path": ""
+    }
+  ]
+}

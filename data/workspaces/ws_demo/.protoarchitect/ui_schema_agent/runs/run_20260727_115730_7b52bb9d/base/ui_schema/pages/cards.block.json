@@ -1,0 +1,79 @@
+{
+  "id": "cards.block",
+  "title": "Блокировка карты",
+  "description": "Страница блокировки карты клиента",
+  "elements": [
+    {
+      "id": "cards.block.form",
+      "type": "form",
+      "label": "Форма блокировки карты",
+      "children": [
+        {
+          "id": "cards.block.card_select",
+          "type": "select",
+          "label": "Карта"
+        },
+        {
+          "id": "cards.block.reason",
+          "type": "select",
+          "label": "Причина блокировки"
+        },
+        {
+          "id": "cards.block.comment",
+          "type": "textarea",
+          "label": "Комментарий"
+        },
+        {
+          "id": "cards.block.confirm",
+          "type": "checkbox",
+          "label": "Подтверждаю блокировку карты"
+        },
+        {
+          "id": "cards.block.submit",
+          "type": "button",
+          "label": "Заблокировать карту"
+        }
+      ]
+    },
+    {
+      "id": "cards.block.help",
+      "type": "details_panel",
+      "label": "Что будет после блокировки",
+      "children": [
+        {
+          "id": "cards.block.help.warning",
+          "type": "text",
+          "label": "Карта будет недоступна для операций"
+        },
+        {
+          "id": "cards.block.help.issue",
+          "type": "link",
+          "label": "Выпустить новую карту"
+        }
+      ]
+    },
+    {
+      "id": "cards.block.confirm_modal",
+      "type": "modal",
+      "label": "Подтверждение блокировки карты",
+      "description": "Модальное окно подтверждения критичного действия",
+      "children": [
+        {
+          "id": "cards.block.confirm_modal.text",
+          "type": "text",
+          "label": "Текст подтверждения"
+        },
+        {
+          "id": "cards.block.confirm_modal.confirm",
+          "type": "button",
+          "label": "Подтвердить блокировку"
+        },
+        {
+          "id": "cards.block.confirm_modal.cancel",
+          "type": "button",
+          "label": "Отмена"
+        }
+      ]
+    }
+  ]
+}
