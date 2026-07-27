@@ -4,11 +4,15 @@
 
 Исправляй только затронутую область:
 
-- `app.json`, `schema.json` или `links.json` — `write_ui_schema_core`;
-- одна или несколько страниц — `write_ui_schema_pages`;
+- `app.json` или `schema.json` — `write_ui_schema_core`;
+- одна страница — `write_ui_schema_page`;
+- большая страница или отдельные верхнеуровневые группы — `write_ui_schema_page_elements` после создания page shell;
+- `links.json` — `write_ui_schema_links` после существования всех источников и целей;
 - requirement links или отчёт — `write_ui_schema_traceability`.
 
 Затем вызови `validate_ui_schema_state`. Если `valid=true`, запуск завершится автоматически. Если `valid=false`, исправляй только оставшиеся ошибки.
+
+Если предыдущий page payload был отклонён из-за JSON-формата, не повторяй его. Передай одну страницу native JSON. Если она велика — создай shell с `elements: []` и добавляй небольшие группы через `write_ui_schema_page_elements`.
 
 Обязательные правила:
 
@@ -26,3 +30,4 @@
 - обнови `agent_report` при необходимости;
 - каждый requirement ID должен иметь ровно один итоговый статус: прямые links, `cross_cutting_ui`, `no_ui` или `unclear`;
 - не допускай пересечения массивов и links для `no_ui`/`unclear`; targeted `cross_cutting_ui` должен иметь хотя бы одну link.
+Не переписывай всю схему. Каждый исправляемый элемент передавай с `id`, `type`, `label`. Ошибки канонического `file` и отсутствующего `label` backend исправляет детерминированно из существующих page-файлов и `title`; сосредоточься на оставшихся ссылках, типах и классификациях.

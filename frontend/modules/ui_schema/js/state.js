@@ -56,6 +56,7 @@ export const state = {
   agentInitialAvailable: false,
   agentLoaded: false,
   agentLlmTest: null,
+  agentStartError: "",
   agentRequirementsPath: "",
   agentUserRequest: "",
   agentBaseMode: "current",

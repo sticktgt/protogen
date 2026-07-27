@@ -105,6 +105,7 @@ def create_run(
             "agent_report": "",
             "agent_note": "",
             "validation_errors": [],
+            "validation_error_count": 0,
             "validation_warnings": [],
             "config": {"validation_retries": int(config.get("validation_retries", 1))},
             "execution": dict(config.get("execution", {})) if isinstance(config.get("execution"), dict) else {},
@@ -240,7 +241,10 @@ def reset_for_regeneration(
                 "agent_report": "",
                 "agent_note": "",
                 "validation_errors": [],
+                "validation_error_count": 0,
                 "validation_warnings": [],
+                "error": "",
+                "stop_reason": "",
                 "config": {"validation_retries": int(config.get("validation_retries", 1))},
                 "execution": (
                     dict(config.get("execution", {}))

@@ -1,7 +1,7 @@
 import { escapeAttr, escapeHtml } from './html-utils.js';
 import { renderRunObservability } from './agent-observability-render.js';
 
-export function renderAgentStart({ snapshot, initialAvailable, actionInProgress, llmTest, requirementsPath, userRequest, baseMode }) {
+export function renderAgentStart({ snapshot, initialAvailable, actionInProgress, llmTest, startError, requirementsPath, userRequest, baseMode }) {
   return `
     <div class="agent-layout">
       <div class="agent-start-column">
@@ -9,6 +9,7 @@ export function renderAgentStart({ snapshot, initialAvailable, actionInProgress,
         <section class="card agent-start-card">
           <div class="card-title">Синхронизация требований и UI-схемы</div>
           <p class="muted-text">Агент использует файл требований целиком и подготавливает временную версию схемы. Изменения применяются только после подтверждения.</p>
+          ${startError ? `<div class="agent-inline-error" data-agent-start-error role="alert">${escapeHtml(startError)}</div>` : ''}
           <form data-agent-start-form class="agent-form">
             <div class="form-row">
               <label for="agent-requirements-path">Путь к файлу требований в workspace</label>
@@ -122,7 +123,7 @@ export function renderAgentFailed(run, actionInProgress, metrics, events) {
         </div>
         ${run.error ? `<p>${escapeHtml(run.error)}</p>` : ''}
         ${run.phase === 'stopped_by_limit' ? '<p class="agent-limit-note">Лимит является защитой от лишних расходов. Повышать его без анализа журнала не рекомендуется.</p>' : ''}
-        ${errors.length ? `<ul class="agent-error-list">${errors.map(error => `<li>${escapeHtml(error)}</li>`).join('')}</ul>` : ''}
+        ${renderValidationErrors(errors, run.validation_error_count)}
         ${renderRunObservability(run, metrics, events, false)}
       </section>
       <section class="card agent-decision-card">
@@ -137,6 +138,19 @@ export function renderAgentFailed(run, actionInProgress, metrics, events) {
         </div>
       </section>
     </div>
+  `;
+}
+
+function renderValidationErrors(errors, totalCount = null) {
+  if (!Array.isArray(errors) || !errors.length) return '';
+  const list = `<ul class="agent-error-list">${errors.map(error => `<li>${escapeHtml(error)}</li>`).join('')}</ul>`;
+  const count = Number(totalCount || errors.length);
+  if (errors.length <= 6 && count <= 6) return list;
+  return `
+    <details class="agent-validation-errors">
+      <summary>Ошибки проверки · ${escapeHtml(count)}</summary>
+      ${list}
+    </details>
   `;
 }
 

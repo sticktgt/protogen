@@ -40,6 +40,7 @@ export function renderAgentView() {
       initialAvailable: state.agentInitialAvailable,
       actionInProgress: busy,
       llmTest: state.agentLlmTest,
+      startError: state.agentStartError,
       requirementsPath: state.agentRequirementsPath,
       userRequest: state.agentUserRequest,
       baseMode: state.agentBaseMode
@@ -56,6 +57,7 @@ export function renderAgentView() {
       initialAvailable: state.agentInitialAvailable,
       actionInProgress: busy,
       llmTest: state.agentLlmTest,
+      startError: state.agentStartError,
       requirementsPath: state.agentRequirementsPath,
       userRequest: state.agentUserRequest,
       baseMode: state.agentBaseMode

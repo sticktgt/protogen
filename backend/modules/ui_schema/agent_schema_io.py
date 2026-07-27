@@ -9,7 +9,6 @@ from backend.modules.ui_schema.agent_schema_merge import merge_preserving_agent_
 from backend.modules.ui_schema.files import read_json, write_json
 
 _PAGE_FILE = re.compile(r"^[a-zA-Z0-9_.-]+\.json$")
-_DEFAULT_MAX_PAGE_FILES = 8
 
 
 def write_ui_schema_bundle(
@@ -87,19 +86,12 @@ def recoverable_tool_result(operation: Callable[[], dict[str, Any]]) -> str:
             "error": str(exc),
             "hint": (
                 "Correct the tool arguments and continue. Use native JSON with "
-                "write_ui_schema_core, write_ui_schema_pages or "
+                "write_ui_schema_core, write_ui_schema_page, "
+                "write_ui_schema_page_elements, write_ui_schema_links or "
                 "write_ui_schema_traceability according to the affected document."
             ),
         }
     return json.dumps(result, ensure_ascii=False)
-
-
-def max_page_files(agent_config: dict[str, Any]) -> int:
-    return _positive_execution_int(
-        agent_config,
-        key="write_pages_max_files",
-        default=_DEFAULT_MAX_PAGE_FILES,
-    )
 
 
 def normalize_write_path(file_path: str) -> str:
@@ -202,18 +194,3 @@ def _resolve_write_target(working_root: Path, result_root: Path, file_path: str)
 def _validate_top_level_shape(file_path: str, content: Any) -> None:
     if not isinstance(content, dict):
         raise ValueError(f"{file_path} must contain a JSON object")
-
-
-def _positive_execution_int(
-    agent_config: dict[str, Any],
-    *,
-    key: str,
-    default: int,
-) -> int:
-    execution = agent_config.get("execution", {}) if isinstance(agent_config, dict) else {}
-    value = execution.get(key) if isinstance(execution, dict) else None
-    try:
-        parsed = int(value)
-    except (TypeError, ValueError):
-        return default
-    return parsed if parsed > 0 else default

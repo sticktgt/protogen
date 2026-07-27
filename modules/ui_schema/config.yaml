@@ -116,11 +116,14 @@ ui:
     label: table
     allowed_children:
     - table_column
+    - button
+    - link
   - id: table_column
     scope: page
     kind: atomic
     icon: ▥
     label: table_column
+    link_source: true
   - id: badge
     scope: page
     kind: atomic
@@ -164,11 +167,10 @@ agent:
   enabled: true
   validation_retries: 1
   execution:
-    max_llm_calls: 16
-    max_tool_calls: 32
+    max_llm_calls: 24
+    max_tool_calls: 64
     max_total_tokens: 2000000
-    write_bundle_max_files: 8
-    write_pages_max_files: 8
+    write_page_max_top_level_elements: 16
     max_duration_seconds: 1200
     recursion_limit: 160
     request_timeout_seconds: 300

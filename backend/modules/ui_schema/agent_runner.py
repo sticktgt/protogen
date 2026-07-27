@@ -25,6 +25,7 @@ from backend.modules.ui_schema.agent_monitor import (
 from backend.modules.ui_schema.agent_prompts import load_prompt, render_run_prompt
 from backend.modules.ui_schema.agent_report import ensure_agent_report
 from backend.modules.ui_schema.agent_preview import finalize_preview
+from backend.modules.ui_schema.agent_validation_display import validation_errors_for_ui
 from backend.modules.ui_schema.agent_runs import (
     get_run,
     is_cancelled,
@@ -171,7 +172,8 @@ def _run_agent_task(
                 run_id,
                 status="failed",
                 phase="validating",
-                validation_errors=validation["errors"],
+                validation_errors=validation_errors_for_ui(validation["errors"]),
+                validation_error_count=len(validation["errors"]),
                 validation_warnings=validation.get("warnings", []),
             )
             build_diagnostics_archive(module_root, run_id)

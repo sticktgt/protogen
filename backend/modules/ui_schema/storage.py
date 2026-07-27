@@ -6,6 +6,7 @@ from uuid import uuid4
 
 from backend.app.state import AppState
 from backend.modules.ui_schema.files import read_json, write_json
+from backend.modules.ui_schema.workspace_migration import remove_obsolete_requirements_copy
 
 MODULE_ID = "ui_schema"
 
@@ -29,7 +30,9 @@ DEFAULT_REQUIREMENTS_SOURCE = {"type": "workspace_file", "path": ""}
 
 
 def module_root(state: AppState, workspace_id: str) -> Path:
-    return state.workspaces.get_module_path(workspace_id, MODULE_ID)
+    root = state.workspaces.get_module_path(workspace_id, MODULE_ID)
+    remove_obsolete_requirements_copy(root)
+    return root
 
 
 def schema_path(root: Path) -> Path:

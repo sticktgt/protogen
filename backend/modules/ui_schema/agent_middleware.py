@@ -39,7 +39,10 @@ def create_tool_error_middleware():
                 "error": _short_error(exc),
                 "hint": (
                     "Исправь аргументы и продолжи ограниченный цикл. Передавай native JSON "
-                    "objects/arrays, не JSON-строки и не markdown code fences."
+                    "objects/arrays, не JSON-строки и не markdown code fences. Не повторяй "
+                    "тот же большой payload: записывай по одной странице; для большой страницы "
+                    "сначала создай shell через write_ui_schema_page, затем добавляй несколько "
+                    "верхнеуровневых групп через write_ui_schema_page_elements."
                 ),
             }
             return ToolMessage(

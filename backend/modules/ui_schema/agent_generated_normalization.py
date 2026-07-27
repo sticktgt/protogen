@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from backend.modules.ui_schema.agent_normalize_documents import normalize_document_conventions
 from backend.modules.ui_schema.agent_normalize_elements import normalize_table_columns
 from backend.modules.ui_schema.agent_normalize_links import normalize_generated_links
 from backend.modules.ui_schema.files import read_json, write_json
@@ -14,6 +15,7 @@ def normalize_generated_schema(run_path: Path) -> list[str]:
     base_root = run_path / "base" / "ui_schema"
     result_path = run_path / "result" / "normalization.json"
 
+    document_actions = normalize_document_conventions(working_root=working_root)
     element_actions = normalize_table_columns(
         working_root=working_root,
         base_root=base_root,
@@ -22,7 +24,7 @@ def normalize_generated_schema(run_path: Path) -> list[str]:
         working_root=working_root,
         descendant_remap={},
     )
-    actions = [*element_actions, *link_actions]
+    actions = [*document_actions, *element_actions, *link_actions]
 
     existing = read_json(result_path, {"actions": [], "warnings": []})
     existing_actions = existing.get("actions", []) if isinstance(existing, dict) else []

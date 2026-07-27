@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from backend.modules.ui_schema.agent_completion import validate_and_mark_completion
 from backend.modules.ui_schema.agent_context import build_synchronization_context
@@ -14,15 +14,24 @@ from backend.modules.ui_schema.agent_preservation import (
 )
 from backend.modules.ui_schema.agent_schema_io import (
     delete_page_file,
-    max_page_files,
     recoverable_tool_result,
     write_ui_schema_bundle as write_schema_bundle,
+)
+from backend.modules.ui_schema.agent_link_tools import (
+    UiLinksWriteArgs,
+    write_ui_links,
+)
+from backend.modules.ui_schema.agent_page_tools import (
+    PageDocumentArgs,
+    PageElementsArgs,
+    page_element_limit,
+    write_page_document,
+    write_page_elements,
 )
 from backend.modules.ui_schema.agent_tool_payloads import (
     decode_json_argument,
     normalize_core_argument,
     normalize_document_content,
-    normalize_pages_argument,
     normalize_traceability_argument,
 )
 
@@ -36,12 +45,10 @@ class CoreWriteArgs(BaseModel):
         default=None,
         description="Native JSON object for schema.json. Omit when unchanged.",
     )
-    links: dict[str, Any] | None = Field(
-        default=None,
-        description="Native JSON object for links.json. Omit when unchanged.",
-    )
 
-    @field_validator("app", "schema_document", "links", mode="before")
+    model_config = ConfigDict(extra="forbid")
+
+    @field_validator("app", "schema_document", mode="before")
     @classmethod
     def normalize_json_object(cls, value: Any, info):
         if value is None:
@@ -49,39 +56,9 @@ class CoreWriteArgs(BaseModel):
         file_path = {
             "app": "app.json",
             "schema_document": "schema.json",
-            "links": "links.json",
         }[info.field_name]
         return normalize_document_content(file_path, value)
 
-
-class PageWrite(BaseModel):
-    file_path: str = Field(
-        description="Relative page path such as pages/reports.statement.json"
-    )
-    content: dict[str, Any] = Field(
-        description="Native JSON page object. Never pass a JSON-encoded string."
-    )
-
-    @field_validator("content", mode="before")
-    @classmethod
-    def normalize_page_content(cls, value: Any, info):
-        return normalize_document_content("pages/page.json", value)
-
-
-class PagesWriteArgs(BaseModel):
-    pages: list[PageWrite] = Field(
-        description=(
-            "Native JSON array of changed or new pages. Each item has file_path and "
-            "content. Do not include unchanged pages and do not serialize the array."
-        )
-    )
-
-    @model_validator(mode="before")
-    @classmethod
-    def normalize_pages(cls, value: Any):
-        if not isinstance(value, dict) or "pages" not in value:
-            return value
-        return {**value, "pages": normalize_pages_argument(value["pages"])}
 
 
 class RequirementAssessment(BaseModel):
@@ -162,7 +139,7 @@ def create_agent_tools(*, run_path: Path, agent_config: dict[str, Any]):
     working_root = run_path / "working" / "ui_schema"
     base_root = run_path / "base" / "ui_schema"
     result_root = run_path / "result"
-    maximum_page_files = max_page_files(agent_config)
+    maximum_page_elements = page_element_limit(agent_config)
 
     @tool
     def load_synchronization_context() -> str:
@@ -181,35 +158,81 @@ def create_agent_tools(*, run_path: Path, agent_config: dict[str, Any]):
     def write_ui_schema_core(
         app: dict[str, Any] | None = None,
         schema_document: dict[str, Any] | None = None,
-        links: dict[str, Any] | None = None,
     ) -> str:
-        """Write changed application, page registry and UI navigation documents.
+        """Write changed application metadata/root elements and the page registry.
 
         Pass native JSON objects, not strings. Omitted documents remain unchanged.
+        Write UI navigation only after page files exist by calling write_ui_schema_links.
         Existing pages and elements omitted from updates are preserved by backend.
         """
         return recoverable_tool_result(
             lambda: write_schema_bundle(
                 working_root=working_root,
                 result_root=result_root,
-                files=normalize_core_argument(app=app, schema=schema_document, links=links),
-                maximum_files=3,
+                files=normalize_core_argument(app=app, schema=schema_document, links=None),
+                maximum_files=2,
             )
         )
 
-    @tool(args_schema=PagesWriteArgs)
-    def write_ui_schema_pages(pages: list[dict[str, Any]]) -> str:
-        """Write a batch of new or changed page objects.
+    @tool(args_schema=PageDocumentArgs)
+    def write_ui_schema_page(
+        page_id: str,
+        title: str,
+        description: str = "",
+        elements: list[dict[str, Any]] | None = None,
+        file_path: str | None = None,
+    ) -> str:
+        """Write exactly one new or changed page.
 
-        Include only pages that actually change. Use one native JSON array with
-        file_path/content items. Existing omitted pages and elements are preserved.
+        One page per tool call avoids large provider-generated JSON strings. Pass a native
+        elements array. For a large page, create a shell with elements=[] and then call
+        write_ui_schema_page_elements with a few top-level groups at a time.
         """
         return recoverable_tool_result(
-            lambda: write_schema_bundle(
+            lambda: write_page_document(
                 working_root=working_root,
                 result_root=result_root,
-                files=normalize_pages_argument(_plain_model_values(pages)),
-                maximum_files=maximum_page_files,
+                page_id=page_id,
+                title=title,
+                description=description,
+                elements=list(elements or []),
+                file_path=file_path,
+                maximum_top_level_elements=maximum_page_elements,
+            )
+        )
+
+    @tool(args_schema=PageElementsArgs)
+    def write_ui_schema_page_elements(
+        page_id: str,
+        elements: list[dict[str, Any]],
+    ) -> str:
+        """Add or replace a small batch of top-level groups on an existing page.
+
+        Use this after write_ui_schema_page when a complete page payload would be large.
+        Existing top-level groups with different IDs are preserved.
+        """
+        return recoverable_tool_result(
+            lambda: write_page_elements(
+                working_root=working_root,
+                result_root=result_root,
+                page_id=page_id,
+                elements=elements,
+                maximum_top_level_elements=maximum_page_elements,
+            )
+        )
+
+    @tool(args_schema=UiLinksWriteArgs)
+    def write_ui_schema_links(links: list[dict[str, Any]]) -> str:
+        """Write UI navigation/modal links after app and page elements exist.
+
+        Pass a native links array. Backend generates missing technical link IDs and can infer
+        source/target types only from exact existing page or element IDs.
+        """
+        return recoverable_tool_result(
+            lambda: write_ui_links(
+                working_root=working_root,
+                result_root=result_root,
+                links=links,
             )
         )
 
@@ -282,22 +305,14 @@ def create_agent_tools(*, run_path: Path, agent_config: dict[str, Any]):
     return [
         load_synchronization_context,
         write_ui_schema_core,
-        write_ui_schema_pages,
+        write_ui_schema_page,
+        write_ui_schema_page_elements,
+        write_ui_schema_links,
         write_ui_schema_traceability,
         delete_ui_schema_page_file,
         delete_ui_schema_elements,
         validate_ui_schema_state,
     ]
-
-
-def _plain_model_values(items: list[Any]) -> list[Any]:
-    result: list[Any] = []
-    for item in items:
-        if isinstance(item, BaseModel):
-            result.append(item.model_dump())
-        else:
-            result.append(item)
-    return result
 
 
 def _plain_model_value(value: Any) -> Any:

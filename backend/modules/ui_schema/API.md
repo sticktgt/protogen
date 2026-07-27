@@ -89,14 +89,14 @@ Backend проверяет, что путь остаётся внутри worksp
       "timestamp": "2026-07-24T12:30:00+00:00",
       "level": "info",
       "type": "tool_start",
-      "message": "Пакетная запись страниц UI-схемы: pages/home.json",
-      "data": {"tool": "write_ui_schema_pages", "file_count": 1}
+      "message": "Запись страницы UI-схемы: pages/home.json",
+      "data": {"tool": "write_ui_schema_page", "file_count": 1}
     }
   ],
   "metrics": {
     "llm_calls": 5,
     "tool_calls": 18,
-    "last_tool": "write_ui_schema_pages",
+    "last_tool": "write_ui_schema_page",
     "repeat_streak": 1,
     "max_repeat_streak": 2,
     "input_tokens": 120000,
@@ -105,7 +105,7 @@ Backend проверяет, что путь остаётся внутри worksp
     "token_usage_available": true,
     "last_event_at": "2026-07-24T12:30:00+00:00",
     "limits": {
-      "max_llm_calls": 16,
+      "max_llm_calls": 24,
       "max_tool_calls": 32,
       "max_total_tokens": 2000000,
       "max_duration_seconds": 1200,

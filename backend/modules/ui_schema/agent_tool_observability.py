@@ -58,6 +58,9 @@ def tool_path(args: dict[str, Any]) -> str:
         value = args.get(key)
         if isinstance(value, str):
             return value[:200]
+    page_id = args.get("page_id")
+    if isinstance(page_id, str) and page_id:
+        return f"pages/{page_id}.json"
     pages = _page_writes(args.get("pages"))
     if pages:
         paths = [
@@ -73,18 +76,24 @@ def tool_path(args: dict[str, Any]) -> str:
     supplied = [name for name in ("app", "schema_document", "links") if args.get(name) is not None]
     if supplied:
         return ", ".join(supplied)
+    if args.get("links") is not None:
+        return "links.json"
     if args.get("requirement_ui_links") is not None:
         return "requirement_ui_links.json, agent_report.json"
     return ""
 
 
 def tool_file_count(args: dict[str, Any]) -> int | None:
+    if isinstance(args.get("page_id"), str):
+        return 1
     pages = _page_writes(args.get("pages"))
     if pages is not None:
         return len(pages)
     supplied = sum(1 for name in ("app", "schema_document", "links") if args.get(name) is not None)
     if supplied:
         return supplied
+    if args.get("links") is not None:
+        return 1
     if args.get("requirement_ui_links") is not None:
         return 2
     return None
@@ -100,7 +109,9 @@ def tool_message(name: str, path: str) -> str:
         "grep": "Поиск по содержимому",
         "load_synchronization_context": "Загрузка контекста синхронизации",
         "write_ui_schema_core": "Запись структуры приложения и UI-связей",
-        "write_ui_schema_pages": "Пакетная запись страниц UI-схемы",
+        "write_ui_schema_page": "Запись страницы UI-схемы",
+        "write_ui_schema_page_elements": "Запись элементов страницы UI-схемы",
+        "write_ui_schema_links": "Запись UI-связей",
         "write_ui_schema_traceability": "Запись трассировки требований и отчёта",
         "validate_ui_schema_state": "Промежуточная проверка UI-схемы",
         "delete_ui_schema_page_file": "Удаление файла страницы",

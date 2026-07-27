@@ -14,6 +14,7 @@ from backend.modules.ui_schema.agent_report import ensure_agent_report
 from backend.modules.ui_schema.agent_completion import validate_agent_working_schema
 from backend.modules.ui_schema.agent_preview import finalize_preview
 from backend.modules.ui_schema.agent_runs import clear_active_run, is_cancelled, update_run
+from backend.modules.ui_schema.agent_validation_display import validation_errors_for_ui
 from backend.modules.ui_schema.files import read_json, write_json
 
 _LOGGER = logging.getLogger(__name__)
@@ -165,7 +166,8 @@ def record_limit_stop(module_root: Path, run_id: str, exc: Exception) -> None:
                 phase="stopped_by_limit",
                 error=message,
                 stop_reason="limit",
-                validation_errors=errors,
+                validation_errors=validation_errors_for_ui(errors),
+                validation_error_count=len(errors),
                 validation_warnings=validation.get("warnings", []),
             )
             _build_diagnostics_safely(module_root, run_id)
@@ -210,6 +212,7 @@ def record_failure(module_root: Path, run_id: str, exc: Exception) -> None:
                 phase=phase,
                 error=message,
                 validation_errors=[],
+                validation_error_count=0,
             )
             _build_diagnostics_safely(module_root, run_id)
     except Exception:

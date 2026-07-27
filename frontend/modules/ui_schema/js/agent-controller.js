@@ -15,6 +15,7 @@ import {
 } from './api.js';
 import { state } from './state.js';
 import { scrollAgentEventLogToLatest } from './agent-observability-render.js';
+import { agentActionErrorMessage, requirementsStartErrorMessage } from './agent-errors.js';
 
 let reloadSchema = async () => {};
 let renderView = () => {};
@@ -86,7 +87,11 @@ export function bindAgentControls(container) {
 function bindStart(container) {
   const pathInput = container.querySelector('[data-agent-requirements-path]');
   const requestInput = container.querySelector('[data-agent-user-request]');
-  pathInput?.addEventListener('input', () => { state.agentRequirementsPath = pathInput.value; });
+  pathInput?.addEventListener('input', () => {
+    state.agentRequirementsPath = pathInput.value;
+    state.agentStartError = '';
+    container.querySelector('[data-agent-start-error]')?.remove();
+  });
   requestInput?.addEventListener('input', () => { state.agentUserRequest = requestInput.value; });
   container.querySelectorAll('input[name="agent-base-mode"]').forEach(input => {
     input.addEventListener('change', () => {
@@ -106,14 +111,20 @@ function bindStart(container) {
     const baseMode = container.querySelector('input[name="agent-base-mode"]:checked')?.value || 'current';
     state.agentRequirementsPath = requirementsPath;
     state.agentUserRequest = request;
+    state.agentStartError = '';
     state.agentBaseMode = baseMode;
     await runAction(async () => {
       state.agentRun = await startAgentRun(state.workspaceId, requirementsPath, request, baseMode);
+      state.agentStartError = '';
       state.writeLocked = true;
       state.agentChanges = null;
       resetAgentObservability();
       configurePolling();
-    }, 'Задача синхронизации запущена');
+    }, 'Задача синхронизации запущена', error => {
+      const message = requirementsStartErrorMessage(error, requirementsPath);
+      state.agentStartError = message;
+      return message;
+    });
   });
 }
 
@@ -209,7 +220,7 @@ function openPreview(run) {
   window.location.href = url.toString();
 }
 
-async function runAction(action, successMessage) {
+async function runAction(action, successMessage, onError = null) {
   if (actionInProgress) return;
   actionInProgress = true;
   renderView();
@@ -218,7 +229,8 @@ async function runAction(action, successMessage) {
     if (successMessage) showToast(successMessage);
   } catch (error) {
     console.error(error);
-    showToast(error?.message || 'Операция не выполнена');
+    const message = onError ? onError(error) : agentActionErrorMessage(error);
+    showToast(message);
   } finally {
     actionInProgress = false;
     renderView();

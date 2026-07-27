@@ -3,49 +3,15 @@ from __future__ import annotations
 import json
 from typing import Any
 
+from backend.modules.ui_schema.agent_normalize_documents import (
+    canonicalize_schema_document,
+    normalize_element_labels_in_document,
+)
+
 
 def decode_json_argument(value: Any, *, label: str) -> Any:
     """Decode a valid provider-side JSON string while preferring native values."""
     return _decode_jsonish(value, label=label)
-
-
-def normalize_pages_argument(value: Any) -> list[dict[str, Any]]:
-    """Normalize a native page-write list or an object keyed by page filename."""
-    candidate = _decode_jsonish(value, label="pages")
-    if isinstance(candidate, dict) and set(candidate) == {"pages"}:
-        candidate = _decode_jsonish(candidate["pages"], label="pages.pages")
-
-    if isinstance(candidate, dict):
-        candidate = [
-            {"file_path": str(name), "content": content}
-            for name, content in candidate.items()
-        ]
-    if not isinstance(candidate, list) or not candidate:
-        raise ValueError("pages must be a non-empty native JSON array")
-
-    normalized: list[dict[str, Any]] = []
-    for index, item in enumerate(candidate):
-        if not isinstance(item, dict):
-            raise ValueError(f"pages[{index}] must be an object")
-        file_path = item.get("file_path") or item.get("path")
-        content = item.get("content", item.get("page"))
-        if not isinstance(file_path, str) or not file_path.strip():
-            page_id = content.get("id") if isinstance(content, dict) else None
-            if isinstance(page_id, str) and page_id.strip():
-                file_path = f"pages/{page_id.strip()}.json"
-            else:
-                raise ValueError(f"pages[{index}].file_path must be a non-empty string")
-        if not file_path.strip().startswith("pages/"):
-            file_path = f"pages/{file_path.strip()}"
-        if not file_path.endswith(".json"):
-            file_path += ".json"
-        normalized.append(
-            {
-                "file_path": file_path,
-                "content": normalize_document_content(file_path, content),
-            }
-        )
-    return normalized
 
 
 def normalize_core_argument(
@@ -98,7 +64,11 @@ def normalize_document_content(file_path: str, value: Any) -> dict[str, Any]:
     candidate = _decode_jsonish(value, label=f"content for {file_path}", allow_plain_text=True)
     normalized_path = _canonical_path(file_path)
 
-    if normalized_path in {"links.json", "mappings/requirement_ui_links.json"}:
+    if normalized_path == "schema.json" and isinstance(candidate, dict):
+        candidate = canonicalize_schema_document(candidate)
+    elif normalized_path == "app.json" and isinstance(candidate, dict):
+        normalize_element_labels_in_document(candidate, collection_key="root_elements")
+    elif normalized_path in {"links.json", "mappings/requirement_ui_links.json"}:
         if isinstance(candidate, list):
             candidate = {"links": candidate}
     elif normalized_path == "result/agent_report.json":
@@ -147,6 +117,9 @@ def _decode_jsonish(value: Any, *, label: str, allow_plain_text: bool = False) -
     try:
         return json.loads(text)
     except json.JSONDecodeError as exc:
+        recovered = _decode_concatenated_json(text) if exc.msg == "Extra data" else None
+        if recovered is not None:
+            return recovered
         if allow_plain_text:
             return text
         raise ValueError(
@@ -165,3 +138,29 @@ def _strip_json_fence(value: str) -> str:
     if lines and lines[-1].strip() == "```":
         lines = lines[:-1]
     return "\n".join(lines).strip()
+
+
+def _decode_concatenated_json(text: str) -> Any | None:
+    """Recover only a sequence of complete adjacent JSON arrays or objects."""
+    decoder = json.JSONDecoder()
+    values: list[Any] = []
+    index = 0
+    length = len(text)
+    try:
+        while index < length:
+            while index < length and (text[index].isspace() or text[index] == ","):
+                index += 1
+            if index >= length:
+                break
+            value, end = decoder.raw_decode(text, index)
+            values.append(value)
+            index = end
+    except json.JSONDecodeError:
+        return None
+    if len(values) < 2:
+        return None
+    if all(isinstance(value, list) for value in values):
+        return [item for value in values for item in value]
+    if all(isinstance(value, dict) for value in values):
+        return values
+    return None

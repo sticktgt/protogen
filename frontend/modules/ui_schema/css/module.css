@@ -77,12 +77,19 @@
   align-items: center;
   display: flex;
   font-size: 12px;
-  justify-content: flex-start;
+  gap: 12px;
+  justify-content: space-between;
   padding: 5px 0;
 }
 
 .schema-stat-label { color: var(--text-muted); }
-.schema-stat-value { font-weight: 700; }
+.schema-stat-value {
+  flex: 0 0 auto;
+  font-weight: 700;
+  margin-left: auto;
+  min-width: 2ch;
+  text-align: right;
+}
 .schema-stat-value.success { color: var(--success); }
 .schema-stat-value.warning { color: var(--warning); }
 
@@ -1255,4 +1262,31 @@
 
 .agent-requirement-assessment-groups {
   padding: 0 12px 12px;
+}
+
+.agent-inline-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 12px 0;
+  padding: 10px 12px;
+}
+
+.agent-validation-errors {
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.agent-validation-errors > summary {
+  color: #991b1b;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 12px;
+}
+.agent-validation-errors .agent-error-list {
+  margin: 0;
+  padding: 0 28px 12px 34px;
 }

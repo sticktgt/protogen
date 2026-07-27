@@ -64,6 +64,7 @@ def finalize_preview(
         agent_report=str(report.get("summary") or ""),
         agent_note=str(report.get("agent_note") or ""),
         validation_errors=[],
+        validation_error_count=0,
         validation_warnings=[
             *validation.get("warnings", []),
             *traceability_warnings,
