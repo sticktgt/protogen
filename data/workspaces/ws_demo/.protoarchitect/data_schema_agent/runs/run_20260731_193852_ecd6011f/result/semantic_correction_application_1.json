@@ -1,0 +1,83 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "entities": 9,
+    "fields": 82,
+    "relations": 14,
+    "dictionaries": 13,
+    "dictionary_values": 41,
+    "requirement_links": 244
+  },
+  "preservation": {
+    "missing_base_objects": []
+  },
+  "assessment_counts": {
+    "linked": 77,
+    "cross_cutting_data": 0,
+    "no_data": 31,
+    "unclear": 0,
+    "unclassified": 0
+  },
+  "correction_applied": true,
+  "correction_error": "",
+  "correction_operations": [
+    {
+      "operation": "patch_dictionaries",
+      "result": {
+        "patched": [
+          {
+            "id": "card_block_reason",
+            "title": "Причина блокировки карты",
+            "values": [
+              "lost",
+              "stolen",
+              "other",
+              "suspected_fraud"
+            ]
+          }
+        ],
+        "canonical_references": {
+          "dictionaries": [
+            {
+              "target_type": "dictionary",
+              "dictionary_id": "card_block_reason"
+            }
+          ],
+          "dictionary_values": [
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "card_block_reason",
+              "value_id": "lost"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "card_block_reason",
+              "value_id": "stolen"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "card_block_reason",
+              "value_id": "other"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "card_block_reason",
+              "value_id": "suspected_fraud"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "patch_requirement_results",
+      "result": {
+        "patched_requirement_count": 2,
+        "requirement_link_count": 244,
+        "covered_requirement_count": 83,
+        "assessment_count": 31
+      }
+    }
+  ]
+}

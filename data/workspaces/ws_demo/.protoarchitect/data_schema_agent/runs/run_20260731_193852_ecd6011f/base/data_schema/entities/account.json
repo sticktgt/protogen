@@ -1,0 +1,51 @@
+{
+  "id": "account",
+  "title": "Счет",
+  "description": "Банковский счет клиента.",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор счета",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор счета."
+    },
+    {
+      "id": "customer_id",
+      "title": "Клиент",
+      "type": "uuid",
+      "required": true,
+      "description": "Идентификатор владельца счета."
+    },
+    {
+      "id": "number",
+      "title": "Номер счета",
+      "type": "string",
+      "required": true,
+      "description": "Номер счета, отображаемый пользователю."
+    },
+    {
+      "id": "balance",
+      "title": "Баланс",
+      "type": "decimal",
+      "required": true,
+      "description": "Текущий остаток по счету."
+    },
+    {
+      "id": "currency",
+      "title": "Валюта",
+      "type": "dictionary",
+      "dictionary_id": "currency",
+      "required": true,
+      "description": "Валюта счета."
+    },
+    {
+      "id": "status",
+      "title": "Статус счета",
+      "type": "dictionary",
+      "dictionary_id": "account_status",
+      "required": true,
+      "description": "Состояние счета."
+    }
+  ]
+}

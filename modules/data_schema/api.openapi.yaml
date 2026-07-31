@@ -1,130 +1,256 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Data Schema Module API
-  version: 0.1.0
+  version: 0.3.0
+  description: Logical data schema CRUD with bounded direct LLM synchronization and technical validation.
 paths:
   /api/data-schema:
     get:
-      summary: Read aggregated data schema summary
+      summary: Read aggregated data schema summary or agent preview
       parameters:
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/workspace_id'
+        - $ref: '#/components/parameters/preview_run_id'
       responses:
-        "200":
-          description: Data schema summary
+        '200': {description: Data schema summary}
   /api/data-schema/schema:
     get:
       summary: Read data schema registry
       parameters:
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/workspace_id'
+        - $ref: '#/components/parameters/preview_run_id'
       responses:
-        "200":
-          description: Schema registry
+        '200': {description: Schema registry}
     put:
       summary: Update schema title and description
       responses:
-        "200":
-          description: Updated schema
+        '200': {description: Updated schema}
+        '409': {description: Schema is locked by an active agent run}
   /api/data-schema/entities:
     get:
       summary: List entities
       parameters:
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/workspace_id'
+        - $ref: '#/components/parameters/preview_run_id'
       responses:
-        "200":
-          description: Entity list
+        '200': {description: Entity list}
     post:
       summary: Create entity with generated identifier
       responses:
-        "200":
-          description: Created entity
+        '200': {description: Created entity}
+        '409': {description: Schema is locked by an active agent run}
   /api/data-schema/entities/{entity_id}:
+    parameters:
+      - name: entity_id
+        in: path
+        required: true
+        schema: {type: string}
     get:
       summary: Read entity
       parameters:
-        - name: entity_id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/workspace_id'
+        - $ref: '#/components/parameters/preview_run_id'
       responses:
-        "200":
-          description: Entity
+        '200': {description: Entity}
     put:
       summary: Update entity
-      parameters:
-        - name: entity_id
-          in: path
-          required: true
-          schema:
-            type: string
       responses:
-        "200":
-          description: Updated entity
+        '200': {description: Updated entity}
     delete:
       summary: Delete entity
       parameters:
-        - name: entity_id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: workspace_id
-          in: query
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/workspace_id'
       responses:
-        "200":
-          description: Deletion result
+        '200': {description: Deletion result}
+  /api/data-schema/entities/{entity_id}/fields:
+    post:
+      summary: Add field with generated identifier
+  /api/data-schema/entities/{entity_id}/fields/{field_id}:
+    put:
+      summary: Update field
+    delete:
+      summary: Delete field
   /api/data-schema/relations:
     get:
       summary: Read logical entity relations
-      responses:
-        "200":
-          description: Relations
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+        - $ref: '#/components/parameters/preview_run_id'
     post:
-      summary: Create logical entity relation with generated identifier
-      responses:
-        "200":
-          description: Created relation
+      summary: Create logical relation with generated identifier
+  /api/data-schema/relations/{relation_id}:
+    put:
+      summary: Update logical relation
+    delete:
+      summary: Delete logical relation
+  /api/data-schema/requirements:
+    get:
+      summary: Resolve requirements from requirements_source.json
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
   /api/data-schema/requirement-links:
     post:
       summary: Create requirement to data schema link
-      responses:
-        "200":
-          description: Created link
+  /api/data-schema/requirement-links/{link_id}:
+    delete:
+      summary: Delete requirement link
   /api/data-schema/ui-links:
     post:
       summary: Create UI schema to data schema link
-      responses:
-        "200":
-          description: Created link
+  /api/data-schema/ui-links/{link_id}:
+    delete:
+      summary: Delete UI schema link
   /api/data-schema/api-links:
     post:
       summary: Create API schema to data schema link
-      responses:
-        "200":
-          description: Created link
+  /api/data-schema/api-links/{link_id}:
+    delete:
+      summary: Delete API schema link
   /api/data-schema/code-links:
     post:
       summary: Create code link
+  /api/data-schema/code-links/{link_id}:
+    delete:
+      summary: Delete code link
+  /api/data-schema/agent/llm/test:
+    post:
+      summary: Test the current user LLM settings and tool calling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunAction'
       responses:
-        "200":
-          description: Created link
+        '200': {description: LLM connection and tool call succeeded}
+        '503': {description: Configuration or connection failed}
+  /api/data-schema/agent-runs:
+    post:
+      summary: Start requirements-to-data-schema synchronization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartAgentRun'
+      responses:
+        '200': {description: Agent run created}
+        '409': {description: Another run is active}
+  /api/data-schema/agent-runs/active:
+    get:
+      summary: Get active data schema agent run
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get run status, metrics and recent events
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}/events:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get incremental events, LLM/tool counters and token usage
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+        - name: after
+          in: query
+          schema: {type: integer, minimum: 0, default: 0}
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 500, default: 200}
+  /api/data-schema/agent-runs/{run_id}/diagnostics:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Download diagnostic ZIP for a stopped or preview-ready run
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}/changes:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get deterministic structural diff
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}/requirements-data-result:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get per-requirement data-schema synchronization outcome
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}/regenerate:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    post:
+      summary: Regenerate from the same base with an analyst comment
+  /api/data-schema/agent-runs/{run_id}/apply:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    post:
+      summary: Atomically apply a technically valid and semantically approved preview
+  /api/data-schema/agent-runs/{run_id}/reject:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    post:
+      summary: Reject and clean up the run
+  /api/data-schema/agent-runs/{run_id}/cancel:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    post:
+      summary: Request cancellation of a running task
+  /api/data-schema/exports/requirements-data/{run_id}:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get the persisted per-requirement export for an applied run
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/history/latest:
+    get:
+      summary: Get the latest pre-apply data schema snapshot
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/history/restore-latest:
+    post:
+      summary: Restore the latest pre-apply snapshot
+components:
+  parameters:
+    workspace_id:
+      name: workspace_id
+      in: query
+      required: true
+      schema: {type: string}
+    preview_run_id:
+      name: preview_run_id
+      in: query
+      required: false
+      schema: {type: string}
+    run_id:
+      name: run_id
+      in: path
+      required: true
+      schema: {type: string}
+  schemas:
+    RunAction:
+      type: object
+      required: [workspace_id]
+      properties:
+        workspace_id: {type: string}
+    StartAgentRun:
+      allOf:
+        - $ref: '#/components/schemas/RunAction'
+        - type: object
+          required: [requirements_path]
+          properties:
+            requirements_path:
+              type: string
+              description: Workspace-relative path to canonical requirements JSON
+              example: requirements/requirements.json
+            user_request: {type: string, default: ''}
+            base_mode:
+              type: string
+              enum: [current, initial]
+              default: current

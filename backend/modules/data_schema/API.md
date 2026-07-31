@@ -15,6 +15,43 @@
 
 API работает с логической схемой данных. Он не создает физические таблицы, SQL, миграции и код прототипа.
 
+
+## AI-синхронизация схемы данных
+
+Синхронизация начинается одним ограниченным LangChain-agent во временной копии схемы. Агент загружает компактный контекст, записывает логическую структуру, напрямую формирует результаты всех требований и завершает работу технической проверкой. Затем выполняются две независимые сфокусированные смысловые проверки: покрытие требований и внутренняя согласованность схемы. При конкретных issues первый отдельный LLM-вызов возвращает полный структурированный план коррекции для `must_fix` и совместимых `advisory`; backend технически применяет его как одну транзакцию. После verification допускаются ограниченные точечные recovery-раунды только по оставшимся `must_fix`, каждый с одним структурированным планом и одной verification. Shell и произвольный доступ к файловой системе не предоставляются.
+
+Backend не интерпретирует требования и не исправляет содержательные решения LLM. Он выполняет только технические операции: проверяет tool payload, допустимые типы и cardinality, точное существование ID, сохранность базовых объектов, полноту классификации требований текущего пакета и корректность файлов схемы. Пакет требований может быть неполным; ссылки из базовой схемы на отсутствующие в пакете ID сохраняются как унаследованные, а новые неизвестные ID отклоняются.
+
+### Запуск и проверка LLM
+
+- `POST /api/data-schema/agent/llm/test` — проверить пользовательскую конфигурацию LLM и tool calling. Тело: `{"workspace_id":"ws_demo"}`.
+- `POST /api/data-schema/agent-runs` — начать синхронизацию. Тело содержит `workspace_id`, `requirements_path`, необязательные `user_request` и `base_mode` (`current` или `initial`). Путь должен быть относительным к workspace и не может выходить за его пределы.
+
+Backend копирует требования и текущую схему только во временную папку запуска, сохраняет reference-файлы и запускает агента. В канонической схеме после применения остаётся только `requirements_source.json` со ссылкой и контрольной суммой.
+
+### Состояние и observability
+
+- `GET /api/data-schema/agent-runs/active?workspace_id=...` — активный запуск.
+- `GET /api/data-schema/agent-runs/{run_id}?workspace_id=...` — статус, этап, отчёт, встроенные метрики и последние события.
+- `GET /api/data-schema/agent-runs/{run_id}/events?workspace_id=...&after=0&limit=200` — инкрементальный журнал, количество LLM/tool calls и token usage.
+- `GET /api/data-schema/agent-runs/{run_id}/changes?workspace_id=...` — детерминированный diff сущностей, полей, связей, справочников, значений и requirement links.
+- `GET /api/data-schema/agent-runs/{run_id}/requirements-data-result?workspace_id=...` — результат для каждого требования: `linked`, `cross_cutting_data`, `no_data`, `unclear` или аварийный `unclassified`.
+- `GET /api/data-schema/exports/requirements-data/{run_id}?workspace_id=...` — сохранённая после применения версия результата требований.
+- `GET /api/data-schema/agent-runs/{run_id}/diagnostics?workspace_id=...` — ZIP с входом, base/working-схемой, prompt/reference-файлами, событиями, метриками, результатом и traceback. API-ключи не включаются.
+- `GET /api/data-schema?workspace_id=...&preview_run_id=...` и read-endpoints схемы с тем же параметром — read-only preview.
+
+Основной агент обычно использует один вызов загрузки контекста, до трёх записей структуры, один полный вызов прямой трассировки и одну validation. После этого выполняются две сфокусированные смысловые проверки. При технических ошибках допускается одна автоматическая попытка исправления; при конкретных смысловых issues — один основной структурированный correction-вызов и, только при оставшихся blockers, ограниченные точечные recovery-раунды без последовательного tool-loop и без повторного полного аудита.
+
+### Решение по результату
+
+- `POST /api/data-schema/agent-runs/{run_id}/apply` — атомарно применить preview, прошедший техническую проверку и завершённый смысловой контроль без неустранённых `must_fix`. Перед применением проверяется, что внешний файл требований не изменился после запуска.
+- `POST /api/data-schema/agent-runs/{run_id}/reject` — отклонить результат.
+- `POST /api/data-schema/agent-runs/{run_id}/regenerate` — повторить генерацию от базы запуска с комментарием.
+- `POST /api/data-schema/agent-runs/{run_id}/cancel` — мягко отменить выполняющийся запуск.
+- `GET /api/data-schema/history/latest` и `POST /api/data-schema/history/restore-latest` — просмотреть и восстановить последний snapshot.
+
+Пока запуск выполняется или ожидает решения по preview, ручные write-endpoints возвращают `409`. Все данные одного запуска находятся в `<workspace>/.protoarchitect/data_schema_agent/runs/<run_id>/`. После apply/reject/cancel тяжёлые runtime-файлы удаляются; остаются `run.json` и `diagnostics/attempt_<n>.zip`.
+
 ## Объекты API
 
 ### Schema
@@ -203,13 +240,15 @@ GET /api/data-schema?workspace_id=ws_demo
 | `ui_links` | Связи с UI-схемой. |
 | `api_links` | Связи с API-схемой. |
 | `code_links` | Связи с кодом. |
-| `requirements` | Список требований из локального `requirements.json`, если он используется. |
-| `requirement_groups` | Группы требований из локального `requirements.json`, если они есть. |
-| `requirement_projects` | Проекты требований из локального `requirements.json`, если они есть. |
+| `requirements` | Требования, динамически прочитанные по `requirements_source.json`. |
+| `requirement_groups` | Группы требований из внешнего источника. |
+| `requirement_projects` | Проекты требований из внешнего источника. |
+| `requirements_source` | Состояние разрешения внешнего источника: path, status, hash и changed_since_sync. |
+| `preview_changes` | Структурный diff выбранного preview, если задан `preview_run_id`. |
 | `index` | Компактный индекс схемы. |
 | `stats` | Счетчики объектов схемы. |
 
-`GET /api/data-schema` пересобирает `index.json` перед возвратом ответа.
+`GET /api/data-schema` пересобирает `index.json` перед возвратом ответа. Необязательный `preview_run_id` возвращает временную схему выбранного запуска в read-only режиме.
 
 ## Схема
 
@@ -577,7 +616,7 @@ DELETE /api/data-schema/relations/customer_accounts?workspace_id=ws_demo
 
 ### `GET /api/data-schema/requirements`
 
-Возвращает локальный файл требований модуля, если он есть.
+Возвращает требования, динамически разрешенные по `requirements_source.json`, и не изменяет внешний файл.
 
 Пример:
 

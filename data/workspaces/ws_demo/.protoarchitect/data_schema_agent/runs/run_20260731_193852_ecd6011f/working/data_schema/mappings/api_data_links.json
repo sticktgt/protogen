@@ -1,0 +1,31 @@
+{
+  "links": [
+    {
+      "id": "api_accounts_resource",
+      "data_target_type": "entity",
+      "data_target_id": "account",
+      "external_schema": "api_schema",
+      "external_target_type": "resource",
+      "external_target_id": "accounts",
+      "relation": "exposed_by"
+    },
+    {
+      "id": "api_transfers_resource",
+      "data_target_type": "entity",
+      "data_target_id": "transfer",
+      "external_schema": "api_schema",
+      "external_target_type": "resource",
+      "external_target_id": "transfers",
+      "relation": "exposed_by"
+    },
+    {
+      "id": "api_cards_block_operation",
+      "data_target_type": "field",
+      "data_target_id": "card.status",
+      "external_schema": "api_schema",
+      "external_target_type": "operation",
+      "external_target_id": "block_card",
+      "relation": "changed_by"
+    }
+  ]
+}

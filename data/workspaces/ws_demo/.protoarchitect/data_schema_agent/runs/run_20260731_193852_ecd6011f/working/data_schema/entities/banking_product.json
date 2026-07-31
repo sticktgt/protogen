@@ -1,0 +1,49 @@
+{
+  "id": "banking_product",
+  "title": "Банковский продукт",
+  "description": "Банковский продукт для каталога",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор продукта",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор продукта"
+    },
+    {
+      "id": "title",
+      "title": "Название",
+      "type": "string",
+      "required": true,
+      "description": "Название продукта"
+    },
+    {
+      "id": "category",
+      "title": "Категория",
+      "type": "string",
+      "required": true,
+      "description": "Категория продукта"
+    },
+    {
+      "id": "description",
+      "title": "Описание",
+      "type": "text",
+      "required": false,
+      "description": "Краткое описание продукта"
+    },
+    {
+      "id": "action_text",
+      "title": "Текст действия",
+      "type": "string",
+      "required": false,
+      "description": "Текст действия на карточке"
+    },
+    {
+      "id": "target_section",
+      "title": "Целевой раздел",
+      "type": "string",
+      "required": false,
+      "description": "Целевой раздел для перехода"
+    }
+  ]
+}

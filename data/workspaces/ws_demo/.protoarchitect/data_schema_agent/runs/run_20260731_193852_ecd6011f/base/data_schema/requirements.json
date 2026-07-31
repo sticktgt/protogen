@@ -1,0 +1,79 @@
+{
+  "projects": [
+    {
+      "id": "bank-front-office",
+      "title": "Банковский фронт-офис ФЛ"
+    }
+  ],
+  "groups": [
+    {
+      "id": "accounts",
+      "title": "Счета",
+      "project_id": "bank-front-office"
+    },
+    {
+      "id": "payments",
+      "title": "Платежи и переводы",
+      "project_id": "bank-front-office"
+    },
+    {
+      "id": "cards",
+      "title": "Карты",
+      "project_id": "bank-front-office"
+    },
+    {
+      "id": "products",
+      "title": "Банковские продукты",
+      "project_id": "bank-front-office"
+    },
+    {
+      "id": "analytics",
+      "title": "Аналитика",
+      "project_id": "bank-front-office"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-ACCOUNTS-LIST",
+      "title": "Пользователь видит список счетов и остатки",
+      "group_id": "accounts",
+      "type": "functional",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-TRANSFER-OWN",
+      "title": "Пользователь выполняет перевод между своими счетами",
+      "group_id": "payments",
+      "type": "functional",
+      "status": "draft"
+    },
+    {
+      "id": "REQ-CARD-BLOCK",
+      "title": "Пользователь блокирует карту с указанием причины",
+      "group_id": "cards",
+      "type": "functional",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-DEPOSIT-OPEN",
+      "title": "Пользователь открывает депозит по выбранным условиям",
+      "group_id": "products",
+      "type": "functional",
+      "status": "draft"
+    },
+    {
+      "id": "REQ-CREDIT-APPLY",
+      "title": "Пользователь подает заявку на кредит",
+      "group_id": "products",
+      "type": "functional",
+      "status": "draft"
+    },
+    {
+      "id": "REQ-SPENDING-ANALYTICS",
+      "title": "Пользователь видит аналитику трат по категориям",
+      "group_id": "analytics",
+      "type": "functional",
+      "status": "draft"
+    }
+  ]
+}

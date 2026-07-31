@@ -2,6 +2,13 @@ import { state, entities, entityTitle, relations, selectEntity, selectField } fr
 import { escapeHtml } from './html-utils.js';
 import { renderTypeBadge } from './data-types.js';
 import { renderAll } from './main.js';
+import {
+  entityPreviewChange,
+  fieldPreviewChange,
+  previewChangeBadge,
+  previewChangeClass,
+  relationPreviewChange
+} from './preview-change-markers.js';
 
 const cardinalityLabels = {
   one_to_one: '1:1',
@@ -75,22 +82,26 @@ function renderEntityCard(item) {
   const visibleRelations = entityRelations.slice(0, CARD_RELATION_LIMIT);
   const hiddenRelationCount = Math.max(0, entityRelations.length - visibleRelations.length);
 
+  const entityChange = entityPreviewChange(entity.id);
   return `
-    <article class="entity-card" data-open-entity="${escapeHtml(entity.id)}">
+    <article class="entity-card ${previewChangeClass(entityChange)}" data-open-entity="${escapeHtml(entity.id)}">
       <div class="entity-card-header">
         <div>
-          <div class="entity-title">${escapeHtml(entity.title)}</div>
+          <div class="entity-title">${escapeHtml(entity.title)} ${previewChangeBadge(entityChange)}</div>
           <div class="entity-id">${escapeHtml(entity.id)}</div>
         </div>
         <span class="badge">${fields.length} полей</span>
       </div>
       <div class="field-list compact-field-list">
-        ${visibleFields.map(field => `
-          <div class="field-row" data-open-field="${escapeHtml(field.id)}">
-            <span class="field-row-title">${escapeHtml(field.title)} ${field.required ? '<span class="required-mark">*</span>' : ''}</span>
+        ${visibleFields.map(field => {
+          const fieldChange = fieldPreviewChange(entity.id, field.id);
+          return `
+          <div class="field-row ${previewChangeClass(fieldChange)}" data-open-field="${escapeHtml(field.id)}">
+            <span class="field-row-title">${escapeHtml(field.title)} ${field.required ? '<span class="required-mark">*</span>' : ''} ${previewChangeBadge(fieldChange, { compact: true })}</span>
             ${renderTypeBadge(field.type)}
           </div>
-        `).join('')}
+        `;
+        }).join('')}
       </div>
       ${hiddenFieldCount ? `<div class="more-fields-note">Показаны первые ${visibleFields.length} из ${fields.length}. Еще ${hiddenFieldCount} полей.</div>` : ''}
       <div class="entity-card-relations">
@@ -106,10 +117,11 @@ function renderCardRelation(relation, entityId) {
   const outgoing = relation.source_entity === entityId;
   const otherEntityId = outgoing ? relation.target_entity : relation.source_entity;
   const direction = outgoing ? '→' : '←';
+  const relationChange = relationPreviewChange(relation.id);
   return `
-    <div class="card-relation-row" data-open-entity-relations="${escapeHtml(entityId)}" data-related-entity="${escapeHtml(otherEntityId)}">
+    <div class="card-relation-row ${previewChangeClass(relationChange)}" data-open-entity-relations="${escapeHtml(entityId)}" data-related-entity="${escapeHtml(otherEntityId)}">
       <span class="relation-direction">${direction}</span>
-      <span class="field-row-title">${escapeHtml(entityTitle(otherEntityId))}</span>
+      <span class="field-row-title">${escapeHtml(entityTitle(otherEntityId))} ${previewChangeBadge(relationChange, { compact: true })}</span>
       <span class="badge">${escapeHtml(cardinalityLabels[relation.cardinality] || relation.cardinality)}</span>
     </div>
   `;

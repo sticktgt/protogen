@@ -20,6 +20,7 @@ DEFAULT_DICTIONARIES = {"dictionaries": []}
 DEFAULT_INDEX = {"entities": [], "relations": [], "dictionaries": []}
 DEFAULT_LINKS = {"links": []}
 DEFAULT_REQUIREMENTS = {"projects": [], "groups": [], "requirements": []}
+DEFAULT_REQUIREMENTS_SOURCE = {"type": "workspace_file", "path": ""}
 
 
 def module_root(state: AppState, workspace_id: str) -> Path:
@@ -64,6 +65,10 @@ def code_links_path(root: Path) -> Path:
 
 def requirements_path(root: Path) -> Path:
     return root / "requirements.json"
+
+
+def requirements_source_path(root: Path) -> Path:
+    return root / "requirements_source.json"
 
 
 def read_schema(root: Path) -> dict[str, Any]:
@@ -156,8 +161,19 @@ def write_code_links(root: Path, links: dict[str, Any]) -> None:
     write_json(code_links_path(root), links)
 
 
-def read_requirements(root: Path) -> dict[str, Any]:
-    return read_json(requirements_path(root), dict(DEFAULT_REQUIREMENTS))
+def read_requirements(root: Path, *, max_bytes: int) -> dict[str, Any]:
+    from backend.modules.data_schema.requirements_source import resolve_requirements
+
+    data, _ = resolve_requirements(root, max_bytes=max_bytes)
+    return data
+
+
+def read_requirements_source(root: Path) -> dict[str, Any]:
+    return read_json(requirements_source_path(root), dict(DEFAULT_REQUIREMENTS_SOURCE))
+
+
+def write_requirements_source(root: Path, source: dict[str, Any]) -> None:
+    write_json(requirements_source_path(root), source)
 
 
 def make_id(prefix: str = "item") -> str:

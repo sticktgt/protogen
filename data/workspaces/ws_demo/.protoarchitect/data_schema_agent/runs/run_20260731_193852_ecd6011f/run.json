@@ -1,0 +1,146 @@
+{
+  "run_id": "run_20260731_193852_ecd6011f",
+  "workspace_id": "ws_demo",
+  "status": "preview_ready",
+  "phase": "completed",
+  "attempt": 1,
+  "base_mode": "current",
+  "requirements_file_name": "bank_front_office_requirements_v3.json",
+  "requirements_source_path": "data_schema/bank_front_office_requirements_v3.json",
+  "requirements_source_sha256": "b5ec5f0493e478e479f12d57747a77c92970b3be7358eda4f465ecb6cbbbd6df",
+  "user_request": "",
+  "regeneration_comments": [],
+  "created_at": "2026-07-31T17:38:52.309760+00:00",
+  "started_at": "2026-07-31T17:38:52.309760+00:00",
+  "updated_at": "2026-07-31T17:44:33.566735+00:00",
+  "statistics": {
+    "entities": {
+      "added": 1,
+      "modified": 8,
+      "deleted": 0
+    },
+    "fields": {
+      "added": 35,
+      "modified": 47,
+      "deleted": 0
+    },
+    "relations": {
+      "added": 6,
+      "modified": 8,
+      "deleted": 0
+    },
+    "dictionaries": {
+      "added": 5,
+      "modified": 0,
+      "deleted": 0
+    },
+    "dictionary_values": {
+      "added": 19,
+      "modified": 0,
+      "deleted": 0
+    },
+    "requirement_links": {
+      "added": 236,
+      "modified": 0,
+      "deleted": 0
+    }
+  },
+  "agent_report": "Синхронизация схемы данных завершена. Требования: 77 с прямой трассировкой, 0 сквозных правил данных, 31 без влияния на логическую схему, 0 требуют уточнения.",
+  "agent_note": "",
+  "validation_errors": [],
+  "validation_error_count": 0,
+  "validation_warnings": [],
+  "config": {
+    "validation_retries": 1,
+    "semantic_review": {
+      "enabled": true,
+      "max_correction_rounds": 3,
+      "response_attempts": 2,
+      "max_issues": 5,
+      "max_context_bytes": 1048576
+    },
+    "domain": {
+      "logical_types": [
+        "string",
+        "text",
+        "integer",
+        "decimal",
+        "boolean",
+        "date",
+        "datetime",
+        "uuid",
+        "dictionary",
+        "json"
+      ],
+      "cardinalities": [
+        "one_to_one",
+        "one_to_many",
+        "many_to_one",
+        "many_to_many"
+      ]
+    }
+  },
+  "execution": {
+    "max_llm_calls": 18,
+    "max_tool_calls": 28,
+    "max_total_tokens": 600000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 80,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "retention": {
+    "completed_event_limit": 300
+  },
+  "llm": {
+    "provider": "ollama-cloud",
+    "model": "qwen3.5:397b",
+    "base_url": "https://ollama.com/v1"
+  },
+  "semantic_review": {
+    "status": "approved",
+    "decision": "approve",
+    "blocking": false,
+    "review_id": "verification_1",
+    "review_kind": "correction_verification",
+    "coverage_complete": true,
+    "verified_issue_ids": [
+      "coverage_1_issue_1"
+    ],
+    "reviewed_at": "2026-07-31T17:44:33.551998+00:00",
+    "summary": "Исходное advisory issue coverage_1_issue_1 исправлено — значение 'suspected_fraud' с title 'Подозрение на мошенничество' добавлено в словарь card_block_reason. Требования REQ-0073 и REQ-0093 полностью покрыты. Схема данных применима для прототипа банковского фронт-офиса.",
+    "review_note": "",
+    "strengths": [],
+    "issue_counts": {
+      "must_fix": 0,
+      "advisory": 0
+    },
+    "issues": [],
+    "correction_pending": false,
+    "source_reviews": [
+      {
+        "review_id": "coverage_1",
+        "review_kind": "coverage",
+        "decision": "approve",
+        "coverage_complete": true,
+        "issue_counts": {
+          "must_fix": 0,
+          "advisory": 1
+        }
+      },
+      {
+        "review_id": "consistency_1",
+        "review_kind": "consistency",
+        "decision": "approve",
+        "coverage_complete": true,
+        "issue_counts": {
+          "must_fix": 0,
+          "advisory": 0
+        }
+      }
+    ]
+  },
+  "apply_blocked": false,
+  "error": "",
+  "stop_reason": ""
+}

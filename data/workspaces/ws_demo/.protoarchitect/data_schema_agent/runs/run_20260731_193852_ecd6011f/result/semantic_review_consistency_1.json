@@ -1,0 +1,23 @@
+{
+  "status": "approved",
+  "decision": "approve",
+  "blocking": false,
+  "review_id": "consistency_1",
+  "review_kind": "consistency",
+  "coverage_complete": true,
+  "verified_issue_ids": [],
+  "reviewed_at": "2026-07-31T17:44:12.385675+00:00",
+  "summary": "Схема внутренне согласована. Все основные сущности (клиент, счет, карта, операция, перевод, заявки, категории, продукты) содержат требуемые атрибуты согласно REQ-0006, REQ-0029, REQ-0034, REQ-0045, REQ-0056, REQ-0065, REQ-0069, REQ-0081, REQ-0024. Связи между сущностями корректны: клиент-счета (REQ-0033), клиент-карты и счет-карты (REQ-0070), счет-операции (REQ-0034), перевод-счета списания/зачисления (REQ-0045), операция-категория (REQ-0036), заявки-клиент (REQ-0058, REQ-0067). Словари соответствуют требованиям (REQ-0088-0092). Противоречий в cardinality, обязательности полей или дублирования обязательных фактов не выявлено.",
+  "review_note": "",
+  "strengths": [
+    "Все обязательные атрибуты сущностей присутствуют согласно требованиям",
+    "Связи customer↔account, account↔card, account↔transaction, transfer↔account реализованы через поля и relations",
+    "Словари currency, account_status, card_status, card_block_reason, application_status, transaction_direction соответствуют требованиям",
+    "Опциональные поля (email, category_id, comment) корректно marked как required:false где требования допускают необязательность"
+  ],
+  "issue_counts": {
+    "must_fix": 0,
+    "advisory": 0
+  },
+  "issues": []
+}

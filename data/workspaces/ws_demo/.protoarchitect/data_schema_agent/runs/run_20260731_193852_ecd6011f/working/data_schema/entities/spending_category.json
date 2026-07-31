@@ -1,0 +1,42 @@
+{
+  "id": "spending_category",
+  "title": "Категория трат",
+  "description": "Категория для аналитики расходов клиента",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор категории",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор категории"
+    },
+    {
+      "id": "title",
+      "title": "Название",
+      "type": "string",
+      "required": true,
+      "description": "Название категории"
+    },
+    {
+      "id": "description",
+      "title": "Описание",
+      "type": "text",
+      "required": false,
+      "description": "Описание категории"
+    },
+    {
+      "id": "icon",
+      "title": "Иконка",
+      "type": "string",
+      "required": false,
+      "description": "Иконка категории"
+    },
+    {
+      "id": "color",
+      "title": "Цвет",
+      "type": "string",
+      "required": false,
+      "description": "Цвет категории для визуализации"
+    }
+  ]
+}

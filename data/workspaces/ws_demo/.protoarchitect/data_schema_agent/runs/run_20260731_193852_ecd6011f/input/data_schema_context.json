@@ -1,0 +1,654 @@
+{
+  "schema": {
+    "schema_version": "0.1",
+    "title": "Логическая схема данных банковского фронт-офиса",
+    "description": "Демо-схема данных для проверки отображения и редактирования.",
+    "entities": [
+      {
+        "id": "customer",
+        "title": "Клиент",
+        "file": "entities/customer.json"
+      },
+      {
+        "id": "account",
+        "title": "Счет",
+        "file": "entities/account.json"
+      },
+      {
+        "id": "card",
+        "title": "Карта",
+        "file": "entities/card.json"
+      },
+      {
+        "id": "transaction",
+        "title": "Операция по счету",
+        "file": "entities/transaction.json"
+      },
+      {
+        "id": "transfer",
+        "title": "Перевод между счетами",
+        "file": "entities/transfer.json"
+      },
+      {
+        "id": "deposit_application",
+        "title": "Заявка на депозит",
+        "file": "entities/deposit_application.json"
+      },
+      {
+        "id": "credit_application",
+        "title": "Заявка на кредит",
+        "file": "entities/credit_application.json"
+      },
+      {
+        "id": "spending_category",
+        "title": "Категория трат",
+        "file": "entities/spending_category.json"
+      }
+    ]
+  },
+  "entities": {
+    "customer": {
+      "id": "customer",
+      "title": "Клиент",
+      "description": "Физическое лицо, использующее банковский фронт-офис.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор клиента",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор клиента."
+        },
+        {
+          "id": "full_name",
+          "title": "ФИО",
+          "type": "string",
+          "required": true,
+          "description": "Полное имя клиента."
+        },
+        {
+          "id": "phone",
+          "title": "Телефон",
+          "type": "string",
+          "required": true,
+          "description": "Контактный телефон."
+        },
+        {
+          "id": "email",
+          "title": "Email",
+          "type": "string",
+          "required": false,
+          "description": "Адрес электронной почты."
+        },
+        {
+          "id": "status",
+          "title": "Статус клиента",
+          "type": "dictionary",
+          "dictionary_id": "customer_status",
+          "required": true,
+          "description": "Текущий статус клиента."
+        }
+      ]
+    },
+    "account": {
+      "id": "account",
+      "title": "Счет",
+      "description": "Банковский счет клиента.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор счета",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор счета."
+        },
+        {
+          "id": "customer_id",
+          "title": "Клиент",
+          "type": "uuid",
+          "required": true,
+          "description": "Идентификатор владельца счета."
+        },
+        {
+          "id": "number",
+          "title": "Номер счета",
+          "type": "string",
+          "required": true,
+          "description": "Номер счета, отображаемый пользователю."
+        },
+        {
+          "id": "balance",
+          "title": "Баланс",
+          "type": "decimal",
+          "required": true,
+          "description": "Текущий остаток по счету."
+        },
+        {
+          "id": "currency",
+          "title": "Валюта",
+          "type": "dictionary",
+          "dictionary_id": "currency",
+          "required": true,
+          "description": "Валюта счета."
+        },
+        {
+          "id": "status",
+          "title": "Статус счета",
+          "type": "dictionary",
+          "dictionary_id": "account_status",
+          "required": true,
+          "description": "Состояние счета."
+        }
+      ]
+    },
+    "card": {
+      "id": "card",
+      "title": "Карта",
+      "description": "Банковская карта клиента.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор карты",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор карты."
+        },
+        {
+          "id": "customer_id",
+          "title": "Клиент",
+          "type": "uuid",
+          "required": true,
+          "description": "Владелец карты."
+        },
+        {
+          "id": "account_id",
+          "title": "Счет",
+          "type": "uuid",
+          "required": true,
+          "description": "Счет, к которому привязана карта."
+        },
+        {
+          "id": "masked_number",
+          "title": "Маскированный номер",
+          "type": "string",
+          "required": true,
+          "description": "Номер карты в маскированном виде."
+        },
+        {
+          "id": "status",
+          "title": "Статус карты",
+          "type": "dictionary",
+          "dictionary_id": "card_status",
+          "required": true,
+          "description": "Состояние карты."
+        },
+        {
+          "id": "block_reason",
+          "title": "Причина блокировки",
+          "type": "dictionary",
+          "dictionary_id": "card_block_reason",
+          "required": false,
+          "description": "Причина блокировки карты."
+        }
+      ]
+    },
+    "transaction": {
+      "id": "transaction",
+      "title": "Операция по счету",
+      "description": "Движение средств по счету клиента.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор операции",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор операции."
+        },
+        {
+          "id": "account_id",
+          "title": "Счет",
+          "type": "uuid",
+          "required": true,
+          "description": "Счет операции."
+        },
+        {
+          "id": "amount",
+          "title": "Сумма",
+          "type": "decimal",
+          "required": true,
+          "description": "Сумма операции."
+        },
+        {
+          "id": "currency",
+          "title": "Валюта",
+          "type": "dictionary",
+          "dictionary_id": "currency",
+          "required": true,
+          "description": "Валюта операции."
+        },
+        {
+          "id": "operation_date",
+          "title": "Дата операции",
+          "type": "datetime",
+          "required": true,
+          "description": "Дата и время операции."
+        },
+        {
+          "id": "description",
+          "title": "Описание",
+          "type": "text",
+          "required": false,
+          "description": "Назначение или описание операции."
+        }
+      ]
+    },
+    "transfer": {
+      "id": "transfer",
+      "title": "Перевод между счетами",
+      "description": "Перевод средств между своими счетами клиента.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор перевода",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор перевода."
+        },
+        {
+          "id": "customer_id",
+          "title": "Клиент",
+          "type": "uuid",
+          "required": true,
+          "description": "Клиент, создающий перевод."
+        },
+        {
+          "id": "from_account_id",
+          "title": "Счет списания",
+          "type": "uuid",
+          "required": true,
+          "description": "Счет, с которого списываются средства."
+        },
+        {
+          "id": "to_account_id",
+          "title": "Счет зачисления",
+          "type": "uuid",
+          "required": true,
+          "description": "Счет, на который зачисляются средства."
+        },
+        {
+          "id": "amount",
+          "title": "Сумма",
+          "type": "decimal",
+          "required": true,
+          "description": "Сумма перевода."
+        },
+        {
+          "id": "execution_date",
+          "title": "Дата исполнения",
+          "type": "date",
+          "required": false,
+          "description": "Плановая дата исполнения перевода."
+        },
+        {
+          "id": "status",
+          "title": "Статус",
+          "type": "dictionary",
+          "dictionary_id": "operation_status",
+          "required": true,
+          "description": "Статус перевода."
+        }
+      ]
+    },
+    "deposit_application": {
+      "id": "deposit_application",
+      "title": "Заявка на депозит",
+      "description": "Заявка клиента на открытие депозита.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор заявки",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор заявки."
+        },
+        {
+          "id": "customer_id",
+          "title": "Клиент",
+          "type": "uuid",
+          "required": true,
+          "description": "Клиент, подающий заявку."
+        },
+        {
+          "id": "source_account_id",
+          "title": "Счет списания",
+          "type": "uuid",
+          "required": true,
+          "description": "Счет для открытия депозита."
+        },
+        {
+          "id": "amount",
+          "title": "Сумма открытия",
+          "type": "decimal",
+          "required": true,
+          "description": "Первоначальная сумма депозита."
+        },
+        {
+          "id": "currency",
+          "title": "Валюта",
+          "type": "dictionary",
+          "dictionary_id": "currency",
+          "required": true,
+          "description": "Валюта депозита."
+        },
+        {
+          "id": "term_months",
+          "title": "Срок в месяцах",
+          "type": "integer",
+          "required": true,
+          "description": "Срок депозита."
+        },
+        {
+          "id": "capitalization",
+          "title": "Капитализация",
+          "type": "boolean",
+          "required": false,
+          "description": "Признак капитализации процентов."
+        }
+      ]
+    },
+    "credit_application": {
+      "id": "credit_application",
+      "title": "Заявка на кредит",
+      "description": "Заявка клиента на получение кредита.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор заявки",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор заявки."
+        },
+        {
+          "id": "customer_id",
+          "title": "Клиент",
+          "type": "uuid",
+          "required": true,
+          "description": "Клиент, подающий заявку."
+        },
+        {
+          "id": "product_type",
+          "title": "Тип кредита",
+          "type": "dictionary",
+          "dictionary_id": "credit_product_type",
+          "required": true,
+          "description": "Выбранный тип кредита."
+        },
+        {
+          "id": "requested_amount",
+          "title": "Запрошенная сумма",
+          "type": "decimal",
+          "required": true,
+          "description": "Сумма кредита."
+        },
+        {
+          "id": "term_months",
+          "title": "Срок",
+          "type": "integer",
+          "required": true,
+          "description": "Срок кредита в месяцах."
+        },
+        {
+          "id": "monthly_income",
+          "title": "Ежемесячный доход",
+          "type": "decimal",
+          "required": true,
+          "description": "Доход клиента для оценки заявки."
+        },
+        {
+          "id": "status",
+          "title": "Статус заявки",
+          "type": "dictionary",
+          "dictionary_id": "application_status",
+          "required": true,
+          "description": "Состояние заявки."
+        }
+      ]
+    },
+    "spending_category": {
+      "id": "spending_category",
+      "title": "Категория трат",
+      "description": "Категория для аналитики расходов клиента.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор категории",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор категории."
+        },
+        {
+          "id": "title",
+          "title": "Название",
+          "type": "string",
+          "required": true,
+          "description": "Название категории."
+        },
+        {
+          "id": "description",
+          "title": "Описание",
+          "type": "text",
+          "required": false,
+          "description": "Описание категории."
+        }
+      ]
+    }
+  },
+  "relations": {
+    "relations": [
+      {
+        "id": "customer_accounts",
+        "title": "Счета клиента",
+        "source_entity": "customer",
+        "target_entity": "account",
+        "cardinality": "one_to_many",
+        "description": "Один клиент может иметь несколько счетов."
+      },
+      {
+        "id": "customer_cards",
+        "title": "Карты клиента",
+        "source_entity": "customer",
+        "target_entity": "card",
+        "cardinality": "one_to_many",
+        "description": "Один клиент может иметь несколько карт."
+      },
+      {
+        "id": "account_cards",
+        "title": "Карты счета",
+        "source_entity": "account",
+        "target_entity": "card",
+        "cardinality": "one_to_many",
+        "description": "К одному счету может быть привязано несколько карт."
+      },
+      {
+        "id": "account_transactions",
+        "title": "Операции счета",
+        "source_entity": "account",
+        "target_entity": "transaction",
+        "cardinality": "one_to_many",
+        "description": "По счету отображается история операций."
+      },
+      {
+        "id": "customer_transfers",
+        "title": "Переводы клиента",
+        "source_entity": "customer",
+        "target_entity": "transfer",
+        "cardinality": "one_to_many",
+        "description": "Клиент создает переводы между своими счетами."
+      },
+      {
+        "id": "customer_deposit_applications",
+        "title": "Депозитные заявки клиента",
+        "source_entity": "customer",
+        "target_entity": "deposit_application",
+        "cardinality": "one_to_many",
+        "description": "Клиент может подать несколько заявок на депозит."
+      },
+      {
+        "id": "customer_credit_applications",
+        "title": "Кредитные заявки клиента",
+        "source_entity": "customer",
+        "target_entity": "credit_application",
+        "cardinality": "one_to_many",
+        "description": "Клиент может подать несколько заявок на кредит."
+      },
+      {
+        "id": "transaction_spending_category",
+        "title": "Категория операции",
+        "source_entity": "transaction",
+        "target_entity": "spending_category",
+        "cardinality": "many_to_one",
+        "description": "Операция может быть отнесена к категории трат."
+      }
+    ]
+  },
+  "dictionaries": {
+    "dictionaries": [
+      {
+        "id": "currency",
+        "title": "Валюта",
+        "values": [
+          {
+            "id": "RUB",
+            "title": "Российский рубль"
+          },
+          {
+            "id": "USD",
+            "title": "Доллар США"
+          },
+          {
+            "id": "EUR",
+            "title": "Евро"
+          }
+        ]
+      },
+      {
+        "id": "customer_status",
+        "title": "Статус клиента",
+        "values": [
+          {
+            "id": "active",
+            "title": "Активный"
+          },
+          {
+            "id": "blocked",
+            "title": "Заблокирован"
+          }
+        ]
+      },
+      {
+        "id": "account_status",
+        "title": "Статус счета",
+        "values": [
+          {
+            "id": "active",
+            "title": "Активный"
+          },
+          {
+            "id": "closed",
+            "title": "Закрыт"
+          }
+        ]
+      },
+      {
+        "id": "card_status",
+        "title": "Статус карты",
+        "values": [
+          {
+            "id": "active",
+            "title": "Активна"
+          },
+          {
+            "id": "blocked",
+            "title": "Заблокирована"
+          }
+        ]
+      },
+      {
+        "id": "card_block_reason",
+        "title": "Причина блокировки карты",
+        "values": [
+          {
+            "id": "lost",
+            "title": "Утеря"
+          },
+          {
+            "id": "stolen",
+            "title": "Кража"
+          },
+          {
+            "id": "other",
+            "title": "Другое"
+          }
+        ]
+      },
+      {
+        "id": "operation_status",
+        "title": "Статус операции",
+        "values": [
+          {
+            "id": "draft",
+            "title": "Черновик"
+          },
+          {
+            "id": "completed",
+            "title": "Исполнена"
+          },
+          {
+            "id": "rejected",
+            "title": "Отклонена"
+          }
+        ]
+      },
+      {
+        "id": "application_status",
+        "title": "Статус заявки",
+        "values": [
+          {
+            "id": "draft",
+            "title": "Черновик"
+          },
+          {
+            "id": "submitted",
+            "title": "Отправлена"
+          },
+          {
+            "id": "approved",
+            "title": "Одобрена"
+          },
+          {
+            "id": "rejected",
+            "title": "Отклонена"
+          }
+        ]
+      },
+      {
+        "id": "credit_product_type",
+        "title": "Тип кредита",
+        "values": [
+          {
+            "id": "consumer",
+            "title": "Потребительский"
+          },
+          {
+            "id": "mortgage",
+            "title": "Ипотека"
+          },
+          {
+            "id": "car",
+            "title": "Автокредит"
+          }
+        ]
+      }
+    ]
+  }
+}

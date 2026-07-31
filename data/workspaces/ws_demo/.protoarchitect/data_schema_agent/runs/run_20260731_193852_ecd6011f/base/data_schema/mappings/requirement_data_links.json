@@ -1,0 +1,68 @@
+{
+  "links": [
+    {
+      "id": "req_accounts_account",
+      "requirement_id": "REQ-ACCOUNTS-LIST",
+      "target_type": "entity",
+      "target_id": "account",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_accounts_balance",
+      "requirement_id": "REQ-ACCOUNTS-LIST",
+      "target_type": "field",
+      "target_id": "account.balance",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_transfer_entity",
+      "requirement_id": "REQ-TRANSFER-OWN",
+      "target_type": "entity",
+      "target_id": "transfer",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_card_block_status",
+      "requirement_id": "REQ-CARD-BLOCK",
+      "target_type": "field",
+      "target_id": "card.status",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_card_block_reason",
+      "requirement_id": "REQ-CARD-BLOCK",
+      "target_type": "field",
+      "target_id": "card.block_reason",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_deposit_app",
+      "requirement_id": "REQ-DEPOSIT-OPEN",
+      "target_type": "entity",
+      "target_id": "deposit_application",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_credit_app",
+      "requirement_id": "REQ-CREDIT-APPLY",
+      "target_type": "entity",
+      "target_id": "credit_application",
+      "relation": "defines",
+      "implementation_status": "planned"
+    },
+    {
+      "id": "req_spending_category",
+      "requirement_id": "REQ-SPENDING-ANALYTICS",
+      "target_type": "entity",
+      "target_id": "spending_category",
+      "relation": "defines",
+      "implementation_status": "planned"
+    }
+  ]
+}

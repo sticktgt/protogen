@@ -1,0 +1,56 @@
+{
+  "summary": "Добавлено значение 'suspected_fraud' в словарь card_block_reason для соответствия требованиям REQ-0073 и REQ-0091",
+  "write_dictionaries": [],
+  "write_entities": [],
+  "write_relations": [],
+  "patch_dictionaries": [
+    {
+      "id": "card_block_reason",
+      "values": [
+        {
+          "id": "suspected_fraud",
+          "title": "Подозрение на мошенничество"
+        }
+      ]
+    }
+  ],
+  "patch_entities": [],
+  "patch_relations": [],
+  "remove_targets": [],
+  "requirement_updates": [
+    {
+      "requirement_id": "REQ-0073",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "card.block_reason",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "dictionary",
+          "target_id": "card_block_reason",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0091",
+      "links": [
+        {
+          "target_type": "dictionary",
+          "target_id": "card_block_reason",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    }
+  ]
+}

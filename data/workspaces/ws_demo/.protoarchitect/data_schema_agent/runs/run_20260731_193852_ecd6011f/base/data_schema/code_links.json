@@ -1,0 +1,20 @@
+{
+  "links": [
+    {
+      "id": "code_account_model",
+      "target_type": "entity",
+      "target_id": "account",
+      "code_type": "model",
+      "path": "prototype/backend/models/account.py",
+      "status": "planned"
+    },
+    {
+      "id": "code_card_model",
+      "target_type": "entity",
+      "target_id": "card",
+      "code_type": "model",
+      "path": "prototype/backend/models/card.py",
+      "status": "planned"
+    }
+  ]
+}
