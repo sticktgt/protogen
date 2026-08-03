@@ -1,0 +1,67 @@
+{
+  "status": "needs_revision",
+  "decision": "revise",
+  "blocking": true,
+  "review_id": "consistency_1",
+  "review_kind": "consistency",
+  "coverage_complete": true,
+  "verified_issue_ids": [],
+  "reviewed_at": "2026-08-03T12:21:38.696014+00:00",
+  "summary": "Выявлено одно критическое противоречие: требование REQ-0047 прямо указывает на связь операций с переводом, но в схеме отсутствует relation между transfer и transaction. Без этой связи невозможно представить факт создания операций списания и зачисления как результата перевода. Также обнаружены потенциальные избыточности и необязательные поля, требующие уточнения.",
+  "review_note": "",
+  "strengths": [
+    "Сущности покрывают все основные предметные области: клиент, счета, карты, операции, переводы, заявки на вклад и кредит, категории трат",
+    "Связи customer→account, customer→card, account→card, account→transaction корректно отражают требования REQ-0033, REQ-0070, REQ-0034",
+    "Справочники currency, account_status, card_status, application_status соответствуют требованиям REQ-0088-REQ-0092",
+    "Атрибуты сущностей в целом соответствуют требованиям к данным (REQ-0029, REQ-0045, REQ-0056, REQ-0065, REQ-0069)"
+  ],
+  "issue_counts": {
+    "must_fix": 1,
+    "advisory": 1
+  },
+  "issues": [
+    {
+      "id": "consistency_1_issue_1",
+      "source_review_id": "consistency_1",
+      "disposition": "must_fix",
+      "category": "Отсутствующая обязательная связь",
+      "message": "Требование REQ-0047 прямо указывает: «Обе операции связаны с выполненным переводом». В схеме сущности transfer и transaction не имеют связи между собой, что не позволяет определить, какие операции созданы конкретным переводом.",
+      "recommendation": "Добавить relation «transfer_transactions» между transfer и transaction (one_to_many) или добавить field transfer_id в сущность transaction для связи операций с переводом.",
+      "requirement_ids": [
+        "REQ-0047"
+      ],
+      "targets": [
+        "entity:transfer",
+        "entity:transaction"
+      ]
+    },
+    {
+      "id": "consistency_1_issue_2",
+      "source_review_id": "consistency_1",
+      "disposition": "advisory",
+      "category": "Избыточность атрибутов клиента",
+      "message": "В сущности customer присутствуют одновременно status (dictionary customer_status со значениями active/blocked) и is_active (boolean). Эти поля могут дублировать информацию об активности клиента.",
+      "recommendation": "Оставить один механизм определения активности: либо использовать status с явными значениями, либо is_active. Если оба поля необходимы для разных сценариев, документировать различие в описании полей.",
+      "requirement_ids": [
+        "REQ-0006"
+      ],
+      "targets": [
+        "field:customer.status",
+        "field:customer.is_active"
+      ]
+    }
+  ],
+  "cleanup_candidates": [
+    {
+      "id": "consistency_1_cleanup_1",
+      "source_review_id": "consistency_1",
+      "category": "Избыточная relation",
+      "message": "Relation «transaction_account» (transaction → account, many_to_one) дублирует обратную сторону relation «account_transactions» (account → transaction, one_to_many). Обе relations представляют одну и ту же связь между счетом и операцией.",
+      "recommendation": "Рассмотреть удаление одной из relations для упрощения схемы. Оставить только account_transactions как основную связь, так как навигация от счета к операциям более востребована.",
+      "requirement_ids": [],
+      "targets": [
+        "relation:transaction_account"
+      ]
+    }
+  ]
+}

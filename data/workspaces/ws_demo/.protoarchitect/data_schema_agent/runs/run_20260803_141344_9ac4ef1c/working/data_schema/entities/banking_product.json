@@ -1,0 +1,49 @@
+{
+  "id": "banking_product",
+  "title": "Банковский продукт",
+  "description": "Карточка банковского продукта в каталоге: счета, вклады, кредиты, карты.",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор продукта",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор продукта."
+    },
+    {
+      "id": "title",
+      "title": "Название продукта",
+      "type": "string",
+      "required": true,
+      "description": "Название продукта для отображения в карточке."
+    },
+    {
+      "id": "category",
+      "title": "Категория продукта",
+      "type": "string",
+      "required": true,
+      "description": "Категория продукта: accounts, deposits, credits, cards."
+    },
+    {
+      "id": "description",
+      "title": "Описание продукта",
+      "type": "text",
+      "required": true,
+      "description": "Краткое описание продукта."
+    },
+    {
+      "id": "action_text",
+      "title": "Текст действия",
+      "type": "string",
+      "required": true,
+      "description": "Текст кнопки действия на карточке."
+    },
+    {
+      "id": "target_section",
+      "title": "Целевой раздел",
+      "type": "string",
+      "required": true,
+      "description": "Раздел перехода при клике на действие."
+    }
+  ]
+}

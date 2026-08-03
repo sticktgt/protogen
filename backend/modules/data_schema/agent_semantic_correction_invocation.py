@@ -7,6 +7,7 @@ from backend.modules.data_schema.agent_events import append_event, reserve_metri
 from backend.modules.data_schema.agent_json_arguments import decode_json_argument
 from backend.modules.data_schema.agent_limits import execution_limits
 from backend.modules.data_schema.agent_llm import create_chat_model
+from backend.modules.data_schema.agent_llm_retry import invoke_with_transient_llm_retry
 from backend.modules.data_schema.agent_monitor import AgentRunStopped, create_run_callback
 from backend.modules.data_schema.agent_semantic_correction_models import (
     SemanticCorrectionPlanPayload,
@@ -52,19 +53,26 @@ def invoke_semantic_correction_plan(
                 "\n\nПредыдущий ответ не соответствовал контракту инструмента. "
                 f"Исправь только формат полного плана. Техническая ошибка: {last_error}"
             )
-        response = bound.invoke(
-            [("system", system_prompt), ("user", prompt)],
-            config={
-                "callbacks": [callback],
-                "run_name": (
-                    f"data_schema_semantic_correction_{run_id}_{correction_round}_{response_attempt}"
-                ),
-                "metadata": {
-                    "run_id": run_id,
-                    "semantic_correction_round": correction_round,
-                    "response_attempt": response_attempt,
+        response = invoke_with_transient_llm_retry(
+            lambda: bound.invoke(
+                [("system", system_prompt), ("user", prompt)],
+                config={
+                    "callbacks": [callback],
+                    "run_name": (
+                        "data_schema_semantic_correction_"
+                        f"{run_id}_{correction_round}_{response_attempt}"
+                    ),
+                    "metadata": {
+                        "run_id": run_id,
+                        "semantic_correction_round": correction_round,
+                        "response_attempt": response_attempt,
+                    },
                 },
-            },
+            ),
+            agent_config=agent_config,
+            module_root=module_root,
+            run_id=run_id,
+            operation_name=f"LLM correction round {correction_round}",
         )
         try:
             args = _correction_tool_args(response)

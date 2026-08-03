@@ -1,0 +1,159 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "entities": 9,
+    "fields": 83,
+    "relations": 14,
+    "dictionaries": 12,
+    "dictionary_values": 36,
+    "requirement_links": 329
+  },
+  "preservation": {
+    "missing_base_objects": []
+  },
+  "assessment_counts": {
+    "linked": 81,
+    "cross_cutting_data": 0,
+    "no_data": 27,
+    "unclear": 0,
+    "unclassified": 0
+  },
+  "correction_applied": true,
+  "correction_error": "",
+  "correction_operations": [
+    {
+      "operation": "write_schema_core",
+      "result": {
+        "written": [
+          {
+            "id": "banking_product",
+            "title": "Банковский продукт",
+            "fields": [
+              "id",
+              "title",
+              "category",
+              "description",
+              "action_text",
+              "target_section"
+            ]
+          }
+        ],
+        "entity_count": 9,
+        "canonical_references": {
+          "entities": [
+            {
+              "target_type": "entity",
+              "entity_id": "banking_product"
+            }
+          ],
+          "fields": [
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "id"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "title"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "category"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "description"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "action_text"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "banking_product",
+              "field_id": "target_section"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "patch_dictionaries",
+      "result": {
+        "patched": [
+          {
+            "id": "currency",
+            "title": "Валюта",
+            "values": [
+              "RUB",
+              "USD",
+              "EUR"
+            ]
+          }
+        ],
+        "canonical_references": {
+          "dictionaries": [
+            {
+              "target_type": "dictionary",
+              "dictionary_id": "currency"
+            }
+          ],
+          "dictionary_values": [
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "currency",
+              "value_id": "RUB"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "currency",
+              "value_id": "USD"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "currency",
+              "value_id": "EUR"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "write_relations",
+      "result": {
+        "written": [
+          {
+            "id": "transfer_transactions",
+            "title": "Операции перевода",
+            "source_entity": "transfer",
+            "target_entity": "transaction",
+            "cardinality": "one_to_many",
+            "description": "Перевод связан с операциями списания и зачисления по счетам."
+          }
+        ],
+        "relation_count": 14,
+        "canonical_references": [
+          {
+            "target_type": "relation",
+            "relation_id": "transfer_transactions"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "patch_requirement_results",
+      "result": {
+        "patched_requirement_count": 8,
+        "requirement_link_count": 329,
+        "covered_requirement_count": 87,
+        "assessment_count": 27
+      }
+    }
+  ]
+}

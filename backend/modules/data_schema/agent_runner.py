@@ -118,6 +118,8 @@ def _run_agent_task(
         )
 
         agent = create_data_schema_agent(
+            module_root=module_root,
+            run_id=run_id,
             run_path=root,
             llm_settings=llm_settings,
             agent_config=agent_config,

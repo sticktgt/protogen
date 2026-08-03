@@ -6,6 +6,7 @@ from typing import Any
 from backend.modules.data_schema.agent_changes import write_result_files
 from backend.modules.data_schema.agent_diagnostics import build_diagnostics_archive
 from backend.modules.data_schema.agent_events import append_event
+from backend.modules.data_schema.agent_manual_review import ensure_manual_review_result
 from backend.modules.data_schema.agent_report import ensure_agent_report, finalize_agent_report
 from backend.modules.data_schema.agent_runs import get_run, run_root, update_run
 from backend.modules.data_schema.files import read_json, write_json
@@ -63,6 +64,7 @@ def finalize_preview(
             "issues": [],
         }
     apply_blocked = bool(review.get("blocking"))
+    manual_review = ensure_manual_review_result(root, review)
     append_event(
         module_root,
         run_id,
@@ -98,6 +100,7 @@ def finalize_preview(
         error="",
         stop_reason="",
         semantic_review=review,
+        manual_review=manual_review,
         apply_blocked=apply_blocked,
     )
     build_diagnostics_archive(module_root, run_id)

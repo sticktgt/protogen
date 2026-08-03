@@ -25,6 +25,23 @@ class SemanticReviewIssue(BaseModel):
         return normalize_array_argument(value, label=info.field_name, wrapper_key=info.field_name)
 
 
+class SemanticCleanupCandidate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    category: str = Field(min_length=1)
+    message: str = Field(min_length=1)
+    recommendation: str = Field(min_length=1)
+    requirement_ids: list[str] = Field(default_factory=list)
+    targets: list[str] = Field(default_factory=list)
+
+    @field_validator("requirement_ids", "targets", mode="before")
+    @classmethod
+    def normalize_string_arrays(cls, value: Any, info) -> Any:
+        if value is None:
+            return []
+        return normalize_array_argument(value, label=info.field_name, wrapper_key=info.field_name)
+
+
 class SemanticReviewPayload(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -38,10 +55,17 @@ class SemanticReviewPayload(BaseModel):
     verified_issue_ids: list[str] = Field(default_factory=list)
     summary: str = Field(min_length=1)
     issues: list[SemanticReviewIssue] = Field(default_factory=list)
+    cleanup_candidates: list[SemanticCleanupCandidate] = Field(default_factory=list)
     strengths: list[str] = Field(default_factory=list)
     review_note: str = ""
 
-    @field_validator("issues", "strengths", "verified_issue_ids", mode="before")
+    @field_validator(
+        "issues",
+        "cleanup_candidates",
+        "strengths",
+        "verified_issue_ids",
+        mode="before",
+    )
     @classmethod
     def normalize_arrays(cls, value: Any, info) -> Any:
         if value is None:

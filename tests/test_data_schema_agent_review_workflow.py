@@ -35,6 +35,11 @@ def test_direct_workflow_has_bounded_quality_gate() -> None:
     assert "correction_max_repeated_tool_calls" not in review
     assert review["max_issues"] == 5
     assert config["llm"]["max_retries"] == 0
+    assert config["llm"]["transient_retry"] == {
+        "max_retries": 1,
+        "delay_seconds": 2,
+        "status_codes": [500, 502, 503, 504],
+    }
     assert config["llm"]["reasoning_effort"]["ollama-cloud"] == {
         "generation": "none",
         "correction": "none",
@@ -57,6 +62,8 @@ def test_runner_uses_direct_generation_and_bounded_semantic_review() -> None:
     assert "validate_with_retry(" in runner
     assert "review_and_correct_semantics(" in runner
     assert "finalize_preview(" in runner
+    assert "module_root=module_root" in runner
+    assert "run_id=run_id" in runner
     assert "build_generation_plan(" not in runner
     assert "build_concept_mappings(" not in runner
     assert "build_traceability_results(" not in runner
@@ -165,6 +172,16 @@ def test_semantic_prompts_use_practical_quality_threshold() -> None:
     assert "это `advisory`" in consistency
     assert "Не требуй идеальной нормализации" in common
     assert "Произвольные дополнительные поля" in common
+    assert "`cleanup_candidates` — отдельная результирующая информация" in common
+    assert "не передаётся в correction или recovery" in common
+    assert "актуальный полный набор требований" in coverage
+    assert "Кандидаты" not in coverage
+    assert "ручной проверки аналитиком" in consistency
+    assert "без advisory issue" in consistency
+    assert "не дублируй в `issues`" in common
+    review_source = _source("backend/modules/data_schema/agent_semantic_review.py")
+    assert 'write_manual_review_result(root, combined_review)' in review_source
+    assert 'combined_review.pop("cleanup_candidates", None)' in review_source
 
 
 def test_correction_attempts_all_concrete_review_issues() -> None:
@@ -204,6 +221,21 @@ def test_diagnostics_describe_direct_workflow_and_quality_gate() -> None:
         '"verification": "technical_validation_plus_two_focused_semantic_reviews_and_bounded_structured_recovery"'
         in source
     )
+
+
+
+def test_transient_server_retry_is_explicit_and_shared_by_llm_paths() -> None:
+    factory = _source("backend/modules/data_schema/agent_factory.py")
+    middleware = _source("backend/modules/data_schema/agent_middleware.py")
+    review = _source("backend/modules/data_schema/agent_semantic_invocation.py")
+    correction = _source(
+        "backend/modules/data_schema/agent_semantic_correction_invocation.py"
+    )
+
+    assert "create_transient_llm_retry_middleware" in factory
+    assert "invoke_with_transient_llm_retry" in middleware
+    assert "invoke_with_transient_llm_retry" in review
+    assert "invoke_with_transient_llm_retry" in correction
 
 
 def test_prompts_are_domain_independent() -> None:

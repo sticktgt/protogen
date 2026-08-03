@@ -1,0 +1,62 @@
+{
+  "status": "approved",
+  "decision": "approve",
+  "blocking": false,
+  "review_id": "verification_1",
+  "review_kind": "correction_verification",
+  "coverage_complete": true,
+  "verified_issue_ids": [
+    "coverage_1_issue_1",
+    "coverage_1_issue_2",
+    "consistency_1_issue_1",
+    "consistency_1_issue_2"
+  ],
+  "reviewed_at": "2026-08-03T12:22:50.839603+00:00",
+  "summary": "Проверка автоматических исправлений: две критические проблемы устранены (добавлена сущность banking_product и relation transfer_transactions). Остались два advisory замечания, не блокирующих применение прототипа.",
+  "review_note": "",
+  "strengths": [],
+  "issue_counts": {
+    "must_fix": 0,
+    "advisory": 1
+  },
+  "issues": [
+    {
+      "id": "verification_1_issue_1",
+      "source_review_id": "verification_1",
+      "disposition": "advisory",
+      "category": "Неполный справочник",
+      "message": "REQ-0088 требует справочник валют с атрибутами: код валюты, название валюты, символ и признак доступности для операций. В схеме dictionary currency содержит только id (код) и title (название), отсутствуют symbol и признак доступности.",
+      "recommendation": "Добавить в dictionary currency поля symbol (string) и is_available (boolean) для каждого значения валюты, либо зафиксировать, что эти атрибуты не требуются для прототипа.",
+      "requirement_ids": [
+        "REQ-0088"
+      ],
+      "targets": [
+        "dictionary:currency"
+      ]
+    }
+  ],
+  "cleanup_candidates": [],
+  "correction_pending": false,
+  "source_reviews": [
+    {
+      "review_id": "coverage_1",
+      "review_kind": "coverage",
+      "decision": "revise",
+      "coverage_complete": true,
+      "issue_counts": {
+        "must_fix": 1,
+        "advisory": 1
+      }
+    },
+    {
+      "review_id": "consistency_1",
+      "review_kind": "consistency",
+      "decision": "revise",
+      "coverage_complete": true,
+      "issue_counts": {
+        "must_fix": 1,
+        "advisory": 1
+      }
+    }
+  ]
+}

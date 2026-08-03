@@ -1,0 +1,495 @@
+{
+  "run_id": "run_20260803_135310_9a1d10ab",
+  "workspace_id": "ws_demo",
+  "status": "rejected",
+  "phase": "completed",
+  "attempt": 1,
+  "base_mode": "current",
+  "requirements_file_name": "bank_front_office_requirements_v3.json",
+  "requirements_source_path": "data_schema/bank_front_office_requirements_v3.json",
+  "requirements_source_sha256": "b5ec5f0493e478e479f12d57747a77c92970b3be7358eda4f465ecb6cbbbd6df",
+  "user_request": "",
+  "regeneration_comments": [],
+  "created_at": "2026-08-03T11:53:10.982596+00:00",
+  "started_at": "2026-08-03T11:53:10.982596+00:00",
+  "updated_at": "2026-08-03T12:13:34.956949+00:00",
+  "statistics": {},
+  "agent_report": "",
+  "agent_note": "",
+  "validation_errors": [],
+  "validation_error_count": 0,
+  "validation_warnings": [],
+  "manual_review": {},
+  "config": {
+    "validation_retries": 1,
+    "semantic_review": {
+      "enabled": true,
+      "max_correction_rounds": 3,
+      "response_attempts": 2,
+      "max_issues": 5,
+      "max_context_bytes": 1048576
+    },
+    "domain": {
+      "logical_types": [
+        "string",
+        "text",
+        "integer",
+        "decimal",
+        "boolean",
+        "date",
+        "datetime",
+        "uuid",
+        "dictionary",
+        "json"
+      ],
+      "cardinalities": [
+        "one_to_one",
+        "one_to_many",
+        "many_to_one",
+        "many_to_many"
+      ]
+    }
+  },
+  "execution": {
+    "max_llm_calls": 18,
+    "max_tool_calls": 28,
+    "max_total_tokens": 600000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 80,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "retention": {
+    "completed_event_limit": 300
+  },
+  "llm": {
+    "provider": "ollama-cloud",
+    "model": "qwen3.5:397b",
+    "base_url": "https://ollama.com/v1"
+  },
+  "error": "Error code: 500 - {'error': 'Internal Server Error (ref: 849ed4fb-dcb8-4ba9-97be-6d20f1e60bd5)'}",
+  "archived": true,
+  "diagnostics_available": true,
+  "diagnostics_file_name": "attempt_1.zip",
+  "metrics": {
+    "llm_calls": 7,
+    "tool_calls": 6,
+    "last_tool": "validate_data_schema_state",
+    "repeat_streak": 1,
+    "max_repeat_streak": 1,
+    "input_tokens": 158626,
+    "output_tokens": 12451,
+    "total_tokens": 171077,
+    "token_usage_available": true,
+    "last_seq": 35,
+    "last_event_at": "2026-08-03T12:13:34.957544+00:00",
+    "last_llm_started_at": "2026-08-03T11:55:34.147239+00:00",
+    "last_llm_completed_at": "2026-08-03T11:55:34.112478+00:00",
+    "limits": {
+      "max_llm_calls": 18,
+      "max_tool_calls": 28,
+      "max_total_tokens": 600000,
+      "max_duration_seconds": 1200,
+      "recursion_limit": 80,
+      "request_timeout_seconds": 300,
+      "max_repeated_tool_calls": 3
+    },
+    "started_at": "2026-08-03T11:53:10.982596+00:00"
+  },
+  "recent_events": [
+    {
+      "seq": 1,
+      "timestamp": "2026-08-03T11:53:11.009671+00:00",
+      "level": "info",
+      "type": "run_created",
+      "message": "Задача создана, временная копия схемы данных подготовлена",
+      "data": {
+        "base_mode": "current",
+        "requirements_source_path": "data_schema/bank_front_office_requirements_v3.json"
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": "2026-08-03T11:53:11.017316+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Создание логической схемы и прямой трассировки требований",
+      "data": {
+        "phase": "synchronizing"
+      }
+    },
+    {
+      "seq": 3,
+      "timestamp": "2026-08-03T11:53:11.034454+00:00",
+      "level": "info",
+      "type": "agent_start",
+      "message": "Агент начал синхронизацию схемы данных",
+      "data": {}
+    },
+    {
+      "seq": 4,
+      "timestamp": "2026-08-03T11:53:11.062227+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #1 начат",
+      "data": {
+        "llm_call": 1,
+        "messages": 2
+      }
+    },
+    {
+      "seq": 5,
+      "timestamp": "2026-08-03T11:53:13.307110+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 4863, выход 41, всего 4904",
+      "data": {
+        "input_tokens": 4863,
+        "output_tokens": 41,
+        "total_tokens": 4904
+      }
+    },
+    {
+      "seq": 6,
+      "timestamp": "2026-08-03T11:53:13.310159+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Загрузка контекста синхронизации",
+      "data": {
+        "tool": "load_synchronization_context",
+        "tool_call": 1,
+        "repeat_streak": 1,
+        "argument_digest": "dfe2139d2848f85d",
+        "argument_shape": {}
+      }
+    },
+    {
+      "seq": 7,
+      "timestamp": "2026-08-03T11:53:13.313470+00:00",
+      "level": "info",
+      "type": "tool_end",
+      "message": "Инструмент завершил работу: load_synchronization_context",
+      "data": {
+        "tool": "load_synchronization_context"
+      }
+    },
+    {
+      "seq": 8,
+      "timestamp": "2026-08-03T11:53:13.319105+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #2 начат",
+      "data": {
+        "llm_call": 2,
+        "messages": 4
+      }
+    },
+    {
+      "seq": 9,
+      "timestamp": "2026-08-03T11:53:28.061720+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 24744, выход 1073, всего 25817",
+      "data": {
+        "input_tokens": 24744,
+        "output_tokens": 1073,
+        "total_tokens": 25817
+      }
+    },
+    {
+      "seq": 10,
+      "timestamp": "2026-08-03T11:53:28.066076+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Запись справочников",
+      "data": {
+        "tool": "write_data_schema_dictionaries",
+        "tool_call": 2,
+        "repeat_streak": 1,
+        "argument_digest": "5bba3c486632f6e5",
+        "argument_shape": {
+          "raw": "json-string<object>(500)"
+        }
+      }
+    },
+    {
+      "seq": 11,
+      "timestamp": "2026-08-03T11:53:28.068129+00:00",
+      "level": "info",
+      "type": "tool_end",
+      "message": "Инструмент завершил работу: write_data_schema_dictionaries",
+      "data": {
+        "tool": "write_data_schema_dictionaries"
+      }
+    },
+    {
+      "seq": 12,
+      "timestamp": "2026-08-03T11:53:28.071896+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #3 начат",
+      "data": {
+        "llm_call": 3,
+        "messages": 6
+      }
+    },
+    {
+      "seq": 13,
+      "timestamp": "2026-08-03T11:54:07.924589+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 26045, выход 3508, всего 29553",
+      "data": {
+        "input_tokens": 26045,
+        "output_tokens": 3508,
+        "total_tokens": 29553
+      }
+    },
+    {
+      "seq": 14,
+      "timestamp": "2026-08-03T11:54:07.932289+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Запись сущностей и полей",
+      "data": {
+        "tool": "write_data_schema_core",
+        "tool_call": 3,
+        "repeat_streak": 1,
+        "argument_digest": "b6e7d108dd41d62c",
+        "argument_shape": {
+          "raw": "json-string<object>(500)"
+        }
+      }
+    },
+    {
+      "seq": 15,
+      "timestamp": "2026-08-03T11:54:07.936525+00:00",
+      "level": "info",
+      "type": "tool_end",
+      "message": "Инструмент завершил работу: write_data_schema_core",
+      "data": {
+        "tool": "write_data_schema_core"
+      }
+    },
+    {
+      "seq": 16,
+      "timestamp": "2026-08-03T11:54:07.939695+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #4 начат",
+      "data": {
+        "llm_call": 4,
+        "messages": 8
+      }
+    },
+    {
+      "seq": 17,
+      "timestamp": "2026-08-03T11:54:19.913582+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 31509, выход 744, всего 32253",
+      "data": {
+        "input_tokens": 31509,
+        "output_tokens": 744,
+        "total_tokens": 32253
+      }
+    },
+    {
+      "seq": 18,
+      "timestamp": "2026-08-03T11:54:19.921026+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Запись связей сущностей",
+      "data": {
+        "tool": "write_data_schema_relations",
+        "tool_call": 4,
+        "repeat_streak": 1,
+        "argument_digest": "5ff6713a8d42fbaf",
+        "argument_shape": {
+          "raw": "json-string<object>(500)"
+        }
+      }
+    },
+    {
+      "seq": 19,
+      "timestamp": "2026-08-03T11:54:19.923364+00:00",
+      "level": "info",
+      "type": "tool_end",
+      "message": "Инструмент завершил работу: write_data_schema_relations",
+      "data": {
+        "tool": "write_data_schema_relations"
+      }
+    },
+    {
+      "seq": 20,
+      "timestamp": "2026-08-03T11:54:19.926657+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #5 начат",
+      "data": {
+        "llm_call": 5,
+        "messages": 10
+      }
+    },
+    {
+      "seq": 21,
+      "timestamp": "2026-08-03T11:55:28.313457+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 32591, выход 7043, всего 39634",
+      "data": {
+        "input_tokens": 32591,
+        "output_tokens": 7043,
+        "total_tokens": 39634
+      }
+    },
+    {
+      "seq": 22,
+      "timestamp": "2026-08-03T11:55:28.317587+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Запись полной трассировки требований",
+      "data": {
+        "tool": "write_data_schema_traceability",
+        "tool_call": 5,
+        "repeat_streak": 1,
+        "argument_digest": "dcc5603fd1b4a9db",
+        "argument_shape": {
+          "raw": "json-string<object>(500)"
+        }
+      }
+    },
+    {
+      "seq": 23,
+      "timestamp": "2026-08-03T11:55:28.408840+00:00",
+      "level": "info",
+      "type": "tool_end",
+      "message": "Инструмент завершил работу: write_data_schema_traceability",
+      "data": {
+        "tool": "write_data_schema_traceability"
+      }
+    },
+    {
+      "seq": 24,
+      "timestamp": "2026-08-03T11:55:28.415354+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #6 начат",
+      "data": {
+        "llm_call": 6,
+        "messages": 12
+      }
+    },
+    {
+      "seq": 25,
+      "timestamp": "2026-08-03T11:55:34.112955+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 38874, выход 42, всего 38916",
+      "data": {
+        "input_tokens": 38874,
+        "output_tokens": 42,
+        "total_tokens": 38916
+      }
+    },
+    {
+      "seq": 26,
+      "timestamp": "2026-08-03T11:55:34.117189+00:00",
+      "level": "info",
+      "type": "tool_start",
+      "message": "Проверка временной схемы данных",
+      "data": {
+        "tool": "validate_data_schema_state",
+        "tool_call": 6,
+        "repeat_streak": 1,
+        "argument_digest": "1bc9802cf697fc8f",
+        "argument_shape": {}
+      }
+    },
+    {
+      "seq": 27,
+      "timestamp": "2026-08-03T11:55:34.123150+00:00",
+      "level": "info",
+      "type": "validation_result",
+      "message": "Проверка пройдена; запуск завершается без дополнительного вызова LLM",
+      "data": {
+        "tool": "validate_data_schema_state",
+        "valid": true,
+        "error_count": 0
+      }
+    },
+    {
+      "seq": 28,
+      "timestamp": "2026-08-03T11:55:34.126713+00:00",
+      "level": "info",
+      "type": "agent_result",
+      "message": "Основная синхронизация завершена, начинается техническая проверка",
+      "data": {}
+    },
+    {
+      "seq": 29,
+      "timestamp": "2026-08-03T11:55:34.128122+00:00",
+      "level": "info",
+      "type": "validation_start",
+      "message": "Запущена структурная проверка временной схемы данных",
+      "data": {}
+    },
+    {
+      "seq": 30,
+      "timestamp": "2026-08-03T11:55:34.133333+00:00",
+      "level": "info",
+      "type": "validation_success",
+      "message": "Структурная проверка пройдена, предупреждений: 0",
+      "data": {}
+    },
+    {
+      "seq": 31,
+      "timestamp": "2026-08-03T11:55:34.134292+00:00",
+      "level": "info",
+      "type": "semantic_review_start",
+      "message": "Запущена независимая проверка покрытия требований",
+      "data": {
+        "review_id": "coverage_1",
+        "review_kind": "coverage"
+      }
+    },
+    {
+      "seq": 32,
+      "timestamp": "2026-08-03T11:55:34.147917+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #7 начат",
+      "data": {
+        "llm_call": 7,
+        "messages": 2
+      }
+    },
+    {
+      "seq": 33,
+      "timestamp": "2026-08-03T11:56:05.900513+00:00",
+      "level": "error",
+      "type": "llm_error",
+      "message": "Ошибка вызова LLM: Error code: 500 - {'error': 'Internal Server Error (ref: 849ed4fb-dcb8-4ba9-97be-6d20f1e60bd5)'}",
+      "data": {}
+    },
+    {
+      "seq": 34,
+      "timestamp": "2026-08-03T11:56:05.920060+00:00",
+      "level": "error",
+      "type": "run_failed",
+      "message": "Задача завершилась ошибкой: Error code: 500 - {'error': 'Internal Server Error (ref: 849ed4fb-dcb8-4ba9-97be-6d20f1e60bd5)'}",
+      "data": {
+        "error_type": "InternalServerError",
+        "phase": "completed"
+      }
+    },
+    {
+      "seq": 35,
+      "timestamp": "2026-08-03T12:13:34.957544+00:00",
+      "level": "warning",
+      "type": "rejected",
+      "message": "Пользователь отклонил предложенные изменения схемы данных",
+      "data": {}
+    }
+  ]
+}

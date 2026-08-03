@@ -7,6 +7,7 @@ from backend.modules.data_schema.agent_events import append_event, reserve_metri
 from backend.modules.data_schema.agent_json_arguments import decode_json_argument
 from backend.modules.data_schema.agent_limits import execution_limits
 from backend.modules.data_schema.agent_llm import create_chat_model
+from backend.modules.data_schema.agent_llm_retry import invoke_with_transient_llm_retry
 from backend.modules.data_schema.agent_monitor import AgentRunStopped, create_run_callback
 from backend.modules.data_schema.agent_paths import now_iso
 from backend.modules.data_schema.agent_semantic_models import SemanticReviewPayload
@@ -52,17 +53,25 @@ def invoke_semantic_review(
                 "\n\nПредыдущий ответ не соответствовал контракту инструмента. "
                 f"Исправь только формат ответа. Техническая ошибка: {last_error}"
             )
-        response = bound.invoke(
-            [("system", system_prompt), ("user", prompt)],
-            config={
-                "callbacks": [callback],
-                "run_name": f"data_schema_semantic_review_{run_id}_{review_id}_{response_attempt}",
-                "metadata": {
-                    "run_id": run_id,
-                    "review_id": review_id,
-                    "review_kind": review_kind,
+        response = invoke_with_transient_llm_retry(
+            lambda: bound.invoke(
+                [("system", system_prompt), ("user", prompt)],
+                config={
+                    "callbacks": [callback],
+                    "run_name": (
+                        f"data_schema_semantic_review_{run_id}_{review_id}_{response_attempt}"
+                    ),
+                    "metadata": {
+                        "run_id": run_id,
+                        "review_id": review_id,
+                        "review_kind": review_kind,
+                    },
                 },
-            },
+            ),
+            agent_config=agent_config,
+            module_root=module_root,
+            run_id=run_id,
+            operation_name=f"LLM review {review_id}",
         )
         try:
             args = _review_tool_args(response)
@@ -117,6 +126,14 @@ def normalize_semantic_review(
     maximum = positive_int(settings, "max_issues")
     if len(payload.issues) > maximum:
         raise ValueError(f"semantic review contains more than {maximum} issues")
+    if len(payload.cleanup_candidates) > maximum:
+        raise ValueError(
+            f"semantic review contains more than {maximum} cleanup candidates"
+        )
+    if review_kind != "consistency" and payload.cleanup_candidates:
+        raise ValueError(
+            "cleanup candidates are allowed only in consistency review"
+        )
 
     summary = payload.summary.strip()
     if not summary:
@@ -141,6 +158,27 @@ def normalize_semantic_review(
                 "id": f"{review_id}_issue_{index}",
                 "source_review_id": review_id,
                 "disposition": disposition,
+                "category": category,
+                "message": message,
+                "recommendation": recommendation,
+                "requirement_ids": _unique_strings(item.requirement_ids),
+                "targets": _unique_strings(item.targets),
+            }
+        )
+
+    cleanup_candidates: list[dict[str, Any]] = []
+    for index, item in enumerate(payload.cleanup_candidates, start=1):
+        category = item.category.strip()
+        message = item.message.strip()
+        recommendation = item.recommendation.strip()
+        if not category or not message or not recommendation:
+            raise ValueError(
+                "cleanup candidate category, message and recommendation must not be blank"
+            )
+        cleanup_candidates.append(
+            {
+                "id": f"{review_id}_cleanup_{index}",
+                "source_review_id": review_id,
                 "category": category,
                 "message": message,
                 "recommendation": recommendation,
@@ -193,6 +231,7 @@ def normalize_semantic_review(
         "strengths": _unique_strings(payload.strengths),
         "issue_counts": counts,
         "issues": issues,
+        "cleanup_candidates": cleanup_candidates,
     }
 
 
@@ -209,6 +248,7 @@ def _review_submission_tool():
         verified_issue_ids: list[str] | None = None,
         summary: str = "",
         issues: list[dict[str, Any]] | None = None,
+        cleanup_candidates: list[dict[str, Any]] | None = None,
         strengths: list[str] | None = None,
         review_note: str = "",
     ) -> str:

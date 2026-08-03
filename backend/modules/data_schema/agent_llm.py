@@ -3,6 +3,8 @@ from __future__ import annotations
 from typing import Any, Literal
 from urllib.parse import urlsplit, urlunsplit
 
+from backend.modules.data_schema.agent_llm_retry import invoke_with_transient_llm_retry
+
 
 class LlmConfigurationError(ValueError):
     pass
@@ -152,7 +154,11 @@ def test_llm_connection(
     model = create_chat_model(llm_settings, agent_config, profile="connection")
     try:
         bound = model.bind_tools([data_schema_connection_probe], tool_choice="required")
-        response = bound.invoke(prompt)
+        response = invoke_with_transient_llm_retry(
+            lambda: bound.invoke(prompt),
+            agent_config=agent_config,
+            operation_name="проверки соединения с LLM",
+        )
     except Exception as exc:
         raise RuntimeError(f"Не удалось подключиться к LLM: {exc}") from exc
 

@@ -39,6 +39,11 @@ from backend.modules.data_schema.agent_execution import (
 )
 from backend.modules.data_schema.agent_monitor import AgentRunStopped, _reported_model
 from backend.modules.data_schema.agent_llm import LlmConfigurationError, _reasoning_effort
+from backend.modules.data_schema.agent_llm_retry import (
+    invoke_with_transient_llm_retry,
+    llm_http_status_code,
+)
+from backend.modules.data_schema.agent_manual_review import build_manual_review_result
 from backend.modules.data_schema.agent_events import read_events
 from backend.modules.data_schema.agent_semantic_context import build_semantic_review_context
 from backend.modules.data_schema.agent_semantic_requirement_groups import (
@@ -121,6 +126,74 @@ SEMANTIC_REVIEW_TEST_CONFIG = {
     "max_context_bytes": 1048576,
 }
 
+
+
+def test_transient_llm_retry_retries_configured_server_error_once(monkeypatch) -> None:
+    calls = 0
+
+    class ServerError(RuntimeError):
+        status_code = 500
+
+    def operation() -> str:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise ServerError("temporary")
+        return "ok"
+
+    monkeypatch.setattr(
+        "backend.modules.data_schema.agent_llm_retry.time.sleep",
+        lambda _: None,
+    )
+    config = {
+        "llm": {
+            "transient_retry": {
+                "max_retries": 1,
+                "delay_seconds": 2,
+                "status_codes": [500, 502, 503, 504],
+            }
+        }
+    }
+
+    assert invoke_with_transient_llm_retry(operation, agent_config=config) == "ok"
+    assert calls == 2
+
+
+def test_transient_llm_retry_does_not_retry_timeout_or_client_error() -> None:
+    config = {
+        "llm": {
+            "transient_retry": {
+                "max_retries": 1,
+                "delay_seconds": 0,
+                "status_codes": [500, 502, 503, 504],
+            }
+        }
+    }
+
+    class ClientError(RuntimeError):
+        status_code = 400
+
+    for error in (TimeoutError("slow"), ClientError("bad request")):
+        calls = 0
+
+        def operation() -> None:
+            nonlocal calls
+            calls += 1
+            raise error
+
+        with pytest.raises(type(error)):
+            invoke_with_transient_llm_retry(operation, agent_config=config)
+        assert calls == 1
+
+
+def test_llm_http_status_code_reads_provider_response() -> None:
+    class Response:
+        status_code = 503
+
+    class ProviderError(RuntimeError):
+        response = Response()
+
+    assert llm_http_status_code(ProviderError("temporary")) == 503
 
 def test_reasoning_effort_is_provider_profile_and_model_specific() -> None:
     config = {
@@ -334,6 +407,12 @@ def test_valid_preview_is_applyable_and_keeps_manual_regeneration() -> None:
     assert "Принять все изменения" in source
     assert "Требует исправления" in source
     assert "renderSemanticReview" in source
+    assert "renderManualReview(run.manual_review)" in source
+    manual_source = (
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-manual-review-render.js"
+    ).read_text(encoding="utf-8")
+    assert "не влияет на статус применения" in manual_source
+    assert "Кандидаты на очистку схемы" in manual_source
     assert "querySelectorAll('[data-regenerate-agent-run]')" in (
         PROJECT_ROOT / "frontend/modules/data_schema/js/agent-controller.js"
     ).read_text(encoding="utf-8")
@@ -450,6 +529,114 @@ def test_agent_tool_arguments_accept_provider_serialized_nested_json() -> None:
 
 
 
+
+def test_manual_review_separates_inherited_links_and_cleanup_candidates(tmp_path: Path) -> None:
+    run_path = tmp_path / "run"
+    base_root = run_path / "base" / "data_schema" / "mappings"
+    working_root = run_path / "working" / "data_schema" / "mappings"
+    input_root = run_path / "input"
+    base_root.mkdir(parents=True)
+    working_root.mkdir(parents=True)
+    input_root.mkdir(parents=True)
+    write_json(
+        input_root / "requirements.json",
+        {"requirements": [{"id": "REQ-CURRENT", "name": "Актуальное"}]},
+    )
+    links = {
+        "links": [
+            {
+                "requirement_id": "REQ-CURRENT",
+                "target_type": "entity",
+                "target_id": "current_entity",
+                "relation": "defines",
+            },
+            {
+                "requirement_id": "REQ-OLD",
+                "target_type": "field",
+                "target_id": "legacy.legacy_field",
+                "relation": "defines",
+            },
+        ]
+    }
+    write_json(base_root / "requirement_data_links.json", links)
+    write_json(working_root / "requirement_data_links.json", links)
+
+    result = build_manual_review_result(
+        run_path,
+        {
+            "cleanup_candidates": [
+                {
+                    "id": "consistency_1_cleanup_1",
+                    "category": "obsolete_structure",
+                    "message": "Объект может быть устаревшим.",
+                    "recommendation": "Проверить необходимость вручную.",
+                    "requirement_ids": [],
+                    "targets": ["field:legacy.legacy_field"],
+                }
+            ]
+        },
+    )
+
+    assert result["counts"] == {
+        "inherited_requirement_ids": 1,
+        "inherited_requirement_links": 1,
+        "cleanup_candidates": 1,
+    }
+    assert result["inherited_requirement_links"] == [
+        {
+            "requirement_id": "REQ-OLD",
+            "links": [
+                {
+                    "target_type": "field",
+                    "target_id": "legacy.legacy_field",
+                    "relation": "defines",
+                }
+            ],
+        }
+    ]
+    assert result["cleanup_candidates"][0]["targets"] == [
+        "field:legacy.legacy_field"
+    ]
+
+
+def test_cleanup_candidates_are_consistency_only_and_do_not_block() -> None:
+    payload = SemanticReviewPayload.model_validate(
+        {
+            "decision": "approve",
+            "coverage_complete": True,
+            "summary": "Схема применима.",
+            "cleanup_candidates": [
+                {
+                    "category": "obsolete_structure",
+                    "message": "Поле выглядит заменённым.",
+                    "recommendation": "Проверить и при необходимости удалить вручную.",
+                    "targets": ["field:item.legacy_value"],
+                }
+            ],
+        }
+    )
+
+    review = normalize_semantic_review(
+        payload,
+        SEMANTIC_REVIEW_TEST_CONFIG,
+        review_id="consistency_1",
+        review_kind="consistency",
+        expected_issue_ids=[],
+    )
+
+    assert review["blocking"] is False
+    assert review["issue_counts"] == {"must_fix": 0, "advisory": 0}
+    assert review["cleanup_candidates"][0]["id"] == "consistency_1_cleanup_1"
+
+    with pytest.raises(ValueError, match="allowed only in consistency review"):
+        normalize_semantic_review(
+            payload,
+            SEMANTIC_REVIEW_TEST_CONFIG,
+            review_id="coverage_1",
+            review_kind="coverage",
+            expected_issue_ids=[],
+        )
+
 def test_semantic_review_issue_requires_concrete_recommendation() -> None:
     with pytest.raises(ValidationError, match="recommendation"):
         SemanticReviewPayload.model_validate(
@@ -497,6 +684,16 @@ def test_combined_review_preserves_focused_issues_and_blocks_only_must_fix() -> 
         "summary": "Согласованность проверена.",
         "review_note": "",
         "strengths": [],
+        "cleanup_candidates": [
+            {
+                "id": "consistency_1_cleanup_1",
+                "category": "obsolete_structure",
+                "message": "Поле может быть устаревшим",
+                "recommendation": "Проверить вручную",
+                "requirement_ids": [],
+                "targets": ["field:item.legacy"],
+            }
+        ],
         "issues": [
             {
                 "id": "consistency_1_issue_1",
@@ -520,6 +717,7 @@ def test_combined_review_preserves_focused_issues_and_blocks_only_must_fix() -> 
         "consistency_1_issue_1",
     ]
     assert combined["coverage_complete"] is True
+    assert combined["cleanup_candidates"][0]["id"] == "consistency_1_cleanup_1"
 
 def test_semantic_review_accepts_serialized_nested_json_and_blocks_on_model_decision() -> None:
     payload = SemanticReviewPayload.model_validate(

@@ -1,0 +1,252 @@
+{
+  "summary": "Добавлена сущность banking_product для хранения каталога банковских продуктов (REQ-0019–REQ-0024). Добавлен relation transfer_transactions между transfer и transaction для связи операций с переводом (REQ-0047). Расширен dictionary currency полями symbol и is_available (REQ-0088). Обновлены requirement_updates для всех затронутых требований.",
+  "write_dictionaries": [],
+  "write_entities": [
+    {
+      "id": "banking_product",
+      "title": "Банковский продукт",
+      "description": "Карточка банковского продукта в каталоге: счета, вклады, кредиты, карты.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор продукта",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор продукта."
+        },
+        {
+          "id": "title",
+          "title": "Название продукта",
+          "type": "string",
+          "required": true,
+          "description": "Название продукта для отображения в карточке."
+        },
+        {
+          "id": "category",
+          "title": "Категория продукта",
+          "type": "string",
+          "required": true,
+          "description": "Категория продукта: accounts, deposits, credits, cards."
+        },
+        {
+          "id": "description",
+          "title": "Описание продукта",
+          "type": "text",
+          "required": true,
+          "description": "Краткое описание продукта."
+        },
+        {
+          "id": "action_text",
+          "title": "Текст действия",
+          "type": "string",
+          "required": true,
+          "description": "Текст кнопки действия на карточке."
+        },
+        {
+          "id": "target_section",
+          "title": "Целевой раздел",
+          "type": "string",
+          "required": true,
+          "description": "Раздел перехода при клике на действие."
+        }
+      ]
+    }
+  ],
+  "write_relations": [
+    {
+      "id": "transfer_transactions",
+      "title": "Операции перевода",
+      "source_entity": "transfer",
+      "target_entity": "transaction",
+      "cardinality": "one_to_many",
+      "description": "Перевод связан с операциями списания и зачисления по счетам."
+    }
+  ],
+  "patch_dictionaries": [
+    {
+      "id": "currency",
+      "values": [
+        {
+          "id": "RUB",
+          "title": "Российский рубль",
+          "description": ""
+        },
+        {
+          "id": "USD",
+          "title": "Доллар США",
+          "description": ""
+        },
+        {
+          "id": "EUR",
+          "title": "Евро",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "patch_entities": [],
+  "patch_relations": [],
+  "remove_targets": [],
+  "requirement_updates": [
+    {
+      "requirement_id": "REQ-0019",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0020",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0021",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0022",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0023",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "banking_product",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.id",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.title",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.category",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.description",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.action_text",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "banking_product.target_section",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0047",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "transaction",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "entity",
+          "target_id": "transfer",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "relation",
+          "target_id": "transfer_transactions",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0088",
+      "links": [
+        {
+          "target_type": "dictionary",
+          "target_id": "currency",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    }
+  ]
+}

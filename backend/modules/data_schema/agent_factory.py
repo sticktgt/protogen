@@ -10,6 +10,7 @@ from backend.modules.data_schema.agent_llm import (
 from backend.modules.data_schema.agent_middleware import (
     create_sequential_tool_call_middleware,
     create_tool_error_middleware,
+    create_transient_llm_retry_middleware,
 )
 from backend.modules.data_schema.agent_prompts import load_prompt
 from backend.modules.data_schema.agent_tools import create_agent_tools
@@ -30,6 +31,8 @@ _PRIMARY_TOOLS = {
 
 def create_data_schema_agent(
     *,
+    module_root: Path,
+    run_id: str,
     run_path: Path,
     llm_settings: dict[str, Any],
     agent_config: dict[str, Any],
@@ -43,12 +46,19 @@ def create_data_schema_agent(
             "LangChain agent dependencies are not installed. Install project requirements.txt."
         ) from exc
 
-    middleware = [create_tool_error_middleware()]
+    middleware = [
+        create_transient_llm_retry_middleware(
+            module_root=module_root,
+            run_id=run_id,
+            agent_config=agent_config,
+        )
+    ]
     sequential = create_sequential_tool_call_middleware(
         enabled=sequential_tool_calls_supported(llm_settings, agent_config)
     )
     if sequential is not None:
-        middleware.insert(0, sequential)
+        middleware.append(sequential)
+    middleware.append(create_tool_error_middleware())
 
     return create_agent(
         model=create_chat_model(

@@ -112,6 +112,7 @@ def create_run(
             "validation_errors": [],
             "validation_error_count": 0,
             "validation_warnings": [],
+            "manual_review": {},
             "config": {
                 "validation_retries": int(config["validation_retries"]),
                 "semantic_review": dict(config.get("semantic_review", {})),
@@ -255,6 +256,7 @@ def reset_for_regeneration(
                 "validation_errors": [],
                 "validation_error_count": 0,
                 "validation_warnings": [],
+                "manual_review": {},
                 "error": "",
                 "stop_reason": "",
                 "config": {

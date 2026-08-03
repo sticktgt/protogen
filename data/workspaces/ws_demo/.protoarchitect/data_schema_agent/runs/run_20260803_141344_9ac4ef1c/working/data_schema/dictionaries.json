@@ -1,0 +1,241 @@
+{
+  "dictionaries": [
+    {
+      "id": "currency",
+      "title": "Валюта",
+      "values": [
+        {
+          "id": "RUB",
+          "title": "Российский рубль",
+          "description": ""
+        },
+        {
+          "id": "USD",
+          "title": "Доллар США",
+          "description": ""
+        },
+        {
+          "id": "EUR",
+          "title": "Евро",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "customer_status",
+      "title": "Статус клиента",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирован"
+        }
+      ]
+    },
+    {
+      "id": "account_status",
+      "title": "Статус счета",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "closed",
+          "title": "Закрыт"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирован",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "card_status",
+      "title": "Статус карты",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активна"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирована"
+        },
+        {
+          "id": "expired",
+          "title": "Истек срок действия",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "card_block_reason",
+      "title": "Причина блокировки карты",
+      "values": [
+        {
+          "id": "lost",
+          "title": "Утеря"
+        },
+        {
+          "id": "stolen",
+          "title": "Кража"
+        },
+        {
+          "id": "other",
+          "title": "Другое"
+        },
+        {
+          "id": "fraud_suspicion",
+          "title": "Подозрение на мошенничество",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "operation_status",
+      "title": "Статус операции",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "completed",
+          "title": "Исполнена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        }
+      ]
+    },
+    {
+      "id": "application_status",
+      "title": "Статус заявки",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "submitted",
+          "title": "Отправлена"
+        },
+        {
+          "id": "approved",
+          "title": "Одобрена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        },
+        {
+          "id": "under_review",
+          "title": "На рассмотрении",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "credit_product_type",
+      "title": "Тип кредита",
+      "values": [
+        {
+          "id": "consumer",
+          "title": "Потребительский"
+        },
+        {
+          "id": "mortgage",
+          "title": "Ипотека"
+        },
+        {
+          "id": "car",
+          "title": "Автокредит"
+        }
+      ]
+    },
+    {
+      "id": "account_type",
+      "title": "Тип счета",
+      "description": "",
+      "values": [
+        {
+          "id": "current",
+          "title": "Расчетный",
+          "description": ""
+        },
+        {
+          "id": "savings",
+          "title": "Сберегательный",
+          "description": ""
+        },
+        {
+          "id": "deposit",
+          "title": "Депозитный",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "payment_system",
+      "title": "Платежная система",
+      "description": "",
+      "values": [
+        {
+          "id": "visa",
+          "title": "Visa",
+          "description": ""
+        },
+        {
+          "id": "mastercard",
+          "title": "Mastercard",
+          "description": ""
+        },
+        {
+          "id": "mir",
+          "title": "Мир",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "card_type",
+      "title": "Тип карты",
+      "description": "",
+      "values": [
+        {
+          "id": "debit",
+          "title": "Дебетовая",
+          "description": ""
+        },
+        {
+          "id": "credit",
+          "title": "Кредитная",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "transaction_direction",
+      "title": "Направление операции",
+      "description": "",
+      "values": [
+        {
+          "id": "income",
+          "title": "Поступление",
+          "description": ""
+        },
+        {
+          "id": "expense",
+          "title": "Списание",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "run_id": "run_20260803_141344_9ac4ef1c",
+  "workspace_id": "ws_demo",
+  "status": "preview_ready",
+  "phase": "completed",
+  "attempt": 1,
+  "base_mode": "current",
+  "requirements_file_name": "bank_front_office_requirements_v3.json",
+  "requirements_source_path": "data_schema/bank_front_office_requirements_v3.json",
+  "requirements_source_sha256": "b5ec5f0493e478e479f12d57747a77c92970b3be7358eda4f465ecb6cbbbd6df",
+  "user_request": "",
+  "regeneration_comments": [],
+  "created_at": "2026-08-03T12:13:44.183938+00:00",
+  "started_at": "2026-08-03T12:13:44.183938+00:00",
+  "updated_at": "2026-08-03T12:22:50.855941+00:00",
+  "statistics": {
+    "entities": {
+      "added": 1,
+      "modified": 0,
+      "deleted": 0
+    },
+    "fields": {
+      "added": 36,
+      "modified": 0,
+      "deleted": 0
+    },
+    "relations": {
+      "added": 6,
+      "modified": 0,
+      "deleted": 0
+    },
+    "dictionaries": {
+      "added": 4,
+      "modified": 0,
+      "deleted": 0
+    },
+    "dictionary_values": {
+      "added": 14,
+      "modified": 3,
+      "deleted": 0
+    },
+    "requirement_links": {
+      "added": 321,
+      "modified": 0,
+      "deleted": 0
+    }
+  },
+  "agent_report": "Синхронизация схемы данных завершена. Требования: 81 с прямой трассировкой, 0 сквозных правил данных, 27 без влияния на логическую схему, 0 требуют уточнения.",
+  "agent_note": "",
+  "validation_errors": [],
+  "validation_error_count": 0,
+  "validation_warnings": [],
+  "manual_review": {
+    "inherited_requirement_links": [
+      {
+        "requirement_id": "REQ-ACCOUNTS-LIST",
+        "links": [
+          {
+            "target_type": "entity",
+            "target_id": "account",
+            "relation": "defines"
+          },
+          {
+            "target_type": "field",
+            "target_id": "account.balance",
+            "relation": "defines"
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-CARD-BLOCK",
+        "links": [
+          {
+            "target_type": "field",
+            "target_id": "card.status",
+            "relation": "defines"
+          },
+          {
+            "target_type": "field",
+            "target_id": "card.block_reason",
+            "relation": "defines"
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-CREDIT-APPLY",
+        "links": [
+          {
+            "target_type": "entity",
+            "target_id": "credit_application",
+            "relation": "defines"
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-DEPOSIT-OPEN",
+        "links": [
+          {
+            "target_type": "entity",
+            "target_id": "deposit_application",
+            "relation": "defines"
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-SPENDING-ANALYTICS",
+        "links": [
+          {
+            "target_type": "entity",
+            "target_id": "spending_category",
+            "relation": "defines"
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-TRANSFER-OWN",
+        "links": [
+          {
+            "target_type": "entity",
+            "target_id": "transfer",
+            "relation": "defines"
+          }
+        ]
+      }
+    ],
+    "cleanup_candidates": [
+      {
+        "id": "consistency_1_cleanup_1",
+        "source_review_id": "consistency_1",
+        "category": "Избыточная relation",
+        "message": "Relation «transaction_account» (transaction → account, many_to_one) дублирует обратную сторону relation «account_transactions» (account → transaction, one_to_many). Обе relations представляют одну и ту же связь между счетом и операцией.",
+        "recommendation": "Рассмотреть удаление одной из relations для упрощения схемы. Оставить только account_transactions как основную связь, так как навигация от счета к операциям более востребована.",
+        "requirement_ids": [],
+        "targets": [
+          "relation:transaction_account"
+        ]
+      }
+    ],
+    "counts": {
+      "inherited_requirement_ids": 6,
+      "inherited_requirement_links": 8,
+      "cleanup_candidates": 1
+    }
+  },
+  "config": {
+    "validation_retries": 1,
+    "semantic_review": {
+      "enabled": true,
+      "max_correction_rounds": 3,
+      "response_attempts": 2,
+      "max_issues": 5,
+      "max_context_bytes": 1048576
+    },
+    "domain": {
+      "logical_types": [
+        "string",
+        "text",
+        "integer",
+        "decimal",
+        "boolean",
+        "date",
+        "datetime",
+        "uuid",
+        "dictionary",
+        "json"
+      ],
+      "cardinalities": [
+        "one_to_one",
+        "one_to_many",
+        "many_to_one",
+        "many_to_many"
+      ]
+    }
+  },
+  "execution": {
+    "max_llm_calls": 18,
+    "max_tool_calls": 28,
+    "max_total_tokens": 600000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 80,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "retention": {
+    "completed_event_limit": 300
+  },
+  "llm": {
+    "provider": "ollama-cloud",
+    "model": "qwen3.5:397b",
+    "base_url": "https://ollama.com/v1"
+  },
+  "semantic_review": {
+    "status": "approved",
+    "decision": "approve",
+    "blocking": false,
+    "review_id": "verification_1",
+    "review_kind": "correction_verification",
+    "coverage_complete": true,
+    "verified_issue_ids": [
+      "coverage_1_issue_1",
+      "coverage_1_issue_2",
+      "consistency_1_issue_1",
+      "consistency_1_issue_2"
+    ],
+    "reviewed_at": "2026-08-03T12:22:50.839603+00:00",
+    "summary": "Проверка автоматических исправлений: две критические проблемы устранены (добавлена сущность banking_product и relation transfer_transactions). Остались два advisory замечания, не блокирующих применение прототипа.",
+    "review_note": "",
+    "strengths": [],
+    "issue_counts": {
+      "must_fix": 0,
+      "advisory": 1
+    },
+    "issues": [
+      {
+        "id": "verification_1_issue_1",
+        "source_review_id": "verification_1",
+        "disposition": "advisory",
+        "category": "Неполный справочник",
+        "message": "REQ-0088 требует справочник валют с атрибутами: код валюты, название валюты, символ и признак доступности для операций. В схеме dictionary currency содержит только id (код) и title (название), отсутствуют symbol и признак доступности.",
+        "recommendation": "Добавить в dictionary currency поля symbol (string) и is_available (boolean) для каждого значения валюты, либо зафиксировать, что эти атрибуты не требуются для прототипа.",
+        "requirement_ids": [
+          "REQ-0088"
+        ],
+        "targets": [
+          "dictionary:currency"
+        ]
+      }
+    ],
+    "cleanup_candidates": [],
+    "correction_pending": false,
+    "source_reviews": [
+      {
+        "review_id": "coverage_1",
+        "review_kind": "coverage",
+        "decision": "revise",
+        "coverage_complete": true,
+        "issue_counts": {
+          "must_fix": 1,
+          "advisory": 1
+        }
+      },
+      {
+        "review_id": "consistency_1",
+        "review_kind": "consistency",
+        "decision": "revise",
+        "coverage_complete": true,
+        "issue_counts": {
+          "must_fix": 1,
+          "advisory": 1
+        }
+      }
+    ]
+  },
+  "apply_blocked": false,
+  "error": "",
+  "stop_reason": ""
+}

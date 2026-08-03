@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 from backend.modules.data_schema.agent_events import append_event
+from backend.modules.data_schema.agent_manual_review import write_manual_review_result
 from backend.modules.data_schema.agent_paths import now_iso
 from backend.modules.data_schema.agent_prompts import load_prompt
 from backend.modules.data_schema.agent_runs import is_cancelled, update_run
@@ -66,6 +67,8 @@ def review_and_correct_semantics(
         agent_config=agent_config,
     )
     combined_review = _combine_reviews(coverage_review, consistency_review)
+    write_manual_review_result(root, combined_review)
+    combined_review.pop("cleanup_candidates", None)
     record_review_completion(
         root=root,
         module_root=module_root,
@@ -178,6 +181,18 @@ def _combine_reviews(*reviews: dict[str, Any]) -> dict[str, Any]:
         for issue in review.get("issues", [])
         if isinstance(issue, dict)
     ]
+    cleanup_candidates: list[dict[str, Any]] = []
+    seen_cleanup_ids: set[str] = set()
+    for review in reviews:
+        for candidate in review.get("cleanup_candidates", []):
+            if not isinstance(candidate, dict):
+                continue
+            candidate_id = str(candidate.get("id") or "").strip()
+            if not candidate_id or candidate_id in seen_cleanup_ids:
+                continue
+            seen_cleanup_ids.add(candidate_id)
+            cleanup_candidates.append(dict(candidate))
+
     counts = {
         "must_fix": sum(
             1 for issue in issues if issue.get("disposition") == "must_fix"
@@ -221,6 +236,7 @@ def _combine_reviews(*reviews: dict[str, Any]) -> dict[str, Any]:
         "strengths": strengths,
         "issue_counts": counts,
         "issues": issues,
+        "cleanup_candidates": cleanup_candidates,
         "source_reviews": [
             {
                 "review_id": review.get("review_id"),

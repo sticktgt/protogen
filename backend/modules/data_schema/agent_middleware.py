@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
+
+from backend.modules.data_schema.agent_llm_retry import invoke_with_transient_llm_retry
 
 
 def create_tool_error_middleware():
@@ -55,6 +58,38 @@ def create_tool_error_middleware():
 def _short_error(exc: Exception) -> str:
     text = str(exc).strip() or exc.__class__.__name__
     return text[:1000]
+
+
+def create_transient_llm_retry_middleware(
+    *,
+    module_root: Path,
+    run_id: str,
+    agent_config: dict[str, Any],
+):
+    """Retry configured transient HTTP failures for primary-agent model calls."""
+    try:
+        from langchain.agents.middleware import (
+            ModelRequest,
+            ModelResponse,
+            wrap_model_call,
+        )
+    except ImportError as exc:
+        raise RuntimeError("LangChain model middleware is not installed") from exc
+
+    @wrap_model_call
+    def retry_transient_llm_error(
+        request: ModelRequest,
+        handler: Callable[[ModelRequest], ModelResponse],
+    ) -> ModelResponse:
+        return invoke_with_transient_llm_retry(
+            lambda: handler(request),
+            agent_config=agent_config,
+            module_root=module_root,
+            run_id=run_id,
+            operation_name="основного вызова LLM",
+        )
+
+    return retry_transient_llm_error
 
 
 def create_sequential_tool_call_middleware(*, enabled: bool):

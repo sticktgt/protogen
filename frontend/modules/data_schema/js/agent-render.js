@@ -1,5 +1,6 @@
 import { escapeAttr, escapeHtml } from './html-utils.js';
 import { renderRunObservability } from './agent-observability-render.js';
+import { renderManualReview } from './agent-manual-review-render.js';
 import { renderSemanticReview } from './agent-semantic-review-render.js';
 import {
   renderChanges,
@@ -117,6 +118,7 @@ export function renderAgentPreview(run, changes, requirementsResult, actionInPro
         ${renderWarnings(displayedWarnings)}
         ${renderDeletionWarning(statistics)}
         ${renderSemanticReview(review)}
+        ${renderManualReview(run.manual_review)}
         ${renderRunObservability(run, metrics, events, false)}
         ${renderCompactChangeStatistics(statistics)}
       </section>
