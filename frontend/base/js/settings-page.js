@@ -24,6 +24,7 @@ const providerSelect = document.querySelector('[data-llm-provider]');
 const modelInput = document.querySelector('[data-llm-model]');
 const baseUrlInput = document.querySelector('[data-llm-base-url]');
 const apiKeyInput = document.querySelector('[data-llm-api-key]');
+const cancelButton = document.querySelector('[data-cancel-settings]');
 
 let currentSettings = {};
 let currentApiKey = '';
@@ -58,6 +59,26 @@ function fillForm(settings) {
 function normalizeOptional(value) {
   const trimmed = String(value || '').trim();
   return trimmed || null;
+}
+
+function returnToPreviousPage() {
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get('return_to');
+  if (returnTo && returnTo.startsWith('/')) {
+    const target = new URL(returnTo, window.location.origin);
+    if (target.pathname !== window.location.pathname) {
+      window.location.href = target.toString();
+      return;
+    }
+  }
+  if (document.referrer) {
+    const referrer = new URL(document.referrer);
+    if (referrer.origin === window.location.origin && referrer.pathname !== window.location.pathname) {
+      window.location.href = referrer.toString();
+      return;
+    }
+  }
+  window.location.href = '/';
 }
 
 function collectSettings() {
@@ -107,16 +128,19 @@ form?.addEventListener('submit', async event => {
   event.preventDefault();
   try {
     const settings = collectSettings();
-    const response = await apiFetch('/api/users/me/settings', {
+    await apiFetch('/api/users/me/settings', {
       method: 'PUT',
       body: JSON.stringify({ settings }),
     });
-    currentSettings = response.settings || settings;
-    fillForm(currentSettings);
     showToast('Настройки сохранены');
+    setTimeout(returnToPreviousPage, 250);
   } catch (error) {
     showToast(error.message);
   }
+});
+
+cancelButton?.addEventListener('click', () => {
+  returnToPreviousPage();
 });
 
 await loadSettings();

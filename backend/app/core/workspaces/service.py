@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import shutil
 from datetime import datetime, timezone
+from zipfile import ZIP_DEFLATED, ZipFile
 from importlib import import_module
 from pathlib import Path
 from typing import Any
@@ -39,6 +40,43 @@ class WorkspaceService:
     def user_can_access(self, user: dict[str, Any], workspace_id: str) -> bool:
         workspaces = user.get("workspaces", {})
         return workspace_id in workspaces.get("owned", []) or workspace_id in workspaces.get("shared", [])
+
+
+    def list_all(self) -> list[dict[str, Any]]:
+        result = []
+        for workspace_dir in sorted(self.workspace_root.iterdir()):
+            if not workspace_dir.is_dir():
+                continue
+            meta_path = workspace_dir / "workspace.yaml"
+            if not meta_path.exists():
+                continue
+            meta = self.config.read_yaml(meta_path)
+            if meta:
+                result.append(meta)
+        return result
+
+    def user_owns(self, user: dict[str, Any], workspace_id: str) -> bool:
+        return workspace_id in user.get("workspaces", {}).get("owned", [])
+
+    def archive_and_delete_workspace(self, workspace_id: str) -> dict[str, Any]:
+        workspace_path = self.get_workspace_path(workspace_id)
+        if not workspace_path.exists() or not workspace_path.is_dir():
+            raise FileNotFoundError("Workspace not found")
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        archive_path = self.workspace_root / f"{safe_id(workspace_id)}_deleted_{timestamp}.zip"
+        with ZipFile(archive_path, "w", ZIP_DEFLATED) as archive:
+            for item in workspace_path.rglob("*"):
+                if item.is_dir():
+                    continue
+                relative = item.relative_to(workspace_path)
+                if ".protoarchitect" in relative.parts:
+                    continue
+                archive.write(item, f"{safe_id(workspace_id)}/{relative.as_posix()}")
+        shutil.rmtree(workspace_path)
+        return {
+            "workspace_id": workspace_id,
+            "archive": archive_path.name,
+        }
 
     def read_workspace_meta(self, workspace_id: str) -> dict[str, Any]:
         return self.config.read_yaml(self.get_workspace_path(workspace_id) / "workspace.yaml")

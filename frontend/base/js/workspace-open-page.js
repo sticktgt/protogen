@@ -28,7 +28,9 @@ function workspaceCard(workspace, currentWorkspaceId) {
       </div>
       <p>${escapeHtml(description)}</p>
       <p class="muted">Владелец: ${escapeHtml(workspace.owner || '')} · Доступ: ${escapeHtml(workspace.access_type || '')}</p>
-      <button class="btn btn-primary" data-open-workspace="${escapeHtml(workspace.id)}">Открыть</button>
+      <div class="workspace-card-actions">
+        <button class="btn btn-primary" data-open-workspace="${escapeHtml(workspace.id)}">Открыть</button>
+      </div>
     </div>
   `;
 }

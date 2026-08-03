@@ -50,6 +50,9 @@ def create_app() -> FastAPI:
 
     @app.get("/")
     def root():
+        menu = modules.menu()
+        if menu:
+            return RedirectResponse(f"/{menu[0]['path']}")
         default_page = config.app_config["ui"]["default_page"]
         return FileResponse(frontend_dir / default_page)
 

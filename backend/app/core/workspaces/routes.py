@@ -51,6 +51,28 @@ def open_workspace(
     return {"current_workspace_id": workspace_id}
 
 
+@router.delete("/{workspace_id}")
+def delete_workspace(
+    workspace_id: str,
+    user: dict = Depends(require_user),
+    state: AppState = Depends(get_state),
+):
+    if not user.get("is_admin", False):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required")
+    try:
+        result = state.workspaces.archive_and_delete_workspace(workspace_id)
+    except FileNotFoundError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Workspace not found")
+    state.users.remove_workspace_from_all(workspace_id)
+    updated_user = state.users.get_user(user["username"]) or user
+    return {
+        "ok": True,
+        "workspace_id": workspace_id,
+        "archive": result["archive"],
+        "current_workspace_id": updated_user.get("current_workspace_id"),
+    }
+
+
 @router.get("/{workspace_id}/path")
 def get_workspace_path(
     workspace_id: str,
