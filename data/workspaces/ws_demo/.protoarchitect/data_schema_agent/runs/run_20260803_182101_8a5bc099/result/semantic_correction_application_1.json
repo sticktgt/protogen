@@ -1,0 +1,296 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "entities": 9,
+    "fields": 81,
+    "relations": 9,
+    "dictionaries": 12,
+    "dictionary_values": 39,
+    "requirement_links": 329
+  },
+  "preservation": {
+    "missing_base_objects": []
+  },
+  "assessment_counts": {
+    "linked": 81,
+    "cross_cutting_data": 0,
+    "no_data": 27,
+    "unclear": 0,
+    "unclassified": 0
+  },
+  "correction_applied": true,
+  "correction_error": "",
+  "correction_operations": [
+    {
+      "operation": "write_dictionaries",
+      "result": {
+        "written": [
+          {
+            "id": "product_category",
+            "title": "Категория продукта",
+            "values": [
+              "accounts",
+              "deposits",
+              "credits",
+              "cards"
+            ]
+          }
+        ],
+        "dictionary_count": 12,
+        "canonical_references": {
+          "dictionaries": [
+            {
+              "target_type": "dictionary",
+              "dictionary_id": "product_category"
+            }
+          ],
+          "dictionary_values": [
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "product_category",
+              "value_id": "accounts"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "product_category",
+              "value_id": "deposits"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "product_category",
+              "value_id": "credits"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "product_category",
+              "value_id": "cards"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "write_schema_core",
+      "result": {
+        "written": [
+          {
+            "id": "bank_product",
+            "title": "Банковский продукт",
+            "fields": [
+              "id",
+              "title",
+              "category",
+              "description",
+              "action_text",
+              "target_section"
+            ]
+          }
+        ],
+        "entity_count": 9,
+        "canonical_references": {
+          "entities": [
+            {
+              "target_type": "entity",
+              "entity_id": "bank_product"
+            }
+          ],
+          "fields": [
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "id"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "title"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "category"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "description"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "action_text"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "bank_product",
+              "field_id": "target_section"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "patch_dictionaries",
+      "result": {
+        "patched": [
+          {
+            "id": "operation_status",
+            "title": "Статус операции",
+            "values": [
+              "draft",
+              "completed",
+              "rejected",
+              "cancelled"
+            ]
+          }
+        ],
+        "canonical_references": {
+          "dictionaries": [
+            {
+              "target_type": "dictionary",
+              "dictionary_id": "operation_status"
+            }
+          ],
+          "dictionary_values": [
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "operation_status",
+              "value_id": "draft"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "operation_status",
+              "value_id": "completed"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "operation_status",
+              "value_id": "rejected"
+            },
+            {
+              "target_type": "dictionary_value",
+              "dictionary_id": "operation_status",
+              "value_id": "cancelled"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "patch_schema_core",
+      "result": {
+        "patched": [
+          {
+            "id": "account",
+            "title": "Счет",
+            "fields": [
+              "id",
+              "customer_id",
+              "number",
+              "balance",
+              "currency",
+              "status",
+              "type",
+              "available_balance",
+              "opening_date",
+              "title"
+            ]
+          }
+        ],
+        "canonical_references": {
+          "entities": [
+            {
+              "target_type": "entity",
+              "entity_id": "account"
+            }
+          ],
+          "fields": [
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "id"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "customer_id"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "number"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "balance"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "currency"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "status"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "type"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "available_balance"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "opening_date"
+            },
+            {
+              "target_type": "field",
+              "entity_id": "account",
+              "field_id": "title"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "write_relations",
+      "result": {
+        "written": [
+          {
+            "id": "customer_products",
+            "title": "Доступные продукты клиента",
+            "source_entity": "customer",
+            "target_entity": "bank_product",
+            "cardinality": "one_to_many",
+            "description": "Клиенту доступны различные банковские продукты."
+          }
+        ],
+        "relation_count": 9,
+        "canonical_references": [
+          {
+            "target_type": "relation",
+            "relation_id": "customer_products"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "patch_requirement_results",
+      "result": {
+        "patched_requirement_count": 11,
+        "requirement_link_count": 329,
+        "covered_requirement_count": 87,
+        "assessment_count": 27
+      }
+    }
+  ]
+}

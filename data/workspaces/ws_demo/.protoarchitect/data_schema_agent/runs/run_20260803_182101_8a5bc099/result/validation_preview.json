@@ -1,0 +1,23 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "entities": 8,
+    "fields": 74,
+    "relations": 8,
+    "dictionaries": 11,
+    "dictionary_values": 34,
+    "requirement_links": 296
+  },
+  "preservation": {
+    "missing_base_objects": []
+  },
+  "assessment_counts": {
+    "linked": 75,
+    "cross_cutting_data": 0,
+    "no_data": 33,
+    "unclear": 0,
+    "unclassified": 0
+  }
+}

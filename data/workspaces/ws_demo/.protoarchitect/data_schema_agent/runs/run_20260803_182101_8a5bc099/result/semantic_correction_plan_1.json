@@ -1,0 +1,560 @@
+{
+  "summary": "Round 1 correction: Add bank_product entity for product catalog (REQ-0019-0024), add title field to account entity (REQ-0026, REQ-0029, REQ-0030), add cancelled value to operation_status dictionary (REQ-0046). Update requirement links for all affected requirements.",
+  "write_dictionaries": [
+    {
+      "id": "product_category",
+      "title": "Категория продукта",
+      "description": "Категории банковских продуктов",
+      "values": [
+        {
+          "id": "accounts",
+          "title": "Счета",
+          "description": ""
+        },
+        {
+          "id": "deposits",
+          "title": "Вклады",
+          "description": ""
+        },
+        {
+          "id": "credits",
+          "title": "Кредиты",
+          "description": ""
+        },
+        {
+          "id": "cards",
+          "title": "Карты",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "write_entities": [
+    {
+      "id": "bank_product",
+      "title": "Банковский продукт",
+      "description": "Каталог банковских продуктов для отображения на главной странице.",
+      "fields": [
+        {
+          "id": "id",
+          "title": "Идентификатор продукта",
+          "type": "uuid",
+          "required": true,
+          "description": "Логический идентификатор продукта."
+        },
+        {
+          "id": "title",
+          "title": "Название",
+          "type": "string",
+          "required": true,
+          "description": "Название продукта для отображения."
+        },
+        {
+          "id": "category",
+          "title": "Категория",
+          "type": "dictionary",
+          "required": true,
+          "description": "Категория продукта: счета, вклады, кредиты, карты.",
+          "dictionary_id": "product_category"
+        },
+        {
+          "id": "description",
+          "title": "Описание",
+          "type": "text",
+          "required": false,
+          "description": "Краткое описание продукта."
+        },
+        {
+          "id": "action_text",
+          "title": "Текст действия",
+          "type": "string",
+          "required": true,
+          "description": "Текст кнопки действия для перехода."
+        },
+        {
+          "id": "target_section",
+          "title": "Целевой раздел",
+          "type": "string",
+          "required": true,
+          "description": "Раздел для перехода при выборе продукта."
+        }
+      ]
+    }
+  ],
+  "write_relations": [
+    {
+      "id": "customer_products",
+      "title": "Доступные продукты клиента",
+      "source_entity": "customer",
+      "target_entity": "bank_product",
+      "cardinality": "one_to_many",
+      "description": "Клиенту доступны различные банковские продукты."
+    }
+  ],
+  "patch_dictionaries": [
+    {
+      "id": "operation_status",
+      "values": [
+        {
+          "id": "cancelled",
+          "title": "Отменен",
+          "description": "Операция отменена пользователем или системой"
+        }
+      ]
+    }
+  ],
+  "patch_entities": [
+    {
+      "id": "account",
+      "fields": [
+        {
+          "id": "title",
+          "title": "Название счета",
+          "type": "string",
+          "required": false,
+          "description": "Отображаемое название счета."
+        }
+      ]
+    }
+  ],
+  "patch_relations": [],
+  "remove_targets": [],
+  "requirement_updates": [
+    {
+      "requirement_id": "REQ-0006",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "customer.id",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "customer.full_name",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "customer.short_name",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "customer.phone",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "customer.email",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "customer.status",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0019",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "dictionary",
+          "target_id": "product_category",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0020",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.description",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.action_text",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.target_section",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0021",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.description",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.action_text",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.target_section",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0022",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.description",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.action_text",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.target_section",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0023",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.description",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.action_text",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.target_section",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "bank_product",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.id",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.title",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.category",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.description",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.action_text",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "bank_product.target_section",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0026",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "account.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.number",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.balance",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.currency",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.status",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.type",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.available_balance",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0029",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "account",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.id",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.customer_id",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.title",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.number",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.type",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.balance",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.available_balance",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.currency",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.status",
+          "relation": "defines",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.opening_date",
+          "relation": "defines",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0030",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "account.number",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.title",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    },
+    {
+      "requirement_id": "REQ-0046",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "transfer.status",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "dictionary",
+          "target_id": "operation_status",
+          "relation": "uses",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "dictionary_value",
+          "target_id": "operation_status.cancelled",
+          "relation": "uses",
+          "implementation_status": "planned"
+        }
+      ],
+      "classification": "direct",
+      "reason": "",
+      "warnings": []
+    }
+  ]
+}

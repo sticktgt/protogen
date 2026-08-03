@@ -5,6 +5,7 @@ import {
   loadActiveAgentRun,
   loadAgentChanges,
   loadAgentEvents,
+  loadAgentFileDiff,
   loadAgentRequirementsResult,
   loadAgentRun,
   loadLatestAgentSnapshot,
@@ -21,6 +22,7 @@ import { agentActionErrorMessage, requirementsStartErrorMessage } from './agent-
 let reloadDataSchema = async () => {};
 let renderView = () => {};
 let pollingTimer = null;
+let pollingInFlight = false;
 let actionInProgress = false;
 
 export function initializeAgentController({ onDataSchemaReload, onRender }) {
@@ -45,13 +47,11 @@ export async function loadAgentPanelState() {
     state.agentHistory = history?.snapshot || null;
     state.agentInitialAvailable = history?.initial_snapshot_available === true;
     if (state.agentRun?.status === 'preview_ready') {
-      [state.agentChanges, state.agentRequirementsResult] = await Promise.all([
-        loadAgentChanges(state.workspaceId, state.agentRun.run_id),
-        loadAgentRequirementsResult(state.workspaceId, state.agentRun.run_id)
-      ]);
+      await loadPreviewArtifacts(state.agentRun.run_id);
     } else {
       state.agentChanges = null;
       state.agentRequirementsResult = null;
+      state.agentFileDiff = null;
     }
     resetAgentObservability();
     applyEmbeddedObservability(state.agentRun);
@@ -126,6 +126,7 @@ function bindStart(container) {
       state.writeLocked = true;
       state.agentChanges = null;
       state.agentRequirementsResult = null;
+      state.agentFileDiff = null;
       resetAgentObservability();
       configurePolling();
     }, 'Синхронизация схемы данных запущена', error => {
@@ -160,6 +161,7 @@ function bindRegeneration(container, run) {
         state.writeLocked = true;
         state.agentChanges = null;
         state.agentRequirementsResult = null;
+        state.agentFileDiff = null;
         resetAgentObservability();
         configurePolling();
       }, 'Перегенерация запущена');
@@ -187,6 +189,7 @@ async function applyRun(run) {
     state.agentRun = null;
     state.agentChanges = null;
     state.agentRequirementsResult = null;
+    state.agentFileDiff = null;
     resetAgentObservability();
     state.writeLocked = false;
     state.summary = null;
@@ -203,6 +206,7 @@ async function rejectRun(run) {
     state.agentRun = null;
     state.agentChanges = null;
     state.agentRequirementsResult = null;
+    state.agentFileDiff = null;
     resetAgentObservability();
     state.writeLocked = false;
     await refreshSnapshotState();
@@ -218,6 +222,7 @@ async function cancelRun(run) {
       state.agentRun = null;
       state.agentChanges = null;
       state.agentRequirementsResult = null;
+      state.agentFileDiff = null;
       state.writeLocked = false;
       resetAgentObservability();
       await reloadDataSchema();
@@ -267,21 +272,22 @@ function configurePolling() {
 }
 
 async function refreshRun() {
+  if (pollingInFlight) return;
   const runId = state.agentRun?.run_id;
   if (!runId) return stopPolling();
+  pollingInFlight = true;
   try {
-    const [run] = await Promise.all([
-      loadAgentRun(state.workspaceId, runId),
-      refreshRunEvents(runId)
-    ]);
+    const run = await loadAgentRun(state.workspaceId, runId);
     state.agentRun = run;
     applyEmbeddedObservability(run);
     state.writeLocked = isLockingStatus(run.status);
+    try {
+      await refreshRunEvents(runId);
+    } catch (error) {
+      console.error('Не удалось обновить журнал выполнения Data Schema', error);
+    }
     if (run.status === 'preview_ready') {
-      [state.agentChanges, state.agentRequirementsResult] = await Promise.all([
-        loadAgentChanges(state.workspaceId, runId),
-        loadAgentRequirementsResult(state.workspaceId, runId)
-      ]);
+      await loadPreviewArtifacts(runId);
     }
     if (run.status === 'cancelled') {
       state.agentRun = null;
@@ -295,8 +301,33 @@ async function refreshRun() {
     renderView();
   } catch (error) {
     console.error(error);
-    stopPolling();
+    // A temporary UI/API failure must not freeze elapsed time or stop
+    // observing a backend task that may still be running.
+    renderView();
+  } finally {
+    pollingInFlight = false;
   }
+}
+
+async function loadPreviewArtifacts(runId) {
+  const results = await Promise.allSettled([
+    loadAgentChanges(state.workspaceId, runId),
+    loadAgentRequirementsResult(state.workspaceId, runId),
+    loadAgentFileDiff(state.workspaceId, runId)
+  ]);
+  const [changes, requirements, fileDiff] = results;
+  state.agentChanges = settledValue(changes, state.agentChanges || {});
+  state.agentRequirementsResult = settledValue(
+    requirements,
+    state.agentRequirementsResult || {}
+  );
+  state.agentFileDiff = settledValue(fileDiff, state.agentFileDiff || {});
+}
+
+function settledValue(result, fallback) {
+  if (result.status === 'fulfilled') return result.value;
+  console.error('Не удалось загрузить дополнительный результат preview Data Schema', result.reason);
+  return fallback;
 }
 
 async function refreshRunEvents(runId) {

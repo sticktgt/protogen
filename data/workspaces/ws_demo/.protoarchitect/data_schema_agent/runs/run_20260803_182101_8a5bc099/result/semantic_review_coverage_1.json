@@ -1,0 +1,69 @@
+{
+  "status": "needs_revision",
+  "decision": "revise",
+  "blocking": true,
+  "review_id": "coverage_1",
+  "review_kind": "coverage",
+  "coverage_complete": true,
+  "verified_issue_ids": [],
+  "reviewed_at": "2026-08-03T16:24:22.683322+00:00",
+  "summary": "Проверка покрытия требований выявила 2 критических отсутствия структур данных и 1 рекомендацию по улучшению. Схема хранит основные сущности (клиент, счета, карты, операции, переводы, заявки), но отсутствуют данные каталога продуктов и название счета.",
+  "review_note": "",
+  "strengths": [],
+  "issue_counts": {
+    "must_fix": 2,
+    "advisory": 1
+  },
+  "issues": [
+    {
+      "id": "coverage_1_issue_1",
+      "source_review_id": "coverage_1",
+      "disposition": "must_fix",
+      "category": "Отсутствующая сущность",
+      "message": "Требования REQ-0019-0024 описывают каталог банковских продуктов с карточками продуктов (счета, вклады, кредиты, карты), где REQ-0024 явно требует хранимые атрибуты: идентификатор продукта, название, категория, краткое описание, текст действия и целевой раздел перехода. В схеме отсутствует сущность для хранения каталога продуктов.",
+      "recommendation": "Добавить сущность bank_product с полями: id, title, category (словарь: accounts/deposits/credits/cards), description, action_text, target_section. Связать сущность отношением one_to_many с клиентом для отображения доступных продуктов.",
+      "requirement_ids": [
+        "REQ-0019",
+        "REQ-0020",
+        "REQ-0021",
+        "REQ-0022",
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "targets": [
+        "entity:bank_product"
+      ]
+    },
+    {
+      "id": "coverage_1_issue_2",
+      "source_review_id": "coverage_1",
+      "disposition": "must_fix",
+      "category": "Отсутствующее поле",
+      "message": "Требования REQ-0026 (таблица счетов) и REQ-0029 (данные счета) явно указывают атрибут 'название счета' как отображаемую характеристику. В сущности account присутствует только номер счета (number), но отсутствует поле для названия/заголовка счета.",
+      "recommendation": "Добавить в сущность account поле title (string, required: false) для хранения отображаемого названия счета. Поле должно использоваться в таблице счетов и деталях счета наравне с номером.",
+      "requirement_ids": [
+        "REQ-0026",
+        "REQ-0029",
+        "REQ-0030"
+      ],
+      "targets": [
+        "field:account.title"
+      ]
+    },
+    {
+      "id": "coverage_1_issue_3",
+      "source_review_id": "coverage_1",
+      "disposition": "advisory",
+      "category": "Неточное представление атрибута",
+      "message": "REQ-0006 требует 'признак активности клиента' как характеристику. В схеме статус клиента представлен как dictionary customer_status (active/blocked), что функционально покрывает требование, но не соответствует формулировке булева признака.",
+      "recommendation": "Рассмотреть замену dictionary status на boolean поле is_active в сущности customer, либо явно документировать, что dictionary status со значением 'active' эквивалентен признаку активности. Текущая конструкция применима.",
+      "requirement_ids": [
+        "REQ-0006"
+      ],
+      "targets": [
+        "field:customer.status"
+      ]
+    }
+  ],
+  "cleanup_candidates": []
+}

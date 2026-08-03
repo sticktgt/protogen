@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from backend.modules.data_schema.agent_exports import build_requirements_data_result
+from backend.modules.data_schema.agent_file_diff import write_file_diff_result
 from backend.modules.data_schema.files import read_json, write_json
 
 OBJECT_TYPES = ("entities", "fields", "relations", "dictionaries", "dictionary_values", "requirement_links")
@@ -76,6 +77,11 @@ def write_result_files(
         run=run,
     )
     write_json(result_path / "changes.json", changes)
+    write_file_diff_result(
+        base_root=base_root,
+        working_root=working_root,
+        result_path=result_path,
+    )
     write_json(result_path / "requirements_data_result.json", requirements_result)
     return changes, requirements_result
 

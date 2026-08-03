@@ -1,0 +1,118 @@
+{
+  "summary": "Синхронизация схемы данных завершена. Требования: 81 с прямой трассировкой, 0 сквозных правил данных, 27 без влияния на логическую схему, 0 требуют уточнения.",
+  "agent_note": "",
+  "warnings": [],
+  "requirement_warnings": [],
+  "cross_cutting_data": [],
+  "no_data": [
+    {
+      "requirement_id": "REQ-0002",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0003",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0004",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0005",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0010",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0015",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0016",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0017",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0018",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0038",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0044",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0060",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0072",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0075",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0076",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0078",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0079",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0080",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0085",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0104",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0106",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0107",
+      "reason": ""
+    },
+    {
+      "requirement_id": "REQ-0108",
+      "reason": ""
+    }
+  ],
+  "unclear": []
+}

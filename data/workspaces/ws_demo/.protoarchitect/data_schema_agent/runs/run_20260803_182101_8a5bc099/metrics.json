@@ -1,0 +1,25 @@
+{
+  "llm_calls": 10,
+  "tool_calls": 10,
+  "last_tool": "submit_data_schema_semantic_review",
+  "repeat_streak": 1,
+  "max_repeat_streak": 1,
+  "input_tokens": 238555,
+  "output_tokens": 22510,
+  "total_tokens": 261065,
+  "token_usage_available": true,
+  "last_seq": 54,
+  "last_event_at": "2026-08-03T16:25:43.129819+00:00",
+  "last_llm_started_at": "2026-08-03T16:25:22.897628+00:00",
+  "last_llm_completed_at": "2026-08-03T16:25:43.103140+00:00",
+  "limits": {
+    "max_llm_calls": 18,
+    "max_tool_calls": 28,
+    "max_total_tokens": 600000,
+    "max_duration_seconds": 1200,
+    "recursion_limit": 80,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "started_at": "2026-08-03T16:21:01.918958+00:00"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "card",
+  "title": "Карта",
+  "description": "Банковская карта клиента.",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор карты",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор карты."
+    },
+    {
+      "id": "customer_id",
+      "title": "Клиент",
+      "type": "uuid",
+      "required": true,
+      "description": "Владелец карты."
+    },
+    {
+      "id": "account_id",
+      "title": "Счет",
+      "type": "uuid",
+      "required": true,
+      "description": "Счет, к которому привязана карта."
+    },
+    {
+      "id": "masked_number",
+      "title": "Маскированный номер",
+      "type": "string",
+      "required": true,
+      "description": "Номер карты в маскированном виде."
+    },
+    {
+      "id": "status",
+      "title": "Статус карты",
+      "type": "dictionary",
+      "dictionary_id": "card_status",
+      "required": true,
+      "description": "Состояние карты."
+    },
+    {
+      "id": "block_reason",
+      "title": "Причина блокировки",
+      "type": "dictionary",
+      "dictionary_id": "card_block_reason",
+      "required": false,
+      "description": "Причина блокировки карты."
+    },
+    {
+      "id": "payment_system",
+      "title": "Платежная система",
+      "type": "dictionary",
+      "required": false,
+      "description": "Платежная система карты",
+      "dictionary_id": "payment_system"
+    },
+    {
+      "id": "card_type",
+      "title": "Тип карты",
+      "type": "dictionary",
+      "required": false,
+      "description": "Тип банковской карты",
+      "dictionary_id": "card_type"
+    },
+    {
+      "id": "expiration_date",
+      "title": "Срок действия",
+      "type": "date",
+      "required": false,
+      "description": "Срок действия карты"
+    },
+    {
+      "id": "is_virtual",
+      "title": "Виртуальная карта",
+      "type": "boolean",
+      "required": false,
+      "description": "Признак виртуальной карты"
+    }
+  ]
+}

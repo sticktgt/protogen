@@ -1,0 +1,95 @@
+{
+  "inherited_requirement_links": [
+    {
+      "requirement_id": "REQ-ACCOUNTS-LIST",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "account",
+          "relation": "defines"
+        },
+        {
+          "target_type": "field",
+          "target_id": "account.balance",
+          "relation": "defines"
+        }
+      ]
+    },
+    {
+      "requirement_id": "REQ-CARD-BLOCK",
+      "links": [
+        {
+          "target_type": "field",
+          "target_id": "card.status",
+          "relation": "defines"
+        },
+        {
+          "target_type": "field",
+          "target_id": "card.block_reason",
+          "relation": "defines"
+        }
+      ]
+    },
+    {
+      "requirement_id": "REQ-CREDIT-APPLY",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "credit_application",
+          "relation": "defines"
+        }
+      ]
+    },
+    {
+      "requirement_id": "REQ-DEPOSIT-OPEN",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "deposit_application",
+          "relation": "defines"
+        }
+      ]
+    },
+    {
+      "requirement_id": "REQ-SPENDING-ANALYTICS",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "spending_category",
+          "relation": "defines"
+        }
+      ]
+    },
+    {
+      "requirement_id": "REQ-TRANSFER-OWN",
+      "links": [
+        {
+          "target_type": "entity",
+          "target_id": "transfer",
+          "relation": "defines"
+        }
+      ]
+    }
+  ],
+  "cleanup_candidates": [
+    {
+      "id": "consistency_1_cleanup_1",
+      "source_review_id": "consistency_1",
+      "category": "Возможная избыточность поля",
+      "message": "Поле card.customer_id может быть избыточным, так как связь карты с клиентом уже устанавливается через card.account_id → account.customer_id. Прямая ссылка на клиента упрощает выборки, но дублирует информацию.",
+      "recommendation": "Проверить необходимость прямого customer_id в карте: если все выборки карт идут через счета клиента, поле можно удалить. Если требуются прямые выборки карт по клиенту без join — оставить.",
+      "requirement_ids": [
+        "REQ-0069",
+        "REQ-0070"
+      ],
+      "targets": [
+        "field:card.customer_id"
+      ]
+    }
+  ],
+  "counts": {
+    "inherited_requirement_ids": 6,
+    "inherited_requirement_links": 8,
+    "cleanup_candidates": 1
+  }
+}

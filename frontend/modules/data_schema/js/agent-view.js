@@ -48,7 +48,7 @@ export function renderAgentView() {
   } else if (['running', 'cancelling', 'applying'].includes(run.status)) {
     container.innerHTML = renderAgentRunning(run, state.agentMetrics, state.agentEvents);
   } else if (run.status === 'preview_ready') {
-    container.innerHTML = renderAgentPreview(run, state.agentChanges || {}, state.agentRequirementsResult || {}, busy, state.agentMetrics, state.agentEvents);
+    container.innerHTML = renderAgentPreview(run, state.agentChanges || {}, state.agentRequirementsResult || {}, state.agentFileDiff || {}, busy, state.agentMetrics, state.agentEvents);
   } else if (run.status === 'failed') {
     container.innerHTML = renderAgentFailed(run, busy, state.agentMetrics, state.agentEvents);
   } else {

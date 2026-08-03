@@ -174,6 +174,13 @@ paths:
       summary: Get deterministic structural diff
       parameters:
         - $ref: '#/components/parameters/workspace_id'
+  /api/data-schema/agent-runs/{run_id}/file-diff:
+    parameters:
+      - $ref: '#/components/parameters/run_id'
+    get:
+      summary: Get unified file diff between base and preview schemas
+      parameters:
+        - $ref: '#/components/parameters/workspace_id'
   /api/data-schema/agent-runs/{run_id}/requirements-data-result:
     parameters:
       - $ref: '#/components/parameters/run_id'

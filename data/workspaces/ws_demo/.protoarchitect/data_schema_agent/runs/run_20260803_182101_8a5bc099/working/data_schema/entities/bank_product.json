@@ -1,0 +1,50 @@
+{
+  "id": "bank_product",
+  "title": "Банковский продукт",
+  "description": "Каталог банковских продуктов для отображения на главной странице.",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор продукта",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор продукта."
+    },
+    {
+      "id": "title",
+      "title": "Название",
+      "type": "string",
+      "required": true,
+      "description": "Название продукта для отображения."
+    },
+    {
+      "id": "category",
+      "title": "Категория",
+      "type": "dictionary",
+      "required": true,
+      "description": "Категория продукта: счета, вклады, кредиты, карты.",
+      "dictionary_id": "product_category"
+    },
+    {
+      "id": "description",
+      "title": "Описание",
+      "type": "text",
+      "required": false,
+      "description": "Краткое описание продукта."
+    },
+    {
+      "id": "action_text",
+      "title": "Текст действия",
+      "type": "string",
+      "required": true,
+      "description": "Текст кнопки действия для перехода."
+    },
+    {
+      "id": "target_section",
+      "title": "Целевой раздел",
+      "type": "string",
+      "required": true,
+      "description": "Раздел для перехода при выборе продукта."
+    }
+  ]
+}

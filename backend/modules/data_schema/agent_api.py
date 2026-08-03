@@ -253,6 +253,20 @@ def read_agent_changes(
     return read_json(path, {})
 
 
+@router.get("/agent-runs/{run_id}/file-diff")
+def read_agent_file_diff(
+    run_id: str,
+    workspace_id: str = Query(...),
+    user: dict = Depends(require_user),
+    state: AppState = Depends(get_state),
+):
+    root = _module_root(state, user, workspace_id)
+    path = result_file(root, run_id, "file_diff.json")
+    if not path.is_file():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File diff is not ready")
+    return read_json(path, {})
+
+
 @router.get("/agent-runs/{run_id}/requirements-data-result")
 def read_requirements_data_result(
     run_id: str,

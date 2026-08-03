@@ -155,6 +155,10 @@ export function loadAgentChanges(workspaceId, runId) {
   return apiFetch(`${root}/agent-runs/${encodeURIComponent(runId)}/changes?workspace_id=${encodeURIComponent(workspaceId)}`);
 }
 
+export function loadAgentFileDiff(workspaceId, runId) {
+  return apiFetch(`${root}/agent-runs/${encodeURIComponent(runId)}/file-diff?workspace_id=${encodeURIComponent(workspaceId)}`);
+}
+
 export function loadAgentRequirementsResult(workspaceId, runId) {
   return apiFetch(`${root}/agent-runs/${encodeURIComponent(runId)}/requirements-data-result?workspace_id=${encodeURIComponent(workspaceId)}`);
 }

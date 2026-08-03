@@ -975,12 +975,13 @@
 
 .agent-changes-root > summary {
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.3;
   font-weight: 700;
 }
 
 .agent-changes-root-body {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .agent-deletion-warning {
@@ -996,15 +997,17 @@
 }
 
 .agent-change-group {
-  margin-top: 12px;
+  margin-top: 8px;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #fff;
 }
 
 .agent-change-group > summary {
   cursor: pointer;
-  padding: 10px 12px;
+  padding: 7px 10px;
+  font-size: 13px;
+  line-height: 1.35;
   font-weight: 700;
 }
 
@@ -1015,9 +1018,11 @@
 .agent-change-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 9px 12px;
+  gap: 8px;
+  padding: 6px 10px;
   border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .agent-change-item:last-child {
@@ -1030,8 +1035,8 @@
 }
 
 .agent-change-properties {
-  margin-top: 5px;
-  font-size: 12px;
+  margin-top: 3px;
+  font-size: 11px;
 }
 
 .agent-change-properties > summary {
@@ -1043,17 +1048,17 @@
 .agent-change-property-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 5px;
+  gap: 3px;
+  margin-top: 4px;
 }
 
 .agent-change-property {
   display: grid;
   grid-template-columns: minmax(90px, auto) minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: baseline;
-  gap: 6px;
-  padding: 4px 6px;
-  border-radius: 6px;
+  gap: 5px;
+  padding: 3px 5px;
+  border-radius: 5px;
   background: #f8fafc;
 }
 
@@ -1073,8 +1078,9 @@
 }
 
 .agent-change-action {
-  width: 20px;
-  font-size: 18px;
+  width: 16px;
+  font-size: 15px;
+  line-height: 1.2;
   font-weight: 800;
   text-align: center;
 }
@@ -1084,11 +1090,13 @@
 .agent-change-item.deleted .agent-change-action { color: #b91c1c; }
 
 .agent-file-group {
-  padding: 8px 12px;
+  padding: 6px 10px;
+  font-size: 13px;
 }
 
 .agent-file-group ul {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
+  padding-left: 20px;
 }
 
 .agent-decision-card {
@@ -1436,4 +1444,136 @@
 .card-relation-row.preview-change-modified {
   background: #fffbeb;
   border-color: #fcd34d;
+}
+
+.agent-file-diff-root > summary {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.agent-file-diff-body {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.agent-file-diff-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 7px 0 8px;
+}
+
+.agent-file-diff-summary span {
+  padding: 4px 7px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-file-diff-summary .added,
+.agent-file-diff-counts .added {
+  color: #15803d;
+}
+
+.agent-file-diff-summary .deleted,
+.agent-file-diff-counts .deleted {
+  color: #b91c1c;
+}
+
+.agent-file-diff-group {
+  margin-top: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.agent-file-diff-group > summary {
+  cursor: pointer;
+  padding: 7px 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.agent-file-diff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 8px 8px;
+}
+
+.agent-file-diff-file {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.agent-file-diff-file > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 8px;
+  background: #f8fafc;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.agent-file-diff-file > summary code {
+  overflow-wrap: anywhere;
+}
+
+.agent-file-diff-counts {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-file-diff-code {
+  overflow: auto;
+  max-height: 520px;
+  border-top: 1px solid #e2e8f0;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  tab-size: 2;
+}
+
+.agent-file-diff-code > span {
+  display: block;
+  min-width: max-content;
+  padding: 0 8px;
+  white-space: pre;
+}
+
+.agent-file-diff-code > .file-header {
+  color: #cbd5e1;
+  background: #1e293b;
+  font-weight: 700;
+}
+
+.agent-file-diff-code > .hunk-header {
+  color: #bae6fd;
+  background: #0c4a6e;
+}
+
+.agent-file-diff-code > .added {
+  color: #dcfce7;
+  background: #14532d;
+}
+
+.agent-file-diff-code > .deleted {
+  color: #fee2e2;
+  background: #7f1d1d;
 }

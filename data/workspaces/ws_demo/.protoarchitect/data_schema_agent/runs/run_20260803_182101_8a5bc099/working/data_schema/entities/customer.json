@@ -1,0 +1,50 @@
+{
+  "id": "customer",
+  "title": "Клиент",
+  "description": "Физическое лицо, использующее банковский фронт-офис.",
+  "fields": [
+    {
+      "id": "id",
+      "title": "Идентификатор клиента",
+      "type": "uuid",
+      "required": true,
+      "description": "Логический идентификатор клиента."
+    },
+    {
+      "id": "full_name",
+      "title": "ФИО",
+      "type": "string",
+      "required": true,
+      "description": "Полное имя клиента."
+    },
+    {
+      "id": "phone",
+      "title": "Телефон",
+      "type": "string",
+      "required": true,
+      "description": "Контактный телефон."
+    },
+    {
+      "id": "email",
+      "title": "Email",
+      "type": "string",
+      "required": false,
+      "description": "Адрес электронной почты."
+    },
+    {
+      "id": "status",
+      "title": "Статус клиента",
+      "type": "dictionary",
+      "dictionary_id": "customer_status",
+      "required": true,
+      "description": "Текущий статус клиента."
+    },
+    {
+      "id": "short_name",
+      "title": "Краткое имя",
+      "type": "string",
+      "required": false,
+      "description": "Краткое имя для приветствия"
+    }
+  ]
+}

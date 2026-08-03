@@ -414,6 +414,7 @@ def archive_and_remove_run(
 def result_file(module_root: Path, run_id: str, name: str) -> Path:
     allowed = {
         "changes.json",
+        "file_diff.json",
         "requirements_data_result.json",
         "agent_report.json",
         "validation.json",

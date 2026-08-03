@@ -28,6 +28,7 @@ from backend.modules.data_schema.agent_requirements import (
 )
 from backend.modules.data_schema.agent_preview import finalize_preview
 from backend.modules.data_schema.agent_exports import build_requirements_data_result
+from backend.modules.data_schema.agent_file_diff import build_file_diff, write_file_diff_result
 from backend.modules.data_schema.agent_report import (
     build_factual_summary,
     ensure_agent_report,
@@ -75,6 +76,7 @@ from backend.modules.data_schema.agent_runtime_layout import ensure_runtime_layo
 from backend.modules.data_schema.agent_runs import (
     apply_run,
     create_run,
+    result_file,
     reject_run,
     reset_for_regeneration,
     update_run,
@@ -261,6 +263,7 @@ def test_data_schema_agent_frontend_module_imports() -> None:
     modules = [
         PROJECT_ROOT / "frontend/modules/data_schema/js/agent-observability-render.js",
         PROJECT_ROOT / "frontend/modules/data_schema/js/agent-changes-render.js",
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-file-diff-render.js",
         PROJECT_ROOT / "frontend/modules/data_schema/js/agent-render.js",
         PROJECT_ROOT / "frontend/modules/data_schema/js/agent-semantic-review-render.js",
         PROJECT_ROOT / "frontend/modules/data_schema/js/preview-change-markers.js",
@@ -277,6 +280,93 @@ def test_data_schema_agent_frontend_module_imports() -> None:
 
     assert result.returncode == 0, result.stderr
 
+
+
+
+def test_file_diff_reports_added_modified_and_deleted_files(tmp_path: Path) -> None:
+    base_root = tmp_path / "base"
+    working_root = tmp_path / "working"
+    result_root = tmp_path / "result"
+    base_root.mkdir()
+    working_root.mkdir()
+    (base_root / "schema.json").write_text('{\n  "title": "До"\n}\n', encoding="utf-8")
+    (working_root / "schema.json").write_text('{\n  "title": "После"\n}\n', encoding="utf-8")
+    (base_root / "deleted.json").write_text('{"deleted": true}\n', encoding="utf-8")
+    (working_root / "added.json").write_text('{"added": true}\n', encoding="utf-8")
+
+    result = build_file_diff(base_root, working_root)
+    written = write_file_diff_result(
+        base_root=base_root,
+        working_root=working_root,
+        result_path=result_root,
+    )
+
+    assert result == written
+    assert result["summary"] == {
+        "files": 3,
+        "added": 1,
+        "modified": 1,
+        "deleted": 1,
+        "additions": 2,
+        "deletions": 2,
+    }
+    by_path = {item["path"]: item for item in result["files"]}
+    assert by_path["added.json"]["change_type"] == "added"
+    assert "--- /dev/null" in by_path["added.json"]["diff"]
+    assert "+++ b/added.json" in by_path["added.json"]["diff"]
+    assert by_path["deleted.json"]["change_type"] == "deleted"
+    assert "--- a/deleted.json" in by_path["deleted.json"]["diff"]
+    assert "+++ /dev/null" in by_path["deleted.json"]["diff"]
+    assert by_path["schema.json"]["change_type"] == "modified"
+    assert '-  "title": "До"' in by_path["schema.json"]["diff"]
+    assert '+  "title": "После"' in by_path["schema.json"]["diff"]
+    assert json.loads((result_root / "file_diff.json").read_text(encoding="utf-8")) == result
+
+
+def test_file_diff_is_loaded_and_rendered_as_additional_preview() -> None:
+    api_source = (PROJECT_ROOT / "backend/modules/data_schema/agent_api.py").read_text(encoding="utf-8")
+    controller = (
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-controller.js"
+    ).read_text(encoding="utf-8")
+    view = (PROJECT_ROOT / "frontend/modules/data_schema/js/agent-view.js").read_text(encoding="utf-8")
+    renderer = (
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-file-diff-render.js"
+    ).read_text(encoding="utf-8")
+    main_renderer = (
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-render.js"
+    ).read_text(encoding="utf-8")
+
+    assert '@router.get("/agent-runs/{run_id}/file-diff")' in api_source
+    assert "loadAgentFileDiff" in controller
+    assert "state.agentFileDiff" in controller
+    assert "state.agentFileDiff || {}" in view
+    assert "renderFileDiff(fileDiff)" in main_renderer
+    assert "Diff файлов" in renderer
+    assert "Новые файлы" in renderer
+    assert "Изменённые файлы" in renderer
+    assert "Удалённые файлы" in renderer
+
+
+def test_file_diff_is_an_allowed_result_file(tmp_path: Path) -> None:
+    run_id = "run_20260803_180000_deadbeef"
+    path = result_file(tmp_path, run_id, "file_diff.json")
+
+    assert path == run_root(tmp_path, run_id) / "result" / "file_diff.json"
+
+
+def test_agent_polling_survives_optional_preview_and_api_failures() -> None:
+    controller = (
+        PROJECT_ROOT / "frontend/modules/data_schema/js/agent-controller.js"
+    ).read_text(encoding="utf-8")
+
+    assert "Promise.allSettled" in controller
+    assert "let pollingInFlight = false" in controller
+    assert "A temporary UI/API failure must not freeze elapsed time" in controller
+    refresh_catch = controller.split("async function refreshRun()", 1)[1].split(
+        "async function loadPreviewArtifacts", 1
+    )[0]
+    assert "catch (error)" in refresh_catch
+    assert "stopPolling();\n  }" not in refresh_catch
 
 
 def test_completed_run_duration_is_frozen_at_last_event() -> None:

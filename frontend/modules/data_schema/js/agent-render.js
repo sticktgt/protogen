@@ -7,6 +7,7 @@ import {
   renderCompactChangeStatistics,
   renderDeletionWarning
 } from './agent-changes-render.js';
+import { renderFileDiff } from './agent-file-diff-render.js';
 
 export function renderAgentStart({ snapshot, initialAvailable, actionInProgress, llmTest, startError, requirementsPath, userRequest, baseMode }) {
   return `
@@ -80,7 +81,7 @@ export function renderAgentRunning(run, metrics, events) {
   `;
 }
 
-export function renderAgentPreview(run, changes, requirementsResult, actionInProgress, metrics, events) {
+export function renderAgentPreview(run, changes, requirementsResult, fileDiff, actionInProgress, metrics, events) {
   const statistics = changes?.statistics || run.statistics || {};
   const review = run.semantic_review && typeof run.semantic_review === 'object'
     ? run.semantic_review
@@ -123,6 +124,7 @@ export function renderAgentPreview(run, changes, requirementsResult, actionInPro
         ${renderCompactChangeStatistics(statistics)}
       </section>
       ${renderChanges(changes, run)}
+      ${renderFileDiff(fileDiff)}
       <section class="card agent-decision-card">
         <div class="agent-actions primary-actions">
           ${applyBlocked

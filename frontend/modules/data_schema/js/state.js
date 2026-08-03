@@ -6,6 +6,7 @@ export const state = {
   writeLocked: false,
   agentRun: null,
   agentChanges: null,
+  agentFileDiff: null,
   agentRequirementsResult: null,
   agentEvents: [],
   agentMetrics: null,

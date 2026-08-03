@@ -35,6 +35,7 @@ Backend копирует требования и текущую схему то�
 - `GET /api/data-schema/agent-runs/{run_id}?workspace_id=...` — статус, этап, отчёт, встроенные метрики и последние события.
 - `GET /api/data-schema/agent-runs/{run_id}/events?workspace_id=...&after=0&limit=200` — инкрементальный журнал, количество LLM/tool calls и token usage.
 - `GET /api/data-schema/agent-runs/{run_id}/changes?workspace_id=...` — детерминированный diff сущностей, полей, связей, справочников, значений и requirement links.
+- `GET /api/data-schema/agent-runs/{run_id}/file-diff?workspace_id=...` — построчный unified diff файлов между базовой и результирующей схемой.
 - `GET /api/data-schema/agent-runs/{run_id}/requirements-data-result?workspace_id=...` — результат для каждого требования: `linked`, `cross_cutting_data`, `no_data`, `unclear` или аварийный `unclassified`.
 - `GET /api/data-schema/exports/requirements-data/{run_id}?workspace_id=...` — сохранённая после применения версия результата требований.
 - `GET /api/data-schema/agent-runs/{run_id}/diagnostics?workspace_id=...` — ZIP с входом, base/working-схемой, prompt/reference-файлами, событиями, метриками, результатом и traceback. API-ключи не включаются.

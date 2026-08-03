@@ -1,0 +1,253 @@
+{
+  "dictionaries": [
+    {
+      "id": "currency",
+      "title": "Валюта",
+      "values": [
+        {
+          "id": "RUB",
+          "title": "Российский рубль"
+        },
+        {
+          "id": "USD",
+          "title": "Доллар США"
+        },
+        {
+          "id": "EUR",
+          "title": "Евро"
+        }
+      ]
+    },
+    {
+      "id": "customer_status",
+      "title": "Статус клиента",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирован"
+        }
+      ]
+    },
+    {
+      "id": "account_status",
+      "title": "Статус счета",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активный"
+        },
+        {
+          "id": "closed",
+          "title": "Закрыт"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирован",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "card_status",
+      "title": "Статус карты",
+      "values": [
+        {
+          "id": "active",
+          "title": "Активна"
+        },
+        {
+          "id": "blocked",
+          "title": "Заблокирована"
+        },
+        {
+          "id": "expired",
+          "title": "Истек срок действия",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "card_block_reason",
+      "title": "Причина блокировки карты",
+      "values": [
+        {
+          "id": "lost",
+          "title": "Утеря"
+        },
+        {
+          "id": "stolen",
+          "title": "Кража"
+        },
+        {
+          "id": "other",
+          "title": "Другое"
+        },
+        {
+          "id": "fraud",
+          "title": "Подозрение на мошенничество",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "operation_status",
+      "title": "Статус операции",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "completed",
+          "title": "Исполнена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        },
+        {
+          "id": "cancelled",
+          "title": "Отменен",
+          "description": "Операция отменена пользователем или системой"
+        }
+      ]
+    },
+    {
+      "id": "application_status",
+      "title": "Статус заявки",
+      "values": [
+        {
+          "id": "draft",
+          "title": "Черновик"
+        },
+        {
+          "id": "submitted",
+          "title": "Отправлена"
+        },
+        {
+          "id": "approved",
+          "title": "Одобрена"
+        },
+        {
+          "id": "rejected",
+          "title": "Отклонена"
+        },
+        {
+          "id": "under_review",
+          "title": "На рассмотрении",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "credit_product_type",
+      "title": "Тип кредита",
+      "values": [
+        {
+          "id": "consumer",
+          "title": "Потребительский"
+        },
+        {
+          "id": "mortgage",
+          "title": "Ипотека"
+        },
+        {
+          "id": "car",
+          "title": "Автокредит"
+        }
+      ]
+    },
+    {
+      "id": "transaction_direction",
+      "title": "Направление операции",
+      "description": "Тип движения средств по операции",
+      "values": [
+        {
+          "id": "credit",
+          "title": "Поступление",
+          "description": "Операция поступления средств"
+        },
+        {
+          "id": "debit",
+          "title": "Списание",
+          "description": "Операция списания средств"
+        }
+      ]
+    },
+    {
+      "id": "card_type",
+      "title": "Тип карты",
+      "description": "Тип банковской карты",
+      "values": [
+        {
+          "id": "debit",
+          "title": "Дебетовая",
+          "description": ""
+        },
+        {
+          "id": "credit",
+          "title": "Кредитная",
+          "description": ""
+        },
+        {
+          "id": "prepaid",
+          "title": "Предоплаченная",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "payment_system",
+      "title": "Платежная система",
+      "description": "Платежная система карты",
+      "values": [
+        {
+          "id": "visa",
+          "title": "Visa",
+          "description": ""
+        },
+        {
+          "id": "mastercard",
+          "title": "Mastercard",
+          "description": ""
+        },
+        {
+          "id": "mir",
+          "title": "Мир",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "product_category",
+      "title": "Категория продукта",
+      "description": "Категории банковских продуктов",
+      "values": [
+        {
+          "id": "accounts",
+          "title": "Счета",
+          "description": ""
+        },
+        {
+          "id": "deposits",
+          "title": "Вклады",
+          "description": ""
+        },
+        {
+          "id": "credits",
+          "title": "Кредиты",
+          "description": ""
+        },
+        {
+          "id": "cards",
+          "title": "Карты",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}
