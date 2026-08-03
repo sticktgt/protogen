@@ -72,7 +72,7 @@ modules/<module_id>/
   init/                 # опционально: файлы для нового workspace
 
 backend/modules/<module_id>/
-  __init__.py
+  __init__.py           # файл пакета Python; именно __init__.py, не init.py
   api.py                # APIRouter модуля
   schemas.py            # Pydantic-схемы, если нужны
   service.py            # бизнес-операции
@@ -191,15 +191,66 @@ menu:
 
 ## 8. Frontend модуля
 
-HTML подключает общий CSS ядра и CSS модуля:
+Страница модуля должна использовать общий каркас приложения. `initLayout()` не создает верхнее меню и левое меню сам, а только заполняет уже существующие HTML-контейнеры:
 
 ```html
-<link rel="stylesheet" href="/base/css/tokens.css">
-<link rel="stylesheet" href="/base/css/layout.css">
-<link rel="stylesheet" href="/base/css/components.css">
-<link rel="stylesheet" href="css/module.css">
-<script type="module" src="js/main.js"></script>
+<nav class="sidebar-nav" data-sidebar></nav>
+<header class="topbar" data-topbar></header>
 ```
+
+Если этих контейнеров нет в `index.html`, страница модуля откроется без верхнего меню, без левого меню модулей и будет выглядеть как отдельная изолированная страница. Поэтому для обычной страницы модуля обязательно использовать такой каркас:
+
+```html
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Module</title>
+
+  <link rel="stylesheet" href="/base/css/tokens.css">
+  <link rel="stylesheet" href="/base/css/layout.css">
+  <link rel="stylesheet" href="/base/css/components.css">
+  <link rel="stylesheet" href="/modules/my_module/css/module.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-title">Модули</div>
+      <nav class="sidebar-nav" data-sidebar></nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar" data-topbar></header>
+
+      <section class="content">
+        <div class="page-header">
+          <h1 class="page-title">My Module</h1>
+          <p class="page-subtitle">Краткое описание страницы модуля.</p>
+        </div>
+
+        <div class="card">
+          <!-- Содержимое модуля -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/modules/my_module/js/main.js"></script>
+</body>
+</html>
+```
+
+Правила для frontend-страницы:
+
+- подключай общие CSS-файлы ядра: `/base/css/tokens.css`, `/base/css/layout.css`, `/base/css/components.css`;
+- подключай CSS модуля из `/modules/<module_id>/css/module.css`;
+- подключай JS модуля из `/modules/<module_id>/js/main.js`;
+- внутри `body` используй `app-shell`, `sidebar`, `main-panel`, `topbar` и `content`;
+- для левого меню обязательно добавляй `data-sidebar`;
+- для верхнего меню обязательно добавляй `data-topbar`;
+- содержимое модуля размещай только внутри `<section class="content">`;
+- не создавай собственную верхнюю панель, собственное левое меню или отдельный layout модуля.
 
 Основные helper-ы:
 
@@ -235,8 +286,6 @@ navigateToPage('other_module.main', { item_id: 'item_123' });
 ```
 
 `workspace_id` будет добавлен автоматически из текущего контекста, если не передан явно.
-
----
 
 ## 9. Backend API модуля
 
@@ -592,6 +641,7 @@ OpenAPI описывает API. `interop.yaml` описывает связи м�
 - [ ] создан `modules/<module_id>/interop.yaml`;
 - [ ] создан backend `APIRouter`;
 - [ ] создан frontend `index.html` и `js/main.js`;
+- [ ] `index.html` содержит общий каркас `app-shell`, `data-sidebar` и `data-topbar`;
 - [ ] модуль добавлен в `config/modules.yaml`;
 - [ ] меню настроено через `menu.show`;
 - [ ] API принимает `workspace_id` и проверяет доступ;
