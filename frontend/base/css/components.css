@@ -257,3 +257,185 @@ textarea {
   line-height: 1.45;
   margin: 4px 0 0;
 }
+
+.workspace-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.workspace-access-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+.workspace-access-users,
+.workspace-access-list {
+  display: grid;
+  gap: 8px;
+}
+
+.workspace-access-user {
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+  padding: 10px 12px;
+  text-align: left;
+  width: 100%;
+}
+
+.workspace-access-user.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.workspace-access-row {
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 10px 12px;
+}
+
+.workspace-access-row input[type="checkbox"] {
+  margin-top: 4px;
+  width: auto;
+}
+
+.workspace-access-row-owned {
+  opacity: 0.75;
+}
+
+.workspace-access-toolbar {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.workspace-access-toolbar .form-row {
+  flex: 1 1 260px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 920px) {
+  .workspace-access-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-users-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+}
+
+.admin-user-list {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-user-row {
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+  padding: 10px 12px;
+  text-align: left;
+  width: 100%;
+}
+
+.admin-user-row.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-user-editor-grid {
+  align-items: start;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.admin-add-user {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.admin-add-user summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.admin-add-user-form {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-top: 12px;
+}
+
+.admin-add-user-form .form-row,
+.workspace-delete-toolbar .form-row {
+  margin-bottom: 0;
+}
+
+.checkbox-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  min-height: 36px;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: auto;
+}
+
+.workspace-delete-toolbar {
+  margin-bottom: 12px;
+  max-width: 520px;
+}
+
+.workspace-delete-list {
+  display: grid;
+  gap: 8px;
+}
+
+.workspace-delete-row {
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+@media (max-width: 920px) {
+  .admin-users-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace-delete-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

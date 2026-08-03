@@ -31,8 +31,10 @@ function renderTopbar(context, activePageId) {
   const appName = context.app?.name || 'ProtoArchitect';
   const workspaceName = context.workspace?.name || 'workspace не выбран';
   const userName = context.user?.display_name || context.user?.username || '';
+  const currentPath = `${window.location.pathname}${window.location.search}`;
+  const settingsHref = `/base/settings.html?return_to=${encodeURIComponent(currentPath)}`;
   const adminLink = context.user?.is_admin
-    ? '<a class="topbar-link" href="/base/admin.html">Администрирование</a>'
+    ? `<a class="topbar-link${activePageId === 'base.admin' ? ' active' : ''}" href="/base/admin.html">Администрирование</a>`
     : '';
 
   container.innerHTML = `
@@ -43,7 +45,7 @@ function renderTopbar(context, activePageId) {
     <nav class="topbar-menu" aria-label="Системное меню">
       <a class="topbar-link${activePageId === 'base.workspace_open' ? ' active' : ''}" href="/base/workspace-open.html">Открыть workspace</a>
       <a class="topbar-link${activePageId === 'base.workspace_create' ? ' active' : ''}" href="/base/workspace-create.html">Создать workspace</a>
-      <a class="topbar-link${activePageId === 'base.settings' ? ' active' : ''}" href="/base/settings.html">Настройки</a>
+      <a class="topbar-link${activePageId === 'base.settings' ? ' active' : ''}" href="${settingsHref}">Настройки</a>
       ${adminLink}
       <span class="topbar-user">${userName}</span>
       <button class="btn" data-logout>Выйти</button>

@@ -20,14 +20,24 @@
       <section class="content">
         <div class="page-header">
           <h1 class="page-title">Администрирование</h1>
-          <p class="page-subtitle">Минимальный системный раздел для общих настроек и пользователей.</p>
+          <p class="page-subtitle">Системный раздел для управления пользователями и доступом к workspace.</p>
         </div>
-        <div class="grid grid-2">
-          <div class="card">
-            <div class="card-title">Пользователи</div>
-            <div class="grid" data-users></div>
-            <hr>
-            <form data-create-user>
+
+        <div class="card admin-users-card">
+          <div class="card-title">Пользователи</div>
+          <div class="admin-users-layout">
+            <section>
+              <div class="card-subtitle">Список пользователей</div>
+              <div class="admin-user-list" data-users></div>
+            </section>
+            <section>
+              <div class="card-subtitle">Выбранный пользователь</div>
+              <div data-user-editor></div>
+            </section>
+          </div>
+          <details class="admin-add-user">
+            <summary>Добавить пользователя</summary>
+            <form class="admin-add-user-form" data-create-user>
               <div class="form-row">
                 <label>username</label>
                 <input name="username" required>
@@ -40,23 +50,43 @@
                 <label>password</label>
                 <input name="password" type="password" required>
               </div>
-              <label><input name="is_admin" type="checkbox"> системный пользователь</label>
-              <div style="margin-top: 12px;">
-                <button class="btn btn-primary" type="submit">Добавить пользователя</button>
-              </div>
+              <label class="checkbox-row"><input name="is_admin" type="checkbox"> системный пользователь</label>
+              <button class="btn btn-primary" type="submit">Добавить</button>
             </form>
-          </div>
-          <div class="card">
-            <div class="card-title">config/app.yaml</div>
-            <p class="muted">Файл сохраняется без сложной валидации. Изменения startup-настроек требуют перезапуска.</p>
-            <form data-app-config-form>
-              <div class="form-row">
-                <label>YAML как JSON-подобная структура</label>
-                <textarea data-app-config style="min-height: 420px;"></textarea>
+          </details>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+          <div class="card-title">Доступ пользователей к workspace</div>
+          <p class="muted">Owned workspace назначаются при создании workspace. Здесь можно добавлять и убирать только shared-доступ.</p>
+          <div class="workspace-access-layout" data-workspace-access>
+            <section>
+              <div class="card-subtitle">Пользователи</div>
+              <div class="workspace-access-users" data-access-users></div>
+            </section>
+            <section>
+              <div class="workspace-access-toolbar">
+                <div class="form-row">
+                  <label>Фильтр workspace</label>
+                  <input data-workspace-filter placeholder="Название или id workspace">
+                </div>
+                <button class="btn btn-primary" data-save-workspace-access type="button">Сохранить shared-доступ</button>
               </div>
-              <button class="btn btn-primary" type="submit">Сохранить app config</button>
-            </form>
+              <div class="workspace-access-list" data-access-workspaces></div>
+            </section>
           </div>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+          <div class="card-title">Удаление workspace</div>
+          <p class="muted">Перед удалением содержимое workspace, кроме папки .protoarchitect, сохраняется в ZIP-архив в data/workspaces.</p>
+          <div class="workspace-delete-toolbar">
+            <div class="form-row">
+              <label>Фильтр workspace</label>
+              <input data-delete-workspace-filter placeholder="Название или id workspace">
+            </div>
+          </div>
+          <div class="workspace-delete-list" data-delete-workspaces></div>
         </div>
       </section>
     </main>

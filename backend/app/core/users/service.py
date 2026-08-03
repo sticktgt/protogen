@@ -78,6 +78,23 @@ class UserService:
         self.save_user(user)
         return settings
 
+    def update_user_account(
+        self,
+        username: str,
+        display_name: str | None = None,
+        password: str | None = None,
+    ) -> dict[str, Any]:
+        user = self.get_user(username)
+        if not user:
+            raise ValueError("User not found")
+        if display_name is not None:
+            cleaned_name = display_name.strip()
+            user["display_name"] = cleaned_name or username
+        if password:
+            user["password_hash"] = hash_password(password)
+        self.save_user(user)
+        return user
+
     def add_owned_workspace(self, username: str, workspace_id: str) -> None:
         user = self.get_user(username)
         if not user:
@@ -89,3 +106,44 @@ class UserService:
         if not user.get("current_workspace_id"):
             user["current_workspace_id"] = workspace_id
         self.save_user(user)
+
+    def set_shared_workspaces(self, username: str, workspace_ids: list[str]) -> dict[str, Any]:
+        user = self.get_user(username)
+        if not user:
+            raise ValueError("User not found")
+        workspaces = user.setdefault("workspaces", {"owned": [], "shared": []})
+        owned = set(workspaces.setdefault("owned", []))
+        shared = []
+        for workspace_id in workspace_ids:
+            if workspace_id in owned or workspace_id in shared:
+                continue
+            shared.append(workspace_id)
+        workspaces["shared"] = shared
+        if user.get("current_workspace_id") not in owned and user.get("current_workspace_id") not in shared:
+            user["current_workspace_id"] = self._first_accessible_workspace(user)
+        self.save_user(user)
+        return user
+
+    def remove_workspace_from_all(self, workspace_id: str) -> None:
+        for path in sorted(self.users_dir.glob("*.yaml")):
+            user = self.config.read_yaml(path)
+            workspaces = user.setdefault("workspaces", {"owned": [], "shared": []})
+            changed = False
+            for access_type in ("owned", "shared"):
+                items = workspaces.setdefault(access_type, [])
+                if workspace_id in items:
+                    workspaces[access_type] = [item for item in items if item != workspace_id]
+                    changed = True
+            if user.get("current_workspace_id") == workspace_id:
+                user["current_workspace_id"] = self._first_accessible_workspace(user)
+                changed = True
+            if changed:
+                self.save_user(user)
+
+    def _first_accessible_workspace(self, user: dict[str, Any]) -> str | None:
+        workspaces = user.get("workspaces", {})
+        for access_type in ("owned", "shared"):
+            items = workspaces.get(access_type, [])
+            if items:
+                return items[0]
+        return None
