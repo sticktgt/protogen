@@ -1,0 +1,25 @@
+{
+  "llm_calls": 20,
+  "tool_calls": 0,
+  "last_tool": "",
+  "repeat_streak": 0,
+  "max_repeat_streak": 0,
+  "input_tokens": 294353,
+  "output_tokens": 61135,
+  "total_tokens": 355488,
+  "token_usage_available": true,
+  "last_seq": 94,
+  "last_event_at": "2026-08-07T16:15:57.088591+00:00",
+  "last_llm_started_at": "2026-08-07T16:15:40.724092+00:00",
+  "last_llm_completed_at": "2026-08-07T16:15:56.880708+00:00",
+  "limits": {
+    "max_llm_calls": 32,
+    "max_tool_calls": 48,
+    "max_total_tokens": 1000000,
+    "max_duration_seconds": 1800,
+    "recursion_limit": 120,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "started_at": "2026-08-07T16:02:38.719666+00:00"
+}

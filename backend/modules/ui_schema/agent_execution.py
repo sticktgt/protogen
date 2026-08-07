@@ -15,6 +15,7 @@ from backend.modules.ui_schema.agent_completion import validate_agent_working_sc
 from backend.modules.ui_schema.agent_preview import finalize_preview
 from backend.modules.ui_schema.agent_runs import clear_active_run, is_cancelled, update_run
 from backend.modules.ui_schema.agent_validation_display import validation_errors_for_ui
+from backend.modules.ui_schema.agent_validation_history import record_validation_attempt
 from backend.modules.ui_schema.files import read_json, write_json
 
 _LOGGER = logging.getLogger(__name__)
@@ -38,6 +39,7 @@ def validate_with_retry(
         message="Запущена структурная проверка временной UI-схемы",
     )
     validation = validate_agent_working_schema(root)
+    record_validation_attempt(root, validation, source="backend_post_run")
     for retry_index in range(retries):
         if validation["valid"] or is_cancelled(module_root, run_id):
             break
@@ -80,6 +82,12 @@ def validate_with_retry(
             )
         ensure_agent_report(root, response)
         validation = validate_agent_working_schema(root)
+        record_validation_attempt(
+            root,
+            validation,
+            source="backend_retry",
+            retry_index=retry_index + 1,
+        )
         if not (root / "result" / "agent_completion.json").is_file():
             append_event(
                 module_root,
@@ -225,6 +233,7 @@ def _validation_at_stop(module_root: Path, run_id: str) -> dict[str, Any]:
     try:
         root = run_root(module_root, run_id)
         validation = validate_agent_working_schema(root)
+        record_validation_attempt(root, validation, source="limit_boundary")
         write_json(root / "result" / "validation_preview.json", validation)
         return validation
     except Exception:

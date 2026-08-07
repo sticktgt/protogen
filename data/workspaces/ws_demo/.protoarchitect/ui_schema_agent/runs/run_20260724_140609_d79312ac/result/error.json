@@ -1,5 +1,0 @@
-{
-  "error_type": "RuntimeError",
-  "message": "Агент не завершил исправление инструментом finish_ui_schema_sync",
-  "phase": "completed"
-}

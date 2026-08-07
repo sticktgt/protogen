@@ -11,6 +11,7 @@ from backend.modules.ui_schema.agent_element_payloads import (
     plain_element_list,
 )
 from backend.modules.ui_schema.agent_normalize_documents import canonicalize_schema_document
+from backend.modules.ui_schema.agent_parent_preservation import reject_implicit_parent_changes
 from backend.modules.ui_schema.agent_schema_io import (
     normalize_write_path,
     write_ui_schema_bundle,
@@ -23,7 +24,7 @@ _SCHEMA_REGISTRY_LOCK = Lock()
 
 
 class PageDocumentArgs(BaseModel):
-    """One page per tool call keeps provider payloads bounded and recoverable."""
+    """Create one new page and its initial structure."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -34,7 +35,8 @@ class PageDocumentArgs(BaseModel):
         default_factory=list,
         description=(
             "Native JSON array of top-level page elements. Never serialize it into a string. "
-            "For a large page create the page shell first and use write_ui_schema_page_elements."
+            "For a large page create a coherent initial structure, then add remaining "
+            "elements through upsert_elements in the same or a later changes bundle."
         ),
     )
     file_path: str | None = Field(
@@ -43,6 +45,16 @@ class PageDocumentArgs(BaseModel):
             "Optional relative path pages/<page_id>.json. Omit to derive it from page_id."
         ),
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def normalize_page_id_alias(cls, value: Any):
+        if not isinstance(value, dict):
+            return value
+        result = dict(value)
+        if not str(result.get("page_id") or "").strip() and str(result.get("id") or "").strip():
+            result["page_id"] = result.pop("id")
+        return result
 
     @field_validator("elements", mode="before")
     @classmethod
@@ -57,7 +69,7 @@ class PageDocumentArgs(BaseModel):
 
 
 class PageElementsArgs(BaseModel):
-    """Add or replace a few top-level groups in an already created page."""
+    """Add top-level groups to a page created during the current run."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -65,9 +77,20 @@ class PageElementsArgs(BaseModel):
     elements: list[UiElementPayload] = Field(
         description=(
             "Native JSON array of a few top-level elements. Existing top-level elements with "
-            "the same IDs are replaced; all others are preserved."
+            "the same IDs are updated; all others are preserved. Existing nested IDs must "
+            "remain under their current parent."
         )
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def normalize_page_id_alias(cls, value: Any):
+        if not isinstance(value, dict):
+            return value
+        result = dict(value)
+        if not str(result.get("page_id") or "").strip() and str(result.get("id") or "").strip():
+            result["page_id"] = result.pop("id")
+        return result
 
     @field_validator("elements", mode="before")
     @classmethod
@@ -94,6 +117,12 @@ def write_page_document(
     plain_elements = plain_element_list(elements)
     _enforce_element_limit(plain_elements, maximum_top_level_elements)
     normalized_path = normalize_page_path(page_id, file_path)
+    page_path = working_root / normalized_path
+    if page_path.is_file():
+        raise ValueError(
+            f"Page {page_id} already exists. create_pages accepts new pages only. "
+            "Use update_pages for page metadata and upsert_elements for its existing structure."
+        )
     page = {
         "id": page_id,
         "title": title,
@@ -113,6 +142,7 @@ def write_page_document(
 def write_page_elements(
     *,
     working_root: Path,
+    base_root: Path,
     result_root: Path,
     page_id: str,
     elements: list[UiElementPayload | dict[str, Any]],
@@ -120,25 +150,56 @@ def write_page_elements(
 ) -> dict[str, Any]:
     plain_elements = plain_element_list(elements)
     _enforce_element_limit(plain_elements, maximum_top_level_elements)
+    base_path = base_root / "pages" / f"{page_id}.json"
+    if base_path.is_file():
+        raise ValueError(
+            f"Page {page_id} existed before this run. This internal page-group writer is "
+            "only for a new page created in the current run. Use upsert_elements in "
+            "the managed changes bundle for iterative changes on an existing page."
+        )
+
     path = working_root / "pages" / f"{page_id}.json"
     page = read_json(path, {})
     if not isinstance(page, dict) or page.get("id") != page_id:
         raise ValueError(
-            f"Page {page_id} does not exist yet. Call write_ui_schema_page first, "
-            "possibly with elements: [], then add small element batches."
+            f"Page {page_id} does not exist yet. Add it to create_pages in "
+            "the same changes bundle before adding further elements."
         )
 
     current = page.get("elements", [])
     if not isinstance(current, list):
         current = []
-    incoming_ids = {_element_id(item, index) for index, item in enumerate(plain_elements)}
-    merged = [
+    reject_implicit_parent_changes(
+        page_id=page_id,
+        current_elements=current,
+        incoming_elements=plain_elements,
+    )
+    incoming_top_level_ids = {
+        _element_id(item, index) for index, item in enumerate(plain_elements)
+    }
+    preserved = [
         item
         for item in current
-        if not isinstance(item, dict) or item.get("id") not in incoming_ids
+        if not isinstance(item, dict) or item.get("id") not in incoming_top_level_ids
     ]
-    merged.extend(plain_elements)
-    page["elements"] = merged
+    incoming_tree_ids = _unique_tree_ids(
+        plain_elements,
+        label="elements",
+    )
+    preserved_tree_ids = _unique_tree_ids(
+        preserved,
+        label=f"existing page {page_id}",
+    )
+    conflicts = sorted(incoming_tree_ids & preserved_tree_ids)
+    if conflicts:
+        raise ValueError(
+            "Top-level element batch contains IDs that already exist elsewhere on the page: "
+            + ", ".join(conflicts[:10])
+            + ". Update it through upsert_elements or move it explicitly instead of "
+            "adding a second copy."
+        )
+
+    page["elements"] = [*preserved, *plain_elements]
     return write_ui_schema_bundle(
         working_root=working_root,
         result_root=result_root,
@@ -163,8 +224,8 @@ def normalize_element_batch(value: Any, *, label: str) -> list[dict[str, Any]]:
     except ValueError as exc:
         raise ValueError(
             f"{label} must be a native JSON array. Do not retry the same serialized payload. "
-            "Create one page at a time; for a large page create a shell and call "
-            f"write_ui_schema_page_elements with one or a few top-level groups. {exc}"
+            "Create one page at a time; for a large page create a coherent initial structure "
+            f"and add remaining elements with upsert_elements in the current changes bundle. {exc}"
         ) from exc
     if isinstance(candidate, dict) and set(candidate) == {"elements"}:
         candidate = candidate["elements"]
@@ -181,6 +242,33 @@ def normalize_element_batch(value: Any, *, label: str) -> list[dict[str, Any]]:
         seen.add(item_id)
         normalized.append(item)
     return normalized
+
+
+def _unique_tree_ids(items: list[Any], *, label: str) -> set[str]:
+    seen: set[str] = set()
+    duplicates: set[str] = set()
+
+    def walk(nodes: list[Any]) -> None:
+        for item in nodes:
+            if not isinstance(item, dict):
+                continue
+            item_id = item.get("id")
+            if isinstance(item_id, str) and item_id.strip():
+                normalized = item_id.strip()
+                if normalized in seen:
+                    duplicates.add(normalized)
+                seen.add(normalized)
+            children = item.get("children", [])
+            if isinstance(children, list):
+                walk(children)
+
+    walk(items)
+    if duplicates:
+        raise ValueError(
+            f"Duplicate UI element IDs in {label}: "
+            + ", ".join(sorted(duplicates)[:10])
+        )
+    return seen
 
 
 def normalize_page_path(page_id: str, file_path: str | None) -> str:
@@ -215,8 +303,8 @@ def _enforce_element_limit(elements: list[dict[str, Any]], maximum: int) -> None
     if len(elements) > maximum:
         raise ValueError(
             f"A page tool call may contain at most {maximum} top-level elements; "
-            "create the page shell and split top-level groups across "
-            "write_ui_schema_page_elements calls"
+            "create a coherent initial page within the limit and add remaining groups "
+            "through upsert_elements in the current changes bundle"
         )
 
 

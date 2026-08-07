@@ -77,7 +77,7 @@ def build_requirements_ui_result(
         "assessment_counts": counts,
         "assessment_details": _assessment_details(records),
         "traceability": traceability,
-        "traceability_warnings": _traceability_warnings(traceability),
+        "traceability_warnings": [],
         "requirements": records,
     }
 
@@ -189,27 +189,6 @@ def _traceability(records: list[dict[str, Any]]) -> dict[str, Any]:
         # Compatibility for old frontend/export consumers.
         "average_targets_per_linked_requirement": average,
     }
-
-
-def _traceability_warnings(traceability: dict[str, Any]) -> list[str]:
-    warnings: list[str] = []
-    traced = int(traceability.get("requirements_with_targets") or 0)
-    multi = int(traceability.get("requirements_multi_target") or 0)
-    page_only = int(traceability.get("requirements_page_only") or 0)
-    average = float(traceability.get("average_targets_per_traced_requirement") or 0)
-    if traced >= 10 and multi == 0:
-        warnings.append(
-            "Все трассируемые требования имеют ровно одну цель. Проверьте детализацию many-to-many трассировки."
-        )
-    if traced >= 10 and average <= 1.05:
-        warnings.append(
-            "Среднее число UI-целей на трассируемое требование близко к одному; комплексные требования могут быть связаны слишком укрупнённо."
-        )
-    if traced and page_only / traced >= 0.25:
-        warnings.append(
-            "Значительная часть требований связана только со страницами, без конечных UI-элементов."
-        )
-    return warnings
 
 
 def _assessment_details(records: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:

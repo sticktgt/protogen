@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "moved_existing_elements": 8,
+    "emptied_existing_containers": 0,
+    "pages_with_count_changes": 10
+  },
+  "moved_elements": [
+    {
+      "element_id": "deposits.open.amount",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.application",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.params"
+    },
+    {
+      "element_id": "deposits.open.calculator.income",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.calculator",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.conditions"
+    },
+    {
+      "element_id": "deposits.open.calculator.rate",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.calculator",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.conditions"
+    },
+    {
+      "element_id": "deposits.open.capitalization",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.application",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.conditions"
+    },
+    {
+      "element_id": "deposits.open.currency",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.filters",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.params"
+    },
+    {
+      "element_id": "deposits.open.source_account",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.application",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.params"
+    },
+    {
+      "element_id": "deposits.open.submit",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.application",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.confirm"
+    },
+    {
+      "element_id": "deposits.open.term",
+      "from_page_id": "deposits.open",
+      "from_parent_id": "deposits.open.filters",
+      "to_page_id": "deposits.open",
+      "to_parent_id": "deposits.open.step.params"
+    }
+  ],
+  "emptied_containers": [],
+  "page_changes": [
+    {
+      "page_id": "accounts.list",
+      "element_count_before": 23,
+      "element_count_after": 47,
+      "element_count_delta": 24,
+      "root_count_before": 2,
+      "root_count_after": 2,
+      "root_count_delta": 0
+    },
+    {
+      "page_id": "analytics.spending",
+      "element_count_before": 19,
+      "element_count_after": 33,
+      "element_count_delta": 14,
+      "root_count_before": 4,
+      "root_count_after": 5,
+      "root_count_delta": 1
+    },
+    {
+      "page_id": "auth.login",
+      "element_count_before": 10,
+      "element_count_after": 11,
+      "element_count_delta": 1,
+      "root_count_before": 1,
+      "root_count_after": 1,
+      "root_count_delta": 0
+    },
+    {
+      "page_id": "cards.block",
+      "element_count_before": 13,
+      "element_count_after": 17,
+      "element_count_delta": 4,
+      "root_count_before": 3,
+      "root_count_after": 4,
+      "root_count_delta": 1
+    },
+    {
+      "page_id": "cards.list",
+      "element_count_before": 0,
+      "element_count_after": 20,
+      "element_count_delta": 20,
+      "root_count_before": 0,
+      "root_count_after": 3,
+      "root_count_delta": 3
+    },
+    {
+      "page_id": "credits.apply",
+      "element_count_before": 20,
+      "element_count_after": 24,
+      "element_count_delta": 4,
+      "root_count_before": 2,
+      "root_count_after": 2,
+      "root_count_delta": 0
+    },
+    {
+      "page_id": "deposits.open",
+      "element_count_before": 19,
+      "element_count_after": 25,
+      "element_count_delta": 6,
+      "root_count_before": 3,
+      "root_count_after": 7,
+      "root_count_delta": 4
+    },
+    {
+      "page_id": "home",
+      "element_count_before": 16,
+      "element_count_after": 26,
+      "element_count_delta": 10,
+      "root_count_before": 4,
+      "root_count_after": 5,
+      "root_count_delta": 1
+    },
+    {
+      "page_id": "payments.transfer",
+      "element_count_before": 15,
+      "element_count_after": 25,
+      "element_count_delta": 10,
+      "root_count_before": 2,
+      "root_count_after": 3,
+      "root_count_delta": 1
+    },
+    {
+      "page_id": "products.overview",
+      "element_count_before": 20,
+      "element_count_after": 32,
+      "element_count_delta": 12,
+      "root_count_before": 3,
+      "root_count_after": 3,
+      "root_count_delta": 0
+    }
+  ],
+  "app": {
+    "element_count_before": 12,
+    "element_count_after": 12,
+    "root_count_before": 1,
+    "root_count_after": 1
+  }
+}

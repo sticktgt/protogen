@@ -5,6 +5,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from backend.modules.ui_schema.agent_exports import build_requirements_ui_result
+from backend.modules.ui_schema.agent_file_diff import write_file_diff_result
+from backend.modules.ui_schema.agent_structural_churn import build_structural_churn_report
 from backend.modules.ui_schema.files import write_json
 from backend.modules.ui_schema.storage import (
     list_pages,
@@ -95,7 +97,15 @@ def write_result_files(
     changes["statistics"]["traceability"] = requirements_result["traceability"]
     changes["traceability_warnings"] = requirements_result.get("traceability_warnings", [])
     changes["requirement_assessments"] = requirements_result.get("assessment_details", {})
+    structural_churn = build_structural_churn_report(base_root, working_root)
+    changes["structural_churn"] = structural_churn.get("summary", {})
+    write_json(result_path / "structural_churn.json", structural_churn)
     write_json(result_path / "changes.json", changes)
+    write_file_diff_result(
+        base_root=base_root,
+        working_root=working_root,
+        result_path=result_path,
+    )
     write_json(result_path / "requirements_ui_result.json", requirements_result)
     return changes, requirements_result
 

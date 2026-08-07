@@ -8,6 +8,7 @@ from typing import Any
 from uuid import uuid4
 
 from backend.modules.ui_schema.agent_context import write_compact_agent_inputs
+from backend.modules.ui_schema.agent_diagnostic_settings import diagnostic_settings
 from backend.modules.ui_schema.agent_events import append_event, initialize_observability
 from backend.modules.ui_schema.agent_limits import execution_limits
 from backend.modules.ui_schema.agent_paths import (
@@ -19,12 +20,8 @@ from backend.modules.ui_schema.agent_paths import (
     run_file,
     run_root,
 )
-from backend.modules.ui_schema.agent_prompts import (
-    load_prompt,
-    prompt_files,
-    reference_files,
-    render_run_prompt,
-)
+from backend.modules.ui_schema.agent_prompts import prompt_files, reference_files
+from backend.modules.ui_schema.agent_source_fingerprints import write_source_fingerprints
 from backend.modules.ui_schema.agent_snapshots import (
     ensure_initial_snapshot,
     extract_zip,
@@ -107,7 +104,19 @@ def create_run(
             "validation_errors": [],
             "validation_error_count": 0,
             "validation_warnings": [],
-            "config": {"validation_retries": int(config.get("validation_retries", 1))},
+            "config": {
+                "pipeline": (
+                    dict(config.get("pipeline", {}))
+                    if isinstance(config.get("pipeline"), dict)
+                    else {}
+                ),
+                "context": (
+                    dict(config.get("context", {}))
+                    if isinstance(config.get("context"), dict)
+                    else {}
+                ),
+                "diagnostics": diagnostic_settings(config),
+            },
             "execution": dict(config.get("execution", {})) if isinstance(config.get("execution"), dict) else {},
             "llm": {
                 key: value
@@ -117,8 +126,12 @@ def create_run(
         }
         write_json(root / "run.json", run)
         _write_task_file(root, run)
-        write_compact_agent_inputs(run_root=root)
+        write_compact_agent_inputs(run_root=root, agent_config=config)
         _write_prompt_snapshots(root, run, config)
+        write_source_fingerprints(
+            run_path=root,
+            agent_config=config,
+        )
         initialize_observability(
             module_root,
             run_id,
@@ -245,7 +258,19 @@ def reset_for_regeneration(
                 "validation_warnings": [],
                 "error": "",
                 "stop_reason": "",
-                "config": {"validation_retries": int(config.get("validation_retries", 1))},
+                "config": {
+                    "pipeline": (
+                        dict(config.get("pipeline", {}))
+                        if isinstance(config.get("pipeline"), dict)
+                        else {}
+                    ),
+                    "context": (
+                        dict(config.get("context", {}))
+                        if isinstance(config.get("context"), dict)
+                        else {}
+                    ),
+                    "diagnostics": diagnostic_settings(config),
+                },
                 "execution": (
                     dict(config.get("execution", {}))
                     if isinstance(config.get("execution"), dict)
@@ -256,11 +281,15 @@ def reset_for_regeneration(
         )
         write_json(root / "run.json", run)
         _write_task_file(root, run)
-        write_compact_agent_inputs(run_root=root)
+        write_compact_agent_inputs(run_root=root, agent_config=config)
         shutil.rmtree(root / "reference", ignore_errors=True)
         (root / "reference").mkdir(parents=True, exist_ok=True)
         _copy_reference_files(root / "reference", config)
         _write_prompt_snapshots(root, run, config)
+        write_source_fingerprints(
+            run_path=root,
+            agent_config=config,
+        )
         initialize_observability(
             module_root,
             run_id,
@@ -364,7 +393,14 @@ def archive_and_remove_run(
 
 
 def result_file(module_root: Path, run_id: str, name: str) -> Path:
-    allowed = {"changes.json", "requirements_ui_result.json", "agent_report.json", "validation.json"}
+    allowed = {
+        "changes.json",
+        "requirements_ui_result.json",
+        "agent_report.json",
+        "validation.json",
+        "file_diff.json",
+        "manual_review.json",
+    }
     if name not in allowed:
         raise ValueError("Unsupported result file")
     return run_root(module_root, run_id) / "result" / name
@@ -373,44 +409,19 @@ def result_file(module_root: Path, run_id: str, name: str) -> Path:
 def _write_prompt_snapshots(root: Path, run: dict[str, Any], config: dict[str, Any]) -> None:
     prompts_target = root / "reference" / "prompts"
     prompts_target.mkdir(parents=True, exist_ok=True)
+    copied: list[str] = []
     for destination_name, source in prompt_files(config).items():
         shutil.copy2(source, prompts_target / destination_name)
-    (root / "input" / "system_prompt.md").write_text(
-        load_prompt(config, "system"), encoding="utf-8"
-    )
-    (root / "input" / "run_prompt.md").write_text(
-        render_run_prompt(config, run), encoding="utf-8"
-    )
-    (root / "input" / "correction_prompt.md").write_text(
-        load_prompt(config, "correction"), encoding="utf-8"
-    )
-
-
-def _write_rendered_run_prompt_from_snapshot(root: Path, run: dict[str, Any]) -> None:
-    template_path = root / "reference" / "prompts" / "run.md"
-    if not template_path.is_file():
-        return
-    template = template_path.read_text(encoding="utf-8")
-    user_request = str(run.get("user_request") or "").strip()
-    comments = [
-        str(item).strip()
-        for item in run.get("regeneration_comments", [])
-        if str(item).strip()
-    ]
-    rendered = template.format_map(
+        copied.append(destination_name)
+    write_json(
+        root / "input" / "prompt_manifest.json",
         {
-            "user_request_section": (
-                f"Первоначальное указание аналитика:\n{user_request}" if user_request else ""
-            ),
-            "regeneration_section": (
-                "Комментарии к перегенерации:\n"
-                + "\n".join(f"- {item}" for item in comments)
-                if comments
-                else ""
-            ),
-        }
-    ).strip()
-    (root / "input" / "run_prompt.md").write_text(rendered, encoding="utf-8")
+            "pipeline_version": 2,
+            "prompt_files": sorted(copied),
+            "user_request": str(run.get("user_request") or ""),
+            "regeneration_comments": list(run.get("regeneration_comments") or []),
+        },
+    )
 
 
 def _copy_reference_files(target: Path, config: dict[str, Any]) -> None:

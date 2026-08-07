@@ -193,7 +193,7 @@ paths:
           description: Run is still active
   /api/ui-schema/agent-runs/{run_id}/changes:
     get:
-      summary: Get deterministic statistics and change list
+      summary: Get deterministic changes, file diff and non-blocking manual review
   /api/ui-schema/agent-runs/{run_id}/requirements-ui-result:
     get:
       summary: Get all input requirements with their generated UI targets or assessment

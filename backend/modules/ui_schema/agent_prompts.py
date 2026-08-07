@@ -24,27 +24,6 @@ def load_prompt(agent_config: dict[str, Any], name: str) -> str:
     return content
 
 
-def render_run_prompt(agent_config: dict[str, Any], run: dict[str, Any]) -> str:
-    template = load_prompt(agent_config, "run")
-    user_request = str(run.get("user_request") or "").strip()
-    comments = [
-        str(item).strip()
-        for item in run.get("regeneration_comments", [])
-        if str(item).strip()
-    ]
-    values = {
-        "user_request_section": (
-            f"Первоначальное указание аналитика:\n{user_request}" if user_request else ""
-        ),
-        "regeneration_section": (
-            "Комментарии к перегенерации:\n" + "\n".join(f"- {item}" for item in comments)
-            if comments
-            else ""
-        ),
-    }
-    return template.format_map(values).strip()
-
-
 def prompt_files(agent_config: dict[str, Any]) -> dict[str, Path]:
     configured = agent_config.get("prompts", {})
     if not isinstance(configured, dict) or not configured:
@@ -85,3 +64,15 @@ def _project_file(relative: str) -> Path:
     except ValueError as exc:
         raise PromptConfigurationError(f"Path escapes project root: {relative}") from exc
     return resolved
+
+
+def render_prompt(agent_config: dict[str, Any], name: str, **values: Any) -> str:
+    """Render a configured prompt file with explicit caller-provided values."""
+    template = load_prompt(agent_config, name)
+    normalized = {key: str(value) for key, value in values.items()}
+    try:
+        return template.format_map(normalized).strip()
+    except KeyError as exc:
+        raise PromptConfigurationError(
+            f"Prompt {name} references an unknown placeholder: {exc.args[0]}"
+        ) from exc

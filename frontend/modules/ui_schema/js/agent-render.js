@@ -1,5 +1,8 @@
 import { escapeAttr, escapeHtml } from './html-utils.js';
 import { renderRunObservability } from './agent-observability-render.js';
+import { renderFileDiff } from './agent-file-diff-render.js';
+import { renderManualReview } from './agent-manual-review-render.js';
+import { localizeAgentMessage } from './agent-message-localization.js';
 
 export function renderAgentStart({ snapshot, initialAvailable, actionInProgress, llmTest, startError, requirementsPath, userRequest, baseMode }) {
   return `
@@ -8,7 +11,7 @@ export function renderAgentStart({ snapshot, initialAvailable, actionInProgress,
         ${renderLlmConnection(llmTest, actionInProgress)}
         <section class="card agent-start-card">
           <div class="card-title">Синхронизация требований и UI-схемы</div>
-          <p class="muted-text">Агент использует файл требований целиком и подготавливает временную версию схемы. Изменения применяются только после подтверждения.</p>
+          <p class="muted-text">Агент использует текущий набор требований из указанного файла и подготавливает временную версию схемы. Изменения применяются только после подтверждения.</p>
           ${startError ? `<div class="agent-inline-error" data-agent-start-error role="alert">${escapeHtml(startError)}</div>` : ''}
           <form data-agent-start-form class="agent-form">
             <div class="form-row">
@@ -92,6 +95,8 @@ export function renderAgentPreview(run, changes, actionInProgress, metrics, even
       </section>
       ${renderStatistics(changes.statistics || run.statistics || {})}
       ${renderChanges(changes, run)}
+      ${renderManualReview(changes.manual_review || run.manual_review)}
+      ${renderFileDiff(changes.file_diff || {})}
       <section class="card agent-decision-card">
         <div class="agent-actions primary-actions">
           <button class="btn btn-primary" type="button" data-apply-agent-run ${actionInProgress ? 'disabled' : ''}>Принять все изменения</button>
@@ -236,7 +241,7 @@ function renderChanges(changes, run) {
   const groups = groupChanges(items);
   const changedFiles = changes.changed_files || {};
   return `
-    <section class="card">
+    <section class="card agent-collapsible-card">
       <details class="agent-changes-root">
         <summary>Перечень изменений · ${items.length}</summary>
         <div class="agent-changes-root-body">
@@ -376,7 +381,7 @@ function renderRequirementAssessmentGroup(label, items) {
 
 function renderTraceabilityWarnings(warnings) {
   if (!Array.isArray(warnings) || !warnings.length) return '';
-  return `<details class="agent-warning-box" open><summary>Предупреждения трассировки · ${warnings.length}</summary><ul>${warnings.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></details>`;
+  return `<details class="agent-warning-box" open><summary>Предупреждения трассировки · ${warnings.length}</summary><ul>${warnings.map(item => `<li>${escapeHtml(localizeAgentMessage(item))}</li>`).join('')}</ul></details>`;
 }
 
 function renderFileList(label, files) {
@@ -387,7 +392,7 @@ function renderFileList(label, files) {
 
 function renderWarnings(warnings) {
   if (!Array.isArray(warnings) || !warnings.length) return '';
-  return `<details class="agent-warning-box"><summary>Предупреждения проверки · ${warnings.length}</summary><ul>${warnings.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></details>`;
+  return `<details class="agent-warning-box"><summary>Предупреждения проверки · ${warnings.length}</summary><ul>${warnings.map(item => `<li>${escapeHtml(localizeAgentMessage(item))}</li>`).join('')}</ul></details>`;
 }
 
 function groupChanges(items) {

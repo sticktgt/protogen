@@ -692,6 +692,7 @@
 
 .agent-run-meta dd {
   margin: 3px 0 0;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -937,7 +938,7 @@
 
 .agent-resource-card strong {
   overflow-wrap: anywhere;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .agent-token-details {
@@ -1289,4 +1290,382 @@
 .agent-validation-errors .agent-error-list {
   margin: 0;
   padding: 0 28px 12px 34px;
+}
+
+.agent-manual-review {
+  padding: 0;
+  overflow: hidden;
+}
+
+.agent-manual-review > details > summary,
+.agent-file-diff-root > summary {
+  cursor: pointer;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.agent-manual-review-body,
+.agent-file-diff-body {
+  padding: 0 16px 16px;
+}
+
+.agent-manual-review-body > p:first-child,
+.agent-file-diff-body > p:first-child {
+  margin-top: 0;
+}
+
+.agent-manual-review-group,
+.agent-file-diff-group {
+  margin-top: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.agent-manual-review-group > summary,
+.agent-file-diff-group > summary {
+  cursor: pointer;
+  padding: 8px 10px;
+  font-weight: 700;
+}
+
+.agent-manual-review-list,
+.agent-file-diff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 8px 8px;
+}
+
+.agent-manual-review-item {
+  padding: 10px;
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.agent-manual-review-item.cleanup {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.agent-manual-review-item p {
+  margin: 8px 0 0;
+}
+
+.agent-manual-review-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.agent-file-diff-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.agent-file-diff-summary span {
+  padding: 4px 7px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-file-diff-summary .added,
+.agent-file-diff-counts .added {
+  color: #15803d;
+}
+
+.agent-file-diff-summary .deleted,
+.agent-file-diff-counts .deleted {
+  color: #b91c1c;
+}
+
+.agent-file-diff-file {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.agent-file-diff-file > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  padding: 7px 8px;
+  background: #f8fafc;
+  font-size: 12px;
+}
+
+.agent-file-diff-file > summary code {
+  overflow-wrap: anywhere;
+}
+
+.agent-file-diff-counts {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-file-diff-code {
+  overflow: auto;
+  max-height: 520px;
+  border-top: 1px solid #e2e8f0;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  tab-size: 2;
+}
+
+.agent-file-diff-code > span {
+  display: block;
+  min-width: max-content;
+  padding: 0 8px;
+  white-space: pre;
+}
+
+.agent-file-diff-code > .file-header {
+  color: #cbd5e1;
+  background: #1e293b;
+  font-weight: 700;
+}
+
+.agent-file-diff-code > .hunk-header {
+  color: #bae6fd;
+  background: #0c4a6e;
+}
+
+.agent-file-diff-code > .added {
+  color: #dcfce7;
+  background: #14532d;
+}
+
+.agent-file-diff-code > .deleted {
+  color: #fee2e2;
+  background: #7f1d1d;
+}
+
+.agent-manual-review-guidance {
+  margin: 0 8px 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #94a3b8;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.agent-manual-review-guidance p {
+  margin: 4px 0 10px;
+}
+
+.agent-manual-review-guidance ol {
+  margin: 6px 0 0;
+  padding-left: 20px;
+}
+
+.agent-manual-review-item.inherited {
+  padding: 0;
+  overflow: hidden;
+}
+
+.agent-manual-review-item.inherited > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 12px;
+  font-weight: 700;
+}
+
+.agent-manual-review-item-body {
+  padding: 0 12px 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.agent-manual-review-problem-count {
+  color: #92400e;
+}
+
+.agent-manual-review-ok {
+  color: #166534;
+}
+
+.agent-manual-review-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.agent-manual-review-link {
+  padding: 10px;
+  border: 1px solid #dbe4f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.agent-manual-review-link.has-issues {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.agent-manual-review-link-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.agent-manual-review-link-heading > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.agent-manual-review-target-kind {
+  color: #64748b;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.agent-manual-review-link-status {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.agent-manual-review-link-status.ok {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.agent-manual-review-link-status.warning {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.agent-manual-review-link-meta {
+  display: grid;
+  gap: 5px;
+  margin: 10px 0 0;
+}
+
+.agent-manual-review-link-meta > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.agent-manual-review-link-meta dt {
+  color: #64748b;
+}
+
+.agent-manual-review-link-meta dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.agent-manual-review-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.agent-manual-review-issue {
+  padding: 8px 10px;
+  border-left: 3px solid #f59e0b;
+  background: #fff7ed;
+}
+
+.agent-manual-review-issue p {
+  margin: 5px 0 0;
+}
+
+@media (max-width: 680px) {
+  .agent-manual-review-link-meta > div {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+}
+
+/* Compact and aligned agent result sections. */
+.agent-collapsible-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.agent-collapsible-card > details {
+  margin: 0;
+}
+
+.agent-collapsible-card > details > summary {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 700;
+  text-align: left;
+}
+
+.agent-collapsible-card .agent-changes-root-body,
+.agent-collapsible-card .agent-manual-review-body,
+.agent-collapsible-card .agent-file-diff-body {
+  margin-top: 0;
+  padding: 0 16px 16px;
+}
+
+.agent-statistics-card {
+  padding: 16px;
+}
+
+.agent-stat-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.agent-stat-card {
+  min-height: 0;
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.agent-stat-title {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.agent-stat-values {
+  gap: 9px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.agent-stat-card.assessment-card {
+  gap: 3px;
+  font-size: 12px;
+  line-height: 1.35;
 }

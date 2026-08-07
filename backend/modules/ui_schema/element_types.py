@@ -39,14 +39,35 @@ def element_type_catalog() -> tuple[dict[str, Any], ...]:
         allowed_children = item.get("allowed_children")
         if allowed_children is not None and not isinstance(allowed_children, list):
             raise RuntimeError(f"allowed_children must be a list for UI element type {type_id}")
+        allowed_parents = item.get("allowed_parents")
+        if allowed_parents is not None and not isinstance(allowed_parents, list):
+            raise RuntimeError(f"allowed_parents must be a list for UI element type {type_id}")
+        for flag in ("root_allowed", "unique_root", "link_source", "review_empty"):
+            if flag in item and not isinstance(item.get(flag), bool):
+                raise RuntimeError(f"{flag} must be boolean for UI element type {type_id}")
         seen.add(type_id)
         catalog.append(item)
 
+    by_id = {item['id']: item for item in catalog}
     for item in catalog:
         for child_type in item.get("allowed_children", []):
             if child_type not in seen:
                 raise RuntimeError(
                     f"Unknown allowed child type {child_type} for UI element type {item['id']}"
+                )
+        for parent_type in item.get("allowed_parents", []):
+            parent = by_id.get(parent_type)
+            if parent is None:
+                raise RuntimeError(
+                    f"Unknown allowed parent type {parent_type} for UI element type {item['id']}"
+                )
+            if parent.get('scope') != item.get('scope'):
+                raise RuntimeError(
+                    f"Allowed parent type {parent_type} has incompatible scope for UI element type {item['id']}"
+                )
+            if parent.get('kind') != 'group':
+                raise RuntimeError(
+                    f"Allowed parent type {parent_type} is not a group for UI element type {item['id']}"
                 )
     return tuple(catalog)
 
@@ -71,7 +92,7 @@ def type_ids(*, scope: str | None = None, kind: str | None = None) -> set[str]:
 def ensure_type_allowed(type_id: str, *, scope: str) -> dict[str, Any]:
     item = type_definition(type_id)
     if item is None or item.get("scope") != scope:
-        raise ValueError(f"Unsupported {scope} element type: {type_id}")
+        raise ValueError(f"Недопустимый тип элемента для scope={scope}: {type_id}")
     return item
 
 
@@ -96,3 +117,18 @@ def root_type_ids(*, scope: str) -> set[str]:
         for item in element_type_catalog()
         if item.get("scope") == scope and item.get("root_allowed") is True
     }
+
+
+def allowed_parent_types(type_id: str, *, scope: str) -> set[str] | None:
+    item = ensure_type_allowed(type_id, scope=scope)
+    configured = item.get("allowed_parents")
+    if configured is None:
+        return None
+    return set(configured)
+
+
+def is_root_allowed(type_id: str, *, scope: str) -> bool:
+    item = ensure_type_allowed(type_id, scope=scope)
+    if scope == "app":
+        return item.get("root_allowed") is True
+    return item.get("root_allowed") is not False

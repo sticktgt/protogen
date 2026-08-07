@@ -12,6 +12,7 @@ from backend.app.state import AppState, get_state
 from backend.modules.ui_schema import service
 from backend.modules.ui_schema.agent_diagnostics import ensure_diagnostics_archive
 from backend.modules.ui_schema.agent_events import read_events
+from backend.modules.ui_schema.agent_manual_review import ensure_manual_review_result
 from backend.modules.ui_schema.agent_llm import (
     LlmConfigurationError,
     public_llm_settings,
@@ -246,7 +247,12 @@ def read_agent_changes(
     path = result_file(root, run_id, "changes.json")
     if not path.is_file():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Change report is not ready")
-    return read_json(path, {})
+    payload = read_json(path, {})
+    payload["file_diff"] = read_json(result_file(root, run_id, "file_diff.json"), {})
+    payload["manual_review"] = ensure_manual_review_result(
+        result_file(root, run_id, "manual_review.json").parent.parent
+    )
+    return payload
 
 
 @router.get("/agent-runs/{run_id}/requirements-ui-result")

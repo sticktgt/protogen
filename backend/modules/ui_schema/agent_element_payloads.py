@@ -18,7 +18,13 @@ class UiElementPayload(BaseModel):
     model_config = ConfigDict(extra="allow")
 
     id: str = Field(description="Stable dotted UI element ID")
-    type: str = Field(description="Exact element type ID from the synchronization context")
+    type: str = Field(
+        description=(
+            "Exact element type ID from the synchronization context. A table child representing "
+            "a column uses table_column. app.json uses only app-scoped types such as app_text "
+            "and app_action inside top_bar."
+        )
+    )
     label: str = Field(description="Non-empty human-readable element label")
     title: str | None = Field(
         default=None,
@@ -26,7 +32,10 @@ class UiElementPayload(BaseModel):
     )
     children: list["UiElementPayload"] = Field(
         default_factory=list,
-        description="Native JSON array of child UI element objects",
+        description=(
+            "Native JSON array of child UI element objects. Respect the parent type's "
+            "allowed_children list from the synchronization context."
+        ),
     )
 
     @model_validator(mode="before")

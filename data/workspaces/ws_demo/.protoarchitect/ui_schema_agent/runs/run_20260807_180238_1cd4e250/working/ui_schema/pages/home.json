@@ -1,0 +1,183 @@
+{
+  "id": "home",
+  "title": "Главная",
+  "description": "Добавлен список последних операций",
+  "elements": [
+    {
+      "id": "home.header",
+      "type": "section",
+      "label": "Шапка главной страницы",
+      "children": [
+        {
+          "id": "home.header.greeting",
+          "type": "text",
+          "label": "Приветствие клиента"
+        },
+        {
+          "id": "home.header.notifications",
+          "type": "button",
+          "label": "Уведомления"
+        },
+        {
+          "id": "home.header.profile",
+          "type": "button",
+          "label": "Профиль"
+        },
+        {
+          "id": "home.header.logout",
+          "type": "button",
+          "label": "Выйти",
+          "actions": [
+            {
+              "target_page": "auth.login",
+              "type": "navigate"
+            }
+          ]
+        },
+        {
+          "id": "home.header.client_name",
+          "type": "text",
+          "label": "Имя клиента",
+          "purpose": "Отображение краткого имени текущего клиента"
+        }
+      ]
+    },
+    {
+      "id": "home.summary_grid",
+      "type": "grid",
+      "label": "Сводка по продуктам",
+      "children": [
+        {
+          "id": "home.summary.accounts",
+          "type": "card",
+          "label": "Счета и баланс"
+        },
+        {
+          "id": "home.summary.cards",
+          "type": "card",
+          "label": "Карты"
+        },
+        {
+          "id": "home.summary.deposits",
+          "type": "card",
+          "label": "Вклады"
+        },
+        {
+          "id": "home.summary.credits",
+          "type": "card",
+          "label": "Кредиты"
+        }
+      ]
+    },
+    {
+      "id": "home.quick_actions",
+      "type": "section",
+      "label": "Быстрые действия",
+      "children": [
+        {
+          "id": "home.quick.transfer",
+          "type": "button",
+          "label": "Перевести между счетами",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "payments.transfer"
+            }
+          ]
+        },
+        {
+          "id": "home.quick.deposit",
+          "type": "button",
+          "label": "Открыть депозит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "deposits.open"
+            }
+          ]
+        },
+        {
+          "id": "home.quick.credit",
+          "type": "button",
+          "label": "Подать заявку на кредит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "credits.apply"
+            }
+          ]
+        },
+        {
+          "id": "home.quick.block_card",
+          "type": "button",
+          "label": "Заблокировать карту",
+          "actions": [
+            {
+              "target_page": "cards.block",
+              "type": "navigate"
+            }
+          ],
+          "link_source": true
+        }
+      ]
+    },
+    {
+      "id": "home.alerts",
+      "type": "list",
+      "label": "Важные уведомления",
+      "children": [
+        {
+          "id": "home.alerts.security",
+          "type": "badge",
+          "label": "Проверьте настройки безопасности"
+        },
+        {
+          "id": "home.alerts.statement",
+          "type": "badge",
+          "label": "Доступна новая выписка"
+        }
+      ]
+    },
+    {
+      "id": "home.recent_operations",
+      "type": "section",
+      "label": "Последние операции",
+      "description": "Список последних транзакций клиента",
+      "children": [
+        {
+          "id": "home.recent_operations.list",
+          "type": "list",
+          "label": "Список операций",
+          "review_empty": true,
+          "children": [
+            {
+              "id": "home.recent_operations.item.date",
+              "type": "text",
+              "label": "Дата операции"
+            },
+            {
+              "id": "home.recent_operations.item.description",
+              "type": "text",
+              "label": "Описание"
+            },
+            {
+              "id": "home.recent_operations.item.amount",
+              "type": "text",
+              "label": "Сумма"
+            },
+            {
+              "id": "home.recent_operations.item.currency",
+              "type": "text",
+              "label": "Валюта"
+            },
+            {
+              "id": "home.recent_operations.item.direction",
+              "type": "badge",
+              "label": "Направление"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

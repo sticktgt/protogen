@@ -49,7 +49,7 @@ def validate_requirement_assessments(
     unknown_linked = set(links_by_requirement) - requirement_ids
     if unknown_linked:
         warnings.append(
-            "Requirement links reference IDs outside the current input: "
+            "Связи с требованиями содержат ID, отсутствующие в текущем входном файле: "
             + ", ".join(sorted(unknown_linked)[:20])
         )
 

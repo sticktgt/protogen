@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from time import monotonic
 from typing import Any
 from uuid import UUID
 
@@ -25,6 +26,11 @@ from backend.modules.ui_schema.agent_tool_observability import (
     tool_path,
     tool_signature,
 )
+from backend.modules.ui_schema.agent_tool_trace import (
+    append_tool_trace,
+    tool_argument_summary,
+    tool_output_summary,
+)
 from backend.modules.ui_schema.files import read_json
 
 
@@ -45,6 +51,7 @@ def create_run_callback(
     module_root: Path,
     run_id: str,
     limits: dict[str, int],
+    allow_after_completion: bool = False,
 ):
     try:
         from langchain_core.callbacks import BaseCallbackHandler
@@ -57,7 +64,7 @@ def create_run_callback(
         def __init__(self) -> None:
             super().__init__()
             self._model_runs: set[str] = set()
-            self._tool_runs: dict[str, str] = {}
+            self._tool_runs: dict[str, dict[str, Any]] = {}
             self._last_tool_signature = ""
             self._same_tool_streak = 0
 
@@ -70,7 +77,7 @@ def create_run_callback(
             **kwargs: Any,
         ) -> None:
             run_path = run_root(module_root, run_id_outer)
-            if completion_ready(run_path):
+            if not allow_after_completion and completion_ready(run_path):
                 raise AgentRunCompleted(
                     "UI-схема успешно проверена; дополнительный вызов LLM не требуется"
                 )
@@ -83,20 +90,21 @@ def create_run_callback(
             current = int(metrics.get("llm_calls", 0))
             maximum = limits["max_llm_calls"]
             if current >= maximum:
-                validation = validate_and_mark_completion(run_path)
-                if validation.get("valid"):
-                    append_event(
-                        module_root,
-                        run_id_outer,
-                        event_type="completed_at_limit_boundary",
-                        message=(
-                            "Схема валидна; backend завершил запуск без дополнительного "
-                            "вызова LLM на границе лимита"
-                        ),
-                    )
-                    raise AgentRunCompleted(
-                        "UI-схема успешно проверена на границе лимита"
-                    )
+                if not allow_after_completion:
+                    validation = validate_and_mark_completion(run_path)
+                    if validation.get("valid"):
+                        append_event(
+                            module_root,
+                            run_id_outer,
+                            event_type="completed_at_limit_boundary",
+                            message=(
+                                "Схема валидна; backend завершил запуск без дополнительного "
+                                "вызова LLM на границе лимита"
+                            ),
+                        )
+                        raise AgentRunCompleted(
+                            "UI-схема успешно проверена на границе лимита"
+                        )
                 raise AgentRunStopped(f"Достигнут лимит вызовов LLM: {maximum}")
             metrics = increment_metric(
                 module_root,
@@ -137,7 +145,12 @@ def create_run_callback(
             maximum = limits["max_total_tokens"]
             if int(metrics.get("total_tokens", 0)) > maximum:
                 raise AgentRunStopped(f"Превышен лимит токенов: {maximum}")
-            _check_run(module_root, run_id_value=run_id_outer, limits=limits)
+            _check_run(
+                module_root,
+                run_id_value=run_id_outer,
+                limits=limits,
+                enforce_duration=False,
+            )
 
         def on_llm_error(self, error: BaseException, *, run_id: UUID, **kwargs: Any) -> None:
             self._model_runs.discard(str(run_id))
@@ -168,7 +181,10 @@ def create_run_callback(
 
             serialized = serialized if isinstance(serialized, dict) else {}
             name = str(serialized.get("name") or kwargs.get("name") or "tool")
-            args = extract_tool_args(input_str)
+            structured_inputs = kwargs.get("inputs")
+            args = extract_tool_args(
+                structured_inputs if structured_inputs is not None else input_str
+            )
             signature = tool_signature(name, args)
             if signature == self._last_tool_signature:
                 self._same_tool_streak += 1
@@ -194,14 +210,21 @@ def create_run_callback(
                     self._same_tool_streak,
                 ),
             )
-            self._tool_runs[str(run_id)] = name
             path = tool_path(args)
             file_count = tool_file_count(args)
+            tool_call = int(metrics.get("tool_calls", 0))
+            self._tool_runs[str(run_id)] = {
+                "name": name,
+                "tool_call": tool_call,
+                "started_at": _now_iso(),
+                "started_monotonic": monotonic(),
+                "arguments": tool_argument_summary(name, args),
+            }
             safe_data = {
                 "tool": name,
                 "path": path,
                 "file_count": file_count,
-                "tool_call": metrics.get("tool_calls", 0),
+                "tool_call": tool_call,
                 "offset": _safe_int(args.get("offset")),
                 "limit": _safe_int(args.get("limit")),
                 "repeat_streak": self._same_tool_streak,
@@ -215,7 +238,8 @@ def create_run_callback(
             )
 
         def on_tool_end(self, output: Any, *, run_id: UUID, **kwargs: Any) -> None:
-            name = self._tool_runs.pop(str(run_id), str(kwargs.get("name") or "tool"))
+            trace = self._tool_runs.pop(str(run_id), {})
+            name = str(trace.get("name") or kwargs.get("name") or "tool")
             recoverable_error = recoverable_tool_error(output)
             if recoverable_error:
                 append_event(
@@ -227,7 +251,11 @@ def create_run_callback(
                     data={"tool": name},
                 )
             else:
-                validation = _validation_result(output) if name == "validate_ui_schema_state" else None
+                validation = (
+                    _validation_result(output)
+                    if name in {"validate_ui_schema_state", "write_ui_schema_traceability_batch", "review_ui_schema_traceability"}
+                    else None
+                )
                 if validation is not None:
                     error_count = len(validation.get("errors", []))
                     append_event(
@@ -254,10 +282,31 @@ def create_run_callback(
                         message=f"Инструмент завершил работу: {name}",
                         data={"tool": name},
                     )
-            _check_run(module_root, run_id_value=run_id_outer, limits=limits)
+            append_tool_trace(
+                run_root(module_root, run_id_outer),
+                {
+                    "tool_call": trace.get("tool_call"),
+                    "tool": name,
+                    "started_at": trace.get("started_at"),
+                    "duration_ms": _duration_ms(trace.get("started_monotonic")),
+                    "status": "rejected" if recoverable_error else "ok",
+                    "arguments": trace.get("arguments", {}),
+                    "result": {
+                        **tool_output_summary(output),
+                        **({"error": recoverable_error} if recoverable_error else {}),
+                    },
+                },
+            )
+            _check_run(
+                module_root,
+                run_id_value=run_id_outer,
+                limits=limits,
+                enforce_duration=False,
+            )
 
         def on_tool_error(self, error: BaseException, *, run_id: UUID, **kwargs: Any) -> None:
-            name = self._tool_runs.pop(str(run_id), str(kwargs.get("name") or "tool"))
+            trace = self._tool_runs.pop(str(run_id), {})
+            name = str(trace.get("name") or kwargs.get("name") or "tool")
             append_event(
                 module_root,
                 run_id_outer,
@@ -265,6 +314,18 @@ def create_run_callback(
                 level="error",
                 message=f"Ошибка инструмента {name}: {_short_error(error)}",
                 data={"tool": name},
+            )
+            append_tool_trace(
+                run_root(module_root, run_id_outer),
+                {
+                    "tool_call": trace.get("tool_call"),
+                    "tool": name,
+                    "started_at": trace.get("started_at"),
+                    "duration_ms": _duration_ms(trace.get("started_monotonic")),
+                    "status": "error",
+                    "arguments": trace.get("arguments", {}),
+                    "result": {"error": _short_error(error)},
+                },
             )
 
     run_id_outer = run_id
@@ -291,10 +352,18 @@ def _validation_result(output: Any) -> dict[str, Any] | None:
     return payload if isinstance(payload, dict) and "valid" in payload else None
 
 
-def _check_run(module_root: Path, *, run_id_value: str, limits: dict[str, int]) -> None:
+def _check_run(
+    module_root: Path,
+    *,
+    run_id_value: str,
+    limits: dict[str, int],
+    enforce_duration: bool = True,
+) -> None:
     run = read_json(run_file(module_root, run_id_value), {})
     if run.get("status") in {"cancelling", "cancelled"}:
         raise AgentRunCancellation("Задача отменена пользователем")
+    if not enforce_duration:
+        return
     metrics = read_metrics(module_root, run_id_value)
     started_at = metrics.get("started_at")
     if elapsed_seconds(str(started_at or "")) > limits["max_duration_seconds"]:
@@ -361,6 +430,12 @@ def _safe_int(value: Any) -> int | None:
 def _short_error(error: BaseException) -> str:
     text = str(error).strip() or error.__class__.__name__
     return text[:500]
+
+
+def _duration_ms(started: Any) -> int | None:
+    if not isinstance(started, (int, float)):
+        return None
+    return max(0, int((monotonic() - float(started)) * 1000))
 
 
 def _now_iso() -> str:

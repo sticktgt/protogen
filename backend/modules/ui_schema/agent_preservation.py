@@ -12,9 +12,14 @@ def preservation_validation(
     base_root: Path,
     working_root: Path,
     validation: dict[str, Any],
+    *,
+    approved_page_ids: set[str] | None = None,
+    approved_element_ids: set[str] | None = None,
 ) -> dict[str, Any]:
     errors = list(validation.get("errors", []))
     missing_pages, missing_elements = find_missing_base_objects(base_root, working_root)
+    missing_pages = sorted(set(missing_pages) - set(approved_page_ids or set()))
+    missing_elements = sorted(set(missing_elements) - set(approved_element_ids or set()))
     if missing_pages:
         errors.append(
             "Синхронизация не может удалять существующие страницы: "

@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from backend.modules.ui_schema.agent_schema_merge import merge_preserving_agent_content
+from backend.modules.ui_schema.agent_write_validation import validate_generated_document
 from backend.modules.ui_schema.files import read_json, write_json
 
 _PAGE_FILE = re.compile(r"^[a-zA-Z0-9_.-]+\.json$")
@@ -48,6 +49,7 @@ def write_ui_schema_bundle(
         if normalized in {"app.json", "schema.json"} or normalized.startswith("pages/"):
             current = read_json(target, {})
             prepared_content = merge_preserving_agent_content(normalized, current, content)
+        validate_generated_document(normalized, prepared_content)
         prepared.append((normalized, target, prepared_content))
 
     for _, target, content in prepared:
@@ -77,20 +79,28 @@ def delete_page_file(*, working_root: Path, file_path: str, base_root: Path | No
     return {"ok": True, "message": f"Deleted {normalized}", "path": normalized}
 
 
-def recoverable_tool_result(operation: Callable[[], dict[str, Any]]) -> str:
+def recoverable_tool_result(
+    operation: Callable[[], dict[str, Any]],
+    *,
+    recovery_context: Callable[[], dict[str, Any]] | None = None,
+) -> str:
     try:
         result = operation()
     except (OSError, TypeError, ValueError) as exc:
         result = {
             "ok": False,
+            "code": "tool_operation_rejected",
             "error": str(exc),
             "hint": (
-                "Correct the tool arguments and continue. Use native JSON with "
-                "write_ui_schema_core, write_ui_schema_page, "
-                "write_ui_schema_page_elements, write_ui_schema_links or "
-                "write_ui_schema_traceability according to the affected document."
+                "Correct only the rejected technical arguments. Follow workflow_context.next_action "
+                "and use only the bounded context returned there."
             ),
         }
+        if recovery_context is not None:
+            try:
+                result["workflow_context"] = recovery_context()
+            except (OSError, TypeError, ValueError):
+                pass
     return json.dumps(result, ensure_ascii=False)
 
 

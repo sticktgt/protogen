@@ -6,6 +6,7 @@ from typing import Any
 from backend.modules.ui_schema.agent_changes import write_result_files
 from backend.modules.ui_schema.agent_diagnostics import build_diagnostics_archive
 from backend.modules.ui_schema.agent_events import append_event
+from backend.modules.ui_schema.agent_manual_review import write_manual_review_result
 from backend.modules.ui_schema.agent_report import ensure_agent_report, finalize_agent_report
 from backend.modules.ui_schema.agent_runs import get_run, run_root, update_run
 from backend.modules.ui_schema.files import read_json, write_json
@@ -16,6 +17,7 @@ def finalize_preview(
     run_id: str,
     validation: dict[str, Any],
     *,
+    cleanup_review: dict[str, Any] | None = None,
     event_message: str = "Проверка пройдена, формируется статистика изменений и preview",
 ) -> None:
     root = run_root(module_root, run_id)
@@ -43,6 +45,10 @@ def finalize_preview(
         changes=changes,
         requirements_result=requirements_result,
     )
+    manual_review = write_manual_review_result(root, cleanup_review)
+    cleanup_warning = str(
+        (manual_review.get("cleanup_review") or {}).get("warning") or ""
+    ).strip()
     append_event(
         module_root,
         run_id,
@@ -69,8 +75,10 @@ def finalize_preview(
             *validation.get("warnings", []),
             *traceability_warnings,
             *report_warnings,
+            *([cleanup_warning] if cleanup_warning else []),
         ],
         error="",
         stop_reason="",
+        manual_review=manual_review,
     )
     build_diagnostics_archive(module_root, run_id)

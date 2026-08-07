@@ -1,0 +1,894 @@
+{
+  "run_id": "run_20260807_180238_1cd4e250",
+  "workspace_id": "ws_demo",
+  "status": "preview_ready",
+  "phase": "completed",
+  "attempt": 1,
+  "base_mode": "current",
+  "requirements_file_name": "bank_front_office_requirements_v3.json",
+  "requirements_source_path": "ui_schema/bank_front_office_requirements_v3.json",
+  "requirements_source_sha256": "b5ec5f0493e478e479f12d57747a77c92970b3be7358eda4f465ecb6cbbbd6df",
+  "user_request": "",
+  "regeneration_comments": [],
+  "created_at": "2026-08-07T16:02:38.719666+00:00",
+  "started_at": "2026-08-07T16:02:38.719666+00:00",
+  "updated_at": "2026-08-07T16:15:57.092611+00:00",
+  "statistics": {
+    "pages": {
+      "added": 1,
+      "modified": 1,
+      "deleted": 0
+    },
+    "elements": {
+      "added": 105,
+      "modified": 15,
+      "deleted": 0
+    },
+    "ui_links": {
+      "added": 12,
+      "modified": 0,
+      "deleted": 0
+    },
+    "requirement_links": {
+      "added": 157,
+      "modified": 0,
+      "deleted": 37
+    },
+    "application": {
+      "added": 0,
+      "modified": 0,
+      "deleted": 0
+    },
+    "files": {
+      "added": 2,
+      "modified": 12,
+      "deleted": 0
+    },
+    "assessments": {
+      "linked": 75,
+      "cross_cutting_ui": 22,
+      "no_ui": 11,
+      "unclear": 0,
+      "unclassified": 0
+    },
+    "traceability": {
+      "requirements_total": 108,
+      "requirements_linked": 75,
+      "requirements_cross_cutting_ui": 22,
+      "cross_cutting_with_targets": 21,
+      "requirements_with_targets": 96,
+      "links_total": 157,
+      "requirements_page_only": 16,
+      "requirements_with_elements": 80,
+      "requirements_multi_target": 37,
+      "average_targets_per_traced_requirement": 1.64,
+      "average_targets_per_linked_requirement": 1.64
+    }
+  },
+  "agent_report": "Синхронизация UI-схемы завершена. Страницы: +1, ~1, −0. UI-элементы: +105, ~15, −0. Требования: 75 с прямой UI-трассировкой, 22 сквозных UI-правил, 11 без UI, 0 требуют уточнения.",
+  "agent_note": "Добавлены: область ошибок на странице входа, кнопка выхода и имя клиента в верхней панели главной страницы. Большинство требуемых элементов уже существуют в текущей схеме.\n\nДобавлен список последних операций на главную страницу (REQ-0014). Расширены быстрые действия кнопкой блокировки карты (REQ-0013). Детализированы карточки продуктов на странице обзора с заголовками, описаниями и действиями навигации (REQ-0019-0024). Кросс-каттинг требования (REQ-0015-0018) помечены как планируемые без изменений схемы.\n\nГруппа требований по счетам клиента. Исправлены типы элементов внутри accounts.list.operations.table: все колонки таблицы операций изменены с text/badge на table_column согласно каталогу типов. Расширена таблица accounts.list.table недостающими колонками. Создана панель деталей accounts.list.details_panel и секция операций accounts.list.operations_section.\n\nДобавлено поле валюты перевода и модальное окно подтверждения. Для REQ-0048 добавлен счет выплаты процентов в форму депозита.\n\nСоздан wizard для открытия вклада с 3 шагами. Добавлены поля страхования и комментария в заявку на кредит.\n\nПакет синхронизации для требований REQ-0061–REQ-0072. Поля кредитной заявки (сумма, срок, доход, страхование) уже существуют — помечены как reuse. Добавлены элементы статуса и решения заявки на странице credits.apply. Создана новая страница cards.list для отображения списка карт с атрибутами (REQ-0068, REQ-0069, REQ-0070). Страница блокировки карты cards.block уже существует со всей формой — помечена как reuse.\n\nИсправлена ошибка modal_target_required: элемент analytics.spending.statement_panel изменён с типа details_panel на modal, так как relation=opens_modal требует цель типа modal. Все UI-связи теперь указывают на элементы корректного типа.\n\nГруппа 8: требования к выписке по счету (REQ-0085–0087) и справочникам (REQ-0088–0092) полностью покрыты существующей схемой. API-требования (REQ-0093–0096) не влияют на UI.\n\nГруппа 9 (REQ-0097..REQ-0108): 7 требований backend API (no_ui) и 5 требований навигации (direct_ui). Все навигационные цели уже существуют в схеме: пункты меню app.main_menu.* и страницы payments.transfer, cards.block, deposits.open, credits.apply. Изменения не требуются.\n\nИсправлены audit_issues для 5 требований: добавлены missing ui_links для навигации (REQ-0001, REQ-0005, REQ-0104) и отображение недостающих данных на формах (REQ-0055, REQ-0072).",
+  "validation_errors": [],
+  "validation_error_count": 0,
+  "validation_warnings": [
+    "Структурная проверка: рекомендуется вручную проверить элементы вне ожидаемого контейнера: analytics.spending.category_cards.card, analytics.spending.category_table.operations, products.overview.accounts_card.action, products.overview.accounts_card.description, products.overview.accounts_card.title и ещё 9.",
+    "Структурная проверка: рекомендуется вручную проверить новые страницы без входящей навигации: cards.list.",
+    "Структурная проверка: рекомендуется вручную проверить контейнеры, заявленные как расширенные, но оставшиеся пустыми: analytics.spending.category_table.",
+    "Структурная проверка: рекомендуется вручную проверить новые пустые содержательные контейнеры: deposits.open.wizard."
+  ],
+  "config": {
+    "pipeline": {
+      "analysis_batch_size": 24,
+      "planning_batch_size": 12,
+      "audit_batch_size": 40,
+      "correction_batch_size": 12,
+      "stage_attempts": 3,
+      "apply_repair_attempts": 3,
+      "validation_repair_attempts": 1,
+      "correction_rounds": 1,
+      "structural_review_candidate_limit": 24,
+      "output_contract_prompt": "pipeline_output_contract",
+      "change_rules_prompt": "pipeline_change_rules",
+      "tool_choice": "required",
+      "stages": {
+        "analysis": {
+          "prompt": "pipeline_analysis",
+          "tool_name": "submit_requirement_analysis"
+        },
+        "planning": {
+          "prompt": "pipeline_planning",
+          "tool_name": "submit_ui_schema_plan"
+        },
+        "repair": {
+          "prompt": "pipeline_repair",
+          "tool_name": "submit_repaired_ui_schema_plan"
+        },
+        "audit": {
+          "prompt": "pipeline_audit",
+          "tool_name": "submit_ui_schema_audit"
+        },
+        "correction": {
+          "prompt": "pipeline_correction",
+          "tool_name": "submit_ui_schema_correction"
+        },
+        "structural_review": {
+          "prompt": "pipeline_structural_review",
+          "tool_name": "submit_ui_schema_structural_review"
+        }
+      }
+    },
+    "context": {
+      "requirement_fields": [
+        "id",
+        "name",
+        "description",
+        "acceptanceCriteria"
+      ]
+    },
+    "diagnostics": {
+      "validation_history": {
+        "enabled": true,
+        "max_entries": 64,
+        "max_error_length": 1200,
+        "max_errors_per_entry": 100,
+        "max_repair_hints_per_entry": 100
+      },
+      "tool_trace": {
+        "enabled": true,
+        "max_entries": 256,
+        "max_error_length": 600
+      },
+      "source_fingerprints": {
+        "enabled": true,
+        "include_git_commit": true,
+        "build_id_environment": [
+          "PROTOARCHITECT_BUILD_ID",
+          "BUILD_ID"
+        ],
+        "commit_id_environment": [
+          "GIT_COMMIT",
+          "CI_COMMIT_SHA"
+        ]
+      }
+    }
+  },
+  "execution": {
+    "max_llm_calls": 32,
+    "max_tool_calls": 48,
+    "max_total_tokens": 1000000,
+    "write_page_max_top_level_elements": 32,
+    "write_element_batch_max_changes": 120,
+    "apply_change_bundle_max_pages": 8,
+    "apply_change_bundle_max_moves": 40,
+    "apply_change_bundle_max_links": 120,
+    "apply_change_bundle_max_removals": 30,
+    "max_duration_seconds": 1800,
+    "recursion_limit": 120,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "llm": {
+    "provider": "ollama-cloud",
+    "model": "qwen3.5:397b",
+    "base_url": "https://ollama.com/v1"
+  },
+  "error": "",
+  "stop_reason": "",
+  "manual_review": {
+    "inherited_requirement_links": [
+      {
+        "requirement_id": "REQ-0196",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_011",
+            "target_type": "page",
+            "target_id": "deposits.open",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Открытие депозита",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_012",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.application",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Заявка на депозит",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_013",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Отправить заявку",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-deposit",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.deposits",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Открыть депозит",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0311",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_016",
+            "target_type": "page",
+            "target_id": "credits.apply",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_017",
+            "target_type": "ui_element",
+            "target_id": "credits.apply.step.borrower",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Данные заемщика",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-credit",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.credits",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0326",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_007",
+            "target_type": "page",
+            "target_id": "payments.transfer",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Перевод между своими счетами",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_008",
+            "target_type": "ui_element",
+            "target_id": "payments.transfer.form",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Форма перевода",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_009",
+            "target_type": "ui_element",
+            "target_id": "payments.transfer.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Перевести",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_010",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.new_transfer",
+            "relation": "starts_flow",
+            "target_exists": true,
+            "target_label": "Новый перевод",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "начинает пользовательский сценарий",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-transfer",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.payments.transfer",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Перевод между счетами",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0422",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_021",
+            "target_type": "page",
+            "target_id": "cards.block",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Блокировка карты",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_022",
+            "target_type": "ui_element",
+            "target_id": "cards.block.form",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Форма блокировки карты",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_023",
+            "target_type": "ui_element",
+            "target_id": "cards.block.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Заблокировать карту",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0576",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_026",
+            "target_type": "page",
+            "target_id": "accounts.list",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Список счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_027",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.open_statement",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Сформировать выписку",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_028",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.statement",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Сформировать выписку",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0777",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_018",
+            "target_type": "page",
+            "target_id": "products.overview",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Банковские продукты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_019",
+            "target_type": "ui_element",
+            "target_id": "products.overview.credits_card",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Кредиты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_020",
+            "target_type": "page",
+            "target_id": "credits.apply",
+            "relation": "starts_flow",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "начинает пользовательский сценарий",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0831",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_024",
+            "target_type": "page",
+            "target_id": "home",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Главная",
+            "page_id": "home",
+            "page_title": "Главная",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_025",
+            "target_type": "ui_element",
+            "target_id": "home.summary_grid",
+            "relation": "displays_summary",
+            "target_exists": true,
+            "target_label": "Сводка по продуктам",
+            "page_id": "home",
+            "page_title": "Главная",
+            "relation_label": "показывает сводку",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_025 использует тип 'displays_summary', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_025 использует тип 'displays_summary', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_025 использует тип 'displays_summary', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0849",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "rql-menu-analytics",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.analytics.spending",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Траты за период",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0878",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_014",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.calculator",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Предварительный расчет доходности",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_015",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.calculator.schedule",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "График начислений",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_015 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_015 использует тип 'displays_result', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_015 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0898",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_004",
+            "target_type": "page",
+            "target_id": "accounts.list",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Список счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_005",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.table",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Таблица счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_006",
+            "target_type": "page",
+            "target_id": "products.overview",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Банковские продукты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-products",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.accounts",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Счета",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-AN-001",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_029",
+            "target_type": "page",
+            "target_id": "analytics.spending",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Аналитика трат",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_030",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.filters",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Параметры периода",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_031",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.summary",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "Сводные показатели",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          },
+          {
+            "id": "link_032",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.charts",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "Разделы аналитики",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_032 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+          "Связь link_032 использует тип 'displays_result', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          },
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_032 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      }
+    ],
+    "cleanup_candidates": [],
+    "cleanup_review": {},
+    "counts": {
+      "inherited_requirement_ids": 11,
+      "inherited_requirement_links": 34,
+      "cleanup_candidates": 0,
+      "inherited_link_issues": 9
+    }
+  }
+}

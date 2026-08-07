@@ -1,0 +1,78 @@
+{
+  "id": "auth.login",
+  "title": "Вход в систему",
+  "description": "Страница авторизации пользователя прототипа",
+  "elements": [
+    {
+      "id": "auth.login.card",
+      "type": "card",
+      "label": "Карточка входа",
+      "description": "Центральный блок авторизации",
+      "children": [
+        {
+          "id": "auth.login.logo",
+          "type": "image",
+          "label": "Логотип и название банка",
+          "purpose": "Отображение бренда на странице входа"
+        },
+        {
+          "id": "auth.login.form",
+          "type": "form",
+          "label": "Форма входа",
+          "purpose": "Ввод учетных данных",
+          "children": [
+            {
+              "id": "auth.login.username",
+              "type": "input",
+              "label": "Логин"
+            },
+            {
+              "id": "auth.login.password",
+              "type": "input",
+              "label": "Пароль"
+            },
+            {
+              "id": "auth.login.remember",
+              "type": "checkbox",
+              "label": "Запомнить меня"
+            },
+            {
+              "id": "auth.login.submit",
+              "type": "button",
+              "label": "Войти",
+              "actions": [
+                {
+                  "type": "call_api",
+                  "api_ref": "auth.login"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "auth.login.help_links",
+          "type": "list",
+          "label": "Ссылки помощи",
+          "children": [
+            {
+              "id": "auth.login.restore",
+              "type": "link",
+              "label": "Восстановить доступ"
+            },
+            {
+              "id": "auth.login.security",
+              "type": "link",
+              "label": "Правила безопасности"
+            }
+          ]
+        },
+        {
+          "id": "auth.login.error_message",
+          "type": "text",
+          "label": "Сообщение об ошибке входа",
+          "purpose": "Отображение ошибок авторизации"
+        }
+      ]
+    }
+  ]
+}

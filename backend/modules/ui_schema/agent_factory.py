@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from backend.modules.ui_schema.agent_context_history import create_context_history_middleware
 from backend.modules.ui_schema.agent_llm import create_chat_model
 from backend.modules.ui_schema.agent_middleware import create_tool_error_middleware
 from backend.modules.ui_schema.agent_prompts import load_prompt
@@ -30,11 +31,16 @@ def create_ui_schema_agent(
             "LangChain agent dependencies are not installed. Install project requirements.txt."
         ) from exc
 
+    context_history_middleware = create_context_history_middleware(agent_config)
+    middleware = [create_tool_error_middleware()]
+    if context_history_middleware is not None:
+        middleware.insert(0, context_history_middleware)
+
     return create_agent(
         model=create_chat_model(llm_settings, agent_config),
         tools=create_agent_tools(run_path=run_path, agent_config=agent_config),
         system_prompt=load_prompt(agent_config, "system"),
-        middleware=[create_tool_error_middleware()],
+        middleware=middleware,
         checkpointer=MemorySaver(),
         name="ui_schema_sync_agent",
     )
