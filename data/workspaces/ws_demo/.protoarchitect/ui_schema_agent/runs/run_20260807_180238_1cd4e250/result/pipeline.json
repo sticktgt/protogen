@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "analysis_batches": 5,
+  "planning_batches": 9,
+  "audit_batches": 2,
+  "correction_batches": 1,
+  "correction_review_batches": 1,
+  "audit_issue_count": 5,
+  "structural_candidate_count": 20,
+  "requirement_count": 108
+}

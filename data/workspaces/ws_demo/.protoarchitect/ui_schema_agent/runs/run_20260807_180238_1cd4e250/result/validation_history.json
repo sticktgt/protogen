@@ -1,0 +1,25 @@
+{
+  "format_version": "0.1",
+  "attempts": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-08-07T16:15:56.998565+00:00",
+      "source": "pipeline_v2_final",
+      "valid": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "error_codes": [],
+      "errors": [],
+      "warnings": [],
+      "repair_hints": [],
+      "assessment_counts": {
+        "linked": 75,
+        "cross_cutting_ui": 22,
+        "no_ui": 11,
+        "unclear": 0,
+        "unclassified": 0
+      }
+    }
+  ],
+  "total_recorded": 1
+}

@@ -6,10 +6,26 @@ provides:
       path: modules/ui_schema/index.html
       params:
         - workspace_id
+        - preview_run_id
   api:
     - method: GET
       path: /api/ui-schema
-      description: Read UI schema summary for current workspace
+      description: Read current or preview UI schema summary
+    - method: POST
+      path: /api/ui-schema/agent/llm/test
+      description: Test the current user LLM settings and tool calling
+    - method: POST
+      path: /api/ui-schema/agent-runs
+      description: Synchronize UI schema with a requirements file addressed by a workspace-relative path
+    - method: GET
+      path: /api/ui-schema/agent-runs/{run_id}/events
+      description: Read execution log, LLM/tool counters and token usage
+    - method: GET
+      path: /api/ui-schema/agent-runs/{run_id}/diagnostics
+      description: Download a diagnostic ZIP for a stopped or preview-ready agent run
+    - method: GET
+      path: /api/ui-schema/exports/requirements-ui/{run_id}
+      description: Read an accepted requirements-to-UI export
   workspace_files:
     - path: ui_schema/schema.json
       description: UI schema registry
@@ -17,6 +33,10 @@ provides:
       description: Page definitions
     - path: ui_schema/mappings/requirement_ui_links.json
       description: Links between requirements and UI objects
+    - path: ui_schema/requirements_source.json
+      description: Workspace-relative reference to the canonical requirements file owned by another module
+    - path: ui_schema/exports/requirements_ui/*.json
+      description: Accepted exports containing every input requirement and its UI targets or assessment
     - path: ui_schema/code_links.json
       description: Optional links between UI objects and prototype source files
 consumes:
@@ -24,6 +44,8 @@ consumes:
     - method: GET
       path: /api/config/modules/ui_schema
       description: Read the shared runtime catalog of UI element types
-  workspace_files:
-    - path: ui_schema/requirements.json
-      description: Demo requirement list used for tracing
+  files:
+    - description: Requirements JSON stored inside the workspace and addressed by a workspace-relative path
+      path: "<requirements_module>/<requirements_file>.json"
+      required_fields:
+        - requirements

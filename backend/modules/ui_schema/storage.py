@@ -6,6 +6,7 @@ from uuid import uuid4
 
 from backend.app.state import AppState
 from backend.modules.ui_schema.files import read_json, write_json
+from backend.modules.ui_schema.workspace_migration import remove_obsolete_requirements_copy
 
 MODULE_ID = "ui_schema"
 
@@ -25,11 +26,13 @@ DEFAULT_APP = {
 DEFAULT_LINKS = {"links": []}
 DEFAULT_CODE_LINKS = {"links": []}
 DEFAULT_UI_LINKS = {"links": []}
-DEFAULT_REQUIREMENTS = {"projects": [], "groups": [], "requirements": []}
+DEFAULT_REQUIREMENTS_SOURCE = {"type": "workspace_file", "path": ""}
 
 
 def module_root(state: AppState, workspace_id: str) -> Path:
-    return state.workspaces.get_module_path(workspace_id, MODULE_ID)
+    root = state.workspaces.get_module_path(workspace_id, MODULE_ID)
+    remove_obsolete_requirements_copy(root)
+    return root
 
 
 def schema_path(root: Path) -> Path:
@@ -57,8 +60,8 @@ def code_links_path(root: Path) -> Path:
     return root / "code_links.json"
 
 
-def requirements_path(root: Path) -> Path:
-    return root / "requirements.json"
+def requirements_source_path(root: Path) -> Path:
+    return root / "requirements_source.json"
 
 
 def page_path(root: Path, page_id: str) -> Path:
@@ -98,8 +101,12 @@ def write_ui_links(root: Path, links: dict[str, Any]) -> None:
     write_json(ui_links_path(root), links)
 
 
-def read_requirements(root: Path) -> dict[str, Any]:
-    return read_json(requirements_path(root), dict(DEFAULT_REQUIREMENTS))
+def read_requirements_source(root: Path) -> dict[str, Any]:
+    return read_json(requirements_source_path(root), dict(DEFAULT_REQUIREMENTS_SOURCE))
+
+
+def write_requirements_source(root: Path, source: dict[str, Any]) -> None:
+    write_json(requirements_source_path(root), source)
 
 
 def read_code_links(root: Path) -> dict[str, Any]:

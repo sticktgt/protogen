@@ -1,0 +1,155 @@
+{
+  "id": "deposits.open",
+  "title": "Открытие депозита",
+  "description": "Заявка на открытие нового депозита",
+  "elements": [
+    {
+      "id": "deposits.open.offer_panel",
+      "type": "section",
+      "label": "Выбор условий депозита",
+      "children": [
+        {
+          "id": "deposits.open.filters",
+          "type": "filter_panel",
+          "label": "Подбор условий",
+          "children": [
+            {
+              "id": "deposits.open.amount_filter",
+              "type": "input",
+              "label": "Сумма"
+            }
+          ]
+        },
+        {
+          "id": "deposits.open.offers",
+          "type": "list",
+          "label": "Подходящие предложения",
+          "children": [
+            {
+              "id": "deposits.open.offer.standard",
+              "type": "card",
+              "label": "Стандартный вклад"
+            },
+            {
+              "id": "deposits.open.offer.premium",
+              "type": "card",
+              "label": "Премиальный вклад"
+            },
+            {
+              "id": "deposits.open.offer.savings",
+              "type": "card",
+              "label": "Накопительный вклад"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deposits.open.application",
+      "type": "form",
+      "label": "Заявка на депозит",
+      "children": [
+        {
+          "id": "deposits.open.auto_renewal",
+          "type": "checkbox",
+          "label": "Автопролонгация"
+        }
+      ]
+    },
+    {
+      "id": "deposits.open.calculator",
+      "type": "details_panel",
+      "label": "Предварительный расчет доходности",
+      "children": [
+        {
+          "id": "deposits.open.calculator.schedule",
+          "type": "table",
+          "label": "График начислений"
+        }
+      ]
+    },
+    {
+      "id": "deposits.open.wizard",
+      "type": "wizard",
+      "label": "Мастер открытия вклада"
+    },
+    {
+      "id": "deposits.open.step.params",
+      "type": "section",
+      "label": "Параметры вклада",
+      "children": [
+        {
+          "id": "deposits.open.source_account",
+          "type": "select",
+          "label": "Счет списания",
+          "description": "Выбор активного счета для списания средств"
+        },
+        {
+          "id": "deposits.open.amount",
+          "type": "input",
+          "label": "Сумма вклада",
+          "description": "Положительное денежное значение"
+        },
+        {
+          "id": "deposits.open.currency",
+          "type": "select",
+          "label": "Валюта вклада",
+          "description": "Выбор из доступных валют"
+        },
+        {
+          "id": "deposits.open.term",
+          "type": "select",
+          "label": "Срок вклада",
+          "description": "Срок в месяцах"
+        }
+      ]
+    },
+    {
+      "id": "deposits.open.step.conditions",
+      "type": "section",
+      "label": "Условия и расчет",
+      "children": [
+        {
+          "id": "deposits.open.capitalization",
+          "type": "checkbox",
+          "label": "Капитализация процентов"
+        },
+        {
+          "id": "deposits.open.calculator.rate",
+          "type": "text",
+          "label": "Ставка",
+          "description": "Годовая процентная ставка"
+        },
+        {
+          "id": "deposits.open.calculator.income",
+          "type": "text",
+          "label": "Ожидаемый доход"
+        }
+      ]
+    },
+    {
+      "id": "deposits.open.step.confirm",
+      "type": "section",
+      "label": "Подтверждение заявки",
+      "children": [
+        {
+          "id": "deposits.open.interest_account",
+          "type": "select",
+          "label": "Счет выплаты процентов",
+          "purpose": "Выбор счета для зачисления процентов по вкладу"
+        },
+        {
+          "id": "deposits.open.submit",
+          "type": "button",
+          "label": "Отправить заявку"
+        },
+        {
+          "id": "deposits.open.step.confirm.rate_display",
+          "type": "text",
+          "label": "Ставка",
+          "purpose": "Отображение годовой процентной ставки в подтверждении заявки"
+        }
+      ]
+    }
+  ]
+}

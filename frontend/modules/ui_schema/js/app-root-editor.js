@@ -1,8 +1,9 @@
 import { updateApp } from './api.js';
 import { renderAll } from './main.js';
-import { appSchema, state } from './state.js';
+import { APP_SCOPE, appSchema, state } from './state.js';
 import { addTopLevelElementPanel } from './element-add-panel.js';
 import { escapeAttr, escapeHtml } from './html-utils.js';
+import { renderScopeChangesOverview, renderSelectedChangeDetails } from './preview-diff.js';
 import { showToast } from '/base/js/ui.js';
 
 export function renderAppRootEditor(container, addPanel) {
@@ -14,6 +15,8 @@ export function renderAppRootEditor(container, addPanel) {
         <div class="item-meta">${escapeHtml(app.id || 'app')} · приложение</div>
       </div>
     </div>
+    ${renderSelectedChangeDetails('application', 'app')}
+    ${renderScopeChangesOverview(APP_SCOPE)}
     <form class="schema-form element-field-form" data-app-root-form>
       <div class="form-row">
         <label>ID</label>

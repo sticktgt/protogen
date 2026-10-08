@@ -2,6 +2,17 @@ import { dataTypeInfo } from './data-types.js';
 import { escapeHtml } from './html-utils.js';
 import { renderAll } from './main.js';
 import { entities, entityDetails, entityTitle, relations, relationTitle, selectEntity, state } from './state.js';
+import {
+  entityPreviewChange,
+  fieldPreviewChange,
+  previewChangeBadge,
+  relationPreviewChange
+} from './preview-change-markers.js';
+import {
+  previewEntityColors,
+  previewFieldColors,
+  previewRelationColors
+} from './preview-change-graph.js';
 
 const JOINT_CSS = 'https://cdn.jsdelivr.net/npm/@joint/core/dist/joint.css';
 const JOINT_JS = 'https://cdn.jsdelivr.net/npm/@joint/core/dist/joint.js';
@@ -270,7 +281,7 @@ function makeEntityNode(EntityShape, entity, index, width) {
   for (let fieldIndex = 0; fieldIndex < MAX_FIELDS_IN_NODE; fieldIndex += 1) {
     const field = visibleFields[fieldIndex];
     if (field) {
-      setFieldAttrs(node, field, fieldIndex);
+      setFieldAttrs(node, entity.id, field, fieldIndex);
     } else {
       hideFieldAttrs(node, fieldIndex);
     }
@@ -282,21 +293,24 @@ function makeEntityNode(EntityShape, entity, index, width) {
     opacity: hiddenCount ? 1 : 0
   });
   node.set('dataEntityId', entity.id);
+  node.set('dataPreviewChange', entityPreviewChange(entity.id));
   return node;
 }
 
-function setFieldAttrs(node, field, index) {
+function setFieldAttrs(node, entityId, field, index) {
   const rowY = NODE_HEADER_HEIGHT + 10 + index * NODE_ROW_HEIGHT;
   const info = dataTypeInfo(field.type);
   const colors = typeColors(info.id);
+  const change = fieldPreviewChange(entityId, field.id);
+  const rowColors = previewFieldColors(change);
   node.attr({
     [`fieldRow${index}`]: {
       x: 12,
       y: rowY,
       width: NODE_WIDTH - 24,
       height: 23,
-      fill: '#f8fafc',
-      stroke: '#e2e8f0',
+      fill: rowColors.fill,
+      stroke: rowColors.stroke,
       rx: 7,
       ry: 7,
       opacity: 1
@@ -305,7 +319,7 @@ function setFieldAttrs(node, field, index) {
       text: `${field.title || field.id}${field.required ? ' *' : ''}`,
       x: 22,
       y: rowY + 12,
-      fill: '#0f172a',
+      fill: rowColors.text,
       fontSize: 11,
       textAnchor: 'start',
       textVerticalAnchor: 'middle',
@@ -404,6 +418,7 @@ function makeRelationLink(joint, relation, source, target) {
     }
   });
   link.set('dataRelationId', relation.id);
+  link.set('dataPreviewChange', relationPreviewChange(relation.id));
   link.set('dataSourceEntityId', relation.source_entity);
   link.set('dataTargetEntityId', relation.target_entity);
   return link;
@@ -502,25 +517,27 @@ function resizePaperToGraph(paper, graph) {
 function updateSelection(nodes, relationLinks, detailsElement) {
   nodes.forEach((node, entityId) => {
     const selected = entityId === state.graphSelectedEntityId;
+    const visual = previewEntityColors(node.get('dataPreviewChange'));
     node.attr({
       body: {
-        stroke: selected ? '#2563eb' : '#dbe3ef',
-        strokeWidth: selected ? 2.4 : 1.4
+        stroke: selected ? '#2563eb' : visual.stroke,
+        strokeWidth: selected ? 2.4 : visual.strokeWidth
       },
       header: {
-        stroke: selected ? '#2563eb' : '#dbe3ef',
-        fill: selected ? '#eff6ff' : '#f8fafc'
+        stroke: selected ? '#2563eb' : visual.stroke,
+        fill: selected ? '#eff6ff' : visual.fill
       }
     });
   });
   relationLinks.forEach((link, relationId) => {
     const selected = relationId === state.graphSelectedRelationId;
-    link.attr('line/stroke', selected ? '#2563eb' : '#64748b');
-    link.attr('line/strokeWidth', selected ? 3 : 1.5);
+    const visual = previewRelationColors(link.get('dataPreviewChange'));
+    link.attr('line/stroke', selected ? '#2563eb' : visual.stroke);
+    link.attr('line/strokeWidth', selected ? 3 : visual.strokeWidth);
     link.label(0, {
       attrs: {
-        text: { fill: selected ? '#1d4ed8' : '#475569', fontWeight: selected ? 700 : 400 },
-        rect: { fill: selected ? '#eff6ff' : '#f8fafc', stroke: selected ? '#93c5fd' : '#dbe3ef' }
+        text: { fill: selected ? '#1d4ed8' : visual.text, fontWeight: selected || visual.changed ? 700 : 400 },
+        rect: { fill: selected ? '#eff6ff' : visual.fill, stroke: selected ? '#93c5fd' : visual.border }
       }
     });
     if (selected) link.toFront();
@@ -557,7 +574,7 @@ function renderDetails(detailsElement) {
 function renderEntityDetails(entity) {
   const entityRelations = relations().filter(item => item.source_entity === entity.id || item.target_entity === entity.id);
   return `
-    <div class="joint-details-title">${escapeHtml(entity.title || entity.id)}</div>
+    <div class="joint-details-title">${escapeHtml(entity.title || entity.id)} ${previewChangeBadge(entityPreviewChange(entity.id))}</div>
     <div class="joint-details-subtitle">entity · ${escapeHtml(entity.id)}</div>
     <div class="joint-details-section">
       <div class="joint-details-label">Поля</div>
@@ -582,7 +599,7 @@ function renderEntityRelationLine(relation) {
 
 function renderRelationDetails(relation) {
   return `
-    <div class="joint-details-title">${escapeHtml(relation.title || relation.id)}</div>
+    <div class="joint-details-title">${escapeHtml(relation.title || relation.id)} ${previewChangeBadge(relationPreviewChange(relation.id))}</div>
     <div class="joint-details-subtitle">relation · ${escapeHtml(relation.id)}</div>
     <div class="joint-details-section">
       <div class="joint-details-label">Сущности</div>

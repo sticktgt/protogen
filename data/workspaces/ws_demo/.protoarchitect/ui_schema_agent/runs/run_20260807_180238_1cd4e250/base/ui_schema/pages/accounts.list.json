@@ -1,0 +1,161 @@
+{
+  "id": "accounts.list",
+  "title": "Список счетов",
+  "description": "Экран просмотра счетов клиента, балансов и быстрых операций",
+  "elements": [
+    {
+      "id": "accounts.list.toolbar",
+      "type": "toolbar",
+      "label": "Панель действий",
+      "children": [
+        {
+          "id": "accounts.list.refresh",
+          "type": "button",
+          "label": "Обновить"
+        },
+        {
+          "id": "accounts.list.open_statement",
+          "type": "button",
+          "label": "Сформировать выписку"
+        },
+        {
+          "id": "accounts.list.new_transfer",
+          "type": "button",
+          "label": "Новый перевод",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "payments.transfer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accounts.list.content",
+      "type": "grid",
+      "label": "Область счетов",
+      "children": [
+        {
+          "id": "accounts.list.sidebar",
+          "type": "section",
+          "label": "Меню счетов",
+          "children": [
+            {
+              "id": "accounts.list.sidebar.active",
+              "type": "link",
+              "label": "Активные счета"
+            },
+            {
+              "id": "accounts.list.sidebar.savings",
+              "type": "link",
+              "label": "Накопительные счета"
+            },
+            {
+              "id": "accounts.list.sidebar.closed",
+              "type": "link",
+              "label": "Закрытые счета"
+            }
+          ]
+        },
+        {
+          "id": "accounts.list.main",
+          "type": "section",
+          "label": "Основная область",
+          "children": [
+            {
+              "id": "accounts.list.filters",
+              "type": "filter_panel",
+              "label": "Фильтры счетов",
+              "children": [
+                {
+                  "id": "accounts.list.filter.currency",
+                  "type": "select",
+                  "label": "Валюта"
+                },
+                {
+                  "id": "accounts.list.filter.status",
+                  "type": "select",
+                  "label": "Статус"
+                },
+                {
+                  "id": "accounts.list.filter.search",
+                  "type": "input",
+                  "label": "Поиск по номеру счета"
+                }
+              ]
+            },
+            {
+              "id": "accounts.list.table",
+              "type": "table_with_actions",
+              "label": "Таблица счетов",
+              "description": "Отображает номер счета, тип, валюту, баланс и доступные действия",
+              "children": [
+                {
+                  "id": "accounts.list.table.column.number",
+                  "type": "text",
+                  "label": "Номер счета"
+                },
+                {
+                  "id": "accounts.list.table.column.balance",
+                  "type": "text",
+                  "label": "Баланс"
+                },
+                {
+                  "id": "accounts.list.table.action.statement",
+                  "type": "button",
+                  "label": "Выписка"
+                },
+                {
+                  "id": "accounts.list.table.action.transfer",
+                  "type": "button",
+                  "label": "Перевести"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "accounts.list.quick_panel",
+          "type": "details_panel",
+          "label": "Панель быстрых ссылок",
+          "children": [
+            {
+              "id": "accounts.list.quick.transfer",
+              "type": "link",
+              "label": "Перевести между счетами",
+              "actions": [
+                {
+                  "type": "navigate",
+                  "target_page": "payments.transfer"
+                }
+              ]
+            },
+            {
+              "id": "accounts.list.quick.deposit",
+              "type": "link",
+              "label": "Открыть депозит",
+              "actions": [
+                {
+                  "type": "navigate",
+                  "target_page": "deposits.open"
+                }
+              ]
+            },
+            {
+              "id": "accounts.list.quick.analytics",
+              "type": "link",
+              "label": "Посмотреть аналитику",
+              "actions": [
+                {
+                  "type": "navigate",
+                  "target_page": "analytics.spending"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "id": "cards.list",
+  "title": "Список карт",
+  "description": "Экран просмотра банковских карт клиента с атрибутами и действиями",
+  "elements": [
+    {
+      "id": "cards.list.toolbar",
+      "type": "toolbar",
+      "label": "Панель действий",
+      "children": [
+        {
+          "id": "cards.list.refresh",
+          "type": "button",
+          "label": "Обновить",
+          "children": []
+        },
+        {
+          "id": "cards.list.block_card",
+          "type": "button",
+          "label": "Заблокировать карту",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "cards.list.content",
+      "type": "grid",
+      "label": "Область карт",
+      "children": [
+        {
+          "id": "cards.list.table",
+          "type": "table_with_actions",
+          "label": "Таблица карт",
+          "children": [
+            {
+              "id": "cards.list.table.column.number",
+              "type": "table_column",
+              "label": "Номер карты",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.column.system",
+              "type": "table_column",
+              "label": "Платежная система",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.column.type",
+              "type": "table_column",
+              "label": "Тип",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.column.status",
+              "type": "table_column",
+              "label": "Статус",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.column.account",
+              "type": "table_column",
+              "label": "Счет",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.column.expiry",
+              "type": "table_column",
+              "label": "Срок действия",
+              "children": []
+            },
+            {
+              "id": "cards.list.table.action.block",
+              "type": "button",
+              "label": "Заблокировать",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cards.list.details_panel",
+      "type": "details_panel",
+      "label": "Детали карты",
+      "children": [
+        {
+          "id": "cards.list.details.number",
+          "type": "text",
+          "label": "Номер карты",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.system",
+          "type": "text",
+          "label": "Платежная система",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.type",
+          "type": "text",
+          "label": "Тип карты",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.status",
+          "type": "badge",
+          "label": "Статус",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.account",
+          "type": "text",
+          "label": "Счет",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.expiry",
+          "type": "text",
+          "label": "Срок действия",
+          "children": []
+        },
+        {
+          "id": "cards.list.details.virtual",
+          "type": "badge",
+          "label": "Виртуальная",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

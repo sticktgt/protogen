@@ -11,11 +11,18 @@ provides:
   data_relations:
     api: GET /api/data-schema/relations
     description: Logical relations between entities.
+  requirements_data_result:
+    api: GET /api/data-schema/agent-runs/{run_id}/requirements-data-result
+    description: Per-requirement synchronization outcome and data traceability.
+  applied_requirements_data_export:
+    api: GET /api/data-schema/exports/requirements-data/{run_id}
+    description: Persisted synchronization outcome for an applied run.
 
 consumes:
   requirements:
-    current_source: data_schema/requirements.json
-    planned_source: requirements module
+    source_reference: data_schema/requirements_source.json
+    source_type: workspace_file
+    canonical_file_owner: external requirements module
     link_field: requirements[].id
   ui_schema:
     link_file: mappings/ui_data_links.json

@@ -1,0 +1,144 @@
+{
+  "format_version": "0.1",
+  "generated_at": "2026-08-07T16:02:38.753511+00:00",
+  "build_id": "",
+  "commit_id": "7e81aba7d0e06fd8c9ce29ec1b5bcb2bfcf52a02",
+  "module_manifest_sha256": "9c0b9685b75bb5010f1caa0480b0110125c3d3a0ef1dc491e297fdb671159a5b",
+  "module_version": "0.4.5",
+  "files": [
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/connection_test.md",
+      "snapshot_path": "reference/prompts/connection_test.md",
+      "source_sha256": "b6eb147081181ee1fd49ab6898f09b68266b879cbece1df9b0db9ba9d8d6140f",
+      "snapshot_sha256": "b6eb147081181ee1fd49ab6898f09b68266b879cbece1df9b0db9ba9d8d6140f",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_analysis.md",
+      "snapshot_path": "reference/prompts/pipeline_analysis.md",
+      "source_sha256": "68298189442a0379c48f7e1f3a624b7520ed590df910208b9637cd8a45e1b9fc",
+      "snapshot_sha256": "68298189442a0379c48f7e1f3a624b7520ed590df910208b9637cd8a45e1b9fc",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_audit.md",
+      "snapshot_path": "reference/prompts/pipeline_audit.md",
+      "source_sha256": "c6a50ebc1f9ddbf8fbea51e643f2419cbc2a2a05d87f3724cf1a4e2cec18de09",
+      "snapshot_sha256": "c6a50ebc1f9ddbf8fbea51e643f2419cbc2a2a05d87f3724cf1a4e2cec18de09",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_change_rules.md",
+      "snapshot_path": "reference/prompts/pipeline_change_rules.md",
+      "source_sha256": "85bc71ad40691ce9ce6731d99fd13ab861f9654e1116307bf24ebae2dc54ef81",
+      "snapshot_sha256": "85bc71ad40691ce9ce6731d99fd13ab861f9654e1116307bf24ebae2dc54ef81",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_correction.md",
+      "snapshot_path": "reference/prompts/pipeline_correction.md",
+      "source_sha256": "10004901d44a536e971c1441f0bde5667c489aaf7bd85cc492b2fc91999ebafc",
+      "snapshot_sha256": "10004901d44a536e971c1441f0bde5667c489aaf7bd85cc492b2fc91999ebafc",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_output_contract.md",
+      "snapshot_path": "reference/prompts/pipeline_output_contract.md",
+      "source_sha256": "f87a89eda39b4026650152947c7ccbff88cadb52d4baf46bd6707766c6ddc2e0",
+      "snapshot_sha256": "f87a89eda39b4026650152947c7ccbff88cadb52d4baf46bd6707766c6ddc2e0",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_planning.md",
+      "snapshot_path": "reference/prompts/pipeline_planning.md",
+      "source_sha256": "8a1538525b4948274d0a9802ad49b81332b42b21160c94110067ba0a22d7b3e5",
+      "snapshot_sha256": "8a1538525b4948274d0a9802ad49b81332b42b21160c94110067ba0a22d7b3e5",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_repair.md",
+      "snapshot_path": "reference/prompts/pipeline_repair.md",
+      "source_sha256": "c124ca70bfa04bad6e5603e77490f3d35f11c586a114809c002851c8944d1400",
+      "snapshot_sha256": "c124ca70bfa04bad6e5603e77490f3d35f11c586a114809c002851c8944d1400",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "prompt",
+      "configured_path": "modules/ui_schema/agent/prompts/pipeline_structural_review.md",
+      "snapshot_path": "reference/prompts/pipeline_structural_review.md",
+      "source_sha256": "7f9e4d50b0d72666f131cd9ef0f60963fdf1659933cbb12504c77578434ce8ab",
+      "snapshot_sha256": "7f9e4d50b0d72666f131cd9ef0f60963fdf1659933cbb12504c77578434ce8ab",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "reference",
+      "configured_path": "modules/ui_schema/agent/AGENT_INSTRUCTIONS.md",
+      "snapshot_path": "reference/AGENT_INSTRUCTIONS.md",
+      "source_sha256": "ed3d9ab2c58dda0053fb78c753e9944598558c1e6327b1a12382c9a2eb6cdb49",
+      "snapshot_sha256": "ed3d9ab2c58dda0053fb78c753e9944598558c1e6327b1a12382c9a2eb6cdb49",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "reference",
+      "configured_path": "modules/ui_schema/docs/STORAGE.md",
+      "snapshot_path": "reference/STORAGE.md",
+      "source_sha256": "b4de702f1ef15af3dea13c72d372435cfd758c4aae9d95446b334f13c1487210",
+      "snapshot_sha256": "b4de702f1ef15af3dea13c72d372435cfd758c4aae9d95446b334f13c1487210",
+      "matches_snapshot": true
+    },
+    {
+      "kind": "reference",
+      "configured_path": "modules/ui_schema/config.yaml",
+      "snapshot_path": "reference/config.yaml",
+      "source_sha256": "ceb94222e0c20aa53da362244098ae8d457f26908cdcb4a48cb148f28307fe12",
+      "snapshot_sha256": "ceb94222e0c20aa53da362244098ae8d457f26908cdcb4a48cb148f28307fe12",
+      "matches_snapshot": true
+    }
+  ],
+  "prompt_mappings": [
+    {
+      "prompt_snapshot_path": "reference/prompts/connection_test.md",
+      "prompt_sha256": "b6eb147081181ee1fd49ab6898f09b68266b879cbece1df9b0db9ba9d8d6140f"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_analysis.md",
+      "prompt_sha256": "68298189442a0379c48f7e1f3a624b7520ed590df910208b9637cd8a45e1b9fc"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_audit.md",
+      "prompt_sha256": "c6a50ebc1f9ddbf8fbea51e643f2419cbc2a2a05d87f3724cf1a4e2cec18de09"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_change_rules.md",
+      "prompt_sha256": "85bc71ad40691ce9ce6731d99fd13ab861f9654e1116307bf24ebae2dc54ef81"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_correction.md",
+      "prompt_sha256": "10004901d44a536e971c1441f0bde5667c489aaf7bd85cc492b2fc91999ebafc"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_output_contract.md",
+      "prompt_sha256": "f87a89eda39b4026650152947c7ccbff88cadb52d4baf46bd6707766c6ddc2e0"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_planning.md",
+      "prompt_sha256": "8a1538525b4948274d0a9802ad49b81332b42b21160c94110067ba0a22d7b3e5"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_repair.md",
+      "prompt_sha256": "c124ca70bfa04bad6e5603e77490f3d35f11c586a114809c002851c8944d1400"
+    },
+    {
+      "prompt_snapshot_path": "reference/prompts/pipeline_structural_review.md",
+      "prompt_sha256": "7f9e4d50b0d72666f131cd9ef0f60963fdf1659933cbb12504c77578434ce8ab"
+    }
+  ]
+}

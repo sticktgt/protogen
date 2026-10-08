@@ -1,0 +1,27 @@
+{
+  "completed_batches": 2,
+  "total_batches": 2,
+  "issues": [
+    {
+      "requirement_id": "REQ-0001",
+      "issue": "Отсутствует связь навигации от auth.login.submit к странице home после успешного входа"
+    },
+    {
+      "requirement_id": "REQ-0005",
+      "issue": "Отсутствует связь навигации от home.header.logout к странице auth.login после выхода"
+    },
+    {
+      "requirement_id": "REQ-0055",
+      "issue": "Ставка (deposits.open.calculator.rate) отображается только на шаге условий (step.conditions), но отсутствует на шаге подтверждения (step.confirm), хотя acceptance criteria требует 'Ставка отображается в подтверждении заявки'."
+    },
+    {
+      "requirement_id": "REQ-0072",
+      "issue": "Маскированный номер карты (card_number) присутствует только в модальном окне подтверждения (confirm_modal), но не отображается на основной форме блокировки (cards.block.form) перед открытием модального окна, что противоречит требованию 'Маскированный номер выбранной карты отображается перед подтверждением'."
+    },
+    {
+      "requirement_id": "REQ-0104",
+      "issue": "Отсутствует связь навигации в related_ui_links от действия перевода в таблице счетов (accounts.list.table.action.transfer) к странице перевода (payments.transfer), хотя acceptance criteria требует 'Клик по действию перевода открывает форму перевода'."
+    }
+  ],
+  "warnings": []
+}

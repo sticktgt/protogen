@@ -1,0 +1,113 @@
+{
+  "id": "home",
+  "title": "Главная",
+  "description": "Стартовый экран банковского фронт-офиса клиента",
+  "elements": [
+    {
+      "id": "home.header",
+      "type": "section",
+      "label": "Шапка главной страницы",
+      "children": [
+        {
+          "id": "home.header.greeting",
+          "type": "text",
+          "label": "Приветствие клиента"
+        },
+        {
+          "id": "home.header.notifications",
+          "type": "button",
+          "label": "Уведомления"
+        },
+        {
+          "id": "home.header.profile",
+          "type": "button",
+          "label": "Профиль"
+        }
+      ]
+    },
+    {
+      "id": "home.summary_grid",
+      "type": "grid",
+      "label": "Сводка по продуктам",
+      "children": [
+        {
+          "id": "home.summary.accounts",
+          "type": "card",
+          "label": "Счета и баланс"
+        },
+        {
+          "id": "home.summary.cards",
+          "type": "card",
+          "label": "Карты"
+        },
+        {
+          "id": "home.summary.deposits",
+          "type": "card",
+          "label": "Вклады"
+        },
+        {
+          "id": "home.summary.credits",
+          "type": "card",
+          "label": "Кредиты"
+        }
+      ]
+    },
+    {
+      "id": "home.quick_actions",
+      "type": "section",
+      "label": "Быстрые действия",
+      "children": [
+        {
+          "id": "home.quick.transfer",
+          "type": "button",
+          "label": "Перевести между счетами",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "payments.transfer"
+            }
+          ]
+        },
+        {
+          "id": "home.quick.deposit",
+          "type": "button",
+          "label": "Открыть депозит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "deposits.open"
+            }
+          ]
+        },
+        {
+          "id": "home.quick.credit",
+          "type": "button",
+          "label": "Подать заявку на кредит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "credits.apply"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "home.alerts",
+      "type": "list",
+      "label": "Важные уведомления",
+      "children": [
+        {
+          "id": "home.alerts.security",
+          "type": "badge",
+          "label": "Проверьте настройки безопасности"
+        },
+        {
+          "id": "home.alerts.statement",
+          "type": "badge",
+          "label": "Доступна новая выписка"
+        }
+      ]
+    }
+  ]
+}

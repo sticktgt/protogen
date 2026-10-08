@@ -1,0 +1,575 @@
+{
+  "pages": [
+    {
+      "id": "auth.login",
+      "title": "Вход в систему",
+      "summary": "Страница авторизации пользователя прототипа",
+      "requirement_ids": [
+        "REQ-0001",
+        "REQ-0002",
+        "REQ-0003",
+        "REQ-0004",
+        "REQ-0005",
+        "REQ-0010"
+      ],
+      "main_elements": [
+        {
+          "id": "auth.login.card",
+          "type": "card",
+          "label": "Карточка входа"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.home.header.logout.navigates_to.auth.login.9a5210d9",
+          "source_type": "ui_element",
+          "source_id": "home.header.logout",
+          "target_type": "page",
+          "target_id": "auth.login",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "summary": "Добавлен список последних операций",
+      "requirement_ids": [
+        "REQ-0001",
+        "REQ-0005",
+        "REQ-0006",
+        "REQ-0007",
+        "REQ-0008",
+        "REQ-0010",
+        "REQ-0011",
+        "REQ-0012",
+        "REQ-0013",
+        "REQ-0014",
+        "REQ-0015",
+        "REQ-0016",
+        "REQ-0017",
+        "REQ-0018",
+        "REQ-0033",
+        "REQ-0035"
+      ],
+      "main_elements": [
+        {
+          "id": "home.header",
+          "type": "section",
+          "label": "Шапка главной страницы"
+        },
+        {
+          "id": "home.summary_grid",
+          "type": "grid",
+          "label": "Сводка по продуктам"
+        },
+        {
+          "id": "home.quick_actions",
+          "type": "section",
+          "label": "Быстрые действия"
+        },
+        {
+          "id": "home.alerts",
+          "type": "list",
+          "label": "Важные уведомления"
+        },
+        {
+          "id": "home.recent_operations",
+          "type": "section",
+          "label": "Последние операции"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.auth.login.submit.navigates_to.home.2a8ba504",
+          "source_type": "ui_element",
+          "source_id": "auth.login.submit",
+          "target_type": "page",
+          "target_id": "home",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "products.overview",
+      "title": "Банковские продукты",
+      "summary": "Список открытых банковских продуктов клиента и доступные действия",
+      "requirement_ids": [
+        "REQ-0019",
+        "REQ-0020",
+        "REQ-0021",
+        "REQ-0022",
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "main_elements": [
+        {
+          "id": "products.overview.topbar",
+          "type": "toolbar",
+          "label": "Панель продуктов"
+        },
+        {
+          "id": "products.overview.filters",
+          "type": "filter_panel",
+          "label": "Фильтры продуктов"
+        },
+        {
+          "id": "products.overview.layout",
+          "type": "grid",
+          "label": "Рабочая область продуктов"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.products.overview",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.products.overview",
+          "target_type": "page",
+          "target_id": "products.overview",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "accounts.list",
+      "title": "Список счетов",
+      "summary": "Экран просмотра счетов клиента, балансов и быстрых операций",
+      "requirement_ids": [
+        "REQ-0025",
+        "REQ-0026",
+        "REQ-0027",
+        "REQ-0028",
+        "REQ-0029",
+        "REQ-0030",
+        "REQ-0031",
+        "REQ-0032",
+        "REQ-0033",
+        "REQ-0034",
+        "REQ-0035",
+        "REQ-0036",
+        "REQ-0047",
+        "REQ-0086",
+        "REQ-0088",
+        "REQ-0089",
+        "REQ-0104"
+      ],
+      "main_elements": [
+        {
+          "id": "accounts.list.toolbar",
+          "type": "toolbar",
+          "label": "Панель действий"
+        },
+        {
+          "id": "accounts.list.content",
+          "type": "grid",
+          "label": "Область счетов"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.products.accounts",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.products.accounts",
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.accounts_card",
+          "source_type": "ui_element",
+          "source_id": "products.overview.accounts_card.action",
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "payments.transfer",
+      "title": "Перевод между своими счетами",
+      "summary": "Экран перевода средств между счетами клиента",
+      "requirement_ids": [
+        "REQ-0030",
+        "REQ-0037",
+        "REQ-0038",
+        "REQ-0039",
+        "REQ-0040",
+        "REQ-0041",
+        "REQ-0042",
+        "REQ-0043",
+        "REQ-0044",
+        "REQ-0045",
+        "REQ-0046",
+        "REQ-0104"
+      ],
+      "main_elements": [
+        {
+          "id": "payments.transfer.steps",
+          "type": "wizard",
+          "label": "Шаги перевода"
+        },
+        {
+          "id": "payments.transfer.side_panel",
+          "type": "details_panel",
+          "label": "Подсказки и быстрые ссылки"
+        },
+        {
+          "id": "payments.transfer.confirm_modal",
+          "type": "modal",
+          "label": "Подтверждение перевода"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.payments.transfer",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.payments.transfer",
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.home.quick.transfer",
+          "source_type": "ui_element",
+          "source_id": "home.quick.transfer",
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.accounts.list.table.action.transfer.navigates_to.payments.transfer.2008cdeb",
+          "source_type": "ui_element",
+          "source_id": "accounts.list.table.action.transfer",
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "deposits.open",
+      "title": "Открытие депозита",
+      "summary": "Заявка на открытие нового депозита",
+      "requirement_ids": [
+        "REQ-0048",
+        "REQ-0049",
+        "REQ-0050",
+        "REQ-0051",
+        "REQ-0052",
+        "REQ-0053",
+        "REQ-0054",
+        "REQ-0055",
+        "REQ-0056",
+        "REQ-0057",
+        "REQ-0058",
+        "REQ-0107"
+      ],
+      "main_elements": [
+        {
+          "id": "deposits.open.offer_panel",
+          "type": "section",
+          "label": "Выбор условий депозита"
+        },
+        {
+          "id": "deposits.open.application",
+          "type": "form",
+          "label": "Заявка на депозит"
+        },
+        {
+          "id": "deposits.open.calculator",
+          "type": "details_panel",
+          "label": "Предварительный расчет доходности"
+        },
+        {
+          "id": "deposits.open.wizard",
+          "type": "wizard",
+          "label": "Мастер открытия вклада"
+        },
+        {
+          "id": "deposits.open.step.params",
+          "type": "section",
+          "label": "Параметры вклада"
+        },
+        {
+          "id": "deposits.open.step.conditions",
+          "type": "section",
+          "label": "Условия и расчет"
+        },
+        {
+          "id": "deposits.open.step.confirm",
+          "type": "section",
+          "label": "Подтверждение заявки"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.products.deposits",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.products.deposits",
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.home.quick.deposit",
+          "source_type": "ui_element",
+          "source_id": "home.quick.deposit",
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.open_deposit",
+          "source_type": "ui_element",
+          "source_id": "products.overview.open_deposit",
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.deposits_card",
+          "source_type": "ui_element",
+          "source_id": "products.overview.deposits_card.action",
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "credits.apply",
+      "title": "Заявка на кредит",
+      "summary": "Форма подачи заявки на потребительский кредит",
+      "requirement_ids": [
+        "REQ-0059",
+        "REQ-0060",
+        "REQ-0061",
+        "REQ-0062",
+        "REQ-0063",
+        "REQ-0064",
+        "REQ-0065",
+        "REQ-0066",
+        "REQ-0092",
+        "REQ-0108"
+      ],
+      "main_elements": [
+        {
+          "id": "credits.apply.wizard",
+          "type": "wizard",
+          "label": "Шаги кредитной заявки"
+        },
+        {
+          "id": "credits.apply.side_info",
+          "type": "details_panel",
+          "label": "Информация по кредиту"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.products.credits",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.products.credits",
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.home.quick.credit",
+          "source_type": "ui_element",
+          "source_id": "home.quick.credit",
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.apply_credit",
+          "source_type": "ui_element",
+          "source_id": "products.overview.apply_credit",
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.credits_card",
+          "source_type": "ui_element",
+          "source_id": "products.overview.credits_card.action",
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "analytics.spending",
+      "title": "Аналитика трат",
+      "summary": "Дашборд трат клиента за выбранный период",
+      "requirement_ids": [
+        "REQ-0036",
+        "REQ-0077",
+        "REQ-0078",
+        "REQ-0079",
+        "REQ-0080",
+        "REQ-0081",
+        "REQ-0082",
+        "REQ-0083",
+        "REQ-0084",
+        "REQ-0085",
+        "REQ-0087"
+      ],
+      "main_elements": [
+        {
+          "id": "analytics.spending.filters",
+          "type": "filter_panel",
+          "label": "Параметры периода"
+        },
+        {
+          "id": "analytics.spending.summary",
+          "type": "grid",
+          "label": "Сводные показатели"
+        },
+        {
+          "id": "analytics.spending.charts",
+          "type": "tabs",
+          "label": "Разделы аналитики"
+        },
+        {
+          "id": "analytics.spending.actions",
+          "type": "toolbar",
+          "label": "Действия"
+        },
+        {
+          "id": "analytics.spending.statement_panel",
+          "type": "modal",
+          "label": "Выписка по счету"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.analytics.spending",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.analytics.spending",
+          "target_type": "page",
+          "target_id": "analytics.spending",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "cards.block",
+      "title": "Блокировка карты",
+      "summary": "Страница блокировки карты клиента",
+      "requirement_ids": [
+        "REQ-0071",
+        "REQ-0072",
+        "REQ-0073",
+        "REQ-0074",
+        "REQ-0075",
+        "REQ-0076",
+        "REQ-0091",
+        "REQ-0105",
+        "REQ-0106"
+      ],
+      "main_elements": [
+        {
+          "id": "cards.block.form",
+          "type": "form",
+          "label": "Форма блокировки карты"
+        },
+        {
+          "id": "cards.block.help",
+          "type": "details_panel",
+          "label": "Что будет после блокировки"
+        },
+        {
+          "id": "cards.block.confirm_modal",
+          "type": "modal",
+          "label": "Подтверждение блокировки карты"
+        },
+        {
+          "id": "cards.block.success_message",
+          "type": "text",
+          "label": "Сообщение об успешной блокировке"
+        }
+      ],
+      "incoming_links": [
+        {
+          "id": "link.menu.cards.block",
+          "source_type": "ui_element",
+          "source_id": "app.main_menu.cards.block",
+          "target_type": "page",
+          "target_id": "cards.block",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.home.quick.block_card",
+          "source_type": "ui_element",
+          "source_id": "home.quick.block_card",
+          "target_type": "page",
+          "target_id": "cards.block",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.products.cards_card",
+          "source_type": "ui_element",
+          "source_id": "products.overview.cards_card.action",
+          "target_type": "page",
+          "target_id": "cards.block",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.cards.list.table.action.block.navigates_to.cards.block.f802c08a",
+          "source_type": "ui_element",
+          "source_id": "cards.list.table.action.block",
+          "target_type": "page",
+          "target_id": "cards.block",
+          "relation": "navigates_to"
+        },
+        {
+          "id": "link.cards.list.block_card.navigates_to.cards.block.ff4e4eba",
+          "source_type": "ui_element",
+          "source_id": "cards.list.block_card",
+          "target_type": "page",
+          "target_id": "cards.block",
+          "relation": "navigates_to"
+        }
+      ]
+    },
+    {
+      "id": "cards.list",
+      "title": "Список карт",
+      "summary": "Экран просмотра банковских карт клиента с атрибутами и действиями",
+      "requirement_ids": [
+        "REQ-0068",
+        "REQ-0069",
+        "REQ-0070",
+        "REQ-0090",
+        "REQ-0105"
+      ],
+      "main_elements": [
+        {
+          "id": "cards.list.toolbar",
+          "type": "toolbar",
+          "label": "Панель действий"
+        },
+        {
+          "id": "cards.list.content",
+          "type": "grid",
+          "label": "Область карт"
+        },
+        {
+          "id": "cards.list.details_panel",
+          "type": "details_panel",
+          "label": "Детали карты"
+        }
+      ],
+      "incoming_links": []
+    }
+  ],
+  "root_elements": [
+    {
+      "id": "app.main_menu",
+      "type": "main_menu",
+      "label": "Главное меню"
+    }
+  ]
+}

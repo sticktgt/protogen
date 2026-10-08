@@ -1,0 +1,1260 @@
+{
+  "links": [
+    {
+      "requirement_id": "REQ-0001",
+      "target_type": "ui_element",
+      "target_id": "auth.login.submit",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_95098ccdbf4b0394"
+    },
+    {
+      "requirement_id": "REQ-0001",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_efe7248387d0b16b"
+    },
+    {
+      "requirement_id": "REQ-0002",
+      "target_type": "page",
+      "target_id": "auth.login",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_829e3bc8ee5e9891"
+    },
+    {
+      "requirement_id": "REQ-0002",
+      "target_type": "ui_element",
+      "target_id": "auth.login.logo",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_02fda1efce9878fd"
+    },
+    {
+      "requirement_id": "REQ-0002",
+      "target_type": "ui_element",
+      "target_id": "auth.login.username",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_b16dc94d5e526af4"
+    },
+    {
+      "requirement_id": "REQ-0002",
+      "target_type": "ui_element",
+      "target_id": "auth.login.password",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_2411af146b89a614"
+    },
+    {
+      "requirement_id": "REQ-0003",
+      "target_type": "ui_element",
+      "target_id": "auth.login.form",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_83de9de49ab11762"
+    },
+    {
+      "requirement_id": "REQ-0004",
+      "target_type": "ui_element",
+      "target_id": "auth.login.card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_515ea55a7767998b"
+    },
+    {
+      "requirement_id": "REQ-0005",
+      "target_type": "ui_element",
+      "target_id": "home.header.logout",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_21176e1a4f4efd61"
+    },
+    {
+      "requirement_id": "REQ-0005",
+      "target_type": "page",
+      "target_id": "auth.login",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_b40e0c523a4e1ba5"
+    },
+    {
+      "requirement_id": "REQ-0006",
+      "target_type": "ui_element",
+      "target_id": "home.header.greeting",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_1a67208cf3c8ca7e"
+    },
+    {
+      "requirement_id": "REQ-0006",
+      "target_type": "ui_element",
+      "target_id": "home.header.profile",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_d19a17efb52295cb"
+    },
+    {
+      "requirement_id": "REQ-0007",
+      "target_type": "ui_element",
+      "target_id": "home.header",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_411e8942a576a84b"
+    },
+    {
+      "requirement_id": "REQ-0008",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_8019c3fb4a25e2ba"
+    },
+    {
+      "requirement_id": "REQ-0008",
+      "target_type": "ui_element",
+      "target_id": "home.header",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_a0ba0a53f82b0c18"
+    },
+    {
+      "requirement_id": "REQ-0008",
+      "target_type": "ui_element",
+      "target_id": "home.summary_grid",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_21e05886cc419bee"
+    },
+    {
+      "requirement_id": "REQ-0008",
+      "target_type": "ui_element",
+      "target_id": "home.quick_actions",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9bbaed63f05d3d11"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9bd7364f149b6955"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.overview",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_6e2f35fda3499935"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.accounts",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_319c8bb3539768a1"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.payments.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_68a87393641c5364"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.deposits",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_497b127a554998b7"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.credits",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_99a4ed60b5e04e89"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.analytics.spending",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_d507a886224dfc0c"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.cards.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_a070638fa360fc6c"
+    },
+    {
+      "requirement_id": "REQ-0010",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_09cb8e80332ccc36"
+    },
+    {
+      "requirement_id": "REQ-0010",
+      "target_type": "page",
+      "target_id": "auth.login",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_00819a85e9c41641"
+    },
+    {
+      "requirement_id": "REQ-0011",
+      "target_type": "ui_element",
+      "target_id": "home.header.greeting",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_4d9238890b4aa1b0"
+    },
+    {
+      "requirement_id": "REQ-0012",
+      "target_type": "ui_element",
+      "target_id": "home.summary_grid",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_6afd7fbf8f361f65"
+    },
+    {
+      "requirement_id": "REQ-0012",
+      "target_type": "ui_element",
+      "target_id": "home.summary.accounts",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_dd75406fc426745f"
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "target_type": "ui_element",
+      "target_id": "home.quick_actions",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_2db6b06af18d6188"
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "target_type": "ui_element",
+      "target_id": "home.quick.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_a8aa9253cb5ace5d"
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "target_type": "ui_element",
+      "target_id": "home.quick.deposit",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_c4c26ce5cef365ca"
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "target_type": "ui_element",
+      "target_id": "home.quick.credit",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_f4dcf5c63d010252"
+    },
+    {
+      "requirement_id": "REQ-0014",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_91ebc42362063f18"
+    },
+    {
+      "requirement_id": "REQ-0014",
+      "target_type": "ui_element",
+      "target_id": "home.recent_operations",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_f3841310f1a2f29b"
+    },
+    {
+      "requirement_id": "REQ-0015",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_df62f81b2124222c"
+    },
+    {
+      "requirement_id": "REQ-0016",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_d14a8ca6e02d9168"
+    },
+    {
+      "requirement_id": "REQ-0017",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_920279a7a38dc013"
+    },
+    {
+      "requirement_id": "REQ-0018",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_e0bba2275b4d786f"
+    },
+    {
+      "requirement_id": "REQ-0019",
+      "target_type": "page",
+      "target_id": "products.overview",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_c8d9d0d461b53971"
+    },
+    {
+      "requirement_id": "REQ-0019",
+      "target_type": "ui_element",
+      "target_id": "products.overview.product_cards",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9c6f1473c5102fdf"
+    },
+    {
+      "requirement_id": "REQ-0020",
+      "target_type": "ui_element",
+      "target_id": "products.overview.accounts_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_ebd267e6883f7137"
+    },
+    {
+      "requirement_id": "REQ-0021",
+      "target_type": "ui_element",
+      "target_id": "products.overview.deposits_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_b0c83918cd625530"
+    },
+    {
+      "requirement_id": "REQ-0022",
+      "target_type": "ui_element",
+      "target_id": "products.overview.credits_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_1479b3da5577c83a"
+    },
+    {
+      "requirement_id": "REQ-0023",
+      "target_type": "ui_element",
+      "target_id": "products.overview.cards_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_d5f1ccaf8cfe36da"
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "target_type": "ui_element",
+      "target_id": "products.overview.accounts_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_a505272650c10fea"
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "target_type": "ui_element",
+      "target_id": "products.overview.deposits_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_e87b18c610adc890"
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "target_type": "ui_element",
+      "target_id": "products.overview.credits_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_272b2c91cc022e88"
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "target_type": "ui_element",
+      "target_id": "products.overview.cards_card",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_c0d2aef227c3df01"
+    },
+    {
+      "requirement_id": "REQ-0025",
+      "target_type": "page",
+      "target_id": "accounts.list",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_f69ce4a4fa7d6feb"
+    },
+    {
+      "requirement_id": "REQ-0025",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_4df9df76e69f7fc2"
+    },
+    {
+      "requirement_id": "REQ-0026",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_2f7de781ed8d920d"
+    },
+    {
+      "requirement_id": "REQ-0027",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.filters",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_d6988af3f4e77228"
+    },
+    {
+      "requirement_id": "REQ-0028",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.details_panel",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_adf7400225d3cc2a"
+    },
+    {
+      "requirement_id": "REQ-0029",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_ab8a9abd84dbd851"
+    },
+    {
+      "requirement_id": "REQ-0029",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.details_panel",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_6c2f0957b8bb6d15"
+    },
+    {
+      "requirement_id": "REQ-0030",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table.column.number",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9d727e0f0f7a1d7b"
+    },
+    {
+      "requirement_id": "REQ-0030",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.from_account",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_6c12e6f4afc6581e"
+    },
+    {
+      "requirement_id": "REQ-0031",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table.column.balance",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_3392f242c889e18b"
+    },
+    {
+      "requirement_id": "REQ-0031",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.details_panel",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_aefae80b788c11dc"
+    },
+    {
+      "requirement_id": "REQ-0032",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_285a994d01184a0a"
+    },
+    {
+      "requirement_id": "REQ-0032",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.filter.status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_50420806a7158c27"
+    },
+    {
+      "requirement_id": "REQ-0033",
+      "target_type": "page",
+      "target_id": "accounts.list",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_28495b4406c46ad7"
+    },
+    {
+      "requirement_id": "REQ-0033",
+      "target_type": "page",
+      "target_id": "home",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_6c76ed8e1f16a9b8"
+    },
+    {
+      "requirement_id": "REQ-0034",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.operations_section",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_d20222012df44d70"
+    },
+    {
+      "requirement_id": "REQ-0035",
+      "target_type": "ui_element",
+      "target_id": "home.recent_operations.item.direction",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_379428016030d775"
+    },
+    {
+      "requirement_id": "REQ-0035",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.operations_section",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_026a2644fecbb32f"
+    },
+    {
+      "requirement_id": "REQ-0036",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.by_category",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_fa5fdc7c36f1646a"
+    },
+    {
+      "requirement_id": "REQ-0036",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.operations_section",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_72bee79620882c8a"
+    },
+    {
+      "requirement_id": "REQ-0037",
+      "target_type": "page",
+      "target_id": "payments.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_0e9b0bd1618aaac9"
+    },
+    {
+      "requirement_id": "REQ-0037",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.form",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_c2604e8a5eb16e35"
+    },
+    {
+      "requirement_id": "REQ-0038",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.form",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_5ef2503bc4cdfe20"
+    },
+    {
+      "requirement_id": "REQ-0039",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.from_account",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_b7d38ace7081a831"
+    },
+    {
+      "requirement_id": "REQ-0040",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.to_account",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_181b24bc776931b0"
+    },
+    {
+      "requirement_id": "REQ-0041",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.amount",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_2c480ac8c6a680b7"
+    },
+    {
+      "requirement_id": "REQ-0042",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.currency_display",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_9323f2c5f4c84ddc"
+    },
+    {
+      "requirement_id": "REQ-0043",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.comment",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_86b06c7806551496"
+    },
+    {
+      "requirement_id": "REQ-0044",
+      "target_type": "ui_element",
+      "target_id": "payments.transfer.confirm_modal",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_050e41a1400e1bb1"
+    },
+    {
+      "requirement_id": "REQ-0045",
+      "target_type": "page",
+      "target_id": "payments.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_121ccf33df848071"
+    },
+    {
+      "requirement_id": "REQ-0046",
+      "target_type": "page",
+      "target_id": "payments.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_0cd5deece2ce6782"
+    },
+    {
+      "requirement_id": "REQ-0047",
+      "target_type": "page",
+      "target_id": "accounts.list",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_55be4880e1de5d63"
+    },
+    {
+      "requirement_id": "REQ-0048",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_a24fbd8b639bdea1"
+    },
+    {
+      "requirement_id": "REQ-0048",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.application",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_8491c5e4b1bf117e"
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.wizard",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_9b0ddeaa63b3f508"
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.step.params",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_0306d0655f3efad2"
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.step.conditions",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_553c9ce7ae42e926"
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.step.confirm",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_a025cf2d56d54ccb"
+    },
+    {
+      "requirement_id": "REQ-0050",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.source_account",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_7746eda67f28dd45"
+    },
+    {
+      "requirement_id": "REQ-0051",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.amount",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_7b25caf69d779899"
+    },
+    {
+      "requirement_id": "REQ-0052",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.currency",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_402d7d96bdf0cbdc"
+    },
+    {
+      "requirement_id": "REQ-0053",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.term",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_e04dbb71bba12455"
+    },
+    {
+      "requirement_id": "REQ-0054",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.capitalization",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_2684c9dc5160ea6e"
+    },
+    {
+      "requirement_id": "REQ-0055",
+      "target_type": "ui_element",
+      "target_id": "deposits.open.step.confirm",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_574950b1807d34b3"
+    },
+    {
+      "requirement_id": "REQ-0056",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_1d1b7974e483de89"
+    },
+    {
+      "requirement_id": "REQ-0057",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_34c78d069bae16c6"
+    },
+    {
+      "requirement_id": "REQ-0058",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_13bffb0022ef45dc"
+    },
+    {
+      "requirement_id": "REQ-0059",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.submit",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_7be3b419bd00d23a"
+    },
+    {
+      "requirement_id": "REQ-0060",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.step.borrower",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_e8ad827fcb3d5df1"
+    },
+    {
+      "requirement_id": "REQ-0060",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.insurance",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_3f51f24b524c17ff"
+    },
+    {
+      "requirement_id": "REQ-0060",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.comment",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_9e0eaecbf75625a9"
+    },
+    {
+      "requirement_id": "REQ-0061",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.requested_amount",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_578496328a136dec"
+    },
+    {
+      "requirement_id": "REQ-0062",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.term",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_3c85071307a2016c"
+    },
+    {
+      "requirement_id": "REQ-0063",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.income",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_e9fd33d28e2453ab"
+    },
+    {
+      "requirement_id": "REQ-0064",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.insurance",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_1f2c11b97b4450e4"
+    },
+    {
+      "requirement_id": "REQ-0065",
+      "target_type": "page",
+      "target_id": "credits.apply",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_8f9b924581842c71"
+    },
+    {
+      "requirement_id": "REQ-0065",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.side_info",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_485e39412debee19"
+    },
+    {
+      "requirement_id": "REQ-0066",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.side_info",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_d84d05788b5090d1"
+    },
+    {
+      "requirement_id": "REQ-0068",
+      "target_type": "page",
+      "target_id": "cards.list",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_0a195188eb5b88c1"
+    },
+    {
+      "requirement_id": "REQ-0069",
+      "target_type": "page",
+      "target_id": "cards.list",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_25d113f692085b9f"
+    },
+    {
+      "requirement_id": "REQ-0070",
+      "target_type": "page",
+      "target_id": "cards.list",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_c08552e2124235ac"
+    },
+    {
+      "requirement_id": "REQ-0071",
+      "target_type": "page",
+      "target_id": "cards.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_7669f8427367a613"
+    },
+    {
+      "requirement_id": "REQ-0071",
+      "target_type": "ui_element",
+      "target_id": "cards.block.submit",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9b151748ea8468f7"
+    },
+    {
+      "requirement_id": "REQ-0072",
+      "target_type": "ui_element",
+      "target_id": "cards.block.form",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_ad3c43ec3bafba3d"
+    },
+    {
+      "requirement_id": "REQ-0073",
+      "target_type": "ui_element",
+      "target_id": "cards.block.reason",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_c1562d61aff9c650"
+    },
+    {
+      "requirement_id": "REQ-0074",
+      "target_type": "ui_element",
+      "target_id": "cards.block.comment",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_9acefc73cfa33350"
+    },
+    {
+      "requirement_id": "REQ-0075",
+      "target_type": "ui_element",
+      "target_id": "cards.block.confirm_modal",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_068d5d92f1f668a0"
+    },
+    {
+      "requirement_id": "REQ-0076",
+      "target_type": "ui_element",
+      "target_id": "cards.block.success_message",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_e1c737fb629b1fe1"
+    },
+    {
+      "requirement_id": "REQ-0077",
+      "target_type": "page",
+      "target_id": "analytics.spending",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_ba8b3dc77c7a0114"
+    },
+    {
+      "requirement_id": "REQ-0077",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.summary",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_39e4241dab0a2484"
+    },
+    {
+      "requirement_id": "REQ-0078",
+      "target_type": "page",
+      "target_id": "analytics.spending",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_d6228eb28200fff2"
+    },
+    {
+      "requirement_id": "REQ-0079",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.period_from",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_947b7253bc2d12be"
+    },
+    {
+      "requirement_id": "REQ-0079",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.period_to",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_41bfdab34d06d653"
+    },
+    {
+      "requirement_id": "REQ-0080",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.account",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_57b43f5db85f5cbc"
+    },
+    {
+      "requirement_id": "REQ-0081",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.category_cards",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_f1c7e6afbc66b1b1"
+    },
+    {
+      "requirement_id": "REQ-0082",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.category_table",
+      "relation": "implemented_by",
+      "implementation_status": "in_progress",
+      "id": "requirement_link_94c16f9a477b7a89"
+    },
+    {
+      "requirement_id": "REQ-0083",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.by_period",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_bd09f72498b61491"
+    },
+    {
+      "requirement_id": "REQ-0084",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.statement_panel",
+      "relation": "implemented_by",
+      "implementation_status": "planned",
+      "id": "requirement_link_a775e88de817e65a"
+    },
+    {
+      "requirement_id": "REQ-0085",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.filters",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_a97dd91491db5989"
+    },
+    {
+      "requirement_id": "REQ-0085",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.statement",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_be4a8174db488d50"
+    },
+    {
+      "requirement_id": "REQ-0086",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.operations.table",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_62e7fd497e883bf4"
+    },
+    {
+      "requirement_id": "REQ-0087",
+      "target_type": "ui_element",
+      "target_id": "analytics.spending.statement_panel",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_dce9ed6298184cd5"
+    },
+    {
+      "requirement_id": "REQ-0088",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table.column.currency",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_c0d42fb0b9951b65"
+    },
+    {
+      "requirement_id": "REQ-0088",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.operations.currency",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_460acb03c7e0f4b0"
+    },
+    {
+      "requirement_id": "REQ-0089",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table.column.status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_7b50521aaa89e211"
+    },
+    {
+      "requirement_id": "REQ-0089",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.details.status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_22ed7cc93d049450"
+    },
+    {
+      "requirement_id": "REQ-0090",
+      "target_type": "ui_element",
+      "target_id": "cards.list.table.column.status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_8223c63a83a7ec26"
+    },
+    {
+      "requirement_id": "REQ-0090",
+      "target_type": "ui_element",
+      "target_id": "cards.list.details.status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_261b7184ef4cfed6"
+    },
+    {
+      "requirement_id": "REQ-0091",
+      "target_type": "ui_element",
+      "target_id": "cards.block.reason",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_eb75e379c559caf4"
+    },
+    {
+      "requirement_id": "REQ-0092",
+      "target_type": "ui_element",
+      "target_id": "credits.apply.application_status",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_232e5517703591e3"
+    },
+    {
+      "requirement_id": "REQ-0104",
+      "target_type": "ui_element",
+      "target_id": "accounts.list.table.action.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_1b35d37fad62bfcf"
+    },
+    {
+      "requirement_id": "REQ-0104",
+      "target_type": "page",
+      "target_id": "payments.transfer",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_22cf0f6c1372875e"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "page",
+      "target_id": "cards.list",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_de19735a5c0a3465"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "ui_element",
+      "target_id": "cards.list.toolbar",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_69111850dda1535d"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "ui_element",
+      "target_id": "cards.list.block_card",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_67d485bb02563058"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "ui_element",
+      "target_id": "cards.list.table",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_007d4d37efdeabd3"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "ui_element",
+      "target_id": "cards.list.table.action.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_35436dfbc13fbcd1"
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "target_type": "page",
+      "target_id": "cards.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_d989eb30701a543e"
+    },
+    {
+      "requirement_id": "REQ-0106",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.cards",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_7d35069f7de1fa57"
+    },
+    {
+      "requirement_id": "REQ-0106",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.cards.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_fc249e4d0d7ce8bf"
+    },
+    {
+      "requirement_id": "REQ-0106",
+      "target_type": "page",
+      "target_id": "cards.block",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_0384a503382e084c"
+    },
+    {
+      "requirement_id": "REQ-0107",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_4621478889da54f1"
+    },
+    {
+      "requirement_id": "REQ-0107",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.deposits",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_731eba2037963703"
+    },
+    {
+      "requirement_id": "REQ-0107",
+      "target_type": "page",
+      "target_id": "deposits.open",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_70295a62a05bf09e"
+    },
+    {
+      "requirement_id": "REQ-0108",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_8fc1e408a3fe2309"
+    },
+    {
+      "requirement_id": "REQ-0108",
+      "target_type": "ui_element",
+      "target_id": "app.main_menu.products.credits",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_d590fbe30701c073"
+    },
+    {
+      "requirement_id": "REQ-0108",
+      "target_type": "page",
+      "target_id": "credits.apply",
+      "relation": "implemented_by",
+      "implementation_status": "implemented",
+      "id": "requirement_link_a61a529360cc8fd5"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { renderRequirementsTab } from './element-requirements-tab.js';
 import { renderRelationsTab } from './element-relations-tab.js';
 import { renderCodeTab } from './element-code-tab.js';
 import { escapeAttr, escapeHtml } from './html-utils.js';
+import { renderScopeChangesOverview, renderSelectedChangeDetails } from './preview-diff.js';
 import { showToast } from '/base/js/ui.js';
 
 const tabs = [
@@ -77,6 +78,8 @@ export function renderPageEditor(container, addPanel) {
         <div class="item-meta">${escapeHtml(page.id)} · страница</div>
       </div>
     </div>
+    ${renderSelectedChangeDetails('page', page.id)}
+    ${renderScopeChangesOverview(page.id)}
     <div class="element-editor-tabs">
       ${tabs.map(([id, icon, title]) => tabButton(id, icon, title)).join('')}
     </div>

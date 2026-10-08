@@ -25,10 +25,19 @@
           </div>
         </div>
 
+        <div class="preview-banner hidden" data-preview-banner>
+          <div><strong>Просмотр результата агента</strong><span>Это временная схема только для review. Редактирование отключено.</span></div>
+          <button class="btn btn-sm" type="button" data-close-preview>Вернуться к решению</button>
+        </div>
+        <div class="preview-banner lock-banner hidden" data-lock-banner>
+          <div><strong>Схема временно заблокирована</strong><span>Активен запуск агента или ожидается решение по результату. Просмотр доступен, ручные изменения отключены.</span></div>
+        </div>
+
         <div class="schema-tabs" role="tablist">
           <button class="btn btn-primary" type="button" data-tab="graph">🕸️ Граф</button>
           <button class="btn" type="button" data-tab="map">🗺️ Карта данных</button>
           <button class="btn" type="button" data-tab="structure">🧱 Структура сущностей</button>
+          <button class="btn" type="button" data-tab="agent">✨ AI-синхронизация</button>
         </div>
 
         <section data-view="map" class="schema-view">
@@ -64,6 +73,10 @@
             </div>
             <div data-joint-graph></div>
           </div>
+        </section>
+
+        <section data-view="agent" class="schema-view hidden">
+          <div data-agent-view></div>
         </section>
 
         <section data-view="structure" class="schema-view hidden">

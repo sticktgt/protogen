@@ -1,0 +1,2216 @@
+{
+  "run_id": "run_20260807_174759_d1939113",
+  "workspace_id": "ws_demo",
+  "status": "rejected",
+  "phase": "completed",
+  "attempt": 1,
+  "base_mode": "current",
+  "requirements_file_name": "bank_front_office_requirements_v3.json",
+  "requirements_source_path": "ui_schema/bank_front_office_requirements_v3.json",
+  "requirements_source_sha256": "b5ec5f0493e478e479f12d57747a77c92970b3be7358eda4f465ecb6cbbbd6df",
+  "user_request": "",
+  "regeneration_comments": [],
+  "created_at": "2026-08-07T15:47:59.781909+00:00",
+  "started_at": "2026-08-07T15:47:59.781909+00:00",
+  "updated_at": "2026-08-07T16:02:36.017049+00:00",
+  "statistics": {
+    "pages": {
+      "added": 1,
+      "modified": 0,
+      "deleted": 0
+    },
+    "elements": {
+      "added": 83,
+      "modified": 15,
+      "deleted": 0
+    },
+    "ui_links": {
+      "added": 6,
+      "modified": 0,
+      "deleted": 0
+    },
+    "requirement_links": {
+      "added": 127,
+      "modified": 0,
+      "deleted": 37
+    },
+    "application": {
+      "added": 0,
+      "modified": 0,
+      "deleted": 0
+    },
+    "files": {
+      "added": 2,
+      "modified": 12,
+      "deleted": 0
+    },
+    "assessments": {
+      "linked": 72,
+      "cross_cutting_ui": 25,
+      "no_ui": 11,
+      "unclear": 0,
+      "unclassified": 0
+    },
+    "traceability": {
+      "requirements_total": 108,
+      "requirements_linked": 72,
+      "requirements_cross_cutting_ui": 25,
+      "cross_cutting_with_targets": 25,
+      "requirements_with_targets": 97,
+      "links_total": 127,
+      "requirements_page_only": 21,
+      "requirements_with_elements": 76,
+      "requirements_multi_target": 24,
+      "average_targets_per_traced_requirement": 1.31,
+      "average_targets_per_linked_requirement": 1.31
+    }
+  },
+  "agent_report": "Синхронизация UI-схемы завершена. Страницы: +1, ~0, −0. UI-элементы: +83, ~15, −0. Требования: 72 с прямой UI-трассировкой, 25 сквозных UI-правил, 11 без UI, 0 требуют уточнения.",
+  "agent_note": "Пакет добавляет область ошибки на страницу входа и создаёт верхнюю панель авторизованной части с именем клиента и кнопкой выхода. Существующие элементы главной страницы и меню переиспользуются.\n\nИсправлена ошибка REQ-0016: изменён action с reuse на create для home.recent_transactions.list, так как элемент создаётся в этом пакете. Добавлены навигационные ссылки от карточек продуктов и кнопки блокировки карты.\n\nИсправлены типы элементов внутри таблицы операций: все дочерние элементы accounts.list.transactions.table изменены с text на table_column согласно allowed_children для table. Панель деталей счета и панель операций добавлены.\n\nДобавлено поле валюты в форму перевода и модальное окно подтверждения. Страницы payments.transfer и deposits.open уже существуют с основной структурой.\n\nПакет расширяет существующие элементы форм депозита и кредита для требований REQ-0049-REQ-0060. Все целевые элементы уже существуют в схеме, используется action=extend. REQ-0058 — cross_cutting_ui без изменений схемы.\n\nДобавлены checkbox страхования и поле статуса заявки на странице credits.apply. Форма блокировки карты cards.block уже содержит все требуемые элементы.\n\nИсправлены ошибки типов дочерних элементов: убрана недопустимая опция all_accounts внутри select (реализуется на уровне данных), изменён тип share на table_column для размещения внутри table. Добавлены: сообщение об успехе блокировки, детали модального окна (маска карты, причина), визуальные атрибуты категорий (иконка, количество операций), колонка доли в таблице категорий, список операций за период.\n\nДобавлены фильтры выписки (REQ-0085) и блок итогов (REQ-0087) на страницу accounts.list. Таблица операций уже существует (REQ-0086). Требования REQ-0088-0092 — кросс-каттинг (справочники и статусы), REQ-0093-0096 — API без UI.\n\nГруппа 9: 7 требований API без UI-эффекта, 5 требований навигации с существующими элементами меню и страниц.\n\nИсправлены audit_issues: создан wizard для REQ-0049, добавлено поле комментария для REQ-0060, создана страница списка карт для REQ-0068/0069. Перемещены существующие элементы deposits.open внутрь шагов wizard.",
+  "validation_errors": [],
+  "validation_error_count": 0,
+  "validation_warnings": [
+    "Структурная проверка: рекомендуется вручную проверить новые страницы без входящей навигации: cards.list.",
+    "Структурная проверка: рекомендуется вручную проверить новые пустые содержательные контейнеры: analytics.spending.operations_list, home.recent_transactions.list."
+  ],
+  "config": {
+    "pipeline": {
+      "analysis_batch_size": 24,
+      "planning_batch_size": 12,
+      "audit_batch_size": 40,
+      "correction_batch_size": 12,
+      "stage_attempts": 3,
+      "apply_repair_attempts": 3,
+      "validation_repair_attempts": 1,
+      "correction_rounds": 1,
+      "structural_review_candidate_limit": 24,
+      "output_contract_prompt": "pipeline_output_contract",
+      "change_rules_prompt": "pipeline_change_rules",
+      "tool_choice": "required",
+      "stages": {
+        "analysis": {
+          "prompt": "pipeline_analysis",
+          "tool_name": "submit_requirement_analysis"
+        },
+        "planning": {
+          "prompt": "pipeline_planning",
+          "tool_name": "submit_ui_schema_plan"
+        },
+        "repair": {
+          "prompt": "pipeline_repair",
+          "tool_name": "submit_repaired_ui_schema_plan"
+        },
+        "audit": {
+          "prompt": "pipeline_audit",
+          "tool_name": "submit_ui_schema_audit"
+        },
+        "correction": {
+          "prompt": "pipeline_correction",
+          "tool_name": "submit_ui_schema_correction"
+        },
+        "structural_review": {
+          "prompt": "pipeline_structural_review",
+          "tool_name": "submit_ui_schema_structural_review"
+        }
+      }
+    },
+    "context": {
+      "requirement_fields": [
+        "id",
+        "name",
+        "description",
+        "acceptanceCriteria"
+      ]
+    },
+    "diagnostics": {
+      "validation_history": {
+        "enabled": true,
+        "max_entries": 64,
+        "max_error_length": 1200,
+        "max_errors_per_entry": 100,
+        "max_repair_hints_per_entry": 100
+      },
+      "tool_trace": {
+        "enabled": true,
+        "max_entries": 256,
+        "max_error_length": 600
+      },
+      "source_fingerprints": {
+        "enabled": true,
+        "include_git_commit": true,
+        "build_id_environment": [
+          "PROTOARCHITECT_BUILD_ID",
+          "BUILD_ID"
+        ],
+        "commit_id_environment": [
+          "GIT_COMMIT",
+          "CI_COMMIT_SHA"
+        ]
+      }
+    }
+  },
+  "execution": {
+    "max_llm_calls": 32,
+    "max_tool_calls": 48,
+    "max_total_tokens": 1000000,
+    "write_page_max_top_level_elements": 32,
+    "write_element_batch_max_changes": 120,
+    "apply_change_bundle_max_pages": 8,
+    "apply_change_bundle_max_moves": 40,
+    "apply_change_bundle_max_links": 120,
+    "apply_change_bundle_max_removals": 30,
+    "max_duration_seconds": 1800,
+    "recursion_limit": 120,
+    "request_timeout_seconds": 300,
+    "max_repeated_tool_calls": 3
+  },
+  "llm": {
+    "provider": "ollama-cloud",
+    "model": "qwen3.5:397b",
+    "base_url": "https://ollama.com/v1"
+  },
+  "error": "",
+  "stop_reason": "",
+  "manual_review": {
+    "inherited_requirement_links": [
+      {
+        "requirement_id": "REQ-0196",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_011",
+            "target_type": "page",
+            "target_id": "deposits.open",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Открытие депозита",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_012",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.application",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Заявка на депозит",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_013",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Открыть депозит",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-deposit",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.deposits",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Открыть депозит",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-deposit использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0311",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_016",
+            "target_type": "page",
+            "target_id": "credits.apply",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_017",
+            "target_type": "ui_element",
+            "target_id": "credits.apply.step.borrower",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Данные заёмщика",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-credit",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.credits",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-credit использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0326",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_007",
+            "target_type": "page",
+            "target_id": "payments.transfer",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Перевод между своими счетами",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_008",
+            "target_type": "ui_element",
+            "target_id": "payments.transfer.form",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Форма перевода",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_009",
+            "target_type": "ui_element",
+            "target_id": "payments.transfer.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Перевести",
+            "page_id": "payments.transfer",
+            "page_title": "Перевод между своими счетами",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_010",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.new_transfer",
+            "relation": "starts_flow",
+            "target_exists": true,
+            "target_label": "Новый перевод",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "начинает пользовательский сценарий",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-transfer",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.payments.transfer",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Перевод между счетами",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-transfer использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0422",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_021",
+            "target_type": "page",
+            "target_id": "cards.block",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Блокировка карты",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_022",
+            "target_type": "ui_element",
+            "target_id": "cards.block.form",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Форма блокировки карты",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_023",
+            "target_type": "ui_element",
+            "target_id": "cards.block.submit",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Заблокировать карту",
+            "page_id": "cards.block",
+            "page_title": "Блокировка карты",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0576",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_026",
+            "target_type": "page",
+            "target_id": "accounts.list",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Список счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_027",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.open_statement",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Сформировать выписку",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_028",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.statement",
+            "relation": "triggers",
+            "target_exists": true,
+            "target_label": "Сформировать выписку",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "запускает действие",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0777",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_018",
+            "target_type": "page",
+            "target_id": "products.overview",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Банковские продукты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_019",
+            "target_type": "ui_element",
+            "target_id": "products.overview.credits_card",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Кредиты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_020",
+            "target_type": "page",
+            "target_id": "credits.apply",
+            "relation": "starts_flow",
+            "target_exists": true,
+            "target_label": "Заявка на кредит",
+            "page_id": "credits.apply",
+            "page_title": "Заявка на кредит",
+            "relation_label": "начинает пользовательский сценарий",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          }
+        ],
+        "issues": [],
+        "issue_details": []
+      },
+      {
+        "requirement_id": "REQ-0831",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_024",
+            "target_type": "page",
+            "target_id": "home",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Главная",
+            "page_id": "home",
+            "page_title": "Главная",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_025",
+            "target_type": "ui_element",
+            "target_id": "home.summary_grid",
+            "relation": "displays_summary",
+            "target_exists": true,
+            "target_label": "Сводка по продуктам",
+            "page_id": "home",
+            "page_title": "Главная",
+            "relation_label": "показывает сводку",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_025 использует тип 'displays_summary', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_025 использует тип 'displays_summary', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_025 использует тип 'displays_summary', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0849",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "rql-menu-analytics",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.analytics.spending",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Траты за период",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-analytics использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0878",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_014",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.calculator",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Предварительный расчет доходности",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_015",
+            "target_type": "ui_element",
+            "target_id": "deposits.open.calculator.schedule",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "График начислений",
+            "page_id": "deposits.open",
+            "page_title": "Открытие депозита",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_015 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_015 использует тип 'displays_result', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_015 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-0898",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_004",
+            "target_type": "page",
+            "target_id": "accounts.list",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Список счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_005",
+            "target_type": "ui_element",
+            "target_id": "accounts.list.table",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Таблица счетов",
+            "page_id": "accounts.list",
+            "page_title": "Список счетов",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_006",
+            "target_type": "page",
+            "target_id": "products.overview",
+            "relation": "supports",
+            "target_exists": true,
+            "target_label": "Банковские продукты",
+            "page_id": "products.overview",
+            "page_title": "Банковские продукты",
+            "relation_label": "поддерживается объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "rql-menu-products",
+            "target_type": "ui_element",
+            "target_id": "app.main_menu.products.accounts",
+            "relation": "provides_access",
+            "target_exists": true,
+            "target_label": "Счета",
+            "page_id": "",
+            "page_title": "",
+            "relation_label": "предоставляет доступ",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь rql-menu-products использует тип 'provides_access', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Для пункта меню обычно подходит 'implemented_by', а если требование описывает начало сценария — 'starts_flow'."
+          }
+        ]
+      },
+      {
+        "requirement_id": "REQ-AN-001",
+        "reason": "Требование с таким ID отсутствует в полном текущем наборе требований. Его прежние связи удалены из результата; проверьте, остались ли связанные UI-объекты актуальными.",
+        "links": [
+          {
+            "id": "link_029",
+            "target_type": "page",
+            "target_id": "analytics.spending",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Аналитика трат",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_030",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.filters",
+            "relation": "implemented_by",
+            "target_exists": true,
+            "target_label": "Параметры периода",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "реализуется объектом",
+            "relation_supported": true,
+            "issues": [],
+            "status": "removed"
+          },
+          {
+            "id": "link_031",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.summary",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "Сводные показатели",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          },
+          {
+            "id": "link_032",
+            "target_type": "ui_element",
+            "target_id": "analytics.spending.charts",
+            "relation": "displays_result",
+            "target_exists": true,
+            "target_label": "Разделы аналитики",
+            "page_id": "analytics.spending",
+            "page_title": "Аналитика трат",
+            "relation_label": "показывает результат",
+            "relation_supported": false,
+            "issues": [
+              {
+                "code": "unsupported_relation",
+                "title": "Устаревший тип связи",
+                "message": "Связь link_032 использует тип 'displays_result', который больше не поддерживается.",
+                "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+              }
+            ],
+            "status": "removed"
+          }
+        ],
+        "issues": [
+          "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+          "Связь link_032 использует тип 'displays_result', который больше не поддерживается."
+        ],
+        "issue_details": [
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_031 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          },
+          {
+            "code": "unsupported_relation",
+            "title": "Устаревший тип связи",
+            "message": "Связь link_032 использует тип 'displays_result', который больше не поддерживается.",
+            "recommendation": "Проверьте смысл связи. Если объект непосредственно реализует отображение, обычно подходит 'implemented_by'; для вспомогательного влияния — 'supports'."
+          }
+        ]
+      }
+    ],
+    "cleanup_candidates": [],
+    "cleanup_review": {},
+    "counts": {
+      "inherited_requirement_ids": 11,
+      "inherited_requirement_links": 34,
+      "cleanup_candidates": 0,
+      "inherited_link_issues": 9
+    }
+  },
+  "archived": true,
+  "diagnostics_available": true,
+  "diagnostics_file_name": "attempt_1.zip",
+  "metrics": {
+    "llm_calls": 21,
+    "tool_calls": 0,
+    "last_tool": "",
+    "repeat_streak": 0,
+    "max_repeat_streak": 0,
+    "input_tokens": 287558,
+    "output_tokens": 69878,
+    "total_tokens": 357436,
+    "token_usage_available": true,
+    "last_seq": 99,
+    "last_event_at": "2026-08-07T16:01:51.553338+00:00",
+    "last_llm_started_at": "2026-08-07T16:01:28.556791+00:00",
+    "last_llm_completed_at": "2026-08-07T16:01:51.393170+00:00",
+    "limits": {
+      "max_llm_calls": 32,
+      "max_tool_calls": 48,
+      "max_total_tokens": 1000000,
+      "max_duration_seconds": 1800,
+      "recursion_limit": 120,
+      "request_timeout_seconds": 300,
+      "max_repeated_tool_calls": 3
+    },
+    "started_at": "2026-08-07T15:47:59.781909+00:00"
+  },
+  "recent_events": [
+    {
+      "seq": 1,
+      "timestamp": "2026-08-07T15:47:59.826435+00:00",
+      "level": "info",
+      "type": "run_created",
+      "message": "Задача создана, временная копия UI-схемы подготовлена",
+      "data": {
+        "base_mode": "current",
+        "requirements_source_path": "ui_schema/bank_front_office_requirements_v3.json"
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": "2026-08-07T15:47:59.839521+00:00",
+      "level": "info",
+      "type": "pipeline_start",
+      "message": "Запущена управляемая синхронизация UI-схемы",
+      "data": {
+        "pipeline_version": 2
+      }
+    },
+    {
+      "seq": 3,
+      "timestamp": "2026-08-07T15:47:59.856280+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Анализ требований группами",
+      "data": {
+        "phase": "analyzing_requirements"
+      }
+    },
+    {
+      "seq": 4,
+      "timestamp": "2026-08-07T15:47:59.862160+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап analysis: попытка 1 из 3",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 5,
+      "timestamp": "2026-08-07T15:47:59.870033+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #1 начат",
+      "data": {
+        "llm_call": 1,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 6,
+      "timestamp": "2026-08-07T15:48:51.269200+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 3890, выход 4596, всего 8486",
+      "data": {
+        "input_tokens": 3890,
+        "output_tokens": 4596,
+        "total_tokens": 8486
+      }
+    },
+    {
+      "seq": 7,
+      "timestamp": "2026-08-07T15:48:51.272879+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап analysis завершён",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 8,
+      "timestamp": "2026-08-07T15:48:51.282237+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап analysis: попытка 1 из 3",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 9,
+      "timestamp": "2026-08-07T15:48:51.289253+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #2 начат",
+      "data": {
+        "llm_call": 2,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 10,
+      "timestamp": "2026-08-07T15:49:37.827237+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 3747, выход 4186, всего 7933",
+      "data": {
+        "input_tokens": 3747,
+        "output_tokens": 4186,
+        "total_tokens": 7933
+      }
+    },
+    {
+      "seq": 11,
+      "timestamp": "2026-08-07T15:49:37.831010+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап analysis завершён",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 12,
+      "timestamp": "2026-08-07T15:49:37.841429+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап analysis: попытка 1 из 3",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 13,
+      "timestamp": "2026-08-07T15:49:37.848445+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #3 начат",
+      "data": {
+        "llm_call": 3,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 14,
+      "timestamp": "2026-08-07T15:50:29.404915+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 3637, выход 4936, всего 8573",
+      "data": {
+        "input_tokens": 3637,
+        "output_tokens": 4936,
+        "total_tokens": 8573
+      }
+    },
+    {
+      "seq": 15,
+      "timestamp": "2026-08-07T15:50:29.408862+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап analysis завершён",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 16,
+      "timestamp": "2026-08-07T15:50:29.418535+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап analysis: попытка 1 из 3",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 17,
+      "timestamp": "2026-08-07T15:50:29.425397+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #4 начат",
+      "data": {
+        "llm_call": 4,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 18,
+      "timestamp": "2026-08-07T15:51:10.510412+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 3734, выход 3505, всего 7239",
+      "data": {
+        "input_tokens": 3734,
+        "output_tokens": 3505,
+        "total_tokens": 7239
+      }
+    },
+    {
+      "seq": 19,
+      "timestamp": "2026-08-07T15:51:10.515285+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап analysis завершён",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 20,
+      "timestamp": "2026-08-07T15:51:10.526250+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап analysis: попытка 1 из 3",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 21,
+      "timestamp": "2026-08-07T15:51:10.538164+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #5 начат",
+      "data": {
+        "llm_call": 5,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 22,
+      "timestamp": "2026-08-07T15:51:41.064565+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 2659, выход 2334, всего 4993",
+      "data": {
+        "input_tokens": 2659,
+        "output_tokens": 2334,
+        "total_tokens": 4993
+      }
+    },
+    {
+      "seq": 23,
+      "timestamp": "2026-08-07T15:51:41.068417+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап analysis завершён",
+      "data": {
+        "stage": "analysis",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 24,
+      "timestamp": "2026-08-07T15:51:41.083926+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Проектирование и применение управляемых пакетов изменений",
+      "data": {
+        "phase": "planning"
+      }
+    },
+    {
+      "seq": 25,
+      "timestamp": "2026-08-07T15:51:41.094561+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 26,
+      "timestamp": "2026-08-07T15:51:41.102152+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #6 начат",
+      "data": {
+        "llm_call": 6,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 27,
+      "timestamp": "2026-08-07T15:52:07.638502+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 18872, выход 2195, всего 21067",
+      "data": {
+        "input_tokens": 18872,
+        "output_tokens": 2195,
+        "total_tokens": 21067
+      }
+    },
+    {
+      "seq": 28,
+      "timestamp": "2026-08-07T15:52:07.642900+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 29,
+      "timestamp": "2026-08-07T15:52:07.670159+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 30,
+      "timestamp": "2026-08-07T15:52:07.677117+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #7 начат",
+      "data": {
+        "llm_call": 7,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 31,
+      "timestamp": "2026-08-07T15:53:02.091880+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 19104, выход 4679, всего 23783",
+      "data": {
+        "input_tokens": 19104,
+        "output_tokens": 4679,
+        "total_tokens": 23783
+      }
+    },
+    {
+      "seq": 32,
+      "timestamp": "2026-08-07T15:53:02.096120+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 33,
+      "timestamp": "2026-08-07T15:53:02.102844+00:00",
+      "level": "warning",
+      "type": "pipeline_apply_rejected",
+      "message": "Пакет изменений отклонён: ошибок 1; REQ-0016: action=reuse требует существующую цель ui_element:home.recent_transactions.list. Используй точный существующий ID либо action=create и операцию создания",
+      "data": {
+        "repair_attempt": 1,
+        "batch": 2,
+        "technical_errors": [
+          "REQ-0016: action=reuse требует существующую цель ui_element:home.recent_transactions.list. Используй точный существующий ID либо action=create и операцию создания"
+        ],
+        "technical_issues": [
+          {
+            "code": "missing_target_for_existing_action",
+            "message": "REQ-0016: action=reuse требует существующую цель ui_element:home.recent_transactions.list. Используй точный существующий ID либо action=create и операцию создания",
+            "requirement_id": "REQ-0016",
+            "target_type": "ui_element",
+            "target_id": "home.recent_transactions.list",
+            "target_status": "missing",
+            "allowed_actions": [
+              "create"
+            ],
+            "alternate_targets": []
+          }
+        ]
+      }
+    },
+    {
+      "seq": 34,
+      "timestamp": "2026-08-07T15:53:02.115082+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап repair: попытка 1 из 3",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 35,
+      "timestamp": "2026-08-07T15:53:02.122429+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #8 начат",
+      "data": {
+        "llm_call": 8,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 36,
+      "timestamp": "2026-08-07T15:53:40.168331+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 13077, выход 3157, всего 16234",
+      "data": {
+        "input_tokens": 13077,
+        "output_tokens": 3157,
+        "total_tokens": 16234
+      }
+    },
+    {
+      "seq": 37,
+      "timestamp": "2026-08-07T15:53:40.172175+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап repair завершён",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 38,
+      "timestamp": "2026-08-07T15:53:40.200718+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 39,
+      "timestamp": "2026-08-07T15:53:40.208500+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #9 начат",
+      "data": {
+        "llm_call": 9,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 40,
+      "timestamp": "2026-08-07T15:54:17.764692+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 19676, выход 3156, всего 22832",
+      "data": {
+        "input_tokens": 19676,
+        "output_tokens": 3156,
+        "total_tokens": 22832
+      }
+    },
+    {
+      "seq": 41,
+      "timestamp": "2026-08-07T15:54:17.768934+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 42,
+      "timestamp": "2026-08-07T15:54:17.776074+00:00",
+      "level": "warning",
+      "type": "pipeline_apply_rejected",
+      "message": "Пакет изменений отклонён: ошибок 7; Элемент accounts.list.transactions.date типа text нельзя размещать внутри table",
+      "data": {
+        "repair_attempt": 1,
+        "batch": 3,
+        "technical_errors": [
+          "Элемент accounts.list.transactions.date типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.description типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.amount типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.currency типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.direction типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.category типа text нельзя размещать внутри table",
+          "Элемент accounts.list.transactions.status типа text нельзя размещать внутри table"
+        ],
+        "technical_issues": [
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.date типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.date",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.description типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.description",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.amount типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.amount",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.currency типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.currency",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.direction типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.direction",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.category типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.category",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент accounts.list.transactions.status типа text нельзя размещать внутри table",
+            "page_id": "accounts.list",
+            "element_id": "accounts.list.transactions.status",
+            "element_type": "text",
+            "parent_id": "accounts.list.transactions.table",
+            "parent_type": "table"
+          }
+        ]
+      }
+    },
+    {
+      "seq": 43,
+      "timestamp": "2026-08-07T15:54:17.787151+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап repair: попытка 1 из 3",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 44,
+      "timestamp": "2026-08-07T15:54:17.795847+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #10 начат",
+      "data": {
+        "llm_call": 10,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 45,
+      "timestamp": "2026-08-07T15:54:45.311010+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 9069, выход 2674, всего 11743",
+      "data": {
+        "input_tokens": 9069,
+        "output_tokens": 2674,
+        "total_tokens": 11743
+      }
+    },
+    {
+      "seq": 46,
+      "timestamp": "2026-08-07T15:54:45.314942+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап repair завершён",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 47,
+      "timestamp": "2026-08-07T15:54:45.342325+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 48,
+      "timestamp": "2026-08-07T15:54:45.350204+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #11 начат",
+      "data": {
+        "llm_call": 11,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 49,
+      "timestamp": "2026-08-07T15:55:12.127466+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 20763, выход 2508, всего 23271",
+      "data": {
+        "input_tokens": 20763,
+        "output_tokens": 2508,
+        "total_tokens": 23271
+      }
+    },
+    {
+      "seq": 50,
+      "timestamp": "2026-08-07T15:55:12.131079+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 51,
+      "timestamp": "2026-08-07T15:55:12.156687+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 52,
+      "timestamp": "2026-08-07T15:55:12.164673+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #12 начат",
+      "data": {
+        "llm_call": 12,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 53,
+      "timestamp": "2026-08-07T15:55:59.399102+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 21300, выход 3807, всего 25107",
+      "data": {
+        "input_tokens": 21300,
+        "output_tokens": 3807,
+        "total_tokens": 25107
+      }
+    },
+    {
+      "seq": 54,
+      "timestamp": "2026-08-07T15:55:59.402803+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 55,
+      "timestamp": "2026-08-07T15:55:59.430528+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 56,
+      "timestamp": "2026-08-07T15:55:59.437964+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #13 начат",
+      "data": {
+        "llm_call": 13,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 57,
+      "timestamp": "2026-08-07T15:56:27.626008+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 21466, выход 2271, всего 23737",
+      "data": {
+        "input_tokens": 21466,
+        "output_tokens": 2271,
+        "total_tokens": 23737
+      }
+    },
+    {
+      "seq": 58,
+      "timestamp": "2026-08-07T15:56:27.629991+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 59,
+      "timestamp": "2026-08-07T15:56:27.654060+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 60,
+      "timestamp": "2026-08-07T15:56:27.661356+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #14 начат",
+      "data": {
+        "llm_call": 14,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 61,
+      "timestamp": "2026-08-07T15:56:57.284730+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 21975, выход 2409, всего 24384",
+      "data": {
+        "input_tokens": 21975,
+        "output_tokens": 2409,
+        "total_tokens": 24384
+      }
+    },
+    {
+      "seq": 62,
+      "timestamp": "2026-08-07T15:56:57.288621+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 63,
+      "timestamp": "2026-08-07T15:56:57.295089+00:00",
+      "level": "warning",
+      "type": "pipeline_apply_rejected",
+      "message": "Пакет изменений отклонён: ошибок 2; Элемент analytics.spending.account.all_accounts типа text нельзя размещать внутри select",
+      "data": {
+        "repair_attempt": 1,
+        "batch": 7,
+        "technical_errors": [
+          "Элемент analytics.spending.account.all_accounts типа text нельзя размещать внутри select",
+          "Элемент analytics.spending.category_table.share типа text нельзя размещать внутри table"
+        ],
+        "technical_issues": [
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент analytics.spending.account.all_accounts типа text нельзя размещать внутри select",
+            "page_id": "analytics.spending",
+            "element_id": "analytics.spending.account.all_accounts",
+            "element_type": "text",
+            "parent_id": "analytics.spending.account",
+            "parent_type": "select"
+          },
+          {
+            "code": "child_type_not_allowed",
+            "message": "Элемент analytics.spending.category_table.share типа text нельзя размещать внутри table",
+            "page_id": "analytics.spending",
+            "element_id": "analytics.spending.category_table.share",
+            "element_type": "text",
+            "parent_id": "analytics.spending.category_table",
+            "parent_type": "table"
+          }
+        ]
+      }
+    },
+    {
+      "seq": 64,
+      "timestamp": "2026-08-07T15:56:57.306256+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап repair: попытка 1 из 3",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 65,
+      "timestamp": "2026-08-07T15:56:57.313753+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #15 начат",
+      "data": {
+        "llm_call": 15,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 66,
+      "timestamp": "2026-08-07T15:57:39.704285+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 11528, выход 3671, всего 15199",
+      "data": {
+        "input_tokens": 11528,
+        "output_tokens": 3671,
+        "total_tokens": 15199
+      }
+    },
+    {
+      "seq": 67,
+      "timestamp": "2026-08-07T15:57:39.707814+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап repair завершён",
+      "data": {
+        "stage": "repair",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 68,
+      "timestamp": "2026-08-07T15:57:39.738564+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 69,
+      "timestamp": "2026-08-07T15:57:39.745457+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #16 начат",
+      "data": {
+        "llm_call": 16,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 70,
+      "timestamp": "2026-08-07T15:58:11.167977+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 22553, выход 2657, всего 25210",
+      "data": {
+        "input_tokens": 22553,
+        "output_tokens": 2657,
+        "total_tokens": 25210
+      }
+    },
+    {
+      "seq": 71,
+      "timestamp": "2026-08-07T15:58:11.171750+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 72,
+      "timestamp": "2026-08-07T15:58:11.201154+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап planning: попытка 1 из 3",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 73,
+      "timestamp": "2026-08-07T15:58:11.208159+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #17 начат",
+      "data": {
+        "llm_call": 17,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 74,
+      "timestamp": "2026-08-07T15:58:33.569650+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 22926, выход 1829, всего 24755",
+      "data": {
+        "input_tokens": 22926,
+        "output_tokens": 1829,
+        "total_tokens": 24755
+      }
+    },
+    {
+      "seq": 75,
+      "timestamp": "2026-08-07T15:58:33.573579+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап planning завершён",
+      "data": {
+        "stage": "planning",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 76,
+      "timestamp": "2026-08-07T15:58:33.605500+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Независимый аудит фактической схемы",
+      "data": {
+        "phase": "auditing"
+      }
+    },
+    {
+      "seq": 77,
+      "timestamp": "2026-08-07T15:58:33.614536+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап audit: попытка 1 из 3",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 78,
+      "timestamp": "2026-08-07T15:58:33.621873+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #18 начат",
+      "data": {
+        "llm_call": 18,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 79,
+      "timestamp": "2026-08-07T15:59:22.472721+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 16672, выход 4333, всего 21005",
+      "data": {
+        "input_tokens": 16672,
+        "output_tokens": 4333,
+        "total_tokens": 21005
+      }
+    },
+    {
+      "seq": 80,
+      "timestamp": "2026-08-07T15:59:22.476422+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап audit завершён",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 81,
+      "timestamp": "2026-08-07T15:59:22.488946+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап audit: попытка 1 из 3",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 82,
+      "timestamp": "2026-08-07T15:59:22.496383+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #19 начат",
+      "data": {
+        "llm_call": 19,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 83,
+      "timestamp": "2026-08-07T16:00:18.035071+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 13654, выход 4559, всего 18213",
+      "data": {
+        "input_tokens": 13654,
+        "output_tokens": 4559,
+        "total_tokens": 18213
+      }
+    },
+    {
+      "seq": 84,
+      "timestamp": "2026-08-07T16:00:18.038694+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап audit завершён",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 85,
+      "timestamp": "2026-08-07T16:00:18.052976+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Точечное исправление результатов аудита, раунд 1",
+      "data": {
+        "phase": "correcting"
+      }
+    },
+    {
+      "seq": 86,
+      "timestamp": "2026-08-07T16:00:18.062104+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап correction: попытка 1 из 3",
+      "data": {
+        "stage": "correction",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 87,
+      "timestamp": "2026-08-07T16:00:18.072129+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #20 начат",
+      "data": {
+        "llm_call": 20,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 88,
+      "timestamp": "2026-08-07T16:01:28.502301+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 12559, выход 4808, всего 17367",
+      "data": {
+        "input_tokens": 12559,
+        "output_tokens": 4808,
+        "total_tokens": 17367
+      }
+    },
+    {
+      "seq": 89,
+      "timestamp": "2026-08-07T16:01:28.505501+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап correction завершён",
+      "data": {
+        "stage": "correction",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 90,
+      "timestamp": "2026-08-07T16:01:28.545601+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Проверка результата исправления, раунд 1",
+      "data": {
+        "phase": "auditing"
+      }
+    },
+    {
+      "seq": 91,
+      "timestamp": "2026-08-07T16:01:28.553276+00:00",
+      "level": "info",
+      "type": "pipeline_stage_start",
+      "message": "Этап audit: попытка 1 из 3",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 92,
+      "timestamp": "2026-08-07T16:01:28.559800+00:00",
+      "level": "info",
+      "type": "llm_start",
+      "message": "Вызов LLM #21 начат",
+      "data": {
+        "llm_call": 21,
+        "messages": 1
+      }
+    },
+    {
+      "seq": 93,
+      "timestamp": "2026-08-07T16:01:51.399062+00:00",
+      "level": "info",
+      "type": "llm_end",
+      "message": "Вызов LLM завершён: вход 4697, выход 1608, всего 6305",
+      "data": {
+        "input_tokens": 4697,
+        "output_tokens": 1608,
+        "total_tokens": 6305
+      }
+    },
+    {
+      "seq": 94,
+      "timestamp": "2026-08-07T16:01:51.403336+00:00",
+      "level": "info",
+      "type": "pipeline_stage_completed",
+      "message": "Этап audit завершён",
+      "data": {
+        "stage": "audit",
+        "attempt": 1,
+        "maximum_attempts": 3,
+        "structured_attempt": 1
+      }
+    },
+    {
+      "seq": 95,
+      "timestamp": "2026-08-07T16:01:51.417755+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Проверка структурных кандидатов",
+      "data": {
+        "phase": "structural_check"
+      }
+    },
+    {
+      "seq": 96,
+      "timestamp": "2026-08-07T16:01:51.438240+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Запись итоговой трассировки",
+      "data": {
+        "phase": "writing_traceability"
+      }
+    },
+    {
+      "seq": 97,
+      "timestamp": "2026-08-07T16:01:51.468991+00:00",
+      "level": "info",
+      "type": "validation_start",
+      "message": "Запущена финальная структурная проверка временной UI-схемы",
+      "data": {}
+    },
+    {
+      "seq": 98,
+      "timestamp": "2026-08-07T16:01:51.504323+00:00",
+      "level": "info",
+      "type": "phase",
+      "message": "Проверка пройдена, формируется статистика изменений и preview",
+      "data": {
+        "phase": "building_preview"
+      }
+    },
+    {
+      "seq": 99,
+      "timestamp": "2026-08-07T16:01:51.553338+00:00",
+      "level": "info",
+      "type": "preview_ready",
+      "message": "Результат готов к просмотру и подтверждению",
+      "data": {}
+    }
+  ]
+}

@@ -7,6 +7,10 @@ export function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+export function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
 export function toast(message) {
   const node = document.createElement('div');
   node.className = 'toast';

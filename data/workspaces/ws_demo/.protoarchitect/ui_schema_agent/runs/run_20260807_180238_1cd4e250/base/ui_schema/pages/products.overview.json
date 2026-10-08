@@ -1,0 +1,131 @@
+{
+  "id": "products.overview",
+  "title": "Банковские продукты",
+  "description": "Список открытых банковских продуктов клиента и доступные действия",
+  "elements": [
+    {
+      "id": "products.overview.topbar",
+      "type": "toolbar",
+      "label": "Панель продуктов",
+      "children": [
+        {
+          "id": "products.overview.refresh",
+          "type": "button",
+          "label": "Обновить"
+        },
+        {
+          "id": "products.overview.open_deposit",
+          "type": "button",
+          "label": "Открыть депозит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "deposits.open"
+            }
+          ]
+        },
+        {
+          "id": "products.overview.apply_credit",
+          "type": "button",
+          "label": "Оформить кредит",
+          "actions": [
+            {
+              "type": "navigate",
+              "target_page": "credits.apply"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "products.overview.filters",
+      "type": "filter_panel",
+      "label": "Фильтры продуктов",
+      "children": [
+        {
+          "id": "products.overview.filter.type",
+          "type": "select",
+          "label": "Тип продукта"
+        },
+        {
+          "id": "products.overview.filter.status",
+          "type": "select",
+          "label": "Статус"
+        },
+        {
+          "id": "products.overview.filter.currency",
+          "type": "select",
+          "label": "Валюта"
+        }
+      ]
+    },
+    {
+      "id": "products.overview.layout",
+      "type": "grid",
+      "label": "Рабочая область продуктов",
+      "children": [
+        {
+          "id": "products.overview.product_cards",
+          "type": "section",
+          "label": "Карточки продуктов",
+          "children": [
+            {
+              "id": "products.overview.accounts_card",
+              "type": "card",
+              "label": "Счета"
+            },
+            {
+              "id": "products.overview.cards_card",
+              "type": "card",
+              "label": "Карты"
+            },
+            {
+              "id": "products.overview.deposits_card",
+              "type": "card",
+              "label": "Вклады"
+            },
+            {
+              "id": "products.overview.credits_card",
+              "type": "card",
+              "label": "Кредиты"
+            }
+          ]
+        },
+        {
+          "id": "products.overview.details",
+          "type": "details_panel",
+          "label": "Детали выбранного продукта",
+          "children": [
+            {
+              "id": "products.overview.details.title",
+              "type": "text",
+              "label": "Название продукта"
+            },
+            {
+              "id": "products.overview.details.balance",
+              "type": "text",
+              "label": "Баланс или остаток"
+            },
+            {
+              "id": "products.overview.details.actions",
+              "type": "toolbar",
+              "label": "Действия с продуктом",
+              "children": [
+                {
+                  "id": "products.overview.details.statement",
+                  "type": "button",
+                  "label": "Выписка"
+                },
+                {
+                  "id": "products.overview.details.settings",
+                  "type": "button",
+                  "label": "Настройки"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

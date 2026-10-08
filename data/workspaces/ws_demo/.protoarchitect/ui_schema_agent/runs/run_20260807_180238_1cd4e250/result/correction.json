@@ -1,0 +1,168 @@
+{
+  "completed_batches": 1,
+  "total_batches": 1,
+  "batches": [
+    {
+      "index": 1,
+      "requirement_ids": [
+        "REQ-0001",
+        "REQ-0005",
+        "REQ-0055",
+        "REQ-0072",
+        "REQ-0104"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0001",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.submit",
+                "action": "extend",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Добавлена связь навигации от кнопки входа к главной странице"
+          },
+          {
+            "requirement_id": "REQ-0005",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header.logout",
+                "action": "extend",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "auth.login",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Добавлена связь навигации от кнопки выхода к странице входа"
+          },
+          {
+            "requirement_id": "REQ-0055",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.step.confirm",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Добавлено отображение ставки на шаге подтверждения заявки"
+          },
+          {
+            "requirement_id": "REQ-0072",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.form",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Добавлено отображение маскированного номера карты на форме перед подтверждением"
+          },
+          {
+            "requirement_id": "REQ-0104",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.action.transfer",
+                "action": "extend",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "payments.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Добавлена связь навигации от действия перевода в таблице к странице перевода"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.confirm",
+              "element": {
+                "id": "deposits.open.step.confirm.rate_display",
+                "label": "Ставка",
+                "purpose": "Отображение годовой процентной ставки в подтверждении заявки",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "cards.block",
+              "parent_id": "cards.block.form",
+              "element": {
+                "id": "cards.block.card_number_display",
+                "label": "Номер карты",
+                "purpose": "Отображение маскированного номера выбранной карты перед подтверждением",
+                "type": "text"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "auth.login.submit",
+              "target_type": null,
+              "target_id": "home",
+              "relation": "navigates_to"
+            },
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "home.header.logout",
+              "target_type": null,
+              "target_id": "auth.login",
+              "relation": "navigates_to"
+            },
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "accounts.list.table.action.transfer",
+              "target_type": null,
+              "target_id": "payments.transfer",
+              "relation": "navigates_to"
+            }
+          ],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Исправлены audit_issues для 5 требований: добавлены missing ui_links для навигации (REQ-0001, REQ-0005, REQ-0104) и отображение недостающих данных на формах (REQ-0055, REQ-0072).",
+        "warnings": []
+      }
+    }
+  ],
+  "agent_note": "Исправлены audit_issues для 5 требований: добавлены missing ui_links для навигации (REQ-0001, REQ-0005, REQ-0104) и отображение недостающих данных на формах (REQ-0055, REQ-0072).",
+  "warnings": []
+}

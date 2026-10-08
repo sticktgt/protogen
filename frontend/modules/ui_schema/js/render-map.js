@@ -8,12 +8,15 @@ import {
   flattenElements,
   links,
   pages,
+  requirements,
+  requirementsSource,
   state,
   targetTitle,
   uiLinks
 } from './state.js';
 import { renderAll } from './main.js';
 import { escapeAttr, escapeHtml } from './html-utils.js';
+import { renderChangeBadge, renderScopeChangeCounts } from './preview-diff.js';
 
 const CARD_ELEMENT_LIMIT = 5;
 
@@ -33,6 +36,11 @@ function renderStats() {
   const implemented = links().filter(link => link.implementation_status === 'implemented').length;
   const withReqs = allElements.concat(appElements).filter(element => linkedTargets.has(element.id)).length;
   const empty = Math.max(0, allElements.length + appElements.length - withReqs);
+  const requirementIds = new Set(requirements().map(item => item.id).filter(Boolean));
+  const linkedRequirementIds = new Set(links().map(link => link.requirement_id).filter(Boolean));
+  const unlinkedRequirements = [...requirementIds].filter(id => !linkedRequirementIds.has(id)).length;
+  const unresolvedLinks = [...linkedRequirementIds].filter(id => !requirementIds.has(id)).length;
+  const source = requirementsSource();
   container.innerHTML = `
     <div class="schema-nav-title">Статистика</div>
     <div class="schema-stat-row"><span class="schema-stat-label">Страниц</span><span class="schema-stat-value">${pages().length}</span></div>
@@ -41,6 +49,14 @@ function renderStats() {
     <div class="schema-stat-row"><span class="schema-stat-label">С требованиями</span><span class="schema-stat-value success">${withReqs}</span></div>
     <div class="schema-stat-row"><span class="schema-stat-label">Без требований</span><span class="schema-stat-value warning">${empty}</span></div>
     <div class="schema-stat-row"><span class="schema-stat-label">Реализовано</span><span class="schema-stat-value success">${implemented}</span></div>
+    <div class="schema-stat-row"><span class="schema-stat-label">Без прямых UI-связей</span><span class="schema-stat-value">${unlinkedRequirements}</span></div>
+    <div class="schema-stat-row"><span class="schema-stat-label">Неразрешённых связей</span><span class="schema-stat-value${unresolvedLinks ? ' warning' : ''}">${unresolvedLinks}</span></div>
+    <div class="schema-requirements-source ${escapeAttr(source.status || '')}">
+      <strong>Источник требований</strong>
+      <span>${escapeHtml(source.path || 'не настроен')}</span>
+      ${source.changed_since_sync ? '<span class="warning-text">Файл изменён после последней синхронизации</span>' : ''}
+      ${source.error ? `<span class="warning-text">${escapeHtml(source.error)}</span>` : ''}
+    </div>
   `;
 }
 
@@ -65,6 +81,8 @@ function renderAppRootPreview() {
       <div class="app-root-header">
         <span>🧭</span>
         <strong>${escapeHtml(app.title || 'Приложение')}</strong>
+        ${renderChangeBadge('application', 'app')}
+        ${renderScopeChangeCounts(APP_SCOPE)}
         <span class="ui-screen-count">${flattenAppElements().length} элементов</span>
       </div>
       <div class="app-root-body">
@@ -77,6 +95,7 @@ function renderAppRootPreview() {
     state.selectedPageId = APP_SCOPE;
     state.selectedElementId = elementTarget ? elementTarget.dataset.openAppElement : null;
     state.createPageMode = false;
+    state.selectedDeletedChange = null;
     state.elementEditorTab = 'info';
     state.activeTab = 'structure';
     renderAll();
@@ -88,7 +107,7 @@ function renderRootElement(element) {
   return `
     <div class="root-widget-card" data-open-app-element="${escapeAttr(element.id)}">
       <div class="ui-widget-card-top">
-        <div class="ui-widget-card-name">${escapeHtml(elementTypeIcon(element.type))} ${escapeHtml(element.label || element.id)}</div>
+        <div class="ui-widget-card-name">${escapeHtml(elementTypeIcon(element.type))} ${escapeHtml(element.label || element.id)} ${renderChangeBadge('ui_element', element.id)}</div>
         <div class="ui-widget-card-type">${escapeHtml(elementTypeLabel(element.type))}</div>
       </div>
       <div class="ui-widget-card-desc">${escapeHtml(element.description || '')}</div>
@@ -129,6 +148,8 @@ function renderPageCard(page) {
       <div class="ui-screen-card-header">
         <span>📄</span>
         <span>${escapeHtml(page.title || page.id)}</span>
+        ${renderChangeBadge('page', page.id)}
+        ${renderScopeChangeCounts(page.id)}
         <span class="ui-screen-count">${allElements.length} элементов</span>
       </div>
       <div class="ui-screen-badges">
@@ -162,7 +183,7 @@ function renderElementPreview(element) {
   return `
     <div class="ui-widget-card${count ? ' has-reqs' : ''}" data-open-element="${escapeAttr(element.id)}">
       <div class="ui-widget-card-top">
-        <div class="ui-widget-card-name">${escapeHtml(element.label || element.id)}</div>
+        <div class="ui-widget-card-name">${escapeHtml(element.label || element.id)} ${renderChangeBadge('ui_element', element.id)}</div>
         <div class="ui-widget-card-type">${escapeHtml(elementTypeIcon(element.type))} ${escapeHtml(elementTypeLabel(element.type))}</div>
       </div>
       <div class="ui-widget-card-desc">${escapeHtml(element.description || element.purpose || '')}</div>

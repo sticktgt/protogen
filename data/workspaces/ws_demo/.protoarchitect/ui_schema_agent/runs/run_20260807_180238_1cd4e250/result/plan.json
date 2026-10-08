@@ -1,0 +1,5050 @@
+{
+  "completed_batches": 9,
+  "total_batches": 9,
+  "decisions": [
+    {
+      "requirement_id": "REQ-0001",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "auth.login",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.form",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.submit",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Форма входа с навигацией на главную страницу уже существует, требуется поддержка сообщений об ошибках"
+    },
+    {
+      "requirement_id": "REQ-0002",
+      "ui_effect": "layout",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "auth.login",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.logo",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.username",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.password",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Страница входа содержит все требуемые элементы: логотип, поля логина/пароля, кнопку входа"
+    },
+    {
+      "requirement_id": "REQ-0003",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.form",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Форма входа требует поддержки валидационных сообщений для обязательных полей"
+    },
+    {
+      "requirement_id": "REQ-0004",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "auth.login.card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требуется область для отображения сообщений об ошибках авторизации"
+    },
+    {
+      "requirement_id": "REQ-0005",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header.profile",
+          "action": "extend",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "page",
+          "target_id": "auth.login",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Требуется добавить пункт выхода в верхней панели авторизованного интерфейса"
+    },
+    {
+      "requirement_id": "REQ-0006",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header.greeting",
+          "action": "extend",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header.profile",
+          "action": "extend",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется отображение имени клиента в приветствии и профиле"
+    },
+    {
+      "requirement_id": "REQ-0007",
+      "ui_effect": "layout",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header",
+          "action": "extend",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Верхняя панель должна содержать краткое имя клиента и действие выхода"
+    },
+    {
+      "requirement_id": "REQ-0008",
+      "ui_effect": "layout",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.summary_grid",
+          "action": "reuse",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.quick_actions",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Главная страница содержит все требуемые секции: приветствие, сводку, быстрые действия"
+    },
+    {
+      "requirement_id": "REQ-0009",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.overview",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.accounts",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.payments.transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.deposits",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.credits",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.analytics.spending",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.cards.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Главное меню содержит все требуемые пункты с настроенной навигацией"
+    },
+    {
+      "requirement_id": "REQ-0010",
+      "ui_effect": "layout",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "page",
+          "target_id": "auth.login",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Общий каркас авторизованных страниц (верхняя панель, меню, контент) реализуется через кросс-каттинг эффект"
+    },
+    {
+      "requirement_id": "REQ-0011",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.header.greeting",
+          "action": "extend",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Приветствие на главной странице требует отображения имени клиента"
+    },
+    {
+      "requirement_id": "REQ-0012",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.summary_grid",
+          "action": "extend",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.summary.accounts",
+          "action": "extend",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Сводка по счетам требует отображения общего остатка, количества счетов и карт"
+    },
+    {
+      "requirement_id": "REQ-0013",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.quick_actions",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.quick.transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.quick.deposit",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.quick.credit",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Требует карточки быстрых действий с навигацией на главной странице"
+    },
+    {
+      "requirement_id": "REQ-0014",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "extend",
+          "implementation_status": "planned"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "home.recent_operations",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требует списка последних операций с датой, суммой, валютой и направлением"
+    },
+    {
+      "requirement_id": "REQ-0015",
+      "ui_effect": "message",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Кросс-каттинг требование для сообщений об ошибках загрузки"
+    },
+    {
+      "requirement_id": "REQ-0016",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Кросс-каттинг требование для пустых состояний списков"
+    },
+    {
+      "requirement_id": "REQ-0017",
+      "ui_effect": "formatting",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Кросс-каттинг требование для формата денежных сумм"
+    },
+    {
+      "requirement_id": "REQ-0018",
+      "ui_effect": "formatting",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Кросс-каттинг требование для формата дат"
+    },
+    {
+      "requirement_id": "REQ-0019",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "products.overview",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.product_cards",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Требует каталога продуктов с карточками счетов, вкладов, кредитов и карт"
+    },
+    {
+      "requirement_id": "REQ-0020",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.accounts_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требует карточку продукта Счета с действием перехода к списку счетов"
+    },
+    {
+      "requirement_id": "REQ-0021",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.deposits_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требует карточку продукта Вклады с действием открытия вклада"
+    },
+    {
+      "requirement_id": "REQ-0022",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.credits_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требует карточку продукта Кредиты с действием подачи заявки"
+    },
+    {
+      "requirement_id": "REQ-0023",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.cards_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требует карточку продукта Карты с действием управления картами"
+    },
+    {
+      "requirement_id": "REQ-0024",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.accounts_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.deposits_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.credits_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "products.overview.cards_card",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Определяет атрибуты данных для карточек продуктов"
+    },
+    {
+      "requirement_id": "REQ-0025",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Таблица счетов существует, требуется расширение колонок и добавление панели деталей"
+    },
+    {
+      "requirement_id": "REQ-0026",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Таблица требует дополнительных колонок: название, тип, доступный остаток, валюта, статус"
+    },
+    {
+      "requirement_id": "REQ-0027",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.filters",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Панель фильтров с валютой, статусом и поиском уже существует"
+    },
+    {
+      "requirement_id": "REQ-0028",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.details_panel",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Панель деталей счета отсутствует, требуется создание"
+    },
+    {
+      "requirement_id": "REQ-0029",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.details_panel",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Атрибуты счета отображаются в таблице и панели деталей"
+    },
+    {
+      "requirement_id": "REQ-0030",
+      "ui_effect": "display",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table.column.number",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.from_account",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Номер счета отображается в таблице и выпадающих списках"
+    },
+    {
+      "requirement_id": "REQ-0031",
+      "ui_effect": "display",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table.column.balance",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.details_panel",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Баланс и доступный остаток отображаются в таблице и деталях"
+    },
+    {
+      "requirement_id": "REQ-0032",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.filter.status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Статус счета отображается в таблице и используется в фильтрации"
+    },
+    {
+      "requirement_id": "REQ-0033",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "home",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Фильтрация по клиенту реализуется на уровне данных, UI отображает только счета текущего клиента"
+    },
+    {
+      "requirement_id": "REQ-0034",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.operations_section",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Список операций по счету отсутствует, требуется создание секции"
+    },
+    {
+      "requirement_id": "REQ-0035",
+      "ui_effect": "formatting",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "home.recent_operations.item.direction",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.operations_section",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Направление операции визуально различается через badge"
+    },
+    {
+      "requirement_id": "REQ-0036",
+      "ui_effect": "selection",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.by_category",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.operations_section",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Категория операции отображается в аналитике и списке операций"
+    },
+    {
+      "requirement_id": "REQ-0037",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.form",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Форма перевода между счетами уже существует на странице payments.transfer"
+    },
+    {
+      "requirement_id": "REQ-0038",
+      "ui_effect": "layout",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.form",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Структура формы перевода содержит все требуемые поля"
+    },
+    {
+      "requirement_id": "REQ-0039",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.from_account",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Селектор счета списания уже реализован"
+    },
+    {
+      "requirement_id": "REQ-0040",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.to_account",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Селектор счета зачисления уже реализован"
+    },
+    {
+      "requirement_id": "REQ-0041",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.amount",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Поле ввода суммы перевода уже существует"
+    },
+    {
+      "requirement_id": "REQ-0042",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.currency_display",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется добавить отображение валюты перевода рядом с суммой"
+    },
+    {
+      "requirement_id": "REQ-0043",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.comment",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Поле комментария к переводу уже реализовано"
+    },
+    {
+      "requirement_id": "REQ-0044",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "payments.transfer.confirm_modal",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется модальное окно подтверждения перевода с итоговыми данными"
+    },
+    {
+      "requirement_id": "REQ-0045",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Данные перевода сохраняются в состоянии приложения"
+    },
+    {
+      "requirement_id": "REQ-0046",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Статус перевода отображается в интерфейсе после выполнения"
+    },
+    {
+      "requirement_id": "REQ-0047",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Операции по счетам отображаются на странице accounts.list"
+    },
+    {
+      "requirement_id": "REQ-0048",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.application",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Форма заявки на открытие вклада уже реализована"
+    },
+    {
+      "requirement_id": "REQ-0049",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.wizard",
+          "action": "create",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.step.params",
+          "action": "create",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.step.conditions",
+          "action": "create",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.step.confirm",
+          "action": "create",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Мастер открытия вклада с пошаговой навигацией"
+    },
+    {
+      "requirement_id": "REQ-0050",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.source_account",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Выбор счета списания из активных счетов"
+    },
+    {
+      "requirement_id": "REQ-0051",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.amount",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Ввод суммы вклада с валидацией"
+    },
+    {
+      "requirement_id": "REQ-0052",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.currency",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Выбор валюты вклада"
+    },
+    {
+      "requirement_id": "REQ-0053",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.term",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Выбор срока вклада в месяцах"
+    },
+    {
+      "requirement_id": "REQ-0054",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.capitalization",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Выбор капитализации процентов"
+    },
+    {
+      "requirement_id": "REQ-0055",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "deposits.open.calculator.rate",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Отображение ставки вклада"
+    },
+    {
+      "requirement_id": "REQ-0056",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Данные созданной заявки на вклад"
+    },
+    {
+      "requirement_id": "REQ-0057",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Статус заявки на вклад"
+    },
+    {
+      "requirement_id": "REQ-0058",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "action": "reuse",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Связь заявок с клиентом"
+    },
+    {
+      "requirement_id": "REQ-0059",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.submit",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Подача заявки на кредит"
+    },
+    {
+      "requirement_id": "REQ-0060",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.step.borrower",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.insurance",
+          "action": "create",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.comment",
+          "action": "create",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Форма заявки на кредит со всеми полями"
+    },
+    {
+      "requirement_id": "REQ-0061",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.requested_amount",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Поле суммы кредита уже существует в форме заявки"
+    },
+    {
+      "requirement_id": "REQ-0062",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.term",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Поле срока кредита уже существует в форме заявки"
+    },
+    {
+      "requirement_id": "REQ-0063",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.income",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Поле ежемесячного дохода уже существует в форме заявки"
+    },
+    {
+      "requirement_id": "REQ-0064",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.insurance",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Чекбокс страхования уже существует в форме заявки"
+    },
+    {
+      "requirement_id": "REQ-0065",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.side_info",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требуется отображение данных созданной заявки и статуса после отправки"
+    },
+    {
+      "requirement_id": "REQ-0066",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.side_info",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требуется индикатор статуса заявки на экране результата"
+    },
+    {
+      "requirement_id": "REQ-0067",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [],
+      "reason": "Фильтрация заявок по клиенту — логическое ограничение, не требует изменений UI-схемы"
+    },
+    {
+      "requirement_id": "REQ-0068",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "cards.list",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется страница списка карт клиента с атрибутами и действиями"
+    },
+    {
+      "requirement_id": "REQ-0069",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "cards.list",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Атрибуты карты отображаются в списке карт"
+    },
+    {
+      "requirement_id": "REQ-0070",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "cards.list",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Связь счет-карта влияет на отображение в списке карт"
+    },
+    {
+      "requirement_id": "REQ-0071",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "cards.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.submit",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Действие блокировки карты уже реализовано на странице cards.block"
+    },
+    {
+      "requirement_id": "REQ-0072",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.form",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.card_select",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.reason",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Форма блокировки карты уже существует со всеми требуемыми полями"
+    },
+    {
+      "requirement_id": "REQ-0073",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.reason",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Поле выбора причины блокировки уже существует как select в форме"
+    },
+    {
+      "requirement_id": "REQ-0074",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.comment",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Необязательное текстовое поле комментария уже существует как textarea"
+    },
+    {
+      "requirement_id": "REQ-0075",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.confirm_modal",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Модальное окно существует, требуется расширить для отображения маскированного номера карты и причины"
+    },
+    {
+      "requirement_id": "REQ-0076",
+      "ui_effect": "message",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.success_message",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется создание элемента сообщения об успешной блокировке"
+    },
+    {
+      "requirement_id": "REQ-0077",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "analytics.spending",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.summary",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Страница аналитики с фильтрами и сводкой уже существует"
+    },
+    {
+      "requirement_id": "REQ-0078",
+      "ui_effect": "layout",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "analytics.spending",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Структура страницы с заголовком, фильтрами, карточкой итогов и списками существует"
+    },
+    {
+      "requirement_id": "REQ-0079",
+      "ui_effect": "input",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.period_from",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.period_to",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Поля ввода дат периода уже существуют как date_picker"
+    },
+    {
+      "requirement_id": "REQ-0080",
+      "ui_effect": "selection",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.account",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Фильтр выбора счета уже существует как select"
+    },
+    {
+      "requirement_id": "REQ-0081",
+      "ui_effect": "formatting",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.category_cards",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требуется расширить карточки категорий для отображения суммы, доли и количества операций"
+    },
+    {
+      "requirement_id": "REQ-0082",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.category_table",
+          "action": "extend",
+          "implementation_status": "in_progress"
+        }
+      ],
+      "reason": "Требуется расширить таблицу категорий для сортировки по сумме и отображения операций"
+    },
+    {
+      "requirement_id": "REQ-0083",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.by_period",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Раздел отображения операций по периодам уже существует"
+    },
+    {
+      "requirement_id": "REQ-0084",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.statement_panel",
+          "action": "create",
+          "implementation_status": "planned"
+        }
+      ],
+      "reason": "Требуется создание модального окна выписки с итогами по счету"
+    },
+    {
+      "requirement_id": "REQ-0085",
+      "ui_effect": "action",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.filters",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.statement",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Форма выписки с выбором счета, периодом и кнопкой формирования"
+    },
+    {
+      "requirement_id": "REQ-0086",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.operations.table",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Таблица операций выписки с датой, описанием, суммой, валютой, направлением, категорией и статусом"
+    },
+    {
+      "requirement_id": "REQ-0087",
+      "ui_effect": "display",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "analytics.spending.statement_panel",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Итоги выписки: начальный и конечный остаток, сумма поступлений и списаний"
+    },
+    {
+      "requirement_id": "REQ-0088",
+      "ui_effect": "formatting",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table.column.currency",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.operations.currency",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Справочник валют влияет на отображение кода и названия валюты в счетах, переводах, вкладах и операциях"
+    },
+    {
+      "requirement_id": "REQ-0089",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table.column.status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.details.status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Статусы счетов (активен, заблокирован, закрыт) влияют на доступность операций"
+    },
+    {
+      "requirement_id": "REQ-0090",
+      "ui_effect": "state",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.table.column.status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.details.status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Статусы карт (активна, заблокирована, истек срок) влияют на доступность блокировки"
+    },
+    {
+      "requirement_id": "REQ-0091",
+      "ui_effect": "selection",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.block.reason",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Справочник причин блокировки карты в форме блокировки"
+    },
+    {
+      "requirement_id": "REQ-0092",
+      "ui_effect": "display",
+      "classification": "cross_cutting_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "credits.apply.application_status",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Статусы заявок на вклад и кредит отображаются пользователю"
+    },
+    {
+      "requirement_id": "REQ-0093",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "API входа пользователя — чисто backend операция, не определяет элементы интерфейса"
+    },
+    {
+      "requirement_id": "REQ-0094",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "API профиля клиента — чисто backend операция, не определяет элементы интерфейса"
+    },
+    {
+      "requirement_id": "REQ-0095",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "API списка счетов — чисто backend операция, не определяет элементы интерфейса"
+    },
+    {
+      "requirement_id": "REQ-0096",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "API операций счета — чисто backend операция, не определяет элементы интерфейса"
+    },
+    {
+      "requirement_id": "REQ-0097",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для создания перевода. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0098",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для заявки на вклад. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0099",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для кредитной заявки. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0100",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для получения списка карт. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0101",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для блокировки карты. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0102",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для аналитики трат. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0103",
+      "ui_effect": "none",
+      "classification": "no_ui",
+      "targets": [],
+      "reason": "Требование описывает backend API для выписки по счету. Не содержит указаний на элементы интерфейса."
+    },
+    {
+      "requirement_id": "REQ-0104",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "accounts.list",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.toolbar",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.new_transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.table.action.transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.quick_panel",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "accounts.list.quick.transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "payments.transfer",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Переход к переводу со счета реализован через кнопку в toolbar, действие в таблице и ссылку в быстрой панели. Счет списания предзаполняется при навигации."
+    },
+    {
+      "requirement_id": "REQ-0105",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "page",
+          "target_id": "cards.list",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.toolbar",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.block_card",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.table",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "cards.list.table.action.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "cards.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Переход к блокировке карты реализован через кнопку в toolbar и действие в таблице карт. Карта предзаполняется при навигации."
+    },
+    {
+      "requirement_id": "REQ-0106",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.cards",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.cards.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "cards.block",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Пункт блокировки карты существует в главном меню и открывает страницу блокировки карты."
+    },
+    {
+      "requirement_id": "REQ-0107",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.deposits",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "deposits.open",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Пункт открытия вклада существует в главном меню и открывает мастер открытия вклада."
+    },
+    {
+      "requirement_id": "REQ-0108",
+      "ui_effect": "navigation",
+      "classification": "direct_ui",
+      "targets": [
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "ui_element",
+          "target_id": "app.main_menu.products.credits",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        },
+        {
+          "target_type": "page",
+          "target_id": "credits.apply",
+          "action": "reuse",
+          "implementation_status": "implemented"
+        }
+      ],
+      "reason": "Пункт заявки на кредит существует в главном меню и открывает форму кредитной заявки."
+    }
+  ],
+  "batches": [
+    {
+      "index": 1,
+      "requirement_ids": [
+        "REQ-0001",
+        "REQ-0002",
+        "REQ-0003",
+        "REQ-0004",
+        "REQ-0005",
+        "REQ-0006",
+        "REQ-0007",
+        "REQ-0008",
+        "REQ-0009",
+        "REQ-0010",
+        "REQ-0011",
+        "REQ-0012"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0001",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "auth.login",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.form",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.submit",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Форма входа с навигацией на главную страницу уже существует, требуется поддержка сообщений об ошибках"
+          },
+          {
+            "requirement_id": "REQ-0002",
+            "ui_effect": "layout",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "auth.login",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.logo",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.username",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.password",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Страница входа содержит все требуемые элементы: логотип, поля логина/пароля, кнопку входа"
+          },
+          {
+            "requirement_id": "REQ-0003",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.form",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Форма входа требует поддержки валидационных сообщений для обязательных полей"
+          },
+          {
+            "requirement_id": "REQ-0004",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "auth.login.card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требуется область для отображения сообщений об ошибках авторизации"
+          },
+          {
+            "requirement_id": "REQ-0005",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header.profile",
+                "action": "extend",
+                "implementation_status": "planned"
+              },
+              {
+                "target_type": "page",
+                "target_id": "auth.login",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Требуется добавить пункт выхода в верхней панели авторизованного интерфейса"
+          },
+          {
+            "requirement_id": "REQ-0006",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header.greeting",
+                "action": "extend",
+                "implementation_status": "planned"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header.profile",
+                "action": "extend",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется отображение имени клиента в приветствии и профиле"
+          },
+          {
+            "requirement_id": "REQ-0007",
+            "ui_effect": "layout",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header",
+                "action": "extend",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Верхняя панель должна содержать краткое имя клиента и действие выхода"
+          },
+          {
+            "requirement_id": "REQ-0008",
+            "ui_effect": "layout",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.summary_grid",
+                "action": "reuse",
+                "implementation_status": "planned"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.quick_actions",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Главная страница содержит все требуемые секции: приветствие, сводку, быстрые действия"
+          },
+          {
+            "requirement_id": "REQ-0009",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.overview",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.accounts",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.payments.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.deposits",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.credits",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.analytics.spending",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.cards.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Главное меню содержит все требуемые пункты с настроенной навигацией"
+          },
+          {
+            "requirement_id": "REQ-0010",
+            "ui_effect": "layout",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "page",
+                "target_id": "auth.login",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Общий каркас авторизованных страниц (верхняя панель, меню, контент) реализуется через кросс-каттинг эффект"
+          },
+          {
+            "requirement_id": "REQ-0011",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.header.greeting",
+                "action": "extend",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Приветствие на главной странице требует отображения имени клиента"
+          },
+          {
+            "requirement_id": "REQ-0012",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.summary_grid",
+                "action": "extend",
+                "implementation_status": "planned"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.summary.accounts",
+                "action": "extend",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Сводка по счетам требует отображения общего остатка, количества счетов и карт"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "auth.login",
+              "parent_id": "auth.login.card",
+              "element": {
+                "id": "auth.login.error_message",
+                "label": "Сообщение об ошибке входа",
+                "purpose": "Отображение ошибок авторизации",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "home",
+              "parent_id": "home.header",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "auth.login",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "home.header.logout",
+                "label": "Выйти",
+                "type": "button"
+              },
+              "position": null
+            },
+            {
+              "page_id": "home",
+              "parent_id": "home.header",
+              "element": {
+                "id": "home.header.client_name",
+                "label": "Имя клиента",
+                "purpose": "Отображение краткого имени текущего клиента",
+                "type": "text"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Добавлены: область ошибок на странице входа, кнопка выхода и имя клиента в верхней панели главной страницы. Большинство требуемых элементов уже существуют в текущей схеме.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 2,
+      "requirement_ids": [
+        "REQ-0013",
+        "REQ-0014",
+        "REQ-0015",
+        "REQ-0016",
+        "REQ-0017",
+        "REQ-0018",
+        "REQ-0019",
+        "REQ-0020",
+        "REQ-0021",
+        "REQ-0022",
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0013",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.quick_actions",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.quick.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.quick.deposit",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.quick.credit",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Требует карточки быстрых действий с навигацией на главной странице"
+          },
+          {
+            "requirement_id": "REQ-0014",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "extend",
+                "implementation_status": "planned"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "home.recent_operations",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требует списка последних операций с датой, суммой, валютой и направлением"
+          },
+          {
+            "requirement_id": "REQ-0015",
+            "ui_effect": "message",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Кросс-каттинг требование для сообщений об ошибках загрузки"
+          },
+          {
+            "requirement_id": "REQ-0016",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Кросс-каттинг требование для пустых состояний списков"
+          },
+          {
+            "requirement_id": "REQ-0017",
+            "ui_effect": "formatting",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Кросс-каттинг требование для формата денежных сумм"
+          },
+          {
+            "requirement_id": "REQ-0018",
+            "ui_effect": "formatting",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Кросс-каттинг требование для формата дат"
+          },
+          {
+            "requirement_id": "REQ-0019",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "products.overview",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.product_cards",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Требует каталога продуктов с карточками счетов, вкладов, кредитов и карт"
+          },
+          {
+            "requirement_id": "REQ-0020",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.accounts_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требует карточку продукта Счета с действием перехода к списку счетов"
+          },
+          {
+            "requirement_id": "REQ-0021",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.deposits_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требует карточку продукта Вклады с действием открытия вклада"
+          },
+          {
+            "requirement_id": "REQ-0022",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.credits_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требует карточку продукта Кредиты с действием подачи заявки"
+          },
+          {
+            "requirement_id": "REQ-0023",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.cards_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требует карточку продукта Карты с действием управления картами"
+          },
+          {
+            "requirement_id": "REQ-0024",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.accounts_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.deposits_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.credits_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "products.overview.cards_card",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Определяет атрибуты данных для карточек продуктов"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [
+            {
+              "page_id": "home",
+              "title": null,
+              "description": "Добавлен список последних операций"
+            }
+          ],
+          "upsert_elements": [
+            {
+              "page_id": "home",
+              "parent_id": "home",
+              "element": {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "id": "home.recent_operations.item.date",
+                        "label": "Дата операции",
+                        "type": "text"
+                      },
+                      {
+                        "id": "home.recent_operations.item.description",
+                        "label": "Описание",
+                        "type": "text"
+                      },
+                      {
+                        "id": "home.recent_operations.item.amount",
+                        "label": "Сумма",
+                        "type": "text"
+                      },
+                      {
+                        "id": "home.recent_operations.item.currency",
+                        "label": "Валюта",
+                        "type": "text"
+                      },
+                      {
+                        "id": "home.recent_operations.item.direction",
+                        "label": "Направление",
+                        "type": "badge"
+                      }
+                    ],
+                    "id": "home.recent_operations.list",
+                    "label": "Список операций",
+                    "review_empty": true,
+                    "type": "list"
+                  }
+                ],
+                "description": "Список последних транзакций клиента",
+                "id": "home.recent_operations",
+                "label": "Последние операции",
+                "type": "section"
+              },
+              "position": null
+            },
+            {
+              "page_id": "home",
+              "parent_id": "home.quick_actions",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "cards.block",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "home.quick.block_card",
+                "label": "Заблокировать карту",
+                "link_source": true,
+                "type": "button"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.accounts_card.title",
+                "label": "Счета",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.accounts_card.description",
+                "label": "Просмотр и управление счетами",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "accounts.list",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "products.overview.accounts_card.action",
+                "label": "Открыть список счетов",
+                "link_source": true,
+                "type": "link"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.deposits_card.title",
+                "label": "Вклады",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.deposits_card.description",
+                "label": "Открытие и управление вкладами онлайн",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "deposits.open",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "products.overview.deposits_card.action",
+                "label": "Открыть вклад",
+                "link_source": true,
+                "type": "link"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.credits_card.title",
+                "label": "Кредиты",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.credits_card.description",
+                "label": "Заявка на потребительский кредит с предварительным рассмотрением",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "credits.apply",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "products.overview.credits_card.action",
+                "label": "Подать заявку",
+                "link_source": true,
+                "type": "link"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.cards_card.title",
+                "label": "Карты",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "id": "products.overview.cards_card.description",
+                "label": "Управление банковскими картами",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "products.overview",
+              "parent_id": "products.overview.product_cards",
+              "element": {
+                "actions": [
+                  {
+                    "target_page": "cards.block",
+                    "type": "navigate"
+                  }
+                ],
+                "id": "products.overview.cards_card.action",
+                "label": "Управлять картами",
+                "link_source": true,
+                "type": "link"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [
+            {
+              "id": "link.home.quick.block_card",
+              "source_type": "ui_element",
+              "source_id": "home.quick.block_card",
+              "target_type": "page",
+              "target_id": "cards.block",
+              "relation": "navigates_to"
+            },
+            {
+              "id": "link.products.accounts_card",
+              "source_type": "ui_element",
+              "source_id": "products.overview.accounts_card.action",
+              "target_type": "page",
+              "target_id": "accounts.list",
+              "relation": "navigates_to"
+            },
+            {
+              "id": "link.products.deposits_card",
+              "source_type": "ui_element",
+              "source_id": "products.overview.deposits_card.action",
+              "target_type": "page",
+              "target_id": "deposits.open",
+              "relation": "navigates_to"
+            },
+            {
+              "id": "link.products.credits_card",
+              "source_type": "ui_element",
+              "source_id": "products.overview.credits_card.action",
+              "target_type": "page",
+              "target_id": "credits.apply",
+              "relation": "navigates_to"
+            },
+            {
+              "id": "link.products.cards_card",
+              "source_type": "ui_element",
+              "source_id": "products.overview.cards_card.action",
+              "target_type": "page",
+              "target_id": "cards.block",
+              "relation": "navigates_to"
+            }
+          ],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Добавлен список последних операций на главную страницу (REQ-0014). Расширены быстрые действия кнопкой блокировки карты (REQ-0013). Детализированы карточки продуктов на странице обзора с заголовками, описаниями и действиями навигации (REQ-0019-0024). Кросс-каттинг требования (REQ-0015-0018) помечены как планируемые без изменений схемы.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 3,
+      "requirement_ids": [
+        "REQ-0025",
+        "REQ-0026",
+        "REQ-0027",
+        "REQ-0028",
+        "REQ-0029",
+        "REQ-0030",
+        "REQ-0031",
+        "REQ-0032",
+        "REQ-0033",
+        "REQ-0034",
+        "REQ-0035",
+        "REQ-0036"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0025",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "accounts.list",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Таблица счетов существует, требуется расширение колонок и добавление панели деталей"
+          },
+          {
+            "requirement_id": "REQ-0026",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Таблица требует дополнительных колонок: название, тип, доступный остаток, валюта, статус"
+          },
+          {
+            "requirement_id": "REQ-0027",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.filters",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Панель фильтров с валютой, статусом и поиском уже существует"
+          },
+          {
+            "requirement_id": "REQ-0028",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.details_panel",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Панель деталей счета отсутствует, требуется создание"
+          },
+          {
+            "requirement_id": "REQ-0029",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.details_panel",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Атрибуты счета отображаются в таблице и панели деталей"
+          },
+          {
+            "requirement_id": "REQ-0030",
+            "ui_effect": "display",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.column.number",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.from_account",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Номер счета отображается в таблице и выпадающих списках"
+          },
+          {
+            "requirement_id": "REQ-0031",
+            "ui_effect": "display",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.column.balance",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.details_panel",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Баланс и доступный остаток отображаются в таблице и деталях"
+          },
+          {
+            "requirement_id": "REQ-0032",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.filter.status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Статус счета отображается в таблице и используется в фильтрации"
+          },
+          {
+            "requirement_id": "REQ-0033",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "accounts.list",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "home",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Фильтрация по клиенту реализуется на уровне данных, UI отображает только счета текущего клиента"
+          },
+          {
+            "requirement_id": "REQ-0034",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.operations_section",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Список операций по счету отсутствует, требуется создание секции"
+          },
+          {
+            "requirement_id": "REQ-0035",
+            "ui_effect": "formatting",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "home.recent_operations.item.direction",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.operations_section",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Направление операции визуально различается через badge"
+          },
+          {
+            "requirement_id": "REQ-0036",
+            "ui_effect": "selection",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.by_category",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.operations_section",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Категория операции отображается в аналитике и списке операций"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.table",
+              "element": {
+                "id": "accounts.list.table.column.name",
+                "label": "Название счета",
+                "type": "table_column"
+              },
+              "position": 0
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.table",
+              "element": {
+                "id": "accounts.list.table.column.type",
+                "label": "Тип счета",
+                "type": "table_column"
+              },
+              "position": 2
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.table",
+              "element": {
+                "id": "accounts.list.table.column.available",
+                "label": "Доступный остаток",
+                "type": "table_column"
+              },
+              "position": 4
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.table",
+              "element": {
+                "id": "accounts.list.table.column.currency",
+                "label": "Валюта",
+                "type": "table_column"
+              },
+              "position": 5
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.table",
+              "element": {
+                "id": "accounts.list.table.column.status",
+                "label": "Статус",
+                "type": "table_column"
+              },
+              "position": 6
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.main",
+              "element": {
+                "children": [
+                  {
+                    "id": "accounts.list.details.name",
+                    "label": "Название",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.number",
+                    "label": "Номер счета",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.type",
+                    "label": "Тип",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.balance",
+                    "label": "Баланс",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.available",
+                    "label": "Доступный остаток",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.currency",
+                    "label": "Валюта",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.status",
+                    "label": "Статус",
+                    "type": "badge"
+                  },
+                  {
+                    "id": "accounts.list.details.open_date",
+                    "label": "Дата открытия",
+                    "type": "text"
+                  },
+                  {
+                    "id": "accounts.list.details.operations_link",
+                    "label": "Операции по счету",
+                    "link_source": true,
+                    "type": "link"
+                  }
+                ],
+                "id": "accounts.list.details_panel",
+                "label": "Детали счета",
+                "type": "details_panel"
+              },
+              "position": null
+            },
+            {
+              "page_id": "accounts.list",
+              "parent_id": "accounts.list.main",
+              "element": {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "id": "accounts.list.operations.date",
+                        "label": "Дата и время",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.description",
+                        "label": "Описание",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.amount",
+                        "label": "Сумма",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.currency",
+                        "label": "Валюта",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.direction",
+                        "label": "Направление",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.category",
+                        "label": "Категория",
+                        "type": "table_column"
+                      },
+                      {
+                        "id": "accounts.list.operations.status",
+                        "label": "Статус",
+                        "type": "table_column"
+                      }
+                    ],
+                    "id": "accounts.list.operations.table",
+                    "label": "Список операций",
+                    "review_empty": true,
+                    "type": "table"
+                  }
+                ],
+                "id": "accounts.list.operations_section",
+                "label": "Операции по счету",
+                "type": "section"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Группа требований по счетам клиента. Исправлены типы элементов внутри accounts.list.operations.table: все колонки таблицы операций изменены с text/badge на table_column согласно каталогу типов. Расширена таблица accounts.list.table недостающими колонками. Создана панель деталей accounts.list.details_panel и секция операций accounts.list.operations_section.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 4,
+      "requirement_ids": [
+        "REQ-0037",
+        "REQ-0038",
+        "REQ-0039",
+        "REQ-0040",
+        "REQ-0041",
+        "REQ-0042",
+        "REQ-0043",
+        "REQ-0044",
+        "REQ-0045",
+        "REQ-0046",
+        "REQ-0047",
+        "REQ-0048"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0037",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "payments.transfer",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.form",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Форма перевода между счетами уже существует на странице payments.transfer"
+          },
+          {
+            "requirement_id": "REQ-0038",
+            "ui_effect": "layout",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.form",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Структура формы перевода содержит все требуемые поля"
+          },
+          {
+            "requirement_id": "REQ-0039",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.from_account",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Селектор счета списания уже реализован"
+          },
+          {
+            "requirement_id": "REQ-0040",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.to_account",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Селектор счета зачисления уже реализован"
+          },
+          {
+            "requirement_id": "REQ-0041",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.amount",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Поле ввода суммы перевода уже существует"
+          },
+          {
+            "requirement_id": "REQ-0042",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.currency_display",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется добавить отображение валюты перевода рядом с суммой"
+          },
+          {
+            "requirement_id": "REQ-0043",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.comment",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Поле комментария к переводу уже реализовано"
+          },
+          {
+            "requirement_id": "REQ-0044",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "payments.transfer.confirm_modal",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется модальное окно подтверждения перевода с итоговыми данными"
+          },
+          {
+            "requirement_id": "REQ-0045",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "payments.transfer",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Данные перевода сохраняются в состоянии приложения"
+          },
+          {
+            "requirement_id": "REQ-0046",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "payments.transfer",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Статус перевода отображается в интерфейсе после выполнения"
+          },
+          {
+            "requirement_id": "REQ-0047",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "accounts.list",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Операции по счетам отображаются на странице accounts.list"
+          },
+          {
+            "requirement_id": "REQ-0048",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "deposits.open",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.application",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Форма заявки на открытие вклада уже реализована"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "payments.transfer",
+              "parent_id": "payments.transfer.form",
+              "element": {
+                "id": "payments.transfer.currency_display",
+                "label": "Валюта перевода",
+                "purpose": "Отображение валюты операции перевода",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "payments.transfer",
+              "parent_id": "payments.transfer",
+              "element": {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "id": "payments.transfer.confirm_modal.from",
+                        "label": "Счет списания",
+                        "type": "text"
+                      },
+                      {
+                        "id": "payments.transfer.confirm_modal.to",
+                        "label": "Счет зачисления",
+                        "type": "text"
+                      },
+                      {
+                        "id": "payments.transfer.confirm_modal.amount",
+                        "label": "Сумма",
+                        "type": "text"
+                      },
+                      {
+                        "id": "payments.transfer.confirm_modal.currency",
+                        "label": "Валюта",
+                        "type": "text"
+                      },
+                      {
+                        "id": "payments.transfer.confirm_modal.comment",
+                        "label": "Комментарий",
+                        "type": "text"
+                      }
+                    ],
+                    "id": "payments.transfer.confirm_modal.summary",
+                    "label": "Данные перевода",
+                    "type": "details_panel"
+                  },
+                  {
+                    "id": "payments.transfer.confirm_modal.confirm",
+                    "label": "Подтвердить перевод",
+                    "link_source": true,
+                    "type": "button"
+                  },
+                  {
+                    "id": "payments.transfer.confirm_modal.cancel",
+                    "label": "Вернуться к редактированию",
+                    "link_source": true,
+                    "type": "button"
+                  }
+                ],
+                "description": "Модальное окно подтверждения перевода между счетами",
+                "id": "payments.transfer.confirm_modal",
+                "label": "Подтверждение перевода",
+                "type": "modal"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.application",
+              "element": {
+                "id": "deposits.open.interest_account",
+                "label": "Счет выплаты процентов",
+                "purpose": "Выбор счета для зачисления процентов по вкладу",
+                "type": "select"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "payments.transfer.submit",
+              "target_type": null,
+              "target_id": "payments.transfer.confirm_modal",
+              "relation": "opens_modal"
+            }
+          ],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Добавлено поле валюты перевода и модальное окно подтверждения. Для REQ-0048 добавлен счет выплаты процентов в форму депозита.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 5,
+      "requirement_ids": [
+        "REQ-0049",
+        "REQ-0050",
+        "REQ-0051",
+        "REQ-0052",
+        "REQ-0053",
+        "REQ-0054",
+        "REQ-0055",
+        "REQ-0056",
+        "REQ-0057",
+        "REQ-0058",
+        "REQ-0059",
+        "REQ-0060"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0049",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.wizard",
+                "action": "create",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.step.params",
+                "action": "create",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.step.conditions",
+                "action": "create",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.step.confirm",
+                "action": "create",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Мастер открытия вклада с пошаговой навигацией"
+          },
+          {
+            "requirement_id": "REQ-0050",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.source_account",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Выбор счета списания из активных счетов"
+          },
+          {
+            "requirement_id": "REQ-0051",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.amount",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Ввод суммы вклада с валидацией"
+          },
+          {
+            "requirement_id": "REQ-0052",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.currency",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Выбор валюты вклада"
+          },
+          {
+            "requirement_id": "REQ-0053",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.term",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Выбор срока вклада в месяцах"
+          },
+          {
+            "requirement_id": "REQ-0054",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.capitalization",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Выбор капитализации процентов"
+          },
+          {
+            "requirement_id": "REQ-0055",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "deposits.open.calculator.rate",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Отображение ставки вклада"
+          },
+          {
+            "requirement_id": "REQ-0056",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "deposits.open",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Данные созданной заявки на вклад"
+          },
+          {
+            "requirement_id": "REQ-0057",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "deposits.open",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Статус заявки на вклад"
+          },
+          {
+            "requirement_id": "REQ-0058",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "deposits.open",
+                "action": "reuse",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Связь заявок с клиентом"
+          },
+          {
+            "requirement_id": "REQ-0059",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.submit",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Подача заявки на кредит"
+          },
+          {
+            "requirement_id": "REQ-0060",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.step.borrower",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.insurance",
+                "action": "create",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.comment",
+                "action": "create",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Форма заявки на кредит со всеми полями"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "deposits.open",
+              "parent_id": null,
+              "element": {
+                "children": [],
+                "id": "deposits.open.wizard",
+                "label": "Мастер открытия вклада",
+                "type": "wizard"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": null,
+              "element": {
+                "children": [],
+                "id": "deposits.open.step.params",
+                "label": "Параметры вклада",
+                "type": "section"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": null,
+              "element": {
+                "children": [],
+                "id": "deposits.open.step.conditions",
+                "label": "Условия и расчет",
+                "type": "section"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": null,
+              "element": {
+                "children": [],
+                "id": "deposits.open.step.confirm",
+                "label": "Подтверждение заявки",
+                "type": "section"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.params",
+              "element": {
+                "description": "Выбор активного счета для списания средств",
+                "id": "deposits.open.source_account",
+                "label": "Счет списания",
+                "type": "select"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.params",
+              "element": {
+                "description": "Положительное денежное значение",
+                "id": "deposits.open.amount",
+                "label": "Сумма вклада",
+                "type": "input"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.params",
+              "element": {
+                "description": "Выбор из доступных валют",
+                "id": "deposits.open.currency",
+                "label": "Валюта вклада",
+                "type": "select"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.params",
+              "element": {
+                "description": "Срок в месяцах",
+                "id": "deposits.open.term",
+                "label": "Срок вклада",
+                "type": "select"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.conditions",
+              "element": {
+                "id": "deposits.open.capitalization",
+                "label": "Капитализация процентов",
+                "type": "checkbox"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.conditions",
+              "element": {
+                "description": "Годовая процентная ставка",
+                "id": "deposits.open.calculator.rate",
+                "label": "Ставка",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.conditions",
+              "element": {
+                "id": "deposits.open.calculator.income",
+                "label": "Ожидаемый доход",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.confirm",
+              "element": {
+                "id": "deposits.open.interest_account",
+                "label": "Счет выплаты процентов",
+                "type": "select"
+              },
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "parent_id": "deposits.open.step.confirm",
+              "element": {
+                "id": "deposits.open.submit",
+                "label": "Отправить заявку",
+                "type": "button"
+              },
+              "position": null
+            },
+            {
+              "page_id": "credits.apply",
+              "parent_id": "credits.apply.step.borrower",
+              "element": {
+                "id": "credits.apply.insurance",
+                "label": "Страхование",
+                "type": "checkbox"
+              },
+              "position": null
+            },
+            {
+              "page_id": "credits.apply",
+              "parent_id": "credits.apply.step.borrower",
+              "element": {
+                "id": "credits.apply.comment",
+                "label": "Комментарий",
+                "type": "textarea"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.source_account",
+              "new_parent_id": "deposits.open.step.params",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.amount",
+              "new_parent_id": "deposits.open.step.params",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.currency",
+              "new_parent_id": "deposits.open.step.params",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.term",
+              "new_parent_id": "deposits.open.step.params",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.capitalization",
+              "new_parent_id": "deposits.open.step.conditions",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.calculator.rate",
+              "new_parent_id": "deposits.open.step.conditions",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.calculator.income",
+              "new_parent_id": "deposits.open.step.conditions",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.interest_account",
+              "new_parent_id": "deposits.open.step.confirm",
+              "position": null
+            },
+            {
+              "page_id": "deposits.open",
+              "element_id": "deposits.open.submit",
+              "new_parent_id": "deposits.open.step.confirm",
+              "position": null
+            }
+          ],
+          "ui_links": [],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Создан wizard для открытия вклада с 3 шагами. Добавлены поля страхования и комментария в заявку на кредит.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 6,
+      "requirement_ids": [
+        "REQ-0061",
+        "REQ-0062",
+        "REQ-0063",
+        "REQ-0064",
+        "REQ-0065",
+        "REQ-0066",
+        "REQ-0067",
+        "REQ-0068",
+        "REQ-0069",
+        "REQ-0070",
+        "REQ-0071",
+        "REQ-0072"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0061",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.requested_amount",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Поле суммы кредита уже существует в форме заявки"
+          },
+          {
+            "requirement_id": "REQ-0062",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.term",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Поле срока кредита уже существует в форме заявки"
+          },
+          {
+            "requirement_id": "REQ-0063",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.income",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Поле ежемесячного дохода уже существует в форме заявки"
+          },
+          {
+            "requirement_id": "REQ-0064",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.insurance",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Чекбокс страхования уже существует в форме заявки"
+          },
+          {
+            "requirement_id": "REQ-0065",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "credits.apply",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.side_info",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требуется отображение данных созданной заявки и статуса после отправки"
+          },
+          {
+            "requirement_id": "REQ-0066",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.side_info",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требуется индикатор статуса заявки на экране результата"
+          },
+          {
+            "requirement_id": "REQ-0067",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [],
+            "reason": "Фильтрация заявок по клиенту — логическое ограничение, не требует изменений UI-схемы"
+          },
+          {
+            "requirement_id": "REQ-0068",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "cards.list",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется страница списка карт клиента с атрибутами и действиями"
+          },
+          {
+            "requirement_id": "REQ-0069",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "cards.list",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Атрибуты карты отображаются в списке карт"
+          },
+          {
+            "requirement_id": "REQ-0070",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "cards.list",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Связь счет-карта влияет на отображение в списке карт"
+          },
+          {
+            "requirement_id": "REQ-0071",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "cards.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.submit",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Действие блокировки карты уже реализовано на странице cards.block"
+          },
+          {
+            "requirement_id": "REQ-0072",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.form",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.card_select",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.reason",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Форма блокировки карты уже существует со всеми требуемыми полями"
+          }
+        ],
+        "changes": {
+          "create_pages": [
+            {
+              "page_id": "cards.list",
+              "title": "Список карт",
+              "description": "Экран просмотра банковских карт клиента с атрибутами и действиями",
+              "elements": [
+                {
+                  "children": [
+                    {
+                      "id": "cards.list.refresh",
+                      "label": "Обновить",
+                      "type": "button"
+                    },
+                    {
+                      "id": "cards.list.block_card",
+                      "label": "Заблокировать карту",
+                      "type": "button"
+                    }
+                  ],
+                  "id": "cards.list.toolbar",
+                  "label": "Панель действий",
+                  "type": "toolbar"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "cards.list.table.column.number",
+                          "label": "Номер карты",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.column.system",
+                          "label": "Платежная система",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.column.type",
+                          "label": "Тип",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.column.status",
+                          "label": "Статус",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.column.account",
+                          "label": "Счет",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.column.expiry",
+                          "label": "Срок действия",
+                          "type": "table_column"
+                        },
+                        {
+                          "id": "cards.list.table.action.block",
+                          "label": "Заблокировать",
+                          "type": "button"
+                        }
+                      ],
+                      "id": "cards.list.table",
+                      "label": "Таблица карт",
+                      "type": "table_with_actions"
+                    }
+                  ],
+                  "id": "cards.list.content",
+                  "label": "Область карт",
+                  "type": "grid"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "cards.list.details.number",
+                      "label": "Номер карты",
+                      "type": "text"
+                    },
+                    {
+                      "id": "cards.list.details.system",
+                      "label": "Платежная система",
+                      "type": "text"
+                    },
+                    {
+                      "id": "cards.list.details.type",
+                      "label": "Тип карты",
+                      "type": "text"
+                    },
+                    {
+                      "id": "cards.list.details.status",
+                      "label": "Статус",
+                      "type": "badge"
+                    },
+                    {
+                      "id": "cards.list.details.account",
+                      "label": "Счет",
+                      "type": "text"
+                    },
+                    {
+                      "id": "cards.list.details.expiry",
+                      "label": "Срок действия",
+                      "type": "text"
+                    },
+                    {
+                      "id": "cards.list.details.virtual",
+                      "label": "Виртуальная",
+                      "type": "badge"
+                    }
+                  ],
+                  "id": "cards.list.details_panel",
+                  "label": "Детали карты",
+                  "type": "details_panel"
+                }
+              ],
+              "file_path": null
+            }
+          ],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "credits.apply",
+              "parent_id": "credits.apply.side_info",
+              "element": {
+                "id": "credits.apply.application_status",
+                "label": "Статус заявки",
+                "purpose": "Отображение статуса кредитной заявки после отправки",
+                "type": "badge"
+              },
+              "position": null
+            },
+            {
+              "page_id": "credits.apply",
+              "parent_id": "credits.apply.side_info",
+              "element": {
+                "id": "credits.apply.application_decision",
+                "label": "Предварительное решение",
+                "purpose": "Отображение предварительного решения по заявке",
+                "type": "text"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "cards.list.table.action.block",
+              "target_type": null,
+              "target_id": "cards.block",
+              "relation": "navigates_to"
+            },
+            {
+              "id": null,
+              "source_type": null,
+              "source_id": "cards.list.block_card",
+              "target_type": null,
+              "target_id": "cards.block",
+              "relation": "navigates_to"
+            }
+          ],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Пакет синхронизации для требований REQ-0061–REQ-0072. Поля кредитной заявки (сумма, срок, доход, страхование) уже существуют — помечены как reuse. Добавлены элементы статуса и решения заявки на странице credits.apply. Создана новая страница cards.list для отображения списка карт с атрибутами (REQ-0068, REQ-0069, REQ-0070). Страница блокировки карты cards.block уже существует со всей формой — помечена как reuse.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 7,
+      "requirement_ids": [
+        "REQ-0073",
+        "REQ-0074",
+        "REQ-0075",
+        "REQ-0076",
+        "REQ-0077",
+        "REQ-0078",
+        "REQ-0079",
+        "REQ-0080",
+        "REQ-0081",
+        "REQ-0082",
+        "REQ-0083",
+        "REQ-0084"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0073",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.reason",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Поле выбора причины блокировки уже существует как select в форме"
+          },
+          {
+            "requirement_id": "REQ-0074",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.comment",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Необязательное текстовое поле комментария уже существует как textarea"
+          },
+          {
+            "requirement_id": "REQ-0075",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.confirm_modal",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Модальное окно существует, требуется расширить для отображения маскированного номера карты и причины"
+          },
+          {
+            "requirement_id": "REQ-0076",
+            "ui_effect": "message",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.success_message",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется создание элемента сообщения об успешной блокировке"
+          },
+          {
+            "requirement_id": "REQ-0077",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "analytics.spending",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.summary",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Страница аналитики с фильтрами и сводкой уже существует"
+          },
+          {
+            "requirement_id": "REQ-0078",
+            "ui_effect": "layout",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "analytics.spending",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Структура страницы с заголовком, фильтрами, карточкой итогов и списками существует"
+          },
+          {
+            "requirement_id": "REQ-0079",
+            "ui_effect": "input",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.period_from",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.period_to",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Поля ввода дат периода уже существуют как date_picker"
+          },
+          {
+            "requirement_id": "REQ-0080",
+            "ui_effect": "selection",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.account",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Фильтр выбора счета уже существует как select"
+          },
+          {
+            "requirement_id": "REQ-0081",
+            "ui_effect": "formatting",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.category_cards",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требуется расширить карточки категорий для отображения суммы, доли и количества операций"
+          },
+          {
+            "requirement_id": "REQ-0082",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.category_table",
+                "action": "extend",
+                "implementation_status": "in_progress"
+              }
+            ],
+            "reason": "Требуется расширить таблицу категорий для сортировки по сумме и отображения операций"
+          },
+          {
+            "requirement_id": "REQ-0083",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.by_period",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Раздел отображения операций по периодам уже существует"
+          },
+          {
+            "requirement_id": "REQ-0084",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.statement_panel",
+                "action": "create",
+                "implementation_status": "planned"
+              }
+            ],
+            "reason": "Требуется создание модального окна выписки с итогами по счету"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [
+            {
+              "page_id": "cards.block",
+              "parent_id": "cards.block.confirm_modal",
+              "element": {
+                "id": "cards.block.confirm_modal.card_number",
+                "label": "Номер карты",
+                "purpose": "Отображение маскированного номера карты в подтверждении",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "cards.block",
+              "parent_id": "cards.block.confirm_modal",
+              "element": {
+                "id": "cards.block.confirm_modal.reason_display",
+                "label": "Причина блокировки",
+                "purpose": "Отображение выбранной причины блокировки",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "cards.block",
+              "parent_id": "cards.block",
+              "element": {
+                "id": "cards.block.success_message",
+                "label": "Сообщение об успешной блокировке",
+                "purpose": "Отображение подтверждения блокировки с маскированным номером",
+                "type": "text"
+              },
+              "position": null
+            },
+            {
+              "page_id": "analytics.spending",
+              "parent_id": "analytics.spending.by_category",
+              "element": {
+                "children": [
+                  {
+                    "id": "analytics.spending.category_cards.card.name",
+                    "label": "Название категории",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.category_cards.card.amount",
+                    "label": "Сумма расходов",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.category_cards.card.share",
+                    "label": "Доля расходов",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.category_cards.card.count",
+                    "label": "Количество операций",
+                    "type": "text"
+                  }
+                ],
+                "id": "analytics.spending.category_cards.card",
+                "label": "Карточка категории",
+                "type": "card"
+              },
+              "position": null
+            },
+            {
+              "page_id": "analytics.spending",
+              "parent_id": "analytics.spending.by_category",
+              "element": {
+                "children": [
+                  {
+                    "id": "analytics.spending.category_table.operations.date",
+                    "label": "Дата",
+                    "type": "table_column"
+                  },
+                  {
+                    "id": "analytics.spending.category_table.operations.amount",
+                    "label": "Сумма",
+                    "type": "table_column"
+                  },
+                  {
+                    "id": "analytics.spending.category_table.operations.description",
+                    "label": "Описание",
+                    "type": "table_column"
+                  }
+                ],
+                "id": "analytics.spending.category_table.operations",
+                "label": "Операции категории",
+                "type": "table"
+              },
+              "position": null
+            },
+            {
+              "page_id": "analytics.spending",
+              "parent_id": "analytics.spending",
+              "element": {
+                "children": [
+                  {
+                    "id": "analytics.spending.statement_panel.start_balance",
+                    "label": "Начальный остаток",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.statement_panel.end_balance",
+                    "label": "Конечный остаток",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.statement_panel.income",
+                    "label": "Сумма поступлений",
+                    "type": "text"
+                  },
+                  {
+                    "id": "analytics.spending.statement_panel.expenses",
+                    "label": "Сумма списаний",
+                    "type": "text"
+                  }
+                ],
+                "id": "analytics.spending.statement_panel",
+                "label": "Выписка по счету",
+                "type": "modal"
+              },
+              "position": null
+            }
+          ],
+          "move_elements": [],
+          "ui_links": [
+            {
+              "id": null,
+              "source_type": "ui_element",
+              "source_id": "cards.block.submit",
+              "target_type": "ui_element",
+              "target_id": "cards.block.confirm_modal",
+              "relation": "opens_modal"
+            },
+            {
+              "id": null,
+              "source_type": "ui_element",
+              "source_id": "analytics.spending.statement",
+              "target_type": "ui_element",
+              "target_id": "analytics.spending.statement_panel",
+              "relation": "opens_modal"
+            }
+          ],
+          "no_changes_reason": ""
+        },
+        "agent_note": "Исправлена ошибка modal_target_required: элемент analytics.spending.statement_panel изменён с типа details_panel на modal, так как relation=opens_modal требует цель типа modal. Все UI-связи теперь указывают на элементы корректного типа.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 8,
+      "requirement_ids": [
+        "REQ-0085",
+        "REQ-0086",
+        "REQ-0087",
+        "REQ-0088",
+        "REQ-0089",
+        "REQ-0090",
+        "REQ-0091",
+        "REQ-0092",
+        "REQ-0093",
+        "REQ-0094",
+        "REQ-0095",
+        "REQ-0096"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0085",
+            "ui_effect": "action",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.filters",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.statement",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Форма выписки с выбором счета, периодом и кнопкой формирования"
+          },
+          {
+            "requirement_id": "REQ-0086",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.operations.table",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Таблица операций выписки с датой, описанием, суммой, валютой, направлением, категорией и статусом"
+          },
+          {
+            "requirement_id": "REQ-0087",
+            "ui_effect": "display",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "analytics.spending.statement_panel",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Итоги выписки: начальный и конечный остаток, сумма поступлений и списаний"
+          },
+          {
+            "requirement_id": "REQ-0088",
+            "ui_effect": "formatting",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.column.currency",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.operations.currency",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Справочник валют влияет на отображение кода и названия валюты в счетах, переводах, вкладах и операциях"
+          },
+          {
+            "requirement_id": "REQ-0089",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.column.status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.details.status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Статусы счетов (активен, заблокирован, закрыт) влияют на доступность операций"
+          },
+          {
+            "requirement_id": "REQ-0090",
+            "ui_effect": "state",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.table.column.status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.details.status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Статусы карт (активна, заблокирована, истек срок) влияют на доступность блокировки"
+          },
+          {
+            "requirement_id": "REQ-0091",
+            "ui_effect": "selection",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.block.reason",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Справочник причин блокировки карты в форме блокировки"
+          },
+          {
+            "requirement_id": "REQ-0092",
+            "ui_effect": "display",
+            "classification": "cross_cutting_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "credits.apply.application_status",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Статусы заявок на вклад и кредит отображаются пользователю"
+          },
+          {
+            "requirement_id": "REQ-0093",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "API входа пользователя — чисто backend операция, не определяет элементы интерфейса"
+          },
+          {
+            "requirement_id": "REQ-0094",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "API профиля клиента — чисто backend операция, не определяет элементы интерфейса"
+          },
+          {
+            "requirement_id": "REQ-0095",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "API списка счетов — чисто backend операция, не определяет элементы интерфейса"
+          },
+          {
+            "requirement_id": "REQ-0096",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "API операций счета — чисто backend операция, не определяет элементы интерфейса"
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [],
+          "move_elements": [],
+          "ui_links": [],
+          "no_changes_reason": "Все требования группы уже реализованы существующими элементами UI-схемы: форма фильтров выписки (analytics.spending.filters), таблица операций (accounts.list.operations.table), панель итогов выписки (analytics.spending.statement_panel), статусы счетов и карт, причины блокировки карты и статусы заявок существуют. Требования REQ-0093–REQ-0096 относятся к backend API и не требуют изменений UI."
+        },
+        "agent_note": "Группа 8: требования к выписке по счету (REQ-0085–0087) и справочникам (REQ-0088–0092) полностью покрыты существующей схемой. API-требования (REQ-0093–0096) не влияют на UI.",
+        "warnings": []
+      }
+    },
+    {
+      "index": 9,
+      "requirement_ids": [
+        "REQ-0097",
+        "REQ-0098",
+        "REQ-0099",
+        "REQ-0100",
+        "REQ-0101",
+        "REQ-0102",
+        "REQ-0103",
+        "REQ-0104",
+        "REQ-0105",
+        "REQ-0106",
+        "REQ-0107",
+        "REQ-0108"
+      ],
+      "output": {
+        "decisions": [
+          {
+            "requirement_id": "REQ-0097",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для создания перевода. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0098",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для заявки на вклад. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0099",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для кредитной заявки. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0100",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для получения списка карт. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0101",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для блокировки карты. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0102",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для аналитики трат. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0103",
+            "ui_effect": "none",
+            "classification": "no_ui",
+            "targets": [],
+            "reason": "Требование описывает backend API для выписки по счету. Не содержит указаний на элементы интерфейса."
+          },
+          {
+            "requirement_id": "REQ-0104",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "accounts.list",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.toolbar",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.new_transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.table.action.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.quick_panel",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "accounts.list.quick.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "payments.transfer",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Переход к переводу со счета реализован через кнопку в toolbar, действие в таблице и ссылку в быстрой панели. Счет списания предзаполняется при навигации."
+          },
+          {
+            "requirement_id": "REQ-0105",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "page",
+                "target_id": "cards.list",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.toolbar",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.block_card",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.table",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "cards.list.table.action.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "cards.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Переход к блокировке карты реализован через кнопку в toolbar и действие в таблице карт. Карта предзаполняется при навигации."
+          },
+          {
+            "requirement_id": "REQ-0106",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.cards",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.cards.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "cards.block",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Пункт блокировки карты существует в главном меню и открывает страницу блокировки карты."
+          },
+          {
+            "requirement_id": "REQ-0107",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.deposits",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "deposits.open",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Пункт открытия вклада существует в главном меню и открывает мастер открытия вклада."
+          },
+          {
+            "requirement_id": "REQ-0108",
+            "ui_effect": "navigation",
+            "classification": "direct_ui",
+            "targets": [
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "ui_element",
+                "target_id": "app.main_menu.products.credits",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              },
+              {
+                "target_type": "page",
+                "target_id": "credits.apply",
+                "action": "reuse",
+                "implementation_status": "implemented"
+              }
+            ],
+            "reason": "Пункт заявки на кредит существует в главном меню и открывает форму кредитной заявки."
+          }
+        ],
+        "changes": {
+          "create_pages": [],
+          "update_pages": [],
+          "upsert_elements": [],
+          "move_elements": [],
+          "ui_links": [],
+          "no_changes_reason": "Все требования текущей группы уже реализованы в существующей UI-схеме. REQ-0097..REQ-0103 описывают backend API без UI-компонентов. REQ-0104..REQ-0108 используют существующие элементы навигации: кнопки перевода и блокировки в таблицах, пункты главного меню и целевые страницы уже созданы и связаны."
+        },
+        "agent_note": "Группа 9 (REQ-0097..REQ-0108): 7 требований backend API (no_ui) и 5 требований навигации (direct_ui). Все навигационные цели уже существуют в схеме: пункты меню app.main_menu.* и страницы payments.transfer, cards.block, deposits.open, credits.apply. Изменения не требуются.",
+        "warnings": []
+      }
+    }
+  ],
+  "warnings": [],
+  "agent_note": "Добавлены: область ошибок на странице входа, кнопка выхода и имя клиента в верхней панели главной страницы. Большинство требуемых элементов уже существуют в текущей схеме.\n\nДобавлен список последних операций на главную страницу (REQ-0014). Расширены быстрые действия кнопкой блокировки карты (REQ-0013). Детализированы карточки продуктов на странице обзора с заголовками, описаниями и действиями навигации (REQ-0019-0024). Кросс-каттинг требования (REQ-0015-0018) помечены как планируемые без изменений схемы.\n\nГруппа требований по счетам клиента. Исправлены типы элементов внутри accounts.list.operations.table: все колонки таблицы операций изменены с text/badge на table_column согласно каталогу типов. Расширена таблица accounts.list.table недостающими колонками. Создана панель деталей accounts.list.details_panel и секция операций accounts.list.operations_section.\n\nДобавлено поле валюты перевода и модальное окно подтверждения. Для REQ-0048 добавлен счет выплаты процентов в форму депозита.\n\nСоздан wizard для открытия вклада с 3 шагами. Добавлены поля страхования и комментария в заявку на кредит.\n\nПакет синхронизации для требований REQ-0061–REQ-0072. Поля кредитной заявки (сумма, срок, доход, страхование) уже существуют — помечены как reuse. Добавлены элементы статуса и решения заявки на странице credits.apply. Создана новая страница cards.list для отображения списка карт с атрибутами (REQ-0068, REQ-0069, REQ-0070). Страница блокировки карты cards.block уже существует со всей формой — помечена как reuse.\n\nИсправлена ошибка modal_target_required: элемент analytics.spending.statement_panel изменён с типа details_panel на modal, так как relation=opens_modal требует цель типа modal. Все UI-связи теперь указывают на элементы корректного типа.\n\nГруппа 8: требования к выписке по счету (REQ-0085–0087) и справочникам (REQ-0088–0092) полностью покрыты существующей схемой. API-требования (REQ-0093–0096) не влияют на UI.\n\nГруппа 9 (REQ-0097..REQ-0108): 7 требований backend API (no_ui) и 5 требований навигации (direct_ui). Все навигационные цели уже существуют в схеме: пункты меню app.main_menu.* и страницы payments.transfer, cards.block, deposits.open, credits.apply. Изменения не требуются."
+}

@@ -1,0 +1,721 @@
+{
+  "candidate_count": 20,
+  "total_candidate_count": 20,
+  "status": "warnings_only",
+  "candidates": [
+    {
+      "candidate_id": "placement:analytics.spending.category_cards.card",
+      "kind": "id_container_mismatch",
+      "page_id": "analytics.spending",
+      "parent_id": "analytics.spending.by_category",
+      "element_ids": [
+        "analytics.spending.category_cards.card",
+        "analytics.spending.category_cards"
+      ],
+      "new_element_ids": [
+        "analytics.spending.category_cards.card"
+      ],
+      "existing_element_ids": [
+        "analytics.spending.category_cards"
+      ],
+      "affected_element_ids": [
+        "analytics.spending.category_cards",
+        "analytics.spending.category_cards.card",
+        "analytics.spending.category_cards.card.amount",
+        "analytics.spending.category_cards.card.count",
+        "analytics.spending.category_cards.card.name",
+        "analytics.spending.category_cards.card.share"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0081"
+      ],
+      "facts": {
+        "element_type": "card",
+        "label": "Карточка категории",
+        "actual_parent_id": "analytics.spending.by_category",
+        "expected_ancestor_id": "analytics.spending.category_cards",
+        "allowed_parent_ids": [
+          "analytics.spending.category_cards"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:analytics.spending.category_table.operations",
+      "kind": "id_container_mismatch",
+      "page_id": "analytics.spending",
+      "parent_id": "analytics.spending.by_category",
+      "element_ids": [
+        "analytics.spending.category_table.operations",
+        "analytics.spending.category_table"
+      ],
+      "new_element_ids": [
+        "analytics.spending.category_table.operations"
+      ],
+      "existing_element_ids": [
+        "analytics.spending.category_table"
+      ],
+      "affected_element_ids": [
+        "analytics.spending.category_table",
+        "analytics.spending.category_table.operations",
+        "analytics.spending.category_table.operations.amount",
+        "analytics.spending.category_table.operations.date",
+        "analytics.spending.category_table.operations.description"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0082"
+      ],
+      "facts": {
+        "element_type": "table",
+        "label": "Операции категории",
+        "actual_parent_id": "analytics.spending.by_category",
+        "expected_ancestor_id": "analytics.spending.category_table",
+        "allowed_parent_ids": [
+          "analytics.spending.category_table"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.accounts_card.action",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.accounts_card.action",
+        "products.overview.accounts_card"
+      ],
+      "new_element_ids": [
+        "products.overview.accounts_card.action"
+      ],
+      "existing_element_ids": [
+        "products.overview.accounts_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.accounts_card",
+        "products.overview.accounts_card.action"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0020",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "link",
+        "label": "Открыть список счетов",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.accounts_card",
+        "allowed_parent_ids": [
+          "products.overview.accounts_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.accounts_card.description",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.accounts_card.description",
+        "products.overview.accounts_card"
+      ],
+      "new_element_ids": [
+        "products.overview.accounts_card.description"
+      ],
+      "existing_element_ids": [
+        "products.overview.accounts_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.accounts_card",
+        "products.overview.accounts_card.description"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0020",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Просмотр и управление счетами",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.accounts_card",
+        "allowed_parent_ids": [
+          "products.overview.accounts_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.accounts_card.title",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.accounts_card.title",
+        "products.overview.accounts_card"
+      ],
+      "new_element_ids": [
+        "products.overview.accounts_card.title"
+      ],
+      "existing_element_ids": [
+        "products.overview.accounts_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.accounts_card",
+        "products.overview.accounts_card.title"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0020",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Счета",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.accounts_card",
+        "allowed_parent_ids": [
+          "products.overview.accounts_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.cards_card.action",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.cards_card.action",
+        "products.overview.cards_card"
+      ],
+      "new_element_ids": [
+        "products.overview.cards_card.action"
+      ],
+      "existing_element_ids": [
+        "products.overview.cards_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.cards_card",
+        "products.overview.cards_card.action"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "link",
+        "label": "Управлять картами",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.cards_card",
+        "allowed_parent_ids": [
+          "products.overview.cards_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.cards_card.description",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.cards_card.description",
+        "products.overview.cards_card"
+      ],
+      "new_element_ids": [
+        "products.overview.cards_card.description"
+      ],
+      "existing_element_ids": [
+        "products.overview.cards_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.cards_card",
+        "products.overview.cards_card.description"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Управление банковскими картами",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.cards_card",
+        "allowed_parent_ids": [
+          "products.overview.cards_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.cards_card.title",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.cards_card.title",
+        "products.overview.cards_card"
+      ],
+      "new_element_ids": [
+        "products.overview.cards_card.title"
+      ],
+      "existing_element_ids": [
+        "products.overview.cards_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.cards_card",
+        "products.overview.cards_card.title"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0023",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Карты",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.cards_card",
+        "allowed_parent_ids": [
+          "products.overview.cards_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.credits_card.action",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.credits_card.action",
+        "products.overview.credits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.credits_card.action"
+      ],
+      "existing_element_ids": [
+        "products.overview.credits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.credits_card",
+        "products.overview.credits_card.action"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0022",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "link",
+        "label": "Подать заявку",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.credits_card",
+        "allowed_parent_ids": [
+          "products.overview.credits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.credits_card.description",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.credits_card.description",
+        "products.overview.credits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.credits_card.description"
+      ],
+      "existing_element_ids": [
+        "products.overview.credits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.credits_card",
+        "products.overview.credits_card.description"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0022",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Заявка на потребительский кредит с предварительным рассмотрением",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.credits_card",
+        "allowed_parent_ids": [
+          "products.overview.credits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.credits_card.title",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.credits_card.title",
+        "products.overview.credits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.credits_card.title"
+      ],
+      "existing_element_ids": [
+        "products.overview.credits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.credits_card",
+        "products.overview.credits_card.title"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0022",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Кредиты",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.credits_card",
+        "allowed_parent_ids": [
+          "products.overview.credits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.deposits_card.action",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.deposits_card.action",
+        "products.overview.deposits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.deposits_card.action"
+      ],
+      "existing_element_ids": [
+        "products.overview.deposits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.deposits_card",
+        "products.overview.deposits_card.action"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0021",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "link",
+        "label": "Открыть вклад",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.deposits_card",
+        "allowed_parent_ids": [
+          "products.overview.deposits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.deposits_card.description",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.deposits_card.description",
+        "products.overview.deposits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.deposits_card.description"
+      ],
+      "existing_element_ids": [
+        "products.overview.deposits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.deposits_card",
+        "products.overview.deposits_card.description"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0021",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Открытие и управление вкладами онлайн",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.deposits_card",
+        "allowed_parent_ids": [
+          "products.overview.deposits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "placement:products.overview.deposits_card.title",
+      "kind": "id_container_mismatch",
+      "page_id": "products.overview",
+      "parent_id": "products.overview.product_cards",
+      "element_ids": [
+        "products.overview.deposits_card.title",
+        "products.overview.deposits_card"
+      ],
+      "new_element_ids": [
+        "products.overview.deposits_card.title"
+      ],
+      "existing_element_ids": [
+        "products.overview.deposits_card"
+      ],
+      "affected_element_ids": [
+        "products.overview.deposits_card",
+        "products.overview.deposits_card.title"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0021",
+        "REQ-0024"
+      ],
+      "facts": {
+        "element_type": "text",
+        "label": "Вклады",
+        "actual_parent_id": "products.overview.product_cards",
+        "expected_ancestor_id": "products.overview.deposits_card",
+        "allowed_parent_ids": [
+          "products.overview.deposits_card"
+        ]
+      }
+    },
+    {
+      "candidate_id": "new_page_navigation:cards.list",
+      "kind": "new_page_without_incoming_navigation",
+      "page_id": "cards.list",
+      "parent_id": "",
+      "element_ids": [
+        "app.main_menu",
+        "app.main_menu.analytics",
+        "app.main_menu.analytics.spending",
+        "app.main_menu.cards",
+        "app.main_menu.cards.block",
+        "app.main_menu.payments",
+        "app.main_menu.payments.transfer",
+        "app.main_menu.products",
+        "app.main_menu.products.accounts",
+        "app.main_menu.products.credits",
+        "app.main_menu.products.deposits",
+        "app.main_menu.products.overview"
+      ],
+      "new_element_ids": [],
+      "existing_element_ids": [
+        "app.main_menu",
+        "app.main_menu.analytics",
+        "app.main_menu.analytics.spending",
+        "app.main_menu.cards",
+        "app.main_menu.cards.block",
+        "app.main_menu.payments",
+        "app.main_menu.payments.transfer",
+        "app.main_menu.products",
+        "app.main_menu.products.accounts",
+        "app.main_menu.products.credits",
+        "app.main_menu.products.deposits",
+        "app.main_menu.products.overview"
+      ],
+      "affected_element_ids": [],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0068",
+        "REQ-0069",
+        "REQ-0070",
+        "REQ-0105"
+      ],
+      "context_page_ids": [
+        "app",
+        "cards.list"
+      ],
+      "facts": {
+        "page_id": "cards.list",
+        "page_title": "Список карт",
+        "incoming_navigation_count": 0,
+        "allowed_navigation_parent_ids": [
+          "app.main_menu",
+          "app.main_menu.analytics",
+          "app.main_menu.cards",
+          "app.main_menu.payments",
+          "app.main_menu.products"
+        ],
+        "existing_navigation_source_ids": [
+          "app.main_menu.analytics.spending",
+          "app.main_menu.cards.block",
+          "app.main_menu.payments.transfer",
+          "app.main_menu.products.accounts",
+          "app.main_menu.products.credits",
+          "app.main_menu.products.deposits",
+          "app.main_menu.products.overview"
+        ]
+      }
+    },
+    {
+      "candidate_id": "empty_extended:analytics.spending.category_table",
+      "kind": "empty_extended_container",
+      "page_id": "analytics.spending",
+      "parent_id": "analytics.spending.by_category",
+      "element_ids": [
+        "analytics.spending.category_table"
+      ],
+      "new_element_ids": [],
+      "existing_element_ids": [
+        "analytics.spending.category_table"
+      ],
+      "affected_element_ids": [
+        "analytics.spending.category_table"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0082"
+      ],
+      "facts": {
+        "element_type": "table",
+        "label": "Таблица категорий",
+        "child_count": 0,
+        "extended_by_requirement_ids": [
+          "REQ-0082"
+        ]
+      }
+    },
+    {
+      "candidate_id": "empty:deposits.open.wizard",
+      "kind": "empty_new_container",
+      "page_id": "deposits.open",
+      "parent_id": "deposits.open",
+      "element_ids": [
+        "deposits.open.wizard"
+      ],
+      "new_element_ids": [
+        "deposits.open.wizard"
+      ],
+      "existing_element_ids": [],
+      "affected_element_ids": [
+        "deposits.open.wizard"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0049"
+      ],
+      "facts": {
+        "element_type": "wizard",
+        "label": "Мастер открытия вклада",
+        "child_count": 0
+      }
+    },
+    {
+      "candidate_id": "duplicate_page:accounts.list.details.balance",
+      "kind": "duplicate_page_elements",
+      "page_id": "accounts.list",
+      "parent_id": "",
+      "element_ids": [
+        "accounts.list.details.balance",
+        "accounts.list.table.column.balance"
+      ],
+      "new_element_ids": [
+        "accounts.list.details.balance"
+      ],
+      "existing_element_ids": [
+        "accounts.list.table.column.balance"
+      ],
+      "affected_element_ids": [
+        "accounts.list.details.balance",
+        "accounts.list.table.column.balance"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0031"
+      ],
+      "facts": {
+        "element_type": "text",
+        "normalized_label": "баланс",
+        "labels": {
+          "accounts.list.details.balance": "Баланс",
+          "accounts.list.table.column.balance": "Баланс"
+        },
+        "parents": {
+          "accounts.list.details.balance": "accounts.list.details_panel",
+          "accounts.list.table.column.balance": "accounts.list.table"
+        }
+      }
+    },
+    {
+      "candidate_id": "duplicate_page:accounts.list.details.number",
+      "kind": "duplicate_page_elements",
+      "page_id": "accounts.list",
+      "parent_id": "",
+      "element_ids": [
+        "accounts.list.details.number",
+        "accounts.list.table.column.number"
+      ],
+      "new_element_ids": [
+        "accounts.list.details.number"
+      ],
+      "existing_element_ids": [
+        "accounts.list.table.column.number"
+      ],
+      "affected_element_ids": [
+        "accounts.list.details.number",
+        "accounts.list.table.column.number"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [
+        "REQ-0030"
+      ],
+      "facts": {
+        "element_type": "text",
+        "normalized_label": "номер счета",
+        "labels": {
+          "accounts.list.details.number": "Номер счета",
+          "accounts.list.table.column.number": "Номер счета"
+        },
+        "parents": {
+          "accounts.list.details.number": "accounts.list.details_panel",
+          "accounts.list.table.column.number": "accounts.list.table"
+        }
+      }
+    },
+    {
+      "candidate_id": "duplicate_page:deposits.open.step.confirm.rate_display",
+      "kind": "duplicate_page_elements",
+      "page_id": "deposits.open",
+      "parent_id": "",
+      "element_ids": [
+        "deposits.open.calculator.rate",
+        "deposits.open.step.confirm.rate_display"
+      ],
+      "new_element_ids": [
+        "deposits.open.step.confirm.rate_display"
+      ],
+      "existing_element_ids": [
+        "deposits.open.calculator.rate"
+      ],
+      "affected_element_ids": [
+        "deposits.open.calculator.rate",
+        "deposits.open.step.confirm.rate_display"
+      ],
+      "link_ids": [],
+      "related_requirement_ids": [],
+      "facts": {
+        "element_type": "text",
+        "normalized_label": "ставка",
+        "labels": {
+          "deposits.open.calculator.rate": "Ставка",
+          "deposits.open.step.confirm.rate_display": "Ставка"
+        },
+        "parents": {
+          "deposits.open.calculator.rate": "deposits.open.step.conditions",
+          "deposits.open.step.confirm.rate_display": "deposits.open.step.confirm"
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "Структурная проверка: рекомендуется вручную проверить элементы вне ожидаемого контейнера: analytics.spending.category_cards.card, analytics.spending.category_table.operations, products.overview.accounts_card.action, products.overview.accounts_card.description, products.overview.accounts_card.title и ещё 9.",
+    "Структурная проверка: рекомендуется вручную проверить новые страницы без входящей навигации: cards.list.",
+    "Структурная проверка: рекомендуется вручную проверить контейнеры, заявленные как расширенные, но оставшиеся пустыми: analytics.spending.category_table.",
+    "Структурная проверка: рекомендуется вручную проверить новые пустые содержательные контейнеры: deposits.open.wizard."
+  ]
+}

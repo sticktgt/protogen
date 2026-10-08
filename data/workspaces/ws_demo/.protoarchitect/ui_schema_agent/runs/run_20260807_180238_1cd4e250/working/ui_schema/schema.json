@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "application": {
+    "name": "Generated Prototype",
+    "description": "Демонстрационная UI-схема банковского web-прототипа"
+  },
+  "pages": [
+    {
+      "id": "auth.login",
+      "title": "Вход в систему",
+      "file": "pages/auth.login.json"
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "file": "pages/home.json"
+    },
+    {
+      "id": "products.overview",
+      "title": "Банковские продукты",
+      "file": "pages/products.overview.json"
+    },
+    {
+      "id": "accounts.list",
+      "title": "Список счетов",
+      "file": "pages/accounts.list.json"
+    },
+    {
+      "id": "payments.transfer",
+      "title": "Перевод между своими счетами",
+      "file": "pages/payments.transfer.json"
+    },
+    {
+      "id": "deposits.open",
+      "title": "Открытие депозита",
+      "file": "pages/deposits.open.json"
+    },
+    {
+      "id": "credits.apply",
+      "title": "Заявка на кредит",
+      "file": "pages/credits.apply.json"
+    },
+    {
+      "id": "analytics.spending",
+      "title": "Аналитика трат",
+      "file": "pages/analytics.spending.json"
+    },
+    {
+      "id": "cards.block",
+      "title": "Блокировка карты",
+      "file": "pages/cards.block.json"
+    },
+    {
+      "id": "cards.list",
+      "title": "Список карт",
+      "file": "pages/cards.list.json"
+    }
+  ]
+}

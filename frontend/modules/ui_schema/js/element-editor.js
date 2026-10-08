@@ -7,6 +7,7 @@ import { renderAddChildPanel } from './element-add-panel.js';
 import { renderCreatePageEditor, renderPageEditor } from './page-editor.js';
 import { renderAppRootEditor } from './app-root-editor.js';
 import { escapeHtml } from './html-utils.js';
+import { renderDeletedChangeEditor, renderSelectedChangeDetails, selectedDeletedChange } from './preview-diff.js';
 
 const tabs = [
   ['info', '✏️', 'Поля'],
@@ -22,6 +23,12 @@ export function renderElementEditor() {
 
   if (state.createPageMode) {
     renderCreatePageEditor(container, addPanel);
+    return;
+  }
+
+  if (state.selectedDeletedChange) {
+    container.innerHTML = renderDeletedChangeEditor(selectedDeletedChange());
+    if (addPanel) addPanel.innerHTML = '';
     return;
   }
 
@@ -74,6 +81,7 @@ function renderElementShell(container, element) {
         <div class="item-meta">${escapeHtml(element.id)} · ${escapeHtml(element.type || '')}</div>
       </div>
     </div>
+    ${renderSelectedChangeDetails('ui_element', element.id)}
     <div class="element-editor-tabs">
       ${tabs.map(([id, icon, title]) => tabButton(id, icon, title)).join('')}
     </div>

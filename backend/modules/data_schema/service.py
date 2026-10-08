@@ -34,7 +34,7 @@ from backend.modules.data_schema.storage import (
     read_schema,
     read_ui_links,
 )
-from backend.modules.data_schema.summary import read_summary
+from backend.modules.data_schema.summary import read_summary, read_summary_from_root
 
 
 __all__ = [
@@ -63,6 +63,7 @@ __all__ = [
     "read_requirements",
     "read_schema",
     "read_summary",
+    "read_summary_from_root",
     "read_ui_links",
     "rebuild_index",
     "update_entity",

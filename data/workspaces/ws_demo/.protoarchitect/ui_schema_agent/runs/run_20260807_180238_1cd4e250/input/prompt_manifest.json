@@ -1,0 +1,16 @@
+{
+  "pipeline_version": 2,
+  "prompt_files": [
+    "connection_test.md",
+    "pipeline_analysis.md",
+    "pipeline_audit.md",
+    "pipeline_change_rules.md",
+    "pipeline_correction.md",
+    "pipeline_output_contract.md",
+    "pipeline_planning.md",
+    "pipeline_repair.md",
+    "pipeline_structural_review.md"
+  ],
+  "user_request": "",
+  "regeneration_comments": []
+}
